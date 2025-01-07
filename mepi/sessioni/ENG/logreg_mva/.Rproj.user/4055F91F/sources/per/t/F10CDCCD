@@ -1,0 +1,26 @@
+{
+    "id": "F10CDCCD",
+    "path": "~/EPIET/revision_cs/cs/ENG/logreg_mva/scripts/backup/logreg_analysis_backup.R",
+    "project_path": "scripts/backup/logreg_analysis_backup.R",
+    "type": "r_source",
+    "hash": "1470267777",
+    "contents": "",
+    "dirty": false,
+    "created": 1725876012012.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "134,0",
+        "scrollLine": "125"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1726058188,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1726058188028,
+    "read_only": false,
+    "read_only_alternatives": []
+}

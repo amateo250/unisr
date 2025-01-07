@@ -1,0 +1,9 @@
+"year" "sex" "age2" "idu" "atrisk"
+2005 "female" "<=30" "no" 4650
+2005 "male" "<=30" "no" 5015
+2005 "female" ">30" "no" 3616
+2005 "male" ">30" "no" 5460
+2005 "female" "<=30" "yes" 585
+2005 "male" "<=30" "yes" 1107
+2005 "female" ">30" "yes" 19
+2005 "male" ">30" "yes" 901

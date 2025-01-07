@@ -1,0 +1,26 @@
+pacman::p_load(rio,tidyverse)
+
+hosp_info = data.frame(
+  hosp_name     = c("central hospital", "military", "military", "port", "St. Mark's", "ignace", "sisters"),
+  catchment_pop = c(1950280, 40500, 10000, 50280, 12000, 5000, 4200),
+  level         = c("Tertiary", "Secondary", "Primary", "Secondary", "Secondary", "Primary", "Primary")
+) %>% 
+  mutate(
+    hosp_name = case_when(
+      # criteria                         # new value
+      hosp_name == "military"          ~ "Military Hospital",
+      hosp_name == "port"              ~ "Port Hospital",
+      hosp_name == "St. Mark's"        ~ "St. Mark's Maternity Hospital (SMMH)",
+      hosp_name == "central hospital"  ~ "Central Hospital",
+      TRUE                             ~ hosp_name
+    )
+  )
+
+
+d1 <- import("data/linelist_raw.xlsx")
+
+d2 <- left_join(d1, hosp_info, by = c("hospital" = "hosp_name"))
+
+
+
+export(hosp_info, "data/hosp_info.RDS")

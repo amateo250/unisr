@@ -1,0 +1,57 @@
+# To see your language locale
+Sys.getlocale()
+# To change it into English
+Sys.setlocale("LC_ALL", "English")
+# Ensures the package "pacman" is installed
+if (!require("pacman")) {
+install.packages("pacman") }
+pacman::p_load(
+rio,             # to import datasets
+skimr,           # for displaying your data
+janitor,         # a package for data cleaning
+foreign,         # to import stata files
+MASS,            # for negative binomial regression
+broom,           # to generate tidy tibbles of regression analysis
+epitools,        # for univariable analysis
+lubridate,       # for working with dates
+performance,     # Assessment of Regression Models Performance
+gtsummary,       # descriptive tables and hypothesis testing
+tidyverse        # data management and visualization
+)
+# Import the dataset for HIV
+hiv.data <- read.dta("data/HIV_Spain.dta")
+View(hiv.data)
+# Inspect your dataset and generate basic statistics using the skim function
+skim(hiv.data)
+# Glimpse is an alternative to skim which gives more accurate information about the nature of the  variables
+glimpse(hiv.data)
+# To see the different categories of the variables
+tabyl(hiv.data, seroco)
+# To see your language locale
+Sys.getlocale()
+# To change it into English
+Sys.setlocale("LC_ALL", "English")
+# Ensures the package "pacman" is installed
+if (!require("pacman")) {
+install.packages("pacman") }
+pacman::p_load(
+rio,             # to import datasets
+skimr,           # for displaying your data
+janitor,         # a package for data cleaning
+foreign,         # to import stata files
+MASS,            # for negative binomial regression
+broom,           # to generate tidy tibbles of regression analysis
+epitools,        # for univariable analysis
+lubridate,       # for working with dates
+performance,     # Assessment of Regression Models Performance
+gtsummary,       # descriptive tables and hypothesis testing
+tidyverse        # data management and visualization
+)
+# Import the dataset for HIV
+hiv.data <- read.dta("data/HIV_Spain.dta")
+# Inspect your dataset and generate basic statistics using the skim function
+skim(hiv.data)
+# Glimpse is an alternative to skim which gives more accurate information about the nature of the  variables
+glimpse(hiv.data)
+# To see the different categories of the variables
+tabyl(hiv.data, seroco)

@@ -1,0 +1,5 @@
+
+pacman::p_load(gapminder)
+
+data("gapminder")
+gap

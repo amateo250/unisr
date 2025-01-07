@@ -1,0 +1,1247 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+execute:
+  warning: false
+  error: false
+format: 
+  html: 
+    css: webex.css
+    include-after-body: webex.js
+    df-print: kable
+    toc: true
+editor: 
+  markdown: 
+    wrap: 72
+title: |
+  ![](images/ecdc/logo_epiet_rki.png){width=12in}
+---
+
+# **MVA - Multivariable analysis**
+
+# Case study: HIV Sentinel System in Spain - Poisson regression {.unnumbered}
+
+## Objectives of this case study
+
+At the end of the case study, participants should be able to:
+
+-   perform Poisson regression and interpret the results,
+-   identify overdispersion and use appropriate models to address it,
+-   perform negative binomial regression and interpret the model
+
+## Previous level of expertise assumed
+
+Participants are expected to be familiar with data import, management as well as
+descriptive and linear/logistic regression in R.
+
+## Preparation for the case study
+
+1.  Extract the contents of the folder named *poisson_mva* in the local
+    laptop
+
+2.  Create an Rstudio project in the folder *poisson_mva*. If you are
+    unsure on how to do that, read the EpiRhandbook Chapter on [R
+    projects](https://epirhandbook.com/en/new_pages/r_projects.html)
+
+3.  Inside the folder *poisson_mva*, the subfolder "data" contains the data
+    needed for this case study: *HIV_Spain.dta*. There is another file
+    named *data2005.txt* which will be used for some optional tasks at
+    the end.
+
+4.  Subfolder scripts should be used to save any scripts related to the
+    analysis. Inside "backup" you will find a solution script with the
+    code of the case study named *poisson_analysis_backup.R*.
+
+5.  Subfolder "outputs" could be used to store all outputs (tables,
+    graphs, documents) that are the result of the analysis.
+
+### **Scenario, study design and analysis plan**
+
+### Introduction
+
+In Spain, HIV infection is monitored through a sentinel network of
+eleven HIV clinics specialising in counselling and HIV testing. These
+clinics have been operating without major changes since the beginning of
+the 90s, and epidemiological information and results of HIV tests have
+been collected in a standardised
+[way](https://www.eurosurveillance.org/content/10.2807/esm.09.05.00466-en)
+
+This case study uses information for 1989–2004 on a) people who
+seroconverted (persons with a recorded HIV-negative test followed by a
+positive one) b) people who did not seroconvert (had one or more
+negative test, never testing positive).
+
+Even though people may have been tested several times, information only
+on the first negative HIV test, the last negative HIV test and the first
+positive HIV test (where applicable) are shown in the database.
+
+Seroconverters are defined as persons with any negative test followed by
+a positive one (for them, the variable *seroco* is equal to 1 ). CD4
+counts (*cd4*) at the time of the first positive test were also recorded.
+
+Healthcare workers collect epidemiological information (self-reported
+risk behaviours including injecting drug use, condomless sex between
+men, sex work and condomless heterosexual sex) from participants using a
+brief questionnaire before an HIV test is performed.
+
+Each participant can report more than one risk category, which is
+subsequently recoded in separate variables: person who injects drugs
+(*idu*), man who has condomless sex with men (*msm*), sexworker (*sexwork*)
+and person with condomless heterosexual contacts (*hete*).
+
+### Your task
+
+You are one of the epidemiologists in charge of the Spanish sentinel
+surveillance system and you have been asked to study and model the
+number of HIV infections within this system.
+
+### **Step 1: Set up**
+
+**Tasks:**
+
+-   Ensure your working language in RStudio is English
+-   Set up a R Studio project
+-   Create an R script, or an Rmarkdown file if you prefer. Make sure
+    the script purpose, date, and author are written as comments at the
+    top.
+-   Make sure your folders/subfolders are well-organised
+-   Install and load the following packages: rio, skimr, janitor, foreign,
+    MASS, broom, epitools, lubridate, performance, gtsummary and tidyverse.
+
+
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
+it yourself first!)
+
+</summary>
+
+</br>
+
+```{r , echo=TRUE, results = 'hide'}
+# To see your language locale 
+Sys.getlocale() 
+
+# To change it into English 
+Sys.setlocale("LC_ALL", "English")  
+
+
+# Ensures the package "pacman" is installed
+if (!require("pacman")) {
+     install.packages("pacman") }
+
+pacman::p_load(
+  
+  rio,             # to import datasets
+  skimr,           # for displaying your data
+  janitor,         # a package for data cleaning
+  foreign,         # to import stata files
+  MASS,            # for negative binomial regression
+  broom,           # to generate tidy tibbles of regression analysis 
+  epitools,        # for univariable analysis
+  lubridate,       # for working with dates
+  performance,     # Assessment of Regression Models Performance
+  gtsummary,       # descriptive tables and hypothesis testing
+  tidyverse        # data management and visualization
+)
+
+```
+
+</br>
+
+</details>
+
+### **Step 2: Import and explore data**
+
+
+```{r, include=FALSE}
+library(epikit)
+options(scipen = 999)
+hiv.data <- read.dta("../cs/ENG/poisson_mva/data/HIV_spain.dta")
+
+```
+
+**Tasks**
+
+-   Import the data frame called "HIV_spain.dta" inside the "data"
+    subfolder.
+-   Explore the data trying to answer the following questions:
+
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+
+</summary>
+
+</br>
+
+Although we usually encourage you to load your data with `import()`, we suggest using `read.dta()` this time because the data for this case study was labeled through STATA and we’d like to use STATA labels for easy of use of the data. In fact, you will notice whilst exploring the dataset that columns of class "factor" such as *sex* or *idu* are coded with two values: **1, 2**. However, if you do a tabyl you will see their "labels" (e.g., "male and female" or "yes and no"). This is typical of .dta files containing **stata data**. 
+
+For data exploration, there are different ways to inspect data using R. For getting an overview of the overall dataset structure, you can use functions such as `skim()`, `str()` and `head()`. Single variables can be described using functions such as `summary()`, `table()` and `prop.table()`. Similarly, you can use from the {janitor} package to describe categorical variables and `summary()` from {base} R or `summarise()` from the {dplyr} package for continuous variables. Furthermore, do not forget to check if your data contains missing entries.
+
+</br>
+
+</details>
+
+::: {.callout-note appearance="minimal" icon="false"}
+**Test yourself!**
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  "2004-11-25",
+  answer = "1989-05-15",
+  "1923-02-12",
+  "1989-01-11"
+)
+
+
+cat("QUESTION: What's the date of the first positive test?", longmcq(opts))
+
+```
+:::
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  "5752",
+  "12617",
+  answer = "5046",
+  "16570"
+)
+
+
+cat("QUESTION: How many records belong to sex workers?", longmcq(opts))
+
+```
+:::
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  answer = "30",
+  "35",
+  "25",
+  "15"
+)
+
+
+cat("QUESTION: What's the median age?", longmcq(opts))
+
+```
+:::
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  answer = "1 and 2",
+  "0 and 1",
+  "yes and no",
+  "positive and negative"
+)
+
+
+cat("QUESTION: What are the values of the variable 'seroco'?", longmcq(opts))
+
+```
+:::
+:::
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
+it yourself first!)
+
+</summary>
+
+</br>
+
+```{r , echo=TRUE, eval=FALSE}
+# Import the dataset for HIV  
+hiv.data <- read.dta("data/HIV_Spain.dta")
+```
+
+```{r , echo=TRUE}
+# Inspect your dataset and generate basic statistics using the skim function  
+skim(hiv.data)
+# Glimpse is an alternative to skim which gives more accurate information about the nature of the  variables
+glimpse(hiv.data)
+
+
+# See the different values of the variable seroco
+#if we just to a tabyl we see the STATA labels
+tabyl(hiv.data$seroco)
+#we have to transform it into numeric to see the original values
+tabyl(as.numeric(hiv.data$seroco))
+```
+
+</br>
+
+</details>
+
+
+
+### **Step 3: Univariate analysis**
+
+So, we have information on `r nrow(hiv.data)` people, the majority of whom (`r adorn_pct_formatting(tabyl(hiv.data, sex))[[2,3]]`) were male, with a mean age (at date of last test) of 31.1 years and a median age of `r median(hiv.data$age)` years (Q1=`r round(summary(hiv.data$age)[[2]], digits = 0)`, Q3=`r round(summary(hiv.data$age)[[5]])`). Information on transmission categories was available for all participants: `r adorn_pct_formatting(tabyl(hiv.data, hete))[[2,3]]` had condomless heterosexual sex, `r adorn_pct_formatting(tabyl(hiv.data, msm))[[2,3]]` were men who had condomless sexual contact with other men and almost `r adorn_pct_formatting(tabyl(hiv.data, idu))[[2,3]]` were injecting drug users. The majority of HIV tests (`r adorn_pct_formatting(tabyl(hiv.data$lasttestYgr))[[4,3]]`) were done between 2001 and 2004 at the centres in Madrid ( `r adorn_pct_formatting(tabyl(hiv.data$centro), digits = 0)[[1,3]]` ). Among those attending, `r fmt_count(hiv.data, seroco == "yes")` seroconverted. The mean CD4 count was `r round(mean(hiv.data$cd4, na.rm = T), digits = 0)` cells per mm³ (recall that a CD4 count <350 cells per mm³ within 91 days of HIV diagnosis indicates a late diagnosis).
+
+You may wish to discuss whether an HIV seroconversion incidence of `r adorn_pct_formatting(tabyl(hiv.data, seroco))[[2,3]]` is high or not. In Spain, the estimated incidence of newly diagnosed HIV is 79.3 per one million inhabitants in 2009. Recall that here we focus on new infections in very specific groups at risk.
+
+
+#### 3.1: Main factors associated with HIV seroconversion
+
+**Task**: Explore, either using cross-tables and relative risks (or any other appropriate method) which are the main factors associated with HIV seroconversion (*seroco*)
+
+
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+
+</summary>
+
+</br>
+
+You may remember from the Stegen Case Study that we can do this using the function `riskratio()` from the package {epitools}. First, we need to select the columns that we want to explore. Then, we need to write the exposure and then the predictor. Try reading the documentation of the function if you have any doubts.
+</br>
+
+</details>
+
+
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
+it yourself first!)
+
+</summary>
+
+</br>
+
+```{r , echo=TRUE}
+hiv.data %>% 
+  select(sex, idu, msm, sexwork, hete, age2, lasttestY, centro) %>% # we select the columns we're interested (note that we do not select the outcome: seroco)
+  map(.f = ~riskratio(.x, hiv.data$seroco))     # here we call the function for each column. ".x" represents all the columns in the database that have not been removed previously
+```
+
+</br>
+
+</details>
+
+
+::: {.callout-note appearance="minimal" icon="false"}
+**Test yourself!**
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  "Age and year of last test only",
+  "Injecting drug Use, condomless heterosexual sex, age and sex",
+  answer = "Injecting drug Use, condomless heterosexual sex,
+  condomless sex between men, age, sex, being a sex worker, centre of testing and year of last test",
+  "None of the variables explored are associated with seroconversion"
+)
+
+
+cat("QUESTION: Which factors are significantly associated with HIV seroconversion?", longmcq(opts))
+
+```
+:::
+:::
+
+
+### **Step 4: Poisson regression**
+
+To this point, you have already compared the risks of seroconversion for different exposures and assessed which groups within the population have the highest risk of seroconversion.
+
+By now, you may have realised that sex, age, the different modes of transmission, the year when the test was performed, and the centre region are statistically associated with HIV seroconversion. Through stratified analysis, it can be concluded that some of these variables have an impact on the estimate of the others. In order to investigate several risk factors simultaneously and assess for confounding and effect modification, we need to undertake **multivariable analysis**.
+
+As you know, the type of regression that we should choose depends on the nature of our data. In this case, our event of interest -or dependent variable- is seroconversion (remember that this is when a person has a recorded HIV-negative test followed by a positive one) which is a binary variable. We saw earlier on that logistic regression is the appropriate method when we have this type of dependent variable. This is true. However, in our database we also have the dates for the different tests. Having time-to-event data gives us the possibility to model the **rates of seroconversion**. The incidence rate (or incidence density) is the number of incident cases divided by the person-time at risk. In this specific sentinel surveillance system, the numerator is the number of seroconverters, and the denominator is the total person-time at risk, i.e.:
+
+-   the time between the first HIV test (by definition negative in this database) and the first HIV positive test for seroconverters, OR
+
+-   the time between the first HIV test and the last HIV negative test for non-seroconverters).
+
+
+A regression method that allows to take into account **varying exposure times** to **model incidence rates** is **Poisson regression**, which we will use in this case. 
+
+Often, more than one method is appropriate for the same data. In this case, a Cox Proportional Hazards Regression would also be appropriate. We will cover this method in a separate case study.
+
+
+#### 4.1: Data preparation for poisson regression
+
+In order to take time-to-event information into account we first need to create a variable with the time at risk for each observation. Also, currently, our dependent variable *seroco* is of `class()` factor, but given that Poisson regression is defined for count outcomes, we need to transform it into numeric.
+
+**Tasks**
+
+-   Create a variable named *seroco_num* which is the numeric version of *seroco*.
+
+-   Create a variable named *timeatrisk* with the number of years at risk for each observation in the dataset
+
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+
+</summary>
+
+</br>
+
+You should be able to transform *seroco* into numeric without any issues, but if you struggle to remember how, have a look at the EpiRhandbook section on [Converting column class](https://epirhandbook.com/en/new_pages/cleaning.html#convert-column-class).
+The time at risk will depend on whether the person seroconverted or didn't. For those who seroconverted we can calculate the number of days at risk as the difference between the first positive test (*first_pos*) and the first test they carried out (*first_test*). For those who did not serconvert the number of days at risk is the difference between the last negative test (*last_neg*) and the first test they carried out (*first_test*).  In order to transform this substraction into a number we can place it inside the function `as.double()`. The result will be the number of days at risk. If we want to transform this into years at risk, we can divide it by 365.25. For more information have a look at the EpiRhandbook section on [Observation time](https://epirhandbook.com/en/new_pages/survey_analysis.html#observation-time)
+
+</br>
+
+</details>
+
+
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
+it yourself first!)
+
+</summary>
+
+</br>
+
+```{r , echo=TRUE}
+# The outcome variable needs to be a numeric variable for this part of the analysis.
+# (because Poisson regression is defined for a count outcome.)
+# Therefore, we transform 'seroco' as follows:
+hiv.data <- hiv.data %>% 
+  mutate(seroco_num = if_else(seroco == "yes", 1, 0))
+
+
+# Furthermore, the time at risk (before seroconversion) differs between individuals;
+# this will be incorporated into the model by an adjustment/denominator term.
+# We calculate the denominator ('timeatrisk') for seroco == 0 and seroco == 1:
+hiv.data <- hiv.data %>%
+  mutate(timeatrisk = as.numeric(if_else
+                                 (seroco == "yes", 
+                                   (first_pos-first_test)/365.25,
+                                   (last_neg-first_test)/365.25)))
+```
+
+</br>
+
+</details>
+
+
+#### 4.2: Fit the poisson regression model with the variable *idu* only
+
+Let’s start fitting the model with one variable only (variable *idu*)
+
+**Tasks**
+
+-   Create a model using poisson regression in which the outcome variable is the column *seroco_num* and the offset is the logarithm of the column *timeatrisk*
+
+-   Interpret the results
+
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+
+</summary>
+
+</br>
+
+As we did with logistic regression, we can use the ‘generalized linear models’ or `glm()` function to perform poisson regression regression in R. Its basic syntax is: `glm([OUTCOME] ~ [COVARIATES])`. glm stands for ‘generalized linear models’ and can handle a range of different regression models. 
+There are two different aspects in the poisson regression formula with respect to the logistic regression one. **The first is the `family =` argument**. In Poisson regression we should write this argument as: 
+
+`glm([OUTCOME] ~ [PREDICTOR], family = poisson(link = "log"))`
+
+By saying that the family is "poisson" we are saying that our outcome is a count and that the counts follow a Poisson distribution, which is appropriate for rare events occurring independently over a fixed period or space.
+The 'link = "log"' part means that the expected value of the dependent variable will be transformed using the natural logarithm. This has several important purposes such as ensuring non-negative predictions or ensuring that 
+the relationship between the predictors and the log of the expected count is linear, which simplifies interpretation and estimation.
+
+The second thing we need to ensure in Poisson regression is that **we add an `offset = ` argument**. The offset is used to account for varying exposure times among individuals (*timeatrisk*). It adjusts the model to ensure that the **rate** of the event (seroconversion) is correctly estimated, rather than just the count. The offset is typically included on the log scale, which aligns with the log link function used in Poisson regression, so it would look as: `offset = log(timeatrisk)` in our formula.
+
+Finally, to interpret the result you can use the `tidy()` function, which we have used in previous case studies. Ensure that you add the arguments `exponentiate = TRUE` and `conf.int = TRUE` so that the results are transformed from logarithm scale into the orginal scale and they are presented with their confidence interval.
+
+
+</br>
+
+</details>
+
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
+it yourself first!)
+
+</summary>
+
+</br>
+
+```{r , echo=TRUE}
+#create the model
+model1 <- glm(seroco_num ~ idu, #seroconversion as dependent variable and idu as independent variable
+              family = poisson(link = "log"), #family for poisson regression
+              data = hiv.data, 
+              offset = log(timeatrisk)) #offset is the log of our time-varying variable
+#get the results
+summary(model1) 
+
+#for interpretation, we transform the results back from their log scale and add confidence intervals
+tidy(model1, exponentiate = TRUE, conf.int = TRUE)
+```
+
+</br>
+
+</details>
+
+
+::: {.callout-note appearance="minimal" icon="false"}
+**Test yourself!**
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  "Being an injecting drug user increases the probability of seroconversion by 3.61",
+  "There are 3.61% more seroconversion among injecting drug users",
+  answer = "The rate of seroconversion for injecting drug users is 3.61 times higher than for non-injecting drug users",
+  "There are no differences in serconversion rates according to injecting drug status"
+)
+
+
+cat("QUESTION: How do you interpret the estimate?", longmcq(opts))
+
+```
+:::
+:::
+
+
+So, the estimate for the association between injecting drug use and seroconversion is 3.61, which means that the rate of seroconversion for individuals with injecting drug use is approximately 3.61 times higher than for those without this risk factor. The confidence interval (3.11 to 4.19) for *idu* suggests that the true rate ratio is likely between 3.11 and 4.19, reinforcing the strong association between injection drug use and seroconversion.
+
+
+#### 4.3: Build multivariate poisson regression models
+
+The previous model took only one variable into consideration, let's build now two more models including more variables.
+
+**Tasks**
+
+-   Build two more models. One (model2) including the main risk factors: *idu*, *sex* and *age2* and another (model3) with all the risk factors identified in the step **3.1**
+
+-   Compare the performance of the three models and interpret the results
+
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+
+</summary>
+
+</br>
+
+You may remember that an easy function to calculate performance metrics is `glance()` from the {broom} package. But, of course, there are many others. Choose the one you feel most comfortable with!
+ 
+</br>
+
+</details>
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try it yourself first!)
+
+</summary>
+
+</br>
+```{r , echo=TRUE}
+# model2 with idu, sex and age2
+model2 <- glm(seroco_num ~ idu + sex + age2, 
+              family = poisson(link = "log"), 
+              data = hiv.data, 
+              offset = log(timeatrisk))
+
+tidy(model2, exponentiate = TRUE, conf.int = TRUE)
+```
+
+```{r , echo=TRUE}
+# model3 with all risk factors
+model3 <- glm(seroco_num ~ idu + sex + age2 + sexwork + msm + hete + lasttestY + centro, 
+              family = poisson(link = "log"), 
+              data = hiv.data, 
+              offset=log(timeatrisk))
+
+tidy(model3, exponentiate = TRUE, conf.int = TRUE) %>% 
+  filter(term != "(Intercept)") #we remove the intercept to improve visualisation
+```
+
+
+```{r , echo=TRUE}
+## Assess the performance of the models
+glance(model1)   # performance metrics of model1
+glance(model2)   # performance metrics of model2
+glance(model3)   # performance metrics of model3
+```
+
+
+</br>
+
+</details>
+
+::: {.callout-note appearance="minimal" icon="false"}
+**Test yourself!**
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  "Being over 30",
+  answer = "Being an injecting drug user",
+  "Being male"
+)
+
+
+cat("QUESTION: What's the strongest risk factor in model2?", longmcq(opts))
+
+```
+:::
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  "model1",
+  "model2",
+  answer = "model3"
+)
+
+
+cat("QUESTION: Which model performs the best?", longmcq(opts))
+
+```
+:::
+:::
+
+The `glance()` function gives us many results. But as you may remember we can focus on two of them to compare the performance across different models: the `AIC` and the `logLik`. A higher `logLik` and a lower `AIC` indicate better performance. In this case, thus, model3 performs better than the other two. If you want to revise about model performance, have a look at the **TBE case study**, in particular to the step **6.2: Compare the performance of both models**.
+
+
+### **Step 5: Assumptions of Poisson regression models**
+
+The regression model we built comes, like any other statistical model, with a set of assumptions that need to be met for the results to be valid. The main asssumptions of regression models are:
+
+- **Independence of observations**: The observations are independent of each other, which means that the occurrence of an event for one individual should not influence the occurrence of an event for another individual.
+
+-   **Log-linear relationship**: The log of the expected value of the outcome variable is a linear combination of the predictor (or independent) variables.
+
+-   **No excessive Zero counts**: The model assumes that the number of zero counts is consistent with the Poisson distribution. If there are more zeros than expected (zero inflation), a zero-inflated Poisson model might be more appropriate.
+
+-   **The outcome variable follows a Poisson distribution**: The outcome variable (in our case the number of seroconversions) follows a Poisson distribution. This implies that the mean and variance of this variable are equal. If the variance is much larger than the mean (overdispersion), the model may not fit well.
+
+
+Frequently, the real-life data that we use in epidemiology does not fulfill this last assumption (that the outcome variable follows a Poisson distribution). This is important because **a Poisson model is not valid if overdispersion (or underdispersion) exists**. If overdispersion is present, we can consider running alternative models such as **Quasi-Poisson regression** or **Negative Binomial regression**. The Negative Binomial regression includes an extra parameter that allows testing and compensating for overdispersion.
+
+
+#### 5.1: Check for overdispersion
+
+**Task**:
+
+-   Check if there is overdispersion in the three models you built. 
+
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+
+</summary>
+
+</br>
+
+To verify graphically whether the variance is equal or not to the mean, you can consider histograms. However, to check if there is overdispersion, after model fitting we can use also use the function `check_overdispersion()` from the {performance} package.
+ 
+</br>
+
+</details>
+
+
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try it yourself first!)
+
+</summary>
+
+</br>
+```{r , echo=TRUE}
+check_overdispersion(model1)
+```
+
+```{r , echo=TRUE}
+check_overdispersion(model2)
+```
+
+```{r , echo=TRUE}
+check_overdispersion(model3)
+```
+</br>
+
+</details>
+
+
+::: {.callout-note appearance="minimal" icon="false"}
+**Test yourself!**
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  answer = "Yes",
+  "No",
+  "Impossible to know"
+)
+
+
+cat("QUESTION: Is there significant overdispersion in the poisson models we built?", longmcq(opts))
+
+```
+:::
+:::
+
+
+If the (estimated) dispersion ratio is notably larger than 1 (say, >1.5), the Poisson regression approach is questionable. If this occurs, we should consider alternative models. If you used the `check_overdispersion()` function, you would have noticed that there is also a p value given. If the p-value of this overdispersion test is < 0.05, we should consider alternative models such as **negative binomial regression.**
+
+
+### **Step 6: Alternatives to Poisson Regression**
+
+
+#### 6.1: Negative Binomial Regression
+
+Negative binomial regression is technically an extension of the Poisson regression model. One may be tempted to always directly try this regression model. However, Negative Binomial models are more complex, more difficult to interpret and more computationally intensive than Poisson models. Therefore, negative binomial regression is recommended after first exploring a Poisson regression model.
+
+**Tasks**:
+
+-   Create, run and interpret a negative binomial regression model equivalent to *model3* as described in the **step 4.3**
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+
+</summary>
+
+</br>
+
+To run a negative binomial regression model, you can use the function `glm.nb()` from the {MASS} package. The arguments are similar to those of the `glm()` function, with some small differences in the `offset` argument. If you struggle, try reading the function's documentation. This [section](https://epirhandbook.com/en/new_pages/time_series.html#negative-binomial) of the EpiRhandbook could also help you.
+ 
+</br>
+
+</details>
+
+
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try it yourself first!)
+
+</summary>
+
+</br>
+```{r , echo=TRUE}
+#create negative binomial regression model
+nb_model <- glm.nb(seroco_num ~ idu + sex + age2 + sexwork + msm + hete + lasttestY + centro +
+                     offset(log(timeatrisk)),
+                   data = hiv.data)
+```
+
+```{r , echo=TRUE}
+#results of the model
+summary(nb_model)
+```
+
+```{r , echo=TRUE}
+#exponentiate results and add confidence intervals
+tidy(nb_model, exponentiate = TRUE, conf.int = TRUE) %>% 
+  filter(term != "(Intercept)") #we remove the intercept to improve visualisation
+```
+
+</br>
+
+</details>
+
+
+::: {.callout-note appearance="minimal" icon="false"}
+**Test yourself!**
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  "In the negative binomial regression model the risk associated to injecting drug use is significantly attenuated compared with the poisson regression model",
+  "In the negative binomial regression model being a sex worker is a risk factor, whereas it was a protective factor in the poisson regression model",
+  answer = "The results are almost idential in both models"
+)
+
+
+cat("QUESTION: How do the results form the negative binomial model compare with the results from the poisson regression model?", longmcq(opts))
+
+```
+:::
+:::
+
+
+As you can see, the results are almost identical in both models, but given the significant overdispersion found, the negative binomial model is more appropriate. There are, however, other alternatives!
+
+
+#### 6.2: Quasi-Poisson Regression
+
+Another alternative to a Poisson regression model when we encounter overdispersion is running a quasi-poisson model. This model adjusts for overdispersion by modifying the standard errors of the Poisson regression model without changing the estimated coefficients. It allows the variance to be a linear function of the mean, rather than assuming the variance equals the mean as in the standard Poisson model.
+
+**Tasks**
+
+-   Create, run and interpret a quasi-poisson regression model with seroconversion as the dependent variable, *idu*, *sex*, *age2* and *sexwork* as independent variables and the logarithm of *timeatrisk* as the offset.
+
+-   Compare the AIC of the quasi-poisson and the poisson regression models
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+
+</summary>
+
+</br>
+
+To run a quasi-poisson regression model, you can use the function `glm()`, as you used for the poisson regression model. The only argument you would need to change is the `family`, which you should set to `family = quasipoisson(link = "log")`. 
+ 
+</br>
+
+</details>
+
+
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try it yourself first!)
+
+</summary>
+
+</br>
+```{r , echo=TRUE}
+#create the quasi-poisson regression model
+quasipois_model <- glm(seroco_num ~ idu + sex + age2 + sexwork + msm + hete + lasttestY + centro,
+                       family=quasipoisson,
+                       data = hiv.data,
+                       offset=log(timeatrisk))
+#results of the model
+summary(quasipois_model)
+```
+
+```{r , echo=TRUE}
+#exponentiate results and add confidence intervals
+tidy(quasipois_model, exponentiate = TRUE, conf.int = TRUE) %>% 
+  filter(term != "(Intercept)") #we remove the intercept to improve visualisation
+```
+
+```{r , echo=TRUE}
+#check performance to obtain AIC
+glance(quasipois_model)
+```
+
+</br>
+
+</details>
+
+
+::: {.callout-note appearance="minimal" icon="false"}
+**Test yourself!**
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  "In the quasi-poisson regression model the risk associated to injecting drug use is significantly attenuated compared with the poisson regression model",
+  "In the quasi-poisson regression model being a sex worker is a risk factor, whereas it was a protective factor in the poisson regression model",
+  answer = "The results are almost idential in both models"
+)
+
+
+cat("QUESTION: How do the results form the quasi-poisson model compare with the results from the poisson regression model?", longmcq(opts))
+
+```
+:::
+
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  "The AIC of the quasi-poisson regression model is significantly higher than the one from the poisson regression model",
+  "The AIC of the quasi-poisson regression model is significantly higher than the one from the poisson regression model",
+  answer = "The AIC of the quasi-poisson regression model cannot be computed"
+)
+
+
+cat("QUESTION: How does the AIC of the quasi-poisson model compare with the AIC from the poisson regression model?", longmcq(opts))
+
+```
+:::
+:::
+
+So, the results are also in this case almost identical to the previous two models. The advantage of the quasi-poisson model is that you can adjust for overdispersion without changing the underlying mean structure of the Poisson model. One important disadvantage, however, is that the lack of a true likelihood function in the quasi-Poisson model prevents the calculation of AIC, which relies on the log-likelihood. Thus, you cannot compare model performance with the AIC or the logLik.
+
+### **(Optional) Step 7: Analysis of aggregated data**
+
+Until now, we applied the Poisson regression models on the individual data (each row corresponds to one person). Specifically, since persons were followed up during several (and different) years, we already considered their ‘time at risk’ in order to obtain sensible estimates for incidence rate ratios and incorporated those as offsets into the model.
+
+This approach is pursued usually as an analogue to logistic regression, for obtaining risk ratios or incidence rate ratios (as we did above). Following the fundamental concept of Poisson regression, however, leads to a different perspective where we specify aggregated units for which we observe corresponding counts of events. For instance, we can consider the yearly incidence and apply the Poisson regression model to data aggregated by sex, age2 etc.
+
+To explore this idea, we will define a dataframe based on hiv.data that contains for each combination of year and relevant grouping variables (such as sex and age2) the number of people that are at risk of seroconversion and the number of actually measured seroconversions. 
+
+
+#### 7.1: Creating an aggregated dataframe
+
+**Task**
+
+-   Convert the case-based data into aggregated format in which each row has the number of serconversions and the time at risk by age, sex, idu (we only include this risk factor to simplify), and years from 1995 until 2004 only. 
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+
+</summary>
+
+</br>
+
+Do not worry if you don't manage. The syntax here is a bit more advanced as it uses logical expressions applied to vectors. It is alright to skip understanding the details of this loop first and come back to it after checking the regression results
+ 
+</br>
+
+</details>
+
+
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try it yourself first!)
+
+</summary>
+
+</br>
+```{r , echo=TRUE}
+# Step 1: Create all combinations of year, sex, age2, and idu
+# This generates a data frame with all possible combinations of the variables
+A <- expand_grid(
+  year = 1989:2004,                # Years of interest
+  sex = levels(hiv.data$sex),      # Levels of the 'sex' variable
+  age2 = levels(hiv.data$age2),    # Levels of the 'age2' variable
+  idu = levels(hiv.data$idu)       # Levels of the 'idu' variable
+)
+
+# Step 2: Aggregate data
+# For each combination of year, sex, age2, and idu, calculate:
+# - 'atrisk': Number of people at risk for seroconversion in that year
+# - 'seroconversions': Number of seroconversions in that year
+agg_db <- A %>%
+  rowwise() %>% # Process each row independently (needed for custom calculations)
+  mutate(
+    # Calculate the number of people at risk
+    atrisk = sum(
+      year(hiv.data$first_test) <= year &  # Tested for the first time on or before the current year
+        hiv.data$lasttestY <= year &      # Last test year is on or before the current year
+        hiv.data$sex == sex &             # Matches the current 'sex' level
+        hiv.data$age2 == age2 &           # Matches the current 'age2' level
+        hiv.data$idu == idu               # Matches the current 'idu' level
+    ) -
+      sum(
+        hiv.data$sex == sex &               # Matches the current 'sex' level
+          hiv.data$age2 == age2 &           # Matches the current 'age2' level
+          hiv.data$idu == idu &             # Matches the current 'idu' level
+          hiv.data$first_pos <= year + 1,   # First positive test is before or during the next year
+        na.rm = TRUE                        # Ignore missing values
+      ),
+    
+    # Calculate the number of seroconversions
+    seroconversions = sum(
+      year(hiv.data$first_pos) == year &  # First positive test is in the current year
+        hiv.data$sex == sex &             # Matches the current 'sex' level
+        hiv.data$age2 == age2 &           # Matches the current 'age2' level
+        hiv.data$idu == idu,              # Matches the current 'idu' level
+      na.rm = TRUE                        # Ignore missing values
+    )
+  ) %>%
+  ungroup()  %>% 
+  
+  filter(atrisk > 0) # This step removes combinations where 'atrisk' is 0 or less
+
+
+# Look at the first rows of this new database
+head(agg_db)
+```
+
+</br>
+
+</details>
+
+#### 7.2: Run model on aggregated dataframe
+
+**Tasks**
+
+-   Run a Poisson regression model using the aggregated dataframe with seroconversion as the dependent variable, *idu*, *sex* and *age2* as independent variables.
+
+-   Check if there is overdispersion and, if present, run a quasi-poisson regression model
+
+-   If you have run a quasi-poisson regression model, compare the results from bothh models
+
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try it yourself first!)
+
+</summary>
+
+</br>
+```{r , echo=TRUE}
+#create the Poisson model
+pois_agg_model <- glm(seroconversions ~ sex + age2 + idu,
+                family=poisson(link="log"),
+                offset = log(atrisk),
+                data = agg_db)
+
+
+# we have a look at the Poisson regression output 
+summary(pois_agg_model)
+```
+
+```{r , echo=TRUE}
+# use 'tidy()' to get risk ratio estimates and confidence intervals.
+tidy(pois_agg_model, exponentiate = TRUE, conf.int = TRUE)
+```
+
+```{r , echo=TRUE}
+# We check for overdispersion:
+check_overdispersion(pois_agg_model)
+```
+
+
+```{r , echo=TRUE}
+#create the Quasi-Poisson model
+qp_agg_model <- glm(seroconversions ~ sex + age2 + idu,
+                family=poisson(link="log"),
+                offset = log(atrisk),
+                data = agg_db)
+
+
+# we have a look at the Quasi-Poisson regression output 
+summary(qp_agg_model)
+```
+
+```{r , echo=TRUE}
+# use 'tidy()' to get risk ratio estimates and confidence intervals.
+tidy(qp_agg_model, exponentiate = TRUE, conf.int = TRUE)
+```
+
+</br>
+
+</details>
+
+
+As there was significant overdispersion, it was more appropriate to run a different model such as the Quasi-Poisson model. However, results here were also similar as before.
+
+
+### **(Optional) Step 8: Predict the number of seroconversions in 2005**
+
+The data we have worked in the previous step ranges until 2004. Suppose that for the subsequent year 2005, we have the numbers of people ‘at risk’ (of seroconversion) in the respective subgroups (by age, sex etc.). We could use the fitted regression model to predict the number of seroconversions in 2005.
+
+**Tasks**
+
+-   Read the file named "data2005.txt" located in the "data" subfolder which contains the 2005 data
+
+-   Apply the quasi-poisson regression model built in the step **7.2** to predict the number of seroconversions in 2005
+
+
+```{r, include=FALSE}
+db_2005 <- read.table("../cs/ENG/poisson_mva/data/data2005.txt", header=TRUE)
+```
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Click to see a solution (try it yourself first!)
+
+</summary>
+
+</br>
+```{r , echo=TRUE, eval = FALSE}
+# We first import the given data:
+db_2005 <- read.table("data/data2005.txt", header=TRUE)
+```
+
+```{r , echo=TRUE}
+# and check its structure and that it is correctly loaded:
+head(db_2005)
+```
+
+```{r , echo=TRUE}
+# Then we can use 'predict()' to apply a fitted model to these data:
+predict(qp_agg_model, db_2005, type="response")
+```
+
+```{r , echo=TRUE}
+# (Note that type="response" is important here to predict the actual outcome;
+# the default is otherwise the log-outcome (for technical reasons). Note also
+# that the prediction has decimal values; this is because technically the
+# response of the model is actually the *expected* number of events.)
+
+# For convenience, we can attach these predicted values to the dataset:
+db_2005 <- db_2005 %>% 
+  mutate(pred_seroco = predict(qp_agg_model, db_2005 , type="response"))
+
+# In order to derive a sensible estimate of the overall number of seroconversions
+# for 2005, we finally sum up all estimated mean number of events and round the result:
+pred_estimate <- round(sum(db_2005$pred_seroco))
+
+# We print the results
+pred_estimate
+```
+
+
+</br>
+
+</details>
+
+
+
+### **Conclusions**
+
+The HIV sentinel surveillance system developed in Spain enabled analysis of factors associated with HIV infection risk in the Spanish high-risk population. Based on this system, interventions can be better planned to reduce risk of infection in this population.
+
+The included data were based on the Sentinel Surveillance system between 1989 and 2004, although they were modified for training purposes; they provide information on 21,616 persons, mostly of males (58%), with a mean age of 31.1 years. Of those who had the information on HIV transmission category recorded, 55% reported condomless heterosexual sex, 33% were men who had condomless sexual relations with other men and almost 13% were persons who inject drugs.
+
+The cumulative incidence of seroconversions during 1989–2004 was 3.5%. The univariable analysis revealed that seroconversions were more frequent among males and that the frequency decreased with age. The incidence was higher among persons who inject drugs and MSM than among those having condomless heterosexual sex or sex workers. Regional differences in seroconversion rates were also observed. However, without a causal model, appropriate confounder control and further consideration of the implicit sampling mechanism, we cannot draw causal conclusions. Instead, the regression approach is interpreted rather as a predictive model, where the associations of variables are studied regardless of actual causal relations.
+
+In this particular example where incidence is studied, Poisson regression or negative binomial regression are the recommended alternatives to, for instance, logistic regression, since these techniques enable the modelling of risk ratios. The predictive model can be used to predict the number of expected cases in relation to the risk factors, age and sex distribution of the participants in the different regions. This may allow for reasonable predictions, especially if the populations at the sites change over time. Please note that we did not explicitly consider potential multilevel aspects of the data. Similarly, we deliberately did not model potential time trends. Both these topics will be picked up again in the time series analysis (TSA) module.
+
+## Case study information
+
+***Authorship***\
+This case study was first designed in 2009 by: Alicia Barrasa (EPIET),
+Kostas Danis (EPIET), Manuel Dehnert (Robert Koch Institute-RHI),
+Johannes Dreesman (Institute of Public Health of Lower Saxony), Matthias
+an der Heiden (RKI), Harold Noël-Placidoux (Santé publique France),
+Ioannis Karagiannis (Public Health England-PHE) and David Prieto
+(University College London).
+
+This is a short version prepared by Alicia Barrasa (EPIET), Ioannis
+Karagiannis (PHE), and Andre Charlett (PHE) in 2015. The original case
+study has been divided into parts; this one includes stratified
+analysis, Poisson and negative binomial and survival analysis.
+
+#### Terms of Use
+
+**Disclaimer**: The information presented in this exercise and the
+associated data files have been deliberately changed so as to facilitate
+the acquisition of the learning objectives for fellows of EPIET, EUPHEM
+and EPIET- associated programmes. This case study was first introduced
+in 2009 and has been being adapted ever since (see Copyright and Licence
+agreement for more information).
+
+You are free:
+
+-   to Share: to copy and distribute the work
+-   to Remix: to adapt and build upon the material
+
+Under the following conditions:
+
+-   Attribution - You must attribute the work in the manner specified by
+    the author or licensor (but not in any way that suggests that they
+    endorse you or your use of the work). The best way to do this is to
+    keep as it is the list of contributors: sources, authors and
+    reviewers.
+-   Share Alike - If you alter, transform, or build upon this work, you
+    may distribute the resulting work only under the same or similar
+    license to this one. Your changes must be documented. Under that
+    condition, you are allowed to add your name to the list of
+    contributors.
+
+This licence is based on
+<http://creativecommons.org/licenses/by-sa/3.0/>
+
+### Feedback & suggestions
+
+-   You can write feedback and suggestions on this case study at the
+    ECDC GITHUB
+-   Alternatively email us at: \[ECDC CONTACT MAIL\]
+
+\pagebreak
+
+### Version and revisions
+
+Write date of first version
+
+Write any revisions made to the case study
+
+| Date | Changes made                                                                                              |                                                                                            Author |
+|---------------------|:-------------------------------|------------------:|
+| 2015 | This version was extracted from the original case study and the text revised                              | Alicia Barrasa (EPIET), Ioannis Karagiannis (Publich Health England-PHE) and Andre Charlett (PHE) |
+| 2017 | Questions were rephrased to reflect real life scenarios (rather than academic exercise)                   |                         Alicia Barrasa (EPIET) Ioannis Karagiannis (PHE) and Andre Charlett (PHE) |
+| 2017 | The case study was adapted to include the help on R                                                       |                                                                        Alex Spina (Austrian Agency
+                                                                                                                                                           for Health and Food Safety-AGES) and Patrick Keating (AGES) |
+| 2017 | Contribution to the R code                                                                                |                                                                             Niklas Willrich (RKI),
+                                                                                                                                                                           Daniel Gardiner (PHE), Lukas Richter (AGES) |
+| 2022 | Revision of the study question                                                                            |                                                                  Jan Walter and Achim Dörre (RKI) |
+| 2022 | Revision of the case study and R code                                                                     |                                                                                  Liza Coyer (LGL) |
+| 2024 | Further revision of the case study instructions and R guide                                               |                                                                                 Achim Dörre (RKI) |
+| 2024 | Revision of content, structure, R code and adaptation of format to Applied Epi's template of case studies |                                                                      Alberto Mateo Urdiales (ISS) |
