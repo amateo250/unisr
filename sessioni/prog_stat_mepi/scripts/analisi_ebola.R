@@ -4,7 +4,8 @@
 ## Contatto: alberto.mateourdiales@iss.it
 ## Data ultimo aggiornamento: 21 gennaio 2025
 
-##4.2
+
+# 4.2. Istallare e caricare i pacchetti necessari -------------------------
 
 # installa (se necessario) da CRAN e carica i pacchetti da utilizzare
 pacman::p_load(
@@ -17,14 +18,15 @@ pacman::p_load(
   tidyverse # gestione e visualizzazione dati
 )
 
-##4.3. 
+
+# 4.3. Leggere i dati -----------------------------------------------------
+
 
 # leggere i dati di Ebola
 casi_ebola <- import("data/linelist_raw.xlsx")
 
 
-
-#4.4.
+# Esplorare il database ---------------------------------------------------
 
 # esplorare tutto il database con skimr
 skim(casi_ebola)

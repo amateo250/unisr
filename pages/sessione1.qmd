@@ -439,7 +439,7 @@ Un modo efficiente per esplorare i dati è usare la funzione `skim()` dal pacche
 `r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
 </summary>
 
-</br>
+</br> 
 
 ```{r , echo=TRUE}
 # esplorare tutto il database con skimr
@@ -561,5 +561,16 @@ cat("Domanda: Qual è la prima data di ospedalizzazione", longmcq(opts))
 ```
 :::
 :::
+
+## Informazioni sull'esercizio
+
+**Autore**
+
+Autore originale: Alberto Mateo Urdiales (Dipartimento Malattie Infettive, Istituto Superiore di Sanità\
+Fonte dati: I dati sul focolaio di Ebola provengono da AppliedEpi e si possono scaricare nel sito [EpiRhandbook](https://epirhandbook.com/en/); i dati sul focolaio gastrointestinale fa parte dal pacchetto {EpiStats}; quello sul peso alla nascita dal pacchetto {MASS}\
+
+| Date         | Changes made       | Version          | Author          |
+|--------------|:-------------------|-----------------:|------------------|
+| Gennaio 2025 |First draft         |     1            |  Alberto Mateo Urdiales |
 
 
