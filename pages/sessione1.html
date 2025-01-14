@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-inputf35fe27056250fd2</title>
+<title>quarto-input59c78c16a751ba01</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>acquisire familiarità con l’interfaccia di RStudio,</li>
 <li>capire l’importanza dei progetti in RStudio,</li>
 <li>essere in grado di istallare e caricare pacchetti</li>
-<li>essere in grado di eseguire calcoli</li>
+<li>essere in grado di eseguire calcoli semplici</li>
 <li>essere in grado di utilizzare funzioni</li>
 <li>essere in grado di leggere ed esplorare un database</li>
 </ul>
@@ -136,10 +136,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="interfaccia-di-rstudio"><strong>Interfaccia di RStudio</strong></h3>
 <p>Come abbiamo detto durante la lezione, RStudio è un’interfaccia per rendere più semplice l’uso di R. RStudio ha quattro riquadri (se vedi soltanto 3 è sicuramente perché non hai aperto uno script).</p>
 <p>Riquadro <strong>source</strong>: In alto a sinistra, è uno spazio per modificare, eseguire e salvare gli script. Gli script contengono i comandi che vuoi eseguire. Per gli utenti di Stata, questo riquadro è simile alle finestre Do-file e Data Editor.</p>
-<p>Riquadro <strong>console</strong>: Il riquadro inferiore sinistro è dove troviamo il “motore” di RStudio: R. È qui che i comandi vengono effettivamente eseguiti e vengono visualizzati output non grafici e messaggi di errore/warning. Puoi scrivere ed eseguire direttamente i comandi nella console, ma tieni presente che questi comandi non vengono salvati come quando si eseguono i comandi da uno script.</p>
+<p>Riquadro <strong>console</strong>: Il riquadro inferiore sinistro è dove troviamo il “motore” di RStudio: R. È qui che i comandi vengono effettivamente eseguiti e vengono visualizzati output non grafici e messaggi di errore/avvisi. Puoi scrivere ed eseguire direttamente i comandi nella console, ma tieni presente che questi comandi non vengono salvati come quando si eseguono i comandi da uno script.</p>
 <p>Riquadro <strong>environment</strong>: In alto a destra, è utilizzato per visualizzare gli oggetti (come per esempio database) importati o creati nella sessione corrente.</p>
-<p>Riquadro <strong>plots, viewer, packages, and help</strong>: Il riquadro in basso a destra. La scheda “plots” mostrerà i grafici, mentre altri output interattivi -come tabelle HTML- verrano visualizzati nella scheda “viewer”. La scheda pacchetti mostra i pacchetti istallati e caricati, permettendo anche l’istallazioni di nuovi pacchetti. Finalmente, la scheda “help” si utilizza per ottenere informazioni su funzioni o pacchetti in R.</p>
-<p>Se vuoi sapere di più, leggi la sezione dell’EpiRhandbook su <a href="https://epirhandbook.com/en/new_pages/basics.html#rstudio">R Studio</a></p>
+<p>Riquadro <strong>plots, viewer, packages, and help</strong>: Il riquadro in basso a destra. La scheda “plots” mostrerà i grafici, mentre altri output interattivi -come tabelle HTML- verranno visualizzati nella scheda “viewer”. La scheda pacchetti mostra i pacchetti installati e caricati, permettendo anche l’installazione di nuovi pacchetti. Infine, la scheda “help” si utilizza per ottenere informazioni su funzioni o pacchetti in R.</p>
+<p>Se vuoi sapere di più, leggi la sezione dell’EpiRhandbook <a href="https://epirhandbook.com/en/new_pages/basics.html#rstudio">R Studio</a></p>
 </section>
 <section id="step-1-creare-un-progetto" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-creare-un-progetto"><strong>Step 1: Creare un progetto</strong></h3>
@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <details>
 <summary style="text-decoration: underline; color: red;">
-<svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
 </summary>
 <p><br></p>
 <p>Per creare un progetto, puoi cliccare su <em>File -&gt; New Project</em>. Puoi anche farlo cliccando sul simbolo di R nell’angolo superiore a destra (vedi immagine sotto) e poi scegliendo <em>New Project</em>.</p>
@@ -194,8 +194,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Test yourself!</strong></p>
 <div class="webex-check">
 Domanda: Una volta creato il progetto, cosa vedi nel riquadro ‘Files’ in basso a destra?
-<div id="radio_HPINNLWZNU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HPINNLWZNU" value=""> <span>Un elenco di tutti i pacchetti di R</span></label><label><input type="radio" autocomplete="off" name="radio_HPINNLWZNU" value="answer"> <span>Vedo un file che sembra il progetto che ho creato e anche le sottocartelle data, scripts e outputs</span></label><label><input type="radio" autocomplete="off" name="radio_HPINNLWZNU" value=""> <span>Non si vede niente</span></label><label><input type="radio" autocomplete="off" name="radio_HPINNLWZNU" value=""> <span>Un elenco delle funzioni di R</span></label>
+<div id="radio_TQHBZGDOKQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TQHBZGDOKQ" value=""> <span>Un elenco di tutti i pacchetti di R</span></label><label><input type="radio" autocomplete="off" name="radio_TQHBZGDOKQ" value="answer"> <span>Vedo un file che sembra il progetto che ho creato e anche le sottocartelle data, scripts e outputs</span></label><label><input type="radio" autocomplete="off" name="radio_TQHBZGDOKQ" value=""> <span>Non si vede niente</span></label><label><input type="radio" autocomplete="off" name="radio_TQHBZGDOKQ" value=""> <span>Un elenco delle funzioni di R</span></label>
 </div>
 </div>
 </div>
@@ -228,7 +228,7 @@ Domanda: Una volta creato il progetto, cosa vedi nel riquadro ‘Files’ in bas
 </details>
 <details>
 <summary style="text-decoration: underline; color: red;">
-<svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
 </summary>
 <p><br></p>
 <p>Il tuo script dovrebbe assomigliare a questo:</p>
@@ -258,7 +258,7 @@ Domanda: Una volta creato il progetto, cosa vedi nel riquadro ‘Files’ in bas
 </details>
 <details>
 <summary style="text-decoration: underline; color: red;">
-<svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
 </summary>
 <p><br></p>
 <div class="cell">
@@ -288,8 +288,8 @@ Domanda: Una volta creato il progetto, cosa vedi nel riquadro ‘Files’ in bas
 <p><strong>Test yourself!</strong></p>
 <div class="webex-check">
 Domanda: Qual è la media del vettore ‘numeri’?
-<div id="radio_UBGSBMBUVG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UBGSBMBUVG" value=""> <span>4231.1</span></label><label><input type="radio" autocomplete="off" name="radio_UBGSBMBUVG" value=""> <span>12.98</span></label><label><input type="radio" autocomplete="off" name="radio_UBGSBMBUVG" value="answer"> <span>1684.167</span></label><label><input type="radio" autocomplete="off" name="radio_UBGSBMBUVG" value=""> <span>9874.32</span></label>
+<div id="radio_LRQKUNXSUW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LRQKUNXSUW" value=""> <span>4231.1</span></label><label><input type="radio" autocomplete="off" name="radio_LRQKUNXSUW" value=""> <span>12.98</span></label><label><input type="radio" autocomplete="off" name="radio_LRQKUNXSUW" value="answer"> <span>1684.167</span></label><label><input type="radio" autocomplete="off" name="radio_LRQKUNXSUW" value=""> <span>9874.32</span></label>
 </div>
 </div>
 </div>
@@ -325,7 +325,7 @@ Domanda: Qual è la media del vettore ‘numeri’?
 </details>
 <details>
 <summary style="text-decoration: underline; color: red;">
-<svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
 </summary>
 <p><br></p>
 <div class="cell">
@@ -348,16 +348,16 @@ Domanda: Qual è la media del vettore ‘numeri’?
 <p>Esistono diversi modi in cui puoi importare i diversi data frame. Il file che noi vogliamo leggere (linelist_raw.xlsx) è un file excel. Un modo di leggerlo potrebbe essere quello di usare una funzione R specifica per importare file excel. Ad esempio, <code>read_excel()</code> da {readxl}. Questo, però, significherebbe che dobbiamo usare una funzione diversa per ogni tipo di file. Coiè, se vogliamo leggere un file .csv dovremmo usare la funzione <code>read.csv()</code> da {base} o la funzione <code>fromJSON()</code> da {jsonlite} per importare un file .json. Fortunatamente, esiste un approccio più efficiente che consiste nell’usare la funzione <code>import()</code> da {rio} per aprire <strong>qualsiasi</strong> file. Questa funzione riconoscerà il tipo di file e sceglierà la funzione appropriata per importarlo. Se vuoi saperne di più sulle funzioni di importazione, leggi il capitolo <a href="https://epirhandbook.com/en/new_pages/importing.html#import-data">Import and Export</a> di EpiRhandbook.</p>
 <p><strong>Compito</strong>:</p>
 <ul>
-<li>Importa il database <em>linelist_raw.xlsx</em> utilizzando <code>import()</code> da {rio} e salvalo nell’Environment col nome <em>casi_ebola</em>.</li>
+<li>Importa il database <em>linelist_raw.xlsx</em> utilizzando <code>import()</code> da {rio} e salvalo nell’Environment col nome <em>casi_ebola_grezzo</em>.</li>
 </ul>
 <details>
 <summary style="text-decoration: underline; color: red;">
-<svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
 </summary>
 <p><br></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># leggere i dati di Ebola</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>casi_ebola <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"data/linelist_raw.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>casi_ebola_grezzo <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"data/linelist_raw.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><br></p>
 </details>
@@ -383,19 +383,19 @@ Domanda: Qual è la media del vettore ‘numeri’?
 </details>
 <details>
 <summary style="text-decoration: underline; color: red;">
-<svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
 </summary>
 <p><br></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># esplorare tutto il database con skimr</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(casi_ebola)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(casi_ebola_grezzo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <table class="caption-top table table-sm table-striped small">
 <caption>Data summary</caption>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;">Name</td>
-<td style="text-align: left;">casi_ebola</td>
+<td style="text-align: left;">casi_ebola_grezzo</td>
 </tr>
 <tr class="even">
 <td style="text-align: left;">Number of rows</td>
@@ -823,7 +823,7 @@ Domanda: Qual è la media del vettore ‘numeri’?
 </table>
 </div>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># esplorare categorie di una variabile "character" o "factor"</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(casi_ebola, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(casi_ebola_grezzo, gender)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -858,7 +858,7 @@ Domanda: Qual è la media del vettore ‘numeri’?
 </table>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(casi_ebola, hospital)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(casi_ebola_grezzo, hospital)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -959,7 +959,7 @@ Domanda: Qual è la media del vettore ‘numeri’?
 </table>
 </div>
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(casi_ebola, fever)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tabyl</span>(casi_ebola_grezzo, fever)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -1006,38 +1006,38 @@ Domanda: Qual è la media del vettore ‘numeri’?
 <p><strong>Test yourself!</strong></p>
 <div class="webex-check">
 Domanda: Quante colonne ci sono nel database?
-<div id="radio_AULLUIZTZM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_AULLUIZTZM" value="answer"> <span>28</span></label><label><input type="radio" autocomplete="off" name="radio_AULLUIZTZM" value=""> <span>6611</span></label><label><input type="radio" autocomplete="off" name="radio_AULLUIZTZM" value=""> <span>82</span></label><label><input type="radio" autocomplete="off" name="radio_AULLUIZTZM" value=""> <span>4</span></label>
+<div id="radio_MBESUBTOIL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MBESUBTOIL" value="answer"> <span>28</span></label><label><input type="radio" autocomplete="off" name="radio_MBESUBTOIL" value=""> <span>6611</span></label><label><input type="radio" autocomplete="off" name="radio_MBESUBTOIL" value=""> <span>82</span></label><label><input type="radio" autocomplete="off" name="radio_MBESUBTOIL" value=""> <span>4</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Quante osservazioni mancano nella colonna ’age_unit?
-<div id="radio_XBZYOZZOKV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XBZYOZZOKV" value=""> <span>6</span></label><label><input type="radio" autocomplete="off" name="radio_XBZYOZZOKV" value="answer"> <span>7</span></label><label><input type="radio" autocomplete="off" name="radio_XBZYOZZOKV" value=""> <span>137</span></label><label><input type="radio" autocomplete="off" name="radio_XBZYOZZOKV" value=""> <span>876</span></label>
+<div id="radio_ZZXVNQZFRR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZZXVNQZFRR" value=""> <span>6</span></label><label><input type="radio" autocomplete="off" name="radio_ZZXVNQZFRR" value="answer"> <span>7</span></label><label><input type="radio" autocomplete="off" name="radio_ZZXVNQZFRR" value=""> <span>137</span></label><label><input type="radio" autocomplete="off" name="radio_ZZXVNQZFRR" value=""> <span>876</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Quante variabili numeriche ci sono nel database?
-<div id="radio_UCOYLXZSCM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UCOYLXZSCM" value=""> <span>28</span></label><label><input type="radio" autocomplete="off" name="radio_UCOYLXZSCM" value="answer"> <span>8</span></label><label><input type="radio" autocomplete="off" name="radio_UCOYLXZSCM" value=""> <span>17</span></label><label><input type="radio" autocomplete="off" name="radio_UCOYLXZSCM" value=""> <span>3</span></label>
+<div id="radio_LDPIGZDGFT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LDPIGZDGFT" value=""> <span>28</span></label><label><input type="radio" autocomplete="off" name="radio_LDPIGZDGFT" value="answer"> <span>8</span></label><label><input type="radio" autocomplete="off" name="radio_LDPIGZDGFT" value=""> <span>17</span></label><label><input type="radio" autocomplete="off" name="radio_LDPIGZDGFT" value=""> <span>3</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Qual è la mediana della variabile ‘wt_kg’?
-<div id="radio_IAGCKQXEVO" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IAGCKQXEVO" value=""> <span>52.7</span></label><label><input type="radio" autocomplete="off" name="radio_IAGCKQXEVO" value=""> <span>0.9</span></label><label><input type="radio" autocomplete="off" name="radio_IAGCKQXEVO" value=""> <span>48</span></label><label><input type="radio" autocomplete="off" name="radio_IAGCKQXEVO" value="answer"> <span>54</span></label>
+<div id="radio_PCMXQDGNLK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PCMXQDGNLK" value=""> <span>52.7</span></label><label><input type="radio" autocomplete="off" name="radio_PCMXQDGNLK" value=""> <span>0.9</span></label><label><input type="radio" autocomplete="off" name="radio_PCMXQDGNLK" value=""> <span>48</span></label><label><input type="radio" autocomplete="off" name="radio_PCMXQDGNLK" value="answer"> <span>54</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Qual è la percentuale di maschi (m)?
-<div id="radio_ESZSNOOTPJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ESZSNOOTPJ" value=""> <span>59.35</span></label><label><input type="radio" autocomplete="off" name="radio_ESZSNOOTPJ" value=""> <span>0.04</span></label><label><input type="radio" autocomplete="off" name="radio_ESZSNOOTPJ" value="answer"> <span>47.6</span></label><label><input type="radio" autocomplete="off" name="radio_ESZSNOOTPJ" value=""> <span>52.9</span></label>
+<div id="radio_MUQEYYCIBN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MUQEYYCIBN" value=""> <span>59.35</span></label><label><input type="radio" autocomplete="off" name="radio_MUQEYYCIBN" value=""> <span>0.04</span></label><label><input type="radio" autocomplete="off" name="radio_MUQEYYCIBN" value="answer"> <span>47.6</span></label><label><input type="radio" autocomplete="off" name="radio_MUQEYYCIBN" value=""> <span>52.9</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Qual è la prima data di ospedalizzazione
-<div id="radio_DEHIBFFNHJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DEHIBFFNHJ" value=""> <span>2015-10-19</span></label><label><input type="radio" autocomplete="off" name="radio_DEHIBFFNHJ" value=""> <span>2022-01-31</span></label><label><input type="radio" autocomplete="off" name="radio_DEHIBFFNHJ" value="answer"> <span>2012-05-14</span></label><label><input type="radio" autocomplete="off" name="radio_DEHIBFFNHJ" value=""> <span>2014-09-13</span></label>
+<div id="radio_OUXYWCXKWR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OUXYWCXKWR" value=""> <span>2015-10-19</span></label><label><input type="radio" autocomplete="off" name="radio_OUXYWCXKWR" value=""> <span>2022-01-31</span></label><label><input type="radio" autocomplete="off" name="radio_OUXYWCXKWR" value="answer"> <span>2012-05-14</span></label><label><input type="radio" autocomplete="off" name="radio_OUXYWCXKWR" value=""> <span>2014-09-13</span></label>
 </div>
 </div>
 </div>
@@ -1053,12 +1053,6 @@ Domanda: Qual è la prima data di ospedalizzazione
 Fonte dati: I dati sul focolaio di Ebola provengono da AppliedEpi e si possono scaricare nel sito <a href="https://epirhandbook.com/en/">EpiRhandbook</a>; i dati sul focolaio gastrointestinale fa parte dal pacchetto {EpiStats}; quello sul peso alla nascita dal pacchetto {MASS}<br>
 </p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 28%">
-<col style="width: 25%">
-<col style="width: 25%">
-</colgroup>
 <thead>
 <tr class="header">
 <th>Date</th>
