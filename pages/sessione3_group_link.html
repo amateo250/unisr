@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input9a34e708163270f0</title>
+<title>quarto-inputc14e90c405536b6b</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -67,6 +67,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="sessione3_group_link_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="sessione3_group_link_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="sessione3_group_link_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="sessione3_group_link_files/libs/tabwid-1.1.3/tabwid.css" rel="stylesheet">
+
+<script src="sessione3_group_link_files/libs/tabwid-1.1.3/tabwid.js"></script>
+
 
 
 <link rel="stylesheet" href="webex.css">
@@ -88,7 +92,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#preparazione" id="toc-preparazione" class="nav-link" data-scroll-target="#preparazione"><strong>Preparazione</strong></a></li>
   <li><a href="#step-1-prepara-lo-script-per-lanalisi" id="toc-step-1-prepara-lo-script-per-lanalisi" class="nav-link" data-scroll-target="#step-1-prepara-lo-script-per-lanalisi"><strong>Step 1: Prepara lo script per l’analisi</strong></a></li>
   <li><a href="#step-2-aggregare-casi-per-ospedale" id="toc-step-2-aggregare-casi-per-ospedale" class="nav-link" data-scroll-target="#step-2-aggregare-casi-per-ospedale"><strong>Step 2: Aggregare casi per ospedale </strong></a></li>
-  <li><a href="#step-3-selezionare-colonne" id="toc-step-3-selezionare-colonne" class="nav-link" data-scroll-target="#step-3-selezionare-colonne"><strong>Step 3: Selezionare colonne</strong></a></li>
+  <li><a href="#step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale" id="toc-step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale" class="nav-link" data-scroll-target="#step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale"><strong>Step 3: Creare una tabella con dati del focolaio di Ebola per ospedale</strong></a></li>
+  <li><a href="#step-4-formattare-la-tabella" id="toc-step-4-formattare-la-tabella" class="nav-link" data-scroll-target="#step-4-formattare-la-tabella"><strong>Step 4: Formattare la tabella</strong></a></li>
   <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><strong>EXTRA</strong></a></li>
   </ul></li>
   <li><a href="#informazioni-sullesercizio" id="toc-informazioni-sullesercizio" class="nav-link" data-scroll-target="#informazioni-sullesercizio">Informazioni sull’esercizio</a></li>
@@ -125,8 +130,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="obiettivi-di-questa-sesione" class="level2">
 <h2 class="anchored" data-anchor-id="obiettivi-di-questa-sesione">Obiettivi di questa sesione</h2>
 <ul>
-<li>imparare ad aggrupare i dati e creare tabelle in R,</li>
-<li>essere in grado di linkare diversi database</li>
+<li>imparare a raggruppare dati e creare tabelle in R,</li>
+<li>essere in grado di collegare diversi database</li>
+<li>acquisire conoscenze su come formattare una tabella ed esportarla</li>
 </ul>
 <section id="preparazione" class="level3">
 <h3 class="anchored" data-anchor-id="preparazione"><strong>Preparazione</strong></h3>
@@ -313,8 +319,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quanti casi sono stati ricoverati nel ‘Central Hospital’?
-<div id="radio_IHZXFVZGVL" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_IHZXFVZGVL" value=""> <span>121</span></label><label><input type="radio" autocomplete="off" name="radio_IHZXFVZGVL" value="answer"> <span>45</span></label><label><input type="radio" autocomplete="off" name="radio_IHZXFVZGVL" value=""> <span>99</span></label><label><input type="radio" autocomplete="off" name="radio_IHZXFVZGVL" value=""> <span>205</span></label>
+<div id="radio_BSCCPKIXOR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BSCCPKIXOR" value=""> <span>121</span></label><label><input type="radio" autocomplete="off" name="radio_BSCCPKIXOR" value="answer"> <span>45</span></label><label><input type="radio" autocomplete="off" name="radio_BSCCPKIXOR" value=""> <span>99</span></label><label><input type="radio" autocomplete="off" name="radio_BSCCPKIXOR" value=""> <span>205</span></label>
 </div>
 </div>
 </div>
@@ -404,20 +410,20 @@ Infine, la funzione <code>summarise()</code> serve per specificare cosa vogliamo
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quale ospedale ha la media d’età più bassa?
-<div id="radio_NNAVGDGWFH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NNAVGDGWFH" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_NNAVGDGWFH" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_NNAVGDGWFH" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_NNAVGDGWFH" value="answer"> <span>SMMH</span></label>
+<div id="radio_ZIKAUIROQY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZIKAUIROQY" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_ZIKAUIROQY" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_ZIKAUIROQY" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_ZIKAUIROQY" value="answer"> <span>SMMH</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Quale ospedale ha avuto la infezione più recente?
-<div id="radio_UALWYTSROG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_UALWYTSROG" value="answer"> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_UALWYTSROG" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_UALWYTSROG" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_UALWYTSROG" value=""> <span>SMMH</span></label>
+<div id="radio_LSROABJYFJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LSROABJYFJ" value="answer"> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_LSROABJYFJ" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_LSROABJYFJ" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_LSROABJYFJ" value=""> <span>SMMH</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
-<div id="radio_QAKMAFQGXW" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_QAKMAFQGXW" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_QAKMAFQGXW" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_QAKMAFQGXW" value="answer"> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_QAKMAFQGXW" value=""> <span>SMMH</span></label>
+<div id="radio_TIGXZPENCK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TIGXZPENCK" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_TIGXZPENCK" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_TIGXZPENCK" value="answer"> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_TIGXZPENCK" value=""> <span>SMMH</span></label>
 </div>
 </div>
 </div>
@@ -463,6 +469,13 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <pre><code>[1] 16.0156</code></pre>
 </div>
 </div>
+<p>Un ultimo consiglio. Per rendere una eventuale tabella più leggibile, possiamo ridurre il numero di decimali che si mostra in ogni colonna. Questo si fa con la funzione <code>round()</code>. All’interno della funzione dobbiamo usare lo argomento <code>digits =</code> per indicare il numero di decimale che vogliamo (ad esempio 0 o 1). Vedi lo esempio a continuazione:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">mean</span>(casi_ebola_pul<span class="sc">$</span>eta_anni, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">digits =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 16.02</code></pre>
+</div>
+</div>
 <p><br></p>
 </details>
 <details>
@@ -471,17 +484,17 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 </summary>
 <p><br></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>casi_ospedale <span class="ot">&lt;-</span> casi_ebola_pul <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(hospital) <span class="sc">%&gt;%</span> <span class="co">#raggruppamento per la variabile hospital </span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_casi =</span> <span class="fu">n</span>(), </span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">media_eta =</span> <span class="fu">mean</span>(eta_anni, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), </span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">ult_infez =</span> <span class="fu">max</span>(date_infection, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_fem     =</span> <span class="fu">sum</span>(gender <span class="sc">==</span> <span class="st">"femmine"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">perc_fem  =</span> <span class="fu">round</span>(n_fem<span class="sc">/</span>n_casi<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">1</span>),</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="co">#è buona praxis rimuovere raggruppamento alla fine</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="co">#per vedere il risultato</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>casi_ospedale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>casi_ospedale <span class="ot">&lt;-</span> casi_ebola_pul <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(hospital) <span class="sc">%&gt;%</span> <span class="co">#raggruppamento per la variabile hospital </span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_casi =</span> <span class="fu">n</span>(), </span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">media_eta =</span> <span class="fu">round</span>(<span class="fu">mean</span>(eta_anni, <span class="at">na.rm =</span> <span class="cn">TRUE</span>), <span class="at">digits =</span> <span class="dv">1</span>), </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">ult_infez =</span> <span class="fu">max</span>(date_infection, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">n_fem     =</span> <span class="fu">sum</span>(gender <span class="sc">==</span> <span class="st">"femmine"</span>, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>            <span class="at">perc_fem  =</span> <span class="fu">round</span>(n_fem<span class="sc">/</span>n_casi<span class="sc">*</span><span class="dv">100</span>, <span class="at">digits =</span> <span class="dv">1</span>),</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>            <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="co">#è buona praxis rimuovere raggruppamento alla fine</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#per vedere il risultato</span></span>
+<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>casi_ospedale</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div class="kable-table">
 <table class="caption-top table table-sm table-striped small">
@@ -499,7 +512,7 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <tr class="odd">
 <td style="text-align: left;"></td>
 <td style="text-align: right;">194</td>
-<td style="text-align: right;">15.31959</td>
+<td style="text-align: right;">15.3</td>
 <td style="text-align: left;">2015-04-22</td>
 <td style="text-align: right;">97</td>
 <td style="text-align: right;">50.0</td>
@@ -507,7 +520,7 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <tr class="even">
 <td style="text-align: left;">Central Hospital</td>
 <td style="text-align: right;">45</td>
-<td style="text-align: right;">19.53333</td>
+<td style="text-align: right;">19.5</td>
 <td style="text-align: left;">2015-03-17</td>
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">33.3</td>
@@ -515,7 +528,7 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <tr class="odd">
 <td style="text-align: left;">Military Hospital</td>
 <td style="text-align: right;">121</td>
-<td style="text-align: right;">17.31933</td>
+<td style="text-align: right;">17.3</td>
 <td style="text-align: left;">2015-04-16</td>
 <td style="text-align: right;">55</td>
 <td style="text-align: right;">45.5</td>
@@ -523,7 +536,7 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <tr class="even">
 <td style="text-align: left;">Other</td>
 <td style="text-align: right;">97</td>
-<td style="text-align: right;">15.58763</td>
+<td style="text-align: right;">15.6</td>
 <td style="text-align: left;">2015-04-14</td>
 <td style="text-align: right;">48</td>
 <td style="text-align: right;">49.5</td>
@@ -531,7 +544,7 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <tr class="odd">
 <td style="text-align: left;">Port Hospital</td>
 <td style="text-align: right;">203</td>
-<td style="text-align: right;">16.01493</td>
+<td style="text-align: right;">16.0</td>
 <td style="text-align: left;">2015-04-20</td>
 <td style="text-align: right;">113</td>
 <td style="text-align: right;">55.7</td>
@@ -539,7 +552,7 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <tr class="even">
 <td style="text-align: left;">SMMH</td>
 <td style="text-align: right;">49</td>
-<td style="text-align: right;">13.22449</td>
+<td style="text-align: right;">13.2</td>
 <td style="text-align: left;">2015-04-01</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">53.1</td>
@@ -553,14 +566,471 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 </details>
 </section>
 </section>
-<section id="step-3-selezionare-colonne" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-selezionare-colonne"><strong>Step 3: Selezionare colonne</strong></h3>
+<section id="step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale" class="level3">
+<h3 class="anchored" data-anchor-id="step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale"><strong>Step 3: Creare una tabella con dati del focolaio di Ebola per ospedale</strong></h3>
+<p>Immagina di lavorare come epidemiologo durante il focolaio di Ebola e ti venga richiesto di preparare una tabella che sintetizzi le informazioni più importante del focolaio per ospedale, da includere nel rapporto della situazione (sitrep). Decidi di includere nella tabella:</p>
+<ul>
+<li>Il numero di casi per ospedale</li>
+<li>L’età media dei casi</li>
+<li>La data dell’ultima infezione</li>
+<li>La percentuale di femmine</li>
+<li>L’incidenza per 10.000 abitanti</li>
+</ul>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Rispondi</strong></p>
+<div class="webex-check">
+Domanda: Quale degli indicatori non siamo in grado di calcolare con i dati che abbiamo?
+<div id="radio_QHIXPKLISN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QHIXPKLISN" value=""> <span>Il numero di casi per ospedale</span></label><label><input type="radio" autocomplete="off" name="radio_QHIXPKLISN" value=""> <span>L'età media dei casi</span></label><label><input type="radio" autocomplete="off" name="radio_QHIXPKLISN" value=""> <span>La data dell'ultima infezione</span></label><label><input type="radio" autocomplete="off" name="radio_QHIXPKLISN" value=""> <span>La percentuale di femmine</span></label><label><input type="radio" autocomplete="off" name="radio_QHIXPKLISN" value="answer"> <span>L'incidenza per 10.000 abitanti</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Non possiamo calcolare l’incidenza perché non abbiamo il denominatore (catchment population di ogni ospedale). Quindi, dobbiamo linkare i nostri dati con un database che contiene il denominatore di cui abbiamo bisogno. I passaggi per fare questo processo sono:</p>
+<ul>
+<li>Importare i dati degli ospedali</li>
+<li>Pulire, se necessario, questo database</li>
+<li>Linkare entrambi databases</li>
+</ul>
+<section id="importare-informazioni-degli-ospedali" class="level4">
+<h4 class="anchored" data-anchor-id="importare-informazioni-degli-ospedali">3.1. Importare informazioni degli ospedali</h4>
+<p><strong>Compito:</strong></p>
+<ul>
+<li>Importa il file: <em>hosp_info.RDS</em> che si trova all’interno della sottocartella <em>data</em>. Assegna a questo database il nome: <strong>osp_info</strong></li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br> Anche qua rimane importante mantere lo script sistemato. Per questa ragione in tutto lo script ci dovrebbe essere <strong>soltanto una sezione dove si importano i dati</strong> (in questo caso i dati individuali di Ebola e il database con le informazioni per ospedale).</p>
+<p>Se non ricordi come importare i dati, leggi la sezione <strong>4.3. Leggere i dati</strong> della sessione 1. Oppure consulta il capitolo <a href="https://epirhandbook.com/en/new_pages/importing.html#import-data">Import and Export</a> di EpiRhandbook.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>osp_info <span class="ot">&lt;-</span> <span class="fu">import</span>(<span class="st">"data/hosp_info.RDS"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Rispondi</strong></p>
+<div class="webex-check">
+Domanda: Come viene descritto l’ospedale SMMH?
+<div id="radio_ENTNUTHDJO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ENTNUTHDJO" value=""> <span>Questo ospedale non c'è nel database</span></label><label><input type="radio" autocomplete="off" name="radio_ENTNUTHDJO" value=""> <span>Come 'SMMH'</span></label><label><input type="radio" autocomplete="off" name="radio_ENTNUTHDJO" value="answer"> <span>Come 'St.&nbsp;Mark's Maternity Hospital (SMMH)'</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Quindi, l’ospedale SMMH non è codificato dello stesso modo in questo database e per tanto, dovremmo sistemarlo prima di unire i due database, altrimenti R penserà che sono due ospedali diversi.</p>
+<p>Inoltre, in questo database <strong>ci sono due “Military Hospital”</strong>, uno primario e uno secondario. Noi siamo soltanto interessati a quello secondario.</p>
+</section>
+<section id="pulire-il-file-degli-ospedali" class="level4">
+<h4 class="anchored" data-anchor-id="pulire-il-file-degli-ospedali">3.2. Pulire il file degli ospedali</h4>
+<p><strong>Compiti:</strong></p>
+<ul>
+<li>Ricodifica la variabile <em>hosp_name</em> del nuovo database in modo che l’ospedale SMMH sia codificato come “SMMH).</li>
+<li>Rimuovi l’ospedale primario “Military Hospital”.</li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>osp_info_pul <span class="ot">&lt;-</span> osp_info <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">hosp_name =</span> <span class="fu">recode</span>(hosp_name,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>                            <span class="st">"St. Mark's Maternity Hospital (SMMH)"</span> <span class="ot">=</span> <span class="st">"SMMH"</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(hosp_name <span class="sc">==</span> <span class="st">"Military Hospital"</span> <span class="sc">&amp;</span> level <span class="sc">==</span> <span class="st">"Primary"</span>))</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>osp_info_pul</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">hosp_name</th>
+<th style="text-align: right;">catchment_pop</th>
+<th style="text-align: left;">level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Central Hospital</td>
+<td style="text-align: right;">1950280</td>
+<td style="text-align: left;">Tertiary</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Military Hospital</td>
+<td style="text-align: right;">40500</td>
+<td style="text-align: left;">Secondary</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Port Hospital</td>
+<td style="text-align: right;">50280</td>
+<td style="text-align: left;">Secondary</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">SMMH</td>
+<td style="text-align: right;">12000</td>
+<td style="text-align: left;">Secondary</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">ignace</td>
+<td style="text-align: right;">5000</td>
+<td style="text-align: left;">Primary</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">sisters</td>
+<td style="text-align: right;">4200</td>
+<td style="text-align: left;">Primary</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="linkare-i-database" class="level4">
+<h4 class="anchored" data-anchor-id="linkare-i-database">3.3. Linkare i database</h4>
+<p>Adesso siamo pronti a linkare i database. In R, all’interno del pacchetto {dplyr} ci sono diverse funzioni di linkage: <code>left_join()</code>, <code>right_join()</code>, <code>semi_join()</code>, <code>inner_join()</code> e <code>full_join()</code>. Ognuna è utile in un contesto specifico. La funzione più utilizzata, almeno in epidemiologia, è <code>left_join()</code>, quindi sarà quella che utilizzeremo.</p>
+<p>All’interno di <code>left_join()</code> dobbiamo specificare il database di riferimento e, separato da una virgola, il database secondario. Nel nostro caso il <strong>database di riferimento</strong> è il database con i casi di ebola per ospedale. Essere di riferimento significa che noi <strong>aggiungiamo le informazioni del database secondario a questo database</strong>.</p>
+<p>E’ sempre una buona praxis estimare le dimensioni (numero di righe e colonne) del nuovo database linkato in base alle dimensioni dei due database che utilizziamo nel linkage.</p>
+<p>Le dimensioni del database di riferimento sono:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(casi_ospedale)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6 6</code></pre>
+</div>
+</div>
+<p>Quindi 6 righe e 6 colonne. Le dimensioni del database secondario sono:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(osp_info_pul)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6 3</code></pre>
+</div>
+</div>
+<p>Quindi 6 righe e 3 colonne.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Rispondi</strong></p>
+<div class="webex-check">
+Domanda: Quale dovrebbe essere le dimensioni del database dopo il linkage?
+<div id="radio_SMOFIBPPRM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SMOFIBPPRM" value=""> <span>12 righe e 9 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_SMOFIBPPRM" value=""> <span>6 righe e 9 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_SMOFIBPPRM" value="answer"> <span>6 righe e 8 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_SMOFIBPPRM" value=""> <span>12 righe e 6 colonne</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Noi ci aspettiamo che il database dopo il linkage abbia <strong>lo stesso numero di righe che il database di riferimento</strong>, quindi 6. Ci aspettiamo anche che le colonne con informazioni aggiuntive del database secondario vengano inserite nel database dopo il linkage. Se come il database secondario ha 3 colonne e noi usiamo una (hosp_name) per il linkage (quindi sparisce), il database risultante dovrebbe avere 8 (6+2) colonne.</p>
+<p><strong>Compito:</strong></p>
+<ul>
+<li>Fai il linkage tra <em>casi_ospedale</em> (database di riferimento) e <em>osp_info_pul</em></li>
+<li>Chiama al nuovo database <strong>inc_osp</strong></li>
+<li>Calcola le dimensioni di questo nuovo database</li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br> Dobbiamo anche specificare all’interno di <code>left_join()</code>, con l’argomento <code>by =</code> la colonna che vogliamo utilizzare per fare il linkage. Nel nostro caso questa colonna ha un nome diverso in ogni database (<em>hospital</em> in casi_ebola_pul e <em>hosp_name</em> in osp_info_pul). Una opzione sarebbe rinominare una di queste colonne, l’altra sarebbe specificare dentro <code>by =</code> che <code>c(hospital = hosp_name)</code>. Se hai dubbi su come fare il linkage, leggi la sezione dell’EpiRhandbook su <a href="https://epirhandbook.com/en/new_pages/joining_matching.html">Joining data</a></p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>inc_osp <span class="ot">&lt;-</span> <span class="fu">left_join</span>(casi_ospedale, osp_info_pul, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"hospital"</span> <span class="ot">=</span> <span class="st">"hosp_name"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Rispondi</strong></p>
+<div class="webex-check">
+Domanda: Nel nuovo database, abbiamo tutte le informazioni del database secondario ‘osp_info_pul’?
+<div id="radio_AYNAKBGARZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AYNAKBGARZ" value=""> <span>Sì</span></label><label><input type="radio" autocomplete="off" name="radio_AYNAKBGARZ" value="answer"> <span>No, non abbiamo informazioni sugli ospedali 'ignace' e 'sisters'</span></label><label><input type="radio" autocomplete="off" name="radio_AYNAKBGARZ" value=""> <span>No, non abbiamo la colonna 'catchment_pop'</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>No, non abbiamo informazioni sugli ospedali ‘ignace’ e ‘sisters’ perché questi due ospedali non si trovano nel database di riferimento e, quindi, le loro informazioni vanno perse. E’ giusto che sia così perché non siamo interessati a ospedali dove non ci sono casi di Ebola. Tuttavia, se volessimo utilizzare una funzione che non perda informazioni né del database di riferimento né del database secondario, potremmo usare <code>full_join()</code>.</p>
+</section>
+<section id="pulire-il-database-linkato" class="level4">
+<h4 class="anchored" data-anchor-id="pulire-il-database-linkato">3.4. Pulire il database linkato</h4>
+<p>Adesso che abbiamo il database definitivo, possiamo fare le ultime modifiche per creare la tabella che vogliamo produrre.</p>
+<p><strong>Compiti:</strong></p>
+<p>Esegui le seguenti modifiche al database <em>inc_osp_pul</em> e assegna il risultato a un nuovo ogetto chiamato <strong>inc_osp_pul</strong>:</p>
+<ul>
+<li>Filtra il database per rimanere soltanto con le righe dove la <em>catchment_pop</em> <strong>non è mancante</strong></li>
+<li>Crea una nuova variabile chiamata <em>inc</em> con l’incidenza per 10.000 abitanti</li>
+<li>Succesivamente, rimuovi le colonne: <em>level</em>, <em>n_fem</em> e <em>catchment_pop</em></li>
+<li>Finalmente, ordina i valori in base all’incidenza in ordine decrescente</li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br> Per ordinare i valori puoi usare la funzione <code>arrange()</code>, specificando all’interno la variabile che vuoi usare per ordinare il database. Di default, <code>arrange()</code> ordina i valori in modo crescente. Per ordinare in modo decresente basta inserire il simbolo <code>-</code> davanti al nome della variabile.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>inc_osp_pul <span class="ot">&lt;-</span> inc_osp <span class="sc">%&gt;%</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(catchment_pop)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">inc =</span> <span class="fu">round</span>(n_casi<span class="sc">/</span>catchment_pop<span class="sc">*</span><span class="dv">10000</span>, <span class="at">digits =</span> <span class="dv">1</span>)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span><span class="fu">c</span>(level, n_fem, catchment_pop)) <span class="sc">%&gt;%</span> </span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>inc)</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>inc_osp_pul</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="kable-table">
+<table class="caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">hospital</th>
+<th style="text-align: right;">n_casi</th>
+<th style="text-align: right;">media_eta</th>
+<th style="text-align: left;">ult_infez</th>
+<th style="text-align: right;">perc_fem</th>
+<th style="text-align: right;">inc</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">SMMH</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">13.2</td>
+<td style="text-align: left;">2015-04-01</td>
+<td style="text-align: right;">53.1</td>
+<td style="text-align: right;">40.8</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Port Hospital</td>
+<td style="text-align: right;">203</td>
+<td style="text-align: right;">16.0</td>
+<td style="text-align: left;">2015-04-20</td>
+<td style="text-align: right;">55.7</td>
+<td style="text-align: right;">40.4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Military Hospital</td>
+<td style="text-align: right;">121</td>
+<td style="text-align: right;">17.3</td>
+<td style="text-align: left;">2015-04-16</td>
+<td style="text-align: right;">45.5</td>
+<td style="text-align: right;">29.9</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Central Hospital</td>
+<td style="text-align: right;">45</td>
+<td style="text-align: right;">19.5</td>
+<td style="text-align: left;">2015-03-17</td>
+<td style="text-align: right;">33.3</td>
+<td style="text-align: right;">0.2</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Rispondi</strong></p>
+<div class="webex-check">
+Domanda: Quale ospedale ha l’incidenza più alta di Ebola?
+<div id="radio_IXKGGDTUMY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IXKGGDTUMY" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_IXKGGDTUMY" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_IXKGGDTUMY" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_IXKGGDTUMY" value="answer"> <span>SMMH</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Complimenti! Siamo partiti di un database con dati individuali e abbiamo creato una tabella con indicatori epidemiologici!</p>
+</section>
+</section>
+<section id="step-4-formattare-la-tabella" class="level3">
+<h3 class="anchored" data-anchor-id="step-4-formattare-la-tabella"><strong>Step 4: Formattare la tabella</strong></h3>
+<p>Manca soltanto formattare la tabella per renderla bella ed esportarla. Ci sono diversi approcci per formattare tabelle, ma noi utilizzeremo quello del pacchetto {flextable}.</p>
+<section id="convertire-la-tabella-in-una-tabella-flextable" class="level4">
+<h4 class="anchored" data-anchor-id="convertire-la-tabella-in-una-tabella-flextable">4.1. Convertire la tabella in una tabella “flextable”</h4>
+<p><strong>Compito:</strong></p>
+<ul>
+<li>Trasforma la tabella <em>inc_osp_pul</em> in una flextable utilizzando la funzione <code>flextable()</code>.</li>
+<li>Assegna il risultato a un oggetto chiamato: <strong>flex_inc_osp</strong></li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>flex_inc_osp <span class="ot">&lt;-</span> <span class="fu">flextable</span>(inc_osp_pul)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>flex_inc_osp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-04ce1770{}.cl-04c3a63c{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-04c77faa{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-04c77fbe{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-04c7b150{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04c7b164{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04c7b16e{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04c7b16f{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04c7b178{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04c7b179{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-04ce1770"><thead><tr style="overflow-wrap:break-word;"><th class="cl-04c7b150"><p class="cl-04c77faa"><span class="cl-04c3a63c">hospital</span></p></th><th class="cl-04c7b164"><p class="cl-04c77fbe"><span class="cl-04c3a63c">n_casi</span></p></th><th class="cl-04c7b164"><p class="cl-04c77fbe"><span class="cl-04c3a63c">media_eta</span></p></th><th class="cl-04c7b164"><p class="cl-04c77fbe"><span class="cl-04c3a63c">ult_infez</span></p></th><th class="cl-04c7b164"><p class="cl-04c77fbe"><span class="cl-04c3a63c">perc_fem</span></p></th><th class="cl-04c7b164"><p class="cl-04c77fbe"><span class="cl-04c3a63c">inc</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-04c7b16e"><p class="cl-04c77faa"><span class="cl-04c3a63c">SMMH</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">49</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">13.2</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">2015-04-01 00:00:00</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">53.1</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">40.8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-04c7b16e"><p class="cl-04c77faa"><span class="cl-04c3a63c">Port Hospital</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">203</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">16.0</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">2015-04-20 00:00:00</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">55.7</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">40.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-04c7b16e"><p class="cl-04c77faa"><span class="cl-04c3a63c">Military Hospital</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">121</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">17.3</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">2015-04-16 00:00:00</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">45.5</span></p></td><td class="cl-04c7b16f"><p class="cl-04c77fbe"><span class="cl-04c3a63c">29.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-04c7b178"><p class="cl-04c77faa"><span class="cl-04c3a63c">Central Hospital</span></p></td><td class="cl-04c7b179"><p class="cl-04c77fbe"><span class="cl-04c3a63c">45</span></p></td><td class="cl-04c7b179"><p class="cl-04c77fbe"><span class="cl-04c3a63c">19.5</span></p></td><td class="cl-04c7b179"><p class="cl-04c77fbe"><span class="cl-04c3a63c">2015-03-17 00:00:00</span></p></td><td class="cl-04c7b179"><p class="cl-04c77fbe"><span class="cl-04c3a63c">33.3</span></p></td><td class="cl-04c7b179"><p class="cl-04c77fbe"><span class="cl-04c3a63c">0.2</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Rispondi</strong></p>
+<div class="webex-check">
+Domanda: Se ‘stampi’ l’oggetto flex_inc_osp, dove vedi la tabella ?
+<div id="radio_FAIWWHUVOI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FAIWWHUVOI" value=""> <span>Nella console</span></label><label><input type="radio" autocomplete="off" name="radio_FAIWWHUVOI" value=""> <span>Nella scheda 'Plots'</span></label><label><input type="radio" autocomplete="off" name="radio_FAIWWHUVOI" value="answer"> <span>Nella scheda 'Viewer'</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Una volta trasformiamo la nostra tabella in “flextable” non è più un database ma un oggetto di un’altra natura (vedi nell’Environment come <em>flex_inc_osp</em> è definito come un “Large flextable”). Una conseguenza è che non si visualizza più nella Console, ma nel Viewer.</p>
+</section>
+<section id="cambia-il-formatto-della-flextable" class="level4">
+<h4 class="anchored" data-anchor-id="cambia-il-formatto-della-flextable">4.2. Cambia il formatto della flextable</h4>
+<p>La tabella così com’è adesso non può essere presentata in un bollettino, bisogna renderla più bella.</p>
+<p><strong>Compiti:</strong> Utilizza funzioni del pacchetto {flextable} per:</p>
+<ul>
+<li>Adattare la larghezza e l’altezza della tabella alle dimensioni del contenuto</li>
+<li>Rinominare le colonne con nomi più adatti a una tabella che deve far parte di un bollettino pubblico</li>
+<li>Allineare le celle della tabella al centro</li>
+<li>Mettere il testo dell’intestazione in grassetto</li>
+<li>Creare linee verticali per delimitare ogni colonna</li>
+<li>Scrivi una funzione in modo che le celle di incidenza siano colorate in rosso se hanno un’incidenza superiore a 40 casi ogni 10.000 persone</li>
+</ul>
+<p>In sintesi, la tua tabella deve essere così:</p>
+<p><img src="images/flextable1.png" class="img-fluid"></p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br> Non ti preoccupare se non riesci. E’ molto difficile! Qua ti do qualche suggerimento per ogni funzione:</p>
+<ul>
+<li><p><strong>Adattare la larghezza e l’altezza della tabella alle dimensioni del contenuto</strong> Puoi usare la funzione <code>autofit()</code>. Non devi inserire niente all’interno!</p></li>
+<li><p><strong>Rinominare le colonne con nomi più adatti a una tabella che deve far parte di un bollettino pubblico</strong> La funzione per rinominare le colonne di flextable è <code>set_header_labels()</code></p></li>
+<li><p><strong>Allineare le celle della tabella al centro</strong> La funzione che fa questo è `align()</p></li>
+<li><p><strong>Mettere il testo dell’intestazione in grassetto</strong> La funzione è <code>bold()</code>. Dovrai specificare la riga che vuoi in grassetto. Nelle funzioni di {flextable} le righe sono specificate con l’argomento <code>i =</code>; mentre le colonne con l’argomento <code>j=</code>.</p></li>
+<li><p><strong>Creare linee verticali per delimitare ogni colonna</strong> Qui la funzione è <code>vline()</code>. E’ necessario specificare le colonne (<code>j =</code>) e la sezione della tabella (<code>part =</code>). Noi vogliamo la linea su tutta la tabella quindi: <code>part = "all"</code></p></li>
+<li><p><strong>Scrivi una funzione in modo che le celle di incidenza siano colorate in rosso se hanno un’incidenza superiore a 40 casi ogni 10.000 persone</strong> Questa è la più difficile ma la più interessante! La funzione è <code>bg()</code>. Dovrai specificare la colonna e, nell’argomento delle righe (<code>i =</code>) dovra scrivere il criterio logico dopo una tilde.</p></li>
+</ul>
+<p>Se non hai mai lavorato con {flextable}, potrebbe risultare un po’ difficile produrre l’output desiderato. Non ti preoccupare. Tutte le cose sopra descritte sono incluse nella sezione <a href="https://epirhandbook.com/en/new_pages/tables_presentation.html">Tables for presentation</a> dell’EpiRhandbook. Anche noi che utilizziamo regolarmente {flextable} dobbiamo spesso rivolgerci a risorse online.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>flex_inc_osp <span class="ot">&lt;-</span> <span class="fu">flextable</span>(inc_osp_pul) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Adattare la larghezza e l'altezza</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">autofit</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Rinominare le colonne</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">set_header_labels</span>(</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">hospital =</span> <span class="st">"Ospedale"</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">n_casi =</span> <span class="st">"N. casi"</span>,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">media_eta =</span> <span class="st">"Età media dei casi"</span>,</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ult_infez =</span> <span class="st">"Data ultima infezione"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">perc_fem =</span> <span class="st">"% femmine tra i casi"</span>,</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">inc =</span> <span class="st">"Incidenza per 10.000"</span></span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Allineare le celle</span></span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">align</span>(<span class="at">align =</span> <span class="st">"center"</span>, <span class="at">part =</span> <span class="st">"all"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Intestazione in grassetto</span></span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bold</span>(<span class="at">i =</span> <span class="dv">1</span>, <span class="at">bold =</span> <span class="cn">TRUE</span>, <span class="at">part =</span> <span class="st">"header"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Linee verticali</span></span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">vline</span>(<span class="at">part =</span> <span class="st">"all"</span>, <span class="at">j =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">#Celle in rosso se inc &gt; 40</span></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">bg</span>(<span class="at">j =</span> <span class="dv">6</span>, <span class="at">i =</span> <span class="sc">~</span> inc <span class="sc">&gt;</span> <span class="dv">40</span>, <span class="at">part =</span> <span class="st">"body"</span>, <span class="at">bg =</span> <span class="st">"red"</span>) </span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>flex_inc_osp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div class="tabwid"><style>.cl-05000f00{}.cl-04f67026{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-04f6703a{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-04fa9052{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-04fab1cc{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab1e0{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab1e1{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab1ea{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab1eb{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab1f4{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab1fe{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab1ff{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab208{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab209{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab212{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab213{width:0.583in;background-color:rgba(255, 0, 0, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab21c{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab21d{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab226{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab230{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab231{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab23a{width:0.583in;background-color:rgba(255, 0, 0, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab23b{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab244{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab24e{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab24f{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab258{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab259{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab25a{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab262{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab26c{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab26d{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab276{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-04fab277{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-05000f00"><thead><tr style="overflow-wrap:break-word;"><th class="cl-04fab1cc"><p class="cl-04fa9052"><span class="cl-04f67026">Ospedale</span></p></th><th class="cl-04fab1e0"><p class="cl-04fa9052"><span class="cl-04f67026">N. casi</span></p></th><th class="cl-04fab1e1"><p class="cl-04fa9052"><span class="cl-04f67026">Età media dei casi</span></p></th><th class="cl-04fab1ea"><p class="cl-04fa9052"><span class="cl-04f67026">Data ultima infezione</span></p></th><th class="cl-04fab1eb"><p class="cl-04fa9052"><span class="cl-04f67026">% femmine tra i casi</span></p></th><th class="cl-04fab1f4"><p class="cl-04fa9052"><span class="cl-04f67026">Incidenza per 10.000</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-04fab1fe"><p class="cl-04fa9052"><span class="cl-04f6703a">SMMH</span></p></td><td class="cl-04fab1ff"><p class="cl-04fa9052"><span class="cl-04f6703a">49</span></p></td><td class="cl-04fab208"><p class="cl-04fa9052"><span class="cl-04f6703a">13.2</span></p></td><td class="cl-04fab209"><p class="cl-04fa9052"><span class="cl-04f6703a">2015-04-01 00:00:00</span></p></td><td class="cl-04fab212"><p class="cl-04fa9052"><span class="cl-04f6703a">53.1</span></p></td><td class="cl-04fab213"><p class="cl-04fa9052"><span class="cl-04f6703a">40.8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-04fab21c"><p class="cl-04fa9052"><span class="cl-04f6703a">Port Hospital</span></p></td><td class="cl-04fab21d"><p class="cl-04fa9052"><span class="cl-04f6703a">203</span></p></td><td class="cl-04fab226"><p class="cl-04fa9052"><span class="cl-04f6703a">16.0</span></p></td><td class="cl-04fab230"><p class="cl-04fa9052"><span class="cl-04f6703a">2015-04-20 00:00:00</span></p></td><td class="cl-04fab231"><p class="cl-04fa9052"><span class="cl-04f6703a">55.7</span></p></td><td class="cl-04fab23a"><p class="cl-04fa9052"><span class="cl-04f6703a">40.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-04fab23b"><p class="cl-04fa9052"><span class="cl-04f6703a">Military Hospital</span></p></td><td class="cl-04fab244"><p class="cl-04fa9052"><span class="cl-04f6703a">121</span></p></td><td class="cl-04fab24e"><p class="cl-04fa9052"><span class="cl-04f6703a">17.3</span></p></td><td class="cl-04fab24f"><p class="cl-04fa9052"><span class="cl-04f6703a">2015-04-16 00:00:00</span></p></td><td class="cl-04fab258"><p class="cl-04fa9052"><span class="cl-04f6703a">45.5</span></p></td><td class="cl-04fab259"><p class="cl-04fa9052"><span class="cl-04f6703a">29.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-04fab25a"><p class="cl-04fa9052"><span class="cl-04f6703a">Central Hospital</span></p></td><td class="cl-04fab262"><p class="cl-04fa9052"><span class="cl-04f6703a">45</span></p></td><td class="cl-04fab26c"><p class="cl-04fa9052"><span class="cl-04f6703a">19.5</span></p></td><td class="cl-04fab26d"><p class="cl-04fa9052"><span class="cl-04f6703a">2015-03-17 00:00:00</span></p></td><td class="cl-04fab276"><p class="cl-04fa9052"><span class="cl-04f6703a">33.3</span></p></td><td class="cl-04fab277"><p class="cl-04fa9052"><span class="cl-04f6703a">0.2</span></p></td></tr></tbody></table></div>
+</div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="esportare-la-flextable" class="level4">
+<h4 class="anchored" data-anchor-id="esportare-la-flextable">4.3. Esportare la flextable</h4>
+<p>Uno dei punti di forza di R è la sua capacità per creare report automatici in html, word, powerpoint, pdf o qualsiasi altro output. Purtroppo non abbiamo tempo per imparare questo aspetto nel corso, ma possiamo imparare a esportare una tabella in uno di questi output. In questo caso salvaremo la nostra flextable come documento word.</p>
+<p><strong>Compito:</strong> - Salva la flextable appena fatta in un documento Word nella sottocartella “outputs”.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>La funzione che ci permette di salvare oggetti flextable come documenti di word è <code>save_as_docx()</code></p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_docx</span>(flex_inc_osp, <span class="at">path =</span>  <span class="st">"outputs/table_inc_osp.docx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Facile, vero? Adesso apri questo documento Word e dai un’occhiata alla tabella. Potresti pensare che creare e formattare la tabella in R sia stato molto più difficile di quanto sarebbe stato in Word o Excel. Se fossi sicuro di dover fare la tabella solo una volta, direi che hai ragione. Ma se parliamo di una tabella che devi ripetere più volte, è molto più efficiente fare il lavoro in R perché, ogni volta che ricevi nuovi dati, basta lanciare lo script per riprodurre automaticamente la tabella. Invece, in Word o Excel dovresti inserire manualmente l’output, perdendo tempo e aumentando il rischio di errori! <br></p>
+</details>
+</section>
 </section>
 <section id="extra" class="level3">
 <h3 class="anchored" data-anchor-id="extra"><strong>EXTRA</strong></h3>
-<p>Purtroppo in 5 lezioni è molto difficile fare un corso completo in R. Quindi abbiamo dovuto scegliere gli aspetti che riteniamo più importanti. Ma, se hai finito l’esercizio e vuoi sapere di più, leggi le seguenti sezioni dell’EpiRhandbook e prova a implementare in questo database (o in un altro) le funzioni che impari:</p>
-<p><strong>Lavorare con le date</strong>: Per gli epidemiologi, lavorare in R con le date puoi causare forti mal di testa. È molto importante assicurarci che R consideri le colonne di date como date e non come un’altra classe. Familiarizzati con le funzioni del pacchetto {lubridate} in questa <a href="https://epirhandbook.com/en/new_pages/dates.html">sezione</a> dell’EpiRhandbook.</p>
-<p><strong>Più funzioni per ricodifica logica</strong>: Abbiamo imparato <code>case_when()</code> ma ci sono altre. Di solito, quando vogliamo ricodificare una variabile con un solo criterio logico usiamo la funzione <code>ifelse()</code> o una simile. Leggi di più su questo aspetto in questa <a href="https://epirhandbook.com/en/new_pages/cleaning.html#by-logic">sezione</a> dell’EpiRhandbook</p>
+<p>Se hai finito l’esercizio e vuoi sapere di più, leggi le seguenti sezioni dell’EpiRhandbook e prova a implementare in questo database (o in un altro) le funzioni che impari:</p>
 <p><strong>Pivoting</strong>: Se sei arrivato fin qui, sei veramente forte. Potresti quindi dedicare un po’ di tempo a imparare un tema molto importante che non fa parte del corso: il pivoting, ovvero come modificare un database da lungo a largo e viceversa. Il pivoting è cruciale perché a volte il formato dei dati che vogliamo usare per presentare al pubblico ad esempio, in una tabella, entra in conflitto con il formato dei dati che R richiede per un’analisi efficiente. Puoi imparare tutto sul pivoting in questa <a href="https://epirhandbook.com/en/new_pages/pivoting.html">sezione</a> dell’EpiRhandbook</p>
 </section>
 </section>

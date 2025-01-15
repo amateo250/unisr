@@ -42,13 +42,12 @@ pacman::p_load(
 
 casi_ebola_pul <- import("../sessioni/prog_stat_mepi/data/casi_ebola_pul.csv")
 
-osp_info <- import("data/hosp_info.RDS")
+osp_info <- import("../sessioni/prog_stat_mepi/data/hosp_info.RDS")
+
 osp_info_pul <- osp_info %>% 
   mutate(hosp_name = recode(hosp_name,
                             "St. Mark's Maternity Hospital (SMMH)" = "SMMH")) %>% 
   filter(!(hosp_name == "Military Hospital" & level == "Primary"))
-
-inc_osp <- left_join(casi_ospedale, osp_info_pul, by = c("hospital" = "hosp_name"))
 
 ```
 
@@ -571,7 +570,7 @@ di EpiRhandbook.
 </br>
 
 
-```{r , echo=TRUE}
+```{r , echo=TRUE, eval = FALSE}
 osp_info <- import("data/hosp_info.RDS")
 ```
 
@@ -642,6 +641,12 @@ osp_info_pul
 
 
 #### 3.3. Linkare i database
+
+```{r, echo=FALSE, include=FALSE}
+inc_osp <- left_join(casi_ospedale, osp_info_pul, by = c("hospital" = "hosp_name"))
+
+```
+
 
 Adesso siamo pronti a linkare i database. In R, all'interno del pacchetto {dplyr} ci sono diverse funzioni di linkage: `left_join()`, `right_join()`, `semi_join()`, `inner_join()` e `full_join()`. Ognuna è utile in un contesto specifico. La funzione più utilizzata, almeno in epidemiologia, è `left_join()`, quindi sarà quella che utilizzeremo.
 
@@ -930,9 +935,18 @@ La funzione per rinominare le colonne di flextable è `set_header_labels()`
 -   **Allineare le celle della tabella al centro**
 La funzione che fa questo è `align()
 
--   Mettere il testo dell'intestazione in grassetto
--   Creare linee verticali per delimitare ogni colonna
--   Scrivi una funzione in modo che le celle di incidenza siano colorate in rosso se hanno un'incidenza superiore a 40 casi ogni 10.000 persone
+-   **Mettere il testo dell'intestazione in grassetto**
+La funzione è `bold()`. Dovrai specificare la riga che vuoi in grassetto. Nelle funzioni di {flextable} le righe sono specificate con l'argomento `i =`; mentre le colonne con l'argomento `j=`. 
+
+-   **Creare linee verticali per delimitare ogni colonna**
+Qui la funzione è `vline()`. E' necessario specificare le colonne (`j = `) e la sezione della tabella (`part = `). Noi vogliamo la linea su tutta la tabella quindi: `part = "all"`
+
+
+-   **Scrivi una funzione in modo che le celle di incidenza siano colorate in rosso se hanno un'incidenza superiore a 40 casi ogni 10.000 persone**
+Questa è la più difficile ma la più interessante! La funzione è `bg()`. Dovrai specificare la colonna e, nell'argomento delle righe (`i =`) dovra scrivere il criterio logico dopo una tilde.
+
+
+Se non hai mai lavorato con {flextable}, potrebbe risultare un po' difficile produrre l'output desiderato. Non ti preoccupare. Tutte le cose sopra descritte sono incluse nella sezione [Tables for presentation](https://epirhandbook.com/en/new_pages/tables_presentation.html) dell'EpiRhandbook. Anche noi che utilizziamo regolarmente {flextable} dobbiamo spesso rivolgerci a risorse online.  
 
 </br>
 
@@ -951,7 +965,32 @@ La funzione che fa questo è `align()
 
 
 ```{r , echo=TRUE}
-flex_inc_osp <- flextable(inc_osp_pul)
+flex_inc_osp <- flextable(inc_osp_pul) %>% 
+  
+  #Adattare la larghezza e l'altezza
+  autofit() %>% 
+  
+  #Rinominare le colonne
+  set_header_labels(
+    hospital = "Ospedale",
+    n_casi = "N. casi",
+    media_eta = "Età media dei casi",
+    ult_infez = "Data ultima infezione",
+    perc_fem = "% femmine tra i casi",
+    inc = "Incidenza per 10.000"
+    ) %>% 
+  
+  #Allineare le celle
+  align(align = "center", part = "all") %>%
+  
+  #Intestazione in grassetto
+  bold(i = 1, bold = TRUE, part = "header") %>% 
+  
+  #Linee verticali
+  vline(part = "all", j = 1:6) %>% 
+  
+  #Celle in rosso se inc > 40
+  bg(j = 6, i = ~ inc > 40, part = "body", bg = "red") 
 
 flex_inc_osp
 ```
@@ -960,6 +999,51 @@ flex_inc_osp
 
 </details>
 
+#### 4.3. Esportare la flextable
+Uno dei punti di forza di R è la sua capacità per creare report automatici in html, word, powerpoint, pdf o qualsiasi altro output. Purtroppo non abbiamo tempo per imparare questo aspetto nel corso, ma possiamo imparare a esportare una tabella in uno di questi output. In questo caso salvaremo la nostra flextable come documento word.
+
+**Compito:**
+-   Salva la flextable appena fatta in un documento Word nella sottocartella "outputs".
+
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un
+suggerimento
+
+</summary>
+
+</br>
+
+La funzione che ci permette di salvare oggetti flextable come documenti di word è `save_as_docx()`
+
+</br>
+
+</details>
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione
+(provaci da solo prima!)
+
+</summary>
+
+</br>
+
+
+```{r , echo=TRUE, eval=FALSE}
+save_as_docx(flex_inc_osp, path =  "outputs/table_inc_osp.docx")
+```
+
+
+Facile, vero? Adesso apri questo documento Word e dai un'occhiata alla tabella. Potresti pensare che creare e formattare la tabella in R sia stato molto più difficile di quanto sarebbe stato in Word o Excel. Se fossi sicuro di dover fare la tabella solo una volta, direi che hai ragione. Ma se parliamo di una tabella che devi ripetere più volte, è molto più efficiente fare il lavoro in R perché, ogni volta che ricevi nuovi dati, basta lanciare lo script per riprodurre automaticamente la tabella. Invece, in Word o Excel dovresti inserire manualmente l'output, perdendo tempo e aumentando il rischio di errori!
+</br>
+
+</details>
 
 ### **EXTRA**
 

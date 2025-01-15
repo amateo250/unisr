@@ -154,7 +154,11 @@ inc_osp_pul <- inc_osp %>%
   arrange(-inc)
 
 flex_inc_osp <- flextable(inc_osp_pul) %>% 
+  
+  #Adattare la larghezza e l'altezza
   autofit() %>% 
+  
+  #Rinominare le colonne
   set_header_labels(
     hospital = "Ospedale",
     n_casi = "N. casi",
@@ -163,10 +167,20 @@ flex_inc_osp <- flextable(inc_osp_pul) %>%
     perc_fem = "% femmine tra i casi",
     inc = "Incidenza per 10.000"
     ) %>% 
+  
+  #Allineare le celle
   align(align = "center", part = "all") %>%
+  
+  #Intestazione in grassetto
   bold(i = 1, bold = TRUE, part = "header") %>% 
+  
+  #Linee verticali
   vline(part = "all", j = 1:6) %>% 
+  
+  #Celle in rosso se inc > 40
   bg(j = 6, i = ~ inc > 40, part = "body", bg = "red") 
+
 flex_inc_osp
 
+#Esportare il database
 save_as_docx(flex_inc_osp, path =  "outputs/table_inc_osp.docx")
