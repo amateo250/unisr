@@ -20,7 +20,7 @@ title: |
 
 # **Master II livello Epidemiologia - Programmi Statistici**
 
-# Sessione 2:  {.unnumbered}
+# Sessione 2 - Pulizia di database:  {.unnumbered}
 
 ## Obiettivi di questa sesione
 
@@ -1011,8 +1011,6 @@ Purtroppo in 5 lezioni è molto difficile fare un corso completo in R. Quindi ab
 **Lavorare con le date**: Per gli epidemiologi, lavorare in R con le date puoi causare forti mal di testa. È molto importante assicurarci che R consideri le colonne di date como date e non come un'altra classe. Familiarizzati con le funzioni del pacchetto {lubridate} in questa [sezione](https://epirhandbook.com/en/new_pages/dates.html) dell'EpiRhandbook.
 
 **Più funzioni per ricodifica logica**: Abbiamo imparato `case_when()` ma ci sono altre. Di solito, quando vogliamo ricodificare una variabile con un solo criterio logico usiamo la funzione `ifelse()` o una simile. Leggi di più su questo aspetto in questa [sezione](https://epirhandbook.com/en/new_pages/cleaning.html#by-logic) dell'EpiRhandbook
-
-**Pivoting**: Se sei arrivato fin qui, sei veramente forte. Potresti quindi dedicare un po' di tempo a imparare un tema molto importante che non fa parte del corso: il pivoting, ovvero come modificare un database da lungo a largo e viceversa. Il pivoting è cruciale perché a volte il formato dei dati che vogliamo usare per presentare al pubblico ad esempio, in una tabella, entra in conflitto con il formato dei dati che R richiede per un'analisi efficiente. Puoi imparare tutto sul pivoting in questa [sezione](https://epirhandbook.com/en/new_pages/pivoting.html) dell'EpiRhandbook
 
 ## Informazioni sull'esercizio
 

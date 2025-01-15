@@ -458,8 +458,7 @@ esiste un approccio più efficiente che consiste nell'usare la funzione
 `import()` da {rio} per aprire **qualsiasi** file. Questa funzione
 riconoscerà il tipo di file e sceglierà la funzione appropriata per
 importarlo. Se vuoi saperne di più sulle funzioni di importazione, leggi
-il capitolo [Import and
-Export](https://epirhandbook.com/en/new_pages/importing.html#import-data)
+il capitolo [Import and Export](https://epirhandbook.com/en/new_pages/importing.html#import-data)
 di EpiRhandbook.
 
 **Compito**:
