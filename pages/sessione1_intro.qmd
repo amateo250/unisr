@@ -26,7 +26,7 @@ title: |
 
 -   acquisire familiarità con l'interfaccia di RStudio,
 -   capire l'importanza dei progetti in RStudio,
--   essere in grado di istallare e caricare pacchetti
+-   essere in grado di installare e caricare pacchetti
 -   essere in grado di eseguire calcoli semplici
 -   essere in grado di utilizzare funzioni
 -   essere in grado di leggere ed esplorare un database
@@ -361,7 +361,7 @@ sotto).
 
 ![](images/pulire01.png)
 
-#### 4.2. Istallare e caricare i pacchetti necessari
+#### 4.2. Installare e caricare i pacchetti necessari
 
 Come abbiamo detto durante la lezione, la prima parte del nostro script
 (oltre a includere -commentato- alcune informazioni sull'obiettivo,

@@ -82,7 +82,7 @@ Se pensi che il tuo script a questo punto sia incompleto o hai dubbi, puoi confr
 
 # SESSIONE 1 --------------------------------------------------------------
 
-## 4.2. Istallare e caricare i pacchetti necessari -------------------------
+## 4.2. Installare e caricare i pacchetti necessari -------------------------
 
 # installa (se necessario) da CRAN e carica i pacchetti da utilizzare
 pacman::p_load(
@@ -150,7 +150,7 @@ Prima di cominciare con il codice, è importante mantenere los script sistemato 
 
 # SESSIONE 1 --------------------------------------------------------------
 
-## 4.2. Istallare e caricare i pacchetti necessari -------------------------
+## 4.2. Installare e caricare i pacchetti necessari -------------------------
 
 # installa (se necessario) da CRAN e carica i pacchetti da utilizzare
 pacman::p_load(
