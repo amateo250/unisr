@@ -20,7 +20,7 @@ title: |
 
 # **Master II livello Epidemiologia - Programmi Statistici**
 
-# Sessione 2 - Pulizia di database:  {.unnumbered}
+# Sessione 2 - Pulizia e modifica di database:  {.unnumbered}
 
 ## Obiettivi di questa sesione
 

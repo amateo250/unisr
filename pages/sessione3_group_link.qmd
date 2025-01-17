@@ -20,7 +20,7 @@ title: |
 
 # **Master II livello Epidemiologia - Programmi Statistici**
 
-# Sessione 3 - Aggrupare e linkare dati:  {.unnumbered}
+# Sessione 3 - Aggruppare, linkare dati e creare tabelle:  {.unnumbered}
 
 ## Obiettivi di questa sesione
 
