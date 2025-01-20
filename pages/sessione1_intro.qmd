@@ -34,8 +34,13 @@ title: |
 ### **Interfaccia di RStudio**
 
 Come abbiamo detto durante la lezione, RStudio è un'interfaccia per
+<<<<<<< HEAD
 rendere più semplice l'uso di R. RStudio ha quattro riquadri (se vedi
 soltanto 3 è sicuramente perché non hai ancora aperto uno script).
+=======
+rendere più semplice l'uso di R. RStudio ha quattro riquadri (se ne vedi
+soltanto 3 è sicuramente perché non hai aperto uno script).
+>>>>>>> Benedetta
 
 Riquadro **source**: In alto a sinistra, è uno spazio per modificare,
 eseguire e salvare gli script. Gli script contengono i comandi che vuoi
@@ -56,7 +61,7 @@ nella sessione corrente.
 Riquadro **plots, viewer, packages, and help**: Il riquadro in basso a
 destra. La scheda "plots" mostrerà i grafici, mentre altri output
 interattivi -come tabelle HTML- verranno visualizzati nella scheda
-"viewer". La scheda pacchetti mostra i pacchetti installati e caricati,
+"viewer". La scheda "pacchetti" mostra i pacchetti installati e caricati,
 permettendo anche l'installazione di nuovi pacchetti. Infine, la scheda
 "help" si utilizza per ottenere informazioni su funzioni o pacchetti in
 R.
@@ -164,6 +169,7 @@ scriviremo in uno script. Questo script -simile a un do-file per gli
 utenti di STATA- è un documento che possiamo salvare e riprendere quando
 vogliamo.
 
+<<<<<<< HEAD
 
 Ci sono due elementi in uno script: **codice e commenti**. Un commento è 
 qualsiasi cosa scritta a destra di un simbolo cancelletto (#). I commenti 
@@ -171,6 +177,12 @@ aiutano te stesso e gli altri a capire cosa fai e perché lo fai.
 Vedi l'esempio sotto:
 
 
+=======
+Ci sono due elementi dentro dello script: **codice e commenti**.
+Commenti è qualsiasi cosa che scriviamo a destra di un simbolo
+cancelletto (#). I commenti aiutano te stesso ed altri a capire cosa
+fai e perché lo fai. Vedi lo esempio sotto:
+>>>>>>> Benedetta
 
 ```{r eval=FALSE, echo=TRUE}
 # Questo è un commento
@@ -183,10 +195,17 @@ casi <- import("linelist_raw.xlsx") %>%   # i commenti si possono anche inserire
 
 **Compito:**
 
+<<<<<<< HEAD
 -   Crea un nuovo script è salvalo nella sottocartella *scripts* con il
     nome: *esercizio_1*
 -   Nello script, inizia scrivendo dei commenti in cui indichi: Nome e
     cognome; obiettivo dello script; tuo email e la data.
+=======
+-   Crea un nuovo script e salvalo nella sottocartella *scripts* col
+    nome: *esercizio_1*
+-   Nello script, comincia scrivendo dei commenti dove indichi: nome e
+    cognome; obiettivo dello script; tua email e la data.
+>>>>>>> Benedetta
 
 <details>
 
@@ -336,16 +355,16 @@ Puoi aprire il database in excel e dare uno sguardo se vuoi. Il file
 variabile.
 
 Nei prossimi passi eseguiremo le azioni necessarie per leggere ed
-esploreare questo database.
+esplorare questo database.
 
 #### 4.1. Creare un nuovo script
 
 Utilizzeremo un nuovo script per questa analisi, quindi salva e chiudi
 lo script *esercizio_1.R* e crea un nuovo script chiamato
 *analisi_ebola*. Salvalo sempre nella sottocartella "scripts".
-Assicurati che rimani sempre dentro del progetto *prog_stat_mepi*.
-Assicurati anche che l'environment è pulito. Per pulirlo puoi cliccare
-sul simbolo che somiglia una scopa in alto a destra (vedi immagine
+Assicurati di rimanere sempre dentro del progetto *prog_stat_mepi*.
+Assicurati anche che l'environment sia pulito. Per pulirlo puoi cliccare
+sul simbolo che somiglia ad una scopa in alto a destra (vedi immagine
 sotto).
 
 ![](images/pulire01.png)
