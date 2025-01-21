@@ -197,7 +197,7 @@ tabyl(casi_ebola_grezzo, fever)
 
 Adesso cominceremo a pulire il nostro database. L'obiettivo è creare **un solo comando di pulizia che parte dal database grezzo e produce una versione pulita pronta per l'analisi.** Possiamo raggiungere questo obiettivo collegando diverse funzioni di pulizia attraverso l'operatore *pipe %>%*. Questo operatore concatena più operazioni in un singolo comando che modificano il database originale.
 
-Pensa all'operatore *pipe* come un operatore che dice a R: fai questo e, una fatto, fai quest'altra cosa. 
+Pensa all'operatore *pipe* come un operatore che dice a R: fai questo e, una volta fatto, fai quest'altra cosa. 
   
 
 **Compiti:**
