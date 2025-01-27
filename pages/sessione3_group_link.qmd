@@ -20,7 +20,7 @@ title: |
 
 # **Master II livello Epidemiologia - Programmi Statistici**
 
-# Sessione 3 - Aggruppare, linkare dati e creare tabelle:  {.unnumbered}
+# Sessione 3 - Raggruppare, linkare dati e creare tabelle:  {.unnumbered}
 
 ## Obiettivi di questa sesione
 
@@ -63,7 +63,7 @@ Prima di cominciare, assicurati di:
 
 3.    Pulire l'Environment 
 
-4.    Fai correre lo script e assicurati che tutto funziona bene
+4.    Far correre lo script e assicurarti che tutto funzioni bene
 
 Se pensi che il tuo script a questo punto sia incompleto o hai dubbi, puoi confrontarlo con il codice che si trova qui sotto. Il tuo script dovrebbe essere simile. 
 
@@ -453,7 +453,7 @@ mean(casi_ebola_pul$eta_anni, na.rm = TRUE)
 ```
 
 
-Un ultimo consiglio. Per rendere una eventuale tabella più leggibile, possiamo ridurre il numero di decimali che si mostra in ogni colonna. Questo si fa con la funzione `round()`. All'interno della funzione dobbiamo usare lo argomento `digits = ` per indicare il numero di decimale che vogliamo (ad esempio 0 o 1). Vedi lo esempio a continuazione:
+Un ultimo consiglio. Per rendere una eventuale tabella più leggibile, possiamo ridurre il numero di decimali che si mostra in ogni colonna. Questo si fa con la funzione `round()`. All'interno della funzione dobbiamo usare l'argomento `digits = ` per indicare il numero di decimali che vogliamo (ad esempio 0 o 1). Vedi l'esempio di seguito:
 
 ```{r , echo=TRUE}
 round(mean(casi_ebola_pul$eta_anni, na.rm = TRUE), digits = 2)
@@ -496,7 +496,7 @@ casi_ospedale
 
 ### **Step 3: Creare una tabella con dati del focolaio di Ebola per ospedale**
 
-Immagina di lavorare come epidemiologo durante il focolaio di Ebola e ti venga richiesto di preparare una tabella che sintetizzi le informazioni più importante del focolaio per ospedale, da includere nel rapporto della situazione (sitrep). Decidi di includere nella tabella:
+Immagina di lavorare come epidemiologo durante il focolaio di Ebola e ti venga richiesto di preparare una tabella che sintetizzi le informazioni più importanti del focolaio per ospedale, da includere nel rapporto della situazione (sitrep). Decidi di includere nella tabella:
 
 -   Il numero di casi per ospedale
 -   L'età media dei casi
@@ -652,7 +652,7 @@ Adesso siamo pronti a linkare i database. In R, all'interno del pacchetto {dplyr
 
 All'interno di `left_join()` dobbiamo specificare il database di riferimento e, separato da una virgola, il database secondario. Nel nostro caso il **database di riferimento** è il database con i casi di ebola per ospedale. Essere di riferimento significa che noi **aggiungiamo le informazioni del database secondario a questo database**. 
 
-E' sempre una buona praxis estimare le dimensioni (numero di righe e colonne) del nuovo database linkato in base alle dimensioni dei due database che utilizziamo nel linkage.
+E' sempre una buona prassi sstimare le dimensioni (numero di righe e colonne) del nuovo database linkato in base alle dimensioni dei due database che utilizziamo nel linkage.
 
 Le dimensioni del database di riferimento sono:
 
@@ -691,7 +691,7 @@ cat("Domanda: Quale dovrebbe essere le dimensioni del database dopo il linkage?"
 :::
 :::
 
-Noi ci aspettiamo che il database dopo il linkage abbia **lo stesso numero di righe che il database di riferimento**, quindi 6. Ci aspettiamo anche che le colonne con informazioni aggiuntive del database secondario vengano inserite nel database dopo il linkage. Se come il database secondario ha 3 colonne e noi usiamo una (hosp_name) per il linkage (quindi sparisce), il database risultante dovrebbe avere 8 (6+2) colonne.
+Noi ci aspettiamo che il database dopo il linkage abbia **lo stesso numero di righe che il database di riferimento**, quindi 6. Ci aspettiamo anche che le colonne con informazioni aggiuntive del database secondario vengano inserite nel database dopo il linkage. Siccome il database secondario ha 3 colonne e noi usiamo una (hosp_name) per il linkage (quindi sparisce), il database risultante dovrebbe avere 8 (6+2) colonne.
 
 
 **Compito:**
@@ -835,11 +835,11 @@ cat("Domanda: Quale ospedale ha l'incidenza più alta di Ebola?", longmcq(opts))
 :::
 :::
 
-Complimenti! Siamo partiti di un database con dati individuali e abbiamo creato una tabella con indicatori epidemiologici!
+Complimenti! Siamo partiti da un database con dati individuali e abbiamo creato una tabella con indicatori epidemiologici!
 
 ### **Step 4: Formattare la tabella**
 
-Manca soltanto formattare la tabella per renderla bella ed esportarla. 
+Manca soltanto da formattare la tabella per renderla bella ed esportarla. 
 Ci sono diversi approcci per formattare tabelle, ma noi utilizzeremo quello del pacchetto {flextable}. 
 
 
@@ -893,7 +893,7 @@ cat("Domanda: Se 'stampi' l'oggetto flex_inc_osp, dove vedi la tabella ?", longm
 :::
 :::
 
-Una volta trasformiamo la nostra tabella in "flextable" non è più un database ma un oggetto di un'altra natura (vedi nell'Environment come *flex_inc_osp* è definito come un "Large flextable"). Una conseguenza è che non si visualizza più nella Console, ma nel Viewer.
+Una volta che abbiamo trasformato la nostra tabella in "flextable", questa non è più un database ma un oggetto di un'altra natura (vedi nell'Environment come *flex_inc_osp* è definito come un "Large flextable"). Una conseguenza è che non si visualizza più nella Console, ma nel Viewer.
 
 #### 4.2. Cambia il formatto della flextable
 
@@ -943,7 +943,7 @@ Qui la funzione è `vline()`. E' necessario specificare le colonne (`j = `) e la
 
 
 -   **Scrivi una funzione in modo che le celle di incidenza siano colorate in rosso se hanno un'incidenza superiore a 40 casi ogni 10.000 persone**
-Questa è la più difficile ma la più interessante! La funzione è `bg()`. Dovrai specificare la colonna e, nell'argomento delle righe (`i =`) dovra scrivere il criterio logico dopo una tilde.
+Questa è la più difficile ma la più interessante! La funzione è `bg()`. Dovrai specificare la colonna e, nell'argomento delle righe (`i =`) dovrai scrivere il criterio logico dopo una tilde.
 
 
 Se non hai mai lavorato con {flextable}, potrebbe risultare un po' difficile produrre l'output desiderato. Non ti preoccupare. Tutte le cose sopra descritte sono incluse nella sezione [Tables for presentation](https://epirhandbook.com/en/new_pages/tables_presentation.html) dell'EpiRhandbook. Anche noi che utilizziamo regolarmente {flextable} dobbiamo spesso rivolgerci a risorse online.  
@@ -1000,7 +1000,7 @@ flex_inc_osp
 </details>
 
 #### 4.3. Esportare la flextable
-Uno dei punti di forza di R è la sua capacità per creare report automatici in html, word, powerpoint, pdf o qualsiasi altro output. Purtroppo non abbiamo tempo per imparare questo aspetto nel corso, ma possiamo imparare a esportare una tabella in uno di questi output. In questo caso salvaremo la nostra flextable come documento word.
+Uno dei punti di forza di R è la sua capacità per creare report automatici in html, word, powerpoint, pdf o qualsiasi altro output. Purtroppo non abbiamo tempo per imparare questo aspetto nel corso, ma possiamo imparare a esportare una tabella in uno di questi output. In questo caso salveremo la nostra flextable come documento word.
 
 **Compito:**
 -   Salva la flextable appena fatta in un documento Word nella sottocartella "outputs".

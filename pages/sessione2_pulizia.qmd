@@ -57,7 +57,7 @@ Quindi, prima di cominciare, assicurati di:
 
 3.    Pulire l'Environment (se non ti ricordi come fare, leggi il primo paragrafo dello step **4.1. Creare un nuovo script** della sessione 1)
 
-4.    Fai correre lo script e assicurati che tutto funziona bene
+4.    Fai correre lo script e assicurati che tutto funzioni bene
 
 Se pensi che il tuo script a questo punto sia incompleto o hai dubbi, puoi confrontarlo con il codice che si trova qui sotto. Il tuo script dovrebbe essere simile. 
 
@@ -123,12 +123,12 @@ tabyl(casi_ebola_grezzo, fever)
 ### **Step 1: Nuova sezione e inizio del comando di pulizia**
 
 La settimana scorsa abbiamo imparato come leggere questo database e abbiamo esplorato alcune delle sue variabili.
-Adesso comincieremo a pulire il database per renderlo pronto per l'analisi.
+Adesso cominceremo a pulire il database per renderlo pronto per l'analisi.
 
 #### 1.1. Nuova sezione
 
 
-Prima di cominciare con il codice, è importante mantenere los script sistemato correttamente. Allora, crea una nuova sezione che ti permetta dopo navegare sullo script attraverso l'outline (Angolo superiore a destra nel riquadro dello script). Per creare una nuova sezione puoi cliccare su *Code -> Insert Section* oppure puoi usare la scorciatoia "Ctrl + Shift + R". Puoi chiamare questa sezione "Pulizia dei dati" o usare un nome alternativo. Vedi sotto lo esempio:
+Prima di cominciare con il codice, è importante mantenere lo script sistemato correttamente. Allora, crea una nuova sezione che ti permetta di navigare sullo script attraverso l'outline (Angolo superiore a destra nel riquadro dello script). Per creare una nuova sezione puoi cliccare su *Code -> Insert Section* oppure puoi usare la scorciatoia "Ctrl + Shift + R". Puoi chiamare questa sezione "Pulizia dei dati" o usare un nome alternativo. Vedi sotto lo esempio:
 
 <details>
 
@@ -195,9 +195,9 @@ tabyl(casi_ebola_grezzo, fever)
 
 #### 1.2. Inizio del comando di pulizia 
 
-Adesso, comincieremo a pulire il nostro database. L'obiettivo è creare **un solo comando di pulizia che parte dal database grezzo e produce una versione pulita pronta per l'analisi.** Soltanto possiamo raggiungere questo obiettivo collegando diverse funzioni di pulizia attraverso l'operatore *pipe %>%*. Questo operatore concatena più operazioni in un singolo comando che modificano il database originale.
+Adesso cominceremo a pulire il nostro database. L'obiettivo è creare **un solo comando di pulizia che parte dal database grezzo e produce una versione pulita pronta per l'analisi.** Possiamo raggiungere questo obiettivo collegando diverse funzioni di pulizia attraverso l'operatore *pipe %>%*. Questo operatore concatena più operazioni in un singolo comando che modificano il database originale.
 
-Pensa all'operatore *pipe* come un operatore che dice a R: fai questo e, una volta l'hai fatto, fai quest'altra cosa. 
+Pensa all'operatore *pipe* come un operatore che dice a R: fai questo e, una volta fatto, fai quest'altra cosa. 
   
 
 **Compiti:**
@@ -208,7 +208,7 @@ Cominicia il comando di pulizia:
 -   Usa l'operatore di assegnazione `<-` per assegnare il nuovo oggetto al database *casi_ebola_grezzo*
 
 
-Una volta hai lanciato questo nuovo commando, dovresti vedere nel tuo environment due oggetti con nome diversi ma identici (in numero di righe e di colonne): *casi_ebola_pul* e *casi_ebola_grezzo*.
+Una volta lanciato questo nuovo commando, dovresti vedere nel tuo environment due oggetti con nomi diversi ma identici (in numero di righe e di colonne): *casi_ebola_pul* e *casi_ebola_grezzo*.
 
 <details>
 
@@ -254,9 +254,7 @@ casi_ebola_pul <- casi_ebola_grezzo  #comincia per creare una copia del database
 
 ### **Step 2: Rinomina le colonne **
 
-Adesso che abbiamo già cominciato il nostro comando di pulizia con l'operatore pipe, aggiungeremo le prime funzioni al nostro comando. Queste funzioni saranno funzioni indirizzate a rinominare le colonne. Ma, abbiamo colonne che hanno bisogno di essere rinominate perché hanno carattere speciali che non sono "machine-friendly"? 
-
-Adesso che abbiamo già iniziato il nostro comando di pulizia con l'operatore pipe, aggiungeremo le prime funzioni al nostro comando. Queste funzioni saranno indirizzate a rinominare le colonne. Ma, abbiamo colonne che devono essere rinominate perché contengono caratteri speciali che non sono "machine-friendly"?
+Adesso che abbiamo già cominciato il nostro comando di pulizia con l'operatore pipe, aggiungeremo le prime funzioni al nostro comando. Queste funzioni saranno funzioni indirizzate a rinominare le colonne. Ma abbiamo colonne che hanno bisogno di essere rinominate perché hanno caratteri speciali che non sono "machine-friendly"? 
 
 
 :::: {.callout-note appearance="minimal" icon="false"}
@@ -288,7 +286,7 @@ Sì, gli spazi (ma anche parentesi o accenti) sono caratteri speciali che dobbia
 **Compiti:**
 
 -   Guarda i nomi di tutte le colonne del database
--   Dopo, aggiunge una funzione al comando di pulizia attraverso l'operatore *pipe* e rinomina le colonne con caratteri speciali
+-   Dopo, aggiungi una funzione al comando di pulizia attraverso l'operatore *pipe* e rinomina le colonne con caratteri speciali
 -   Puoi anche rinominare qualsiasi altra colonna se pensi possa aiutarti nell'analisi
 
 
@@ -303,7 +301,7 @@ suggerimento
 
 </br>
 
-Per rinominare automaticamente tutte le colonne, puoi usare la funzione `clean_names()` del pacchetto {janitor}, questa funzione converte tutti i nomi in minuscolo e sostituisci i caratteri speciali per altri "machine-friendly". Se vuoi rinominare una o più colonne manualmente, invece, puoi usare la funzione `rename()`. Attenzione! Questa funzione (molto anti-intuitivamente) usa lo stile "NUOVO_NOME = VECCHIO_NOME".
+Per rinominare automaticamente tutte le colonne, puoi usare la funzione `clean_names()` del pacchetto {janitor}, questa funzione converte tutti i nomi in minuscolo e sostituisce i caratteri speciali per altri "machine-friendly". Se vuoi rinominare una o più colonne manualmente, invece, puoi usare la funzione `rename()`. Attenzione! Questa funzione (molto anti-intuitivamente) usa lo stile "NUOVO_NOME = VECCHIO_NOME".
 Se hai dubbi o se vuoi sapere di più su come rinominare colonne in R, dai un'occhiata alla sezione dell'EpiRhandbook su [Column names](https://epirhandbook.com/en/new_pages/cleaning.html#column-names)  
 
 </br>
@@ -348,9 +346,9 @@ casi_ebola_pul <- casi_ebola_grezzo %>%
 
 ### **Step 3: Selezionare colonne**
 
-Abbiamo appena rinominato alcune colonne del nostro database. Di solito, per la nostra analisi non abbiamo bisogno di usare tutte le colonne di un database. Pertanto, un'altra operazione di pulizia frequente è quella di selezionare le colonne che vogliamo usare (o rimuovere quelle che non ci servono).
+Abbiamo appena rinominato alcune colonne del nostro database. Di solito per la nostra analisi non abbiamo bisogno di usare tutte le colonne di un database. Pertanto, un'altra operazione di pulizia frequente è quella di selezionare le colonne che vogliamo usare (o rimuovere quelle che non ci servono).
 
-Per fare questo, in R, possiamo usare la funzione select(). Questa è una funzione molto versatile che ci permette di selezionare le colonne che vogliamo mantenere, quelle che vogliamo rimuovere e addirittura di riordinare le colonne del nostro database.
+Per fare questo in R possiamo usare la funzione select(). Questa è una funzione molto versatile che ci permette di selezionare le colonne che vogliamo mantenere, quelle che vogliamo rimuovere e addirittura di riordinare le colonne del nostro database.
 
 
 **Compito:**
@@ -529,12 +527,12 @@ cat("Domanda: Quale dovrebbe essere la classe della colonna 'age'?", longmcq(opt
 :::
 ::::
 
-Esattamente, la variabile "age" dovrebbe essere numerica e invece è testo (character). E' fondamentale che le variabili abbianon la classe corretta, se non è così incontreremo dei problemi quando vogliamo fare tabelle, grafici o analisi più complesse.
+Esattamente, la variabile "age" dovrebbe essere numerica e invece è testo (character). E' fondamentale che le variabili abbiano la classe corretta, se non è così incontreremo dei problemi quando vogliamo fare tabelle, grafici o analisi più complesse.
 
 **Compito**:
 
 -   Modifica la colonna "age" a classe "numeric"
--   Verifica che la classe di "age" è adesso "numeric"
+-   Verifica che la classe di "age" sia adesso "numeric"
 
 
 <details>
@@ -550,7 +548,7 @@ suggerimento
 
 Per vedere la classe di una colonna puoi usare diverse funzioni. Quella più semplice è `class()`. **Non** inserire questa funzione nel comando di pulizia. Le funzioni come `class()` si usano per esplorare il database e non fanno parte della catena di funzioni che puliscono il nostro database. Quindi scrivi questa funzione in una riga separata.
 
-Dopo, aggiunge una riga al tuo comando di pulizia attraverso l'operatore pipe. In questa nuova riga scrive la funzione `mutate()` (perché è la funzione che usiamo per modificare una colonna). **Dentro** di mutate scrivi il nome della colonna che vuoi modificare (age), scrivi il simbolo di uguale e a destra la funzione che servirà a modificare questa colonna. In questo caso: `as.numeric()`.
+Dopo aggiungi una riga al tuo comando di pulizia attraverso l'operatore pipe. In questa nuova riga scrivi la funzione `mutate()` (perché è la funzione che usiamo per modificare una colonna). **Dentro** mutate scrivi il nome della colonna che vuoi modificare (age), scrivi il simbolo di uguale e, a destra, la funzione che servirà a modificare questa colonna. In questo caso: `as.numeric()`.
 Puoi leggere di più su come convertire la classe delle colonne in questa [sezione](https://epirhandbook.com/en/new_pages/cleaning.html#convert-column-class) dell'EpiRhandbook
 
 </br>
@@ -630,7 +628,7 @@ suggerimento
 
 La funzione `recode()` è utile per modificare manualmente i valori di una colonna. Si usa **dentro** di `mutate()` perché, ricorda, stiamo modificando una variabile. La sintassi di `recode()` è: COLONNA_CHE_VOGLIO_MODIFICARE, VECCHIO_VALORE = NUOVO_VALORE.
 
-Se pensi che hai bisogno di leggere di più su questa funzione, dai un'occhiata a questa [sezione](https://epirhandbook.com/en/new_pages/cleaning.html#re-code-values) dell'EpiRhandbook.
+Se pensi di avere bisogno di leggere di più su questa funzione, dai un'occhiata a questa [sezione](https://epirhandbook.com/en/new_pages/cleaning.html#re-code-values) dell'EpiRhandbook.
 </br>
 
 </details>
@@ -881,7 +879,7 @@ Il risultato potrebbe cambiare perché la valutazione delle condizioni avviene i
 
 ### **Step 5: Filtrare il database**
 
-L'ultimo passaggio di pulizia che faremo sarà quello di filtrare il database per rimanire soltanto con un sottoinsieme di dati. 
+L'ultimo passaggio di pulizia che faremo sarà quello di filtrare il database per rimanere soltanto con un sottoinsieme di dati. 
 
 **Compito**:
 
@@ -1005,10 +1003,10 @@ cat("Domanda: Quale sono le dimensioni del nuovo database 'casi_ebola_pul'?", lo
 
 ### **EXTRA**
 
-Purtroppo in 5 lezioni è molto difficile fare un corso completo in R. Quindi abbiamo dovuto scegliere gli aspetti che riteniamo più importanti. Ma, se hai finito l'esercizio e vuoi sapere di più, leggi le seguenti sezioni dell'EpiRhandbook e prova a implementare in questo database (o in un altro) le funzioni che impari:
+Purtroppo in 5 lezioni è molto difficile fare un corso completo in R. Quindi abbiamo dovuto scegliere gli aspetti che riteniamo più importanti. Ma se hai finito l'esercizio e vuoi sapere di più, leggi le seguenti sezioni dell'EpiRhandbook e prova a implementare in questo database (o in un altro) le funzioni che impari:
 
 
-**Lavorare con le date**: Per gli epidemiologi, lavorare in R con le date puoi causare forti mal di testa. È molto importante assicurarci che R consideri le colonne di date como date e non come un'altra classe. Familiarizzati con le funzioni del pacchetto {lubridate} in questa [sezione](https://epirhandbook.com/en/new_pages/dates.html) dell'EpiRhandbook.
+**Lavorare con le date**: Per gli epidemiologi, lavorare in R con le date puoi causare forti mal di testa. È molto importante assicurarci che R consideri le colonne di date come date e non come un'altra classe. Familiarizzati con le funzioni del pacchetto {lubridate} in questa [sezione](https://epirhandbook.com/en/new_pages/dates.html) dell'EpiRhandbook.
 
 **Più funzioni per ricodifica logica**: Abbiamo imparato `case_when()` ma ci sono altre. Di solito, quando vogliamo ricodificare una variabile con un solo criterio logico usiamo la funzione `ifelse()` o una simile. Leggi di più su questo aspetto in questa [sezione](https://epirhandbook.com/en/new_pages/cleaning.html#by-logic) dell'EpiRhandbook
 
