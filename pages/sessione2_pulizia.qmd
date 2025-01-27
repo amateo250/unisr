@@ -254,7 +254,7 @@ casi_ebola_pul <- casi_ebola_grezzo  #comincia per creare una copia del database
 
 ### **Step 2: Rinomina le colonne **
 
-Adesso che abbiamo già cominciato il nostro comando di pulizia con l'operatore pipe, aggiungeremo le prime funzioni al nostro comando. Queste funzioni saranno funzioni indirizzate a rinominare le colonne. Ma abbiamo colonne che hanno bisogno di essere rinominate perché hanno caratteri speciali che non sono "machine-friendly"? 
+Adesso che abbiamo già cominciato il nostro comando di pulizia con l'operatore pipe, aggiungeremo le prime funzioni al nostro comando. Queste funzioni saranno funzioni indirizzate a rinominare le colonne. Ma, abbiamo colonne che hanno bisogno di essere rinominate perché hanno caratteri speciali che non sono "machine-friendly"? 
 
 
 :::: {.callout-note appearance="minimal" icon="false"}
@@ -348,13 +348,13 @@ casi_ebola_pul <- casi_ebola_grezzo %>%
 
 Abbiamo appena rinominato alcune colonne del nostro database. Di solito per la nostra analisi non abbiamo bisogno di usare tutte le colonne di un database. Pertanto, un'altra operazione di pulizia frequente è quella di selezionare le colonne che vogliamo usare (o rimuovere quelle che non ci servono).
 
-Per fare questo in R possiamo usare la funzione select(). Questa è una funzione molto versatile che ci permette di selezionare le colonne che vogliamo mantenere, quelle che vogliamo rimuovere e addirittura di riordinare le colonne del nostro database.
+Per fare questo in R possiamo usare la funzione `select()`. Questa è una funzione molto versatile che ci permette di selezionare le colonne che vogliamo mantenere, quelle che vogliamo rimuovere e addirittura di riordinare le colonne del nostro database.
 
 
 **Compito:**
 
-- Aggiungi al comando di pulizia una funzione per rimuovere le seguenti colonne del database: *merged_header* e *x28*.
-- Riordina il database in modo che la prima colonna sia *case_id*, seguita da tutte le colonne con date (per es., *date_onset*) e poi dal resto delle colonne.
+- Aggiungi al comando di pulizia una funzione per rimuovere le seguenti colonne del database: `merged_header` e `x28`.
+- Riordina il database in modo che la prima colonna sia `case_id`, seguita da tutte le colonne che cominciano con "date" (per es., `date_onset`) e poi dal resto delle colonne.
 
 
 <details>
