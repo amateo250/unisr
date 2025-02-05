@@ -305,9 +305,9 @@ suggerimento
 
 </br>
 
-La prima cosa da fare è scrivere il nome del nostro nuovo oggetto (*casi_ospedale*) e assegnarlo al database pulito: *casi_ebola_pul* utilizzando l'operatore di assegnazione `->`. Successivamente, dobbiamo aggiungere la funzione `group_by()` in una nuova riga, assicurandoci che questa funzione sia collegata alla riga precedente tramite l'operatore pipe (%>%).
+La prima cosa da fare è scrivere il nome del nostro nuovo oggetto (*casi_ospedale*) e assegnarlo al database pulito: *casi_ebola_pul* utilizzando l'operatore di assegnazione `<-`. Successivamente, dobbiamo aggiungere la funzione `group_by()` in una nuova riga, assicurandoci che questa funzione sia collegata alla riga precedente tramite l'operatore pipe `%>%`.
 La funzione `group_by()` serve per indicare la variabile in base alla quale vogliamo aggregare i dati. In questo caso, vogliamo aggregare i dati per ospedale, quindi, dobbiamo scrivere questa variabile all'interno della funzione. Se desideriamo aggregare per più di una variabile, possiamo elencarle separandole con una virgola.  
-Infine, la funzione `summarise()` serve per specificare cosa vogliamo calcolare nell'aggregazione dei dati. Questa funzione a una sintassi simile a quella di `mutate()`, quindi all'interno dobbiamo scrivere il nome della nuova variabile (ad es., n_casi) e la funzione che determina la nuova variabile separati dal simbolo `=`. Poiché adesso vogliamo soltanto il numero di casi, la funzione che ci serve sarebbe `n()`.
+Infine, la funzione `summarise()` serve per specificare cosa vogliamo calcolare nell'aggregazione dei dati. Questa funzione a una sintassi simile a quella di `mutate()`, quindi all'interno dobbiamo scrivere il nome della nuova variabile (ad es., `n_casi`) e la funzione che determina la nuova variabile separati dal simbolo `=`. Poiché adesso vogliamo soltanto il numero di casi, la funzione che ci serve sarebbe `n()`.
 
 </br>
 
@@ -537,7 +537,7 @@ Non possiamo calcolare l'incidenza perché non abbiamo il denominatore (catchmen
 
 **Compito:**
 
-- Importa il file: *hosp_info.RDS* che si trova all'interno della sottocartella *data*. Assegna a questo database il nome: **osp_info**
+- Importa il file: *hosp_info.RDS* che si trova all'interno della sottocartella *data*. Questo database contiene il denominatore di ogni ospedale. Assegna a questo database il nome: **osp_info**
 
 <details>
 
@@ -593,15 +593,15 @@ opts <- c(
 )
 
 
-  cat("Domanda: Come viene descritto l'ospedale SMMH?", longmcq(opts))
+  cat("Domanda: Come viene codificato l'ospedale SMMH nel nuovo database degli ospedali?", longmcq(opts))
 
 ```
 :::
 :::
 
-Quindi, l'ospedale SMMH non è codificato dello stesso modo in questo database e per tanto, dovremmo sistemarlo prima di unire i due database, altrimenti R penserà che sono due ospedali diversi.
+Quindi, l'ospedale SMMH non è codificato allo stesso modo in questo database e, pertanto, dovremmo sistemarlo prima di unire i due database, altrimenti R penserà che si tratta di due ospedali diversi.
 
-Inoltre, in questo database **ci sono due "Military Hospital"**, uno primario e uno secondario. Noi siamo soltanto interessati a quello secondario.
+Inoltre, in questo database **ci sono due "Military Hospital"**, uno primario e uno secondario. Noi siamo interessati soltanto a quello secondario.
 
 
 #### 3.2. Pulire il file degli ospedali
@@ -648,11 +648,12 @@ inc_osp <- left_join(casi_ospedale, osp_info_pul, by = c("hospital" = "hosp_name
 ```
 
 
-Adesso siamo pronti a linkare i database. In R, all'interno del pacchetto {dplyr} ci sono diverse funzioni di linkage: `left_join()`, `right_join()`, `semi_join()`, `inner_join()` e `full_join()`. Ognuna è utile in un contesto specifico. La funzione più utilizzata, almeno in epidemiologia, è `left_join()`, quindi sarà quella che utilizzeremo.
 
-All'interno di `left_join()` dobbiamo specificare il database di riferimento e, separato da una virgola, il database secondario. Nel nostro caso il **database di riferimento** è il database con i casi di ebola per ospedale. Essere di riferimento significa che noi **aggiungiamo le informazioni del database secondario a questo database**. 
+Adesso siamo pronti a collegare i database. In R, all'interno del pacchetto {dplyr}, ci sono diverse funzioni di collegamento: `left_join()`, `right_join()`, `semi_join()`, `inner_join()` e `full_join()`. Ognuna è utile in un contesto specifico. La funzione più utilizzata, almeno in epidemiologia, è `left_join()`, quindi sarà quella che utilizzeremo.
 
-E' sempre una buona prassi sstimare le dimensioni (numero di righe e colonne) del nuovo database linkato in base alle dimensioni dei due database che utilizziamo nel linkage.
+All'interno di `left_join()` dobbiamo specificare il database di riferimento e, separato da una virgola, il database secondario. Nel nostro caso, il database di riferimento è il database con i casi di ebola per ospedale. Essere di riferimento **significa che noi aggiungiamo le informazioni del database secondario a questo database**.
+
+È sempre una buona prassi stimare le dimensioni (numero di righe e colonne) del nuovo database collegato in base alle dimensioni dei due database che utilizziamo nel collegamento.
 
 Le dimensioni del database di riferimento sono:
 
@@ -691,7 +692,7 @@ cat("Domanda: Quale dovrebbe essere le dimensioni del database dopo il linkage?"
 :::
 :::
 
-Noi ci aspettiamo che il database dopo il linkage abbia **lo stesso numero di righe che il database di riferimento**, quindi 6. Ci aspettiamo anche che le colonne con informazioni aggiuntive del database secondario vengano inserite nel database dopo il linkage. Siccome il database secondario ha 3 colonne e noi usiamo una (hosp_name) per il linkage (quindi sparisce), il database risultante dovrebbe avere 8 (6+2) colonne.
+Noi ci aspettiamo che il database dopo il linkage abbia **lo stesso numero di righe che il database di riferimento**, quindi 6. Ci aspettiamo anche che le colonne con informazioni aggiuntive del database secondario vengano inserite nel database dopo il collegamento. Poiché il database secondario ha 3 colonne e noi ne usiamo una (hosp_name) per il collegamento (quindi sparisce), il database risultante dovrebbe avere 8 (6+2) colonne.
 
 
 **Compito:**
@@ -710,7 +711,7 @@ suggerimento
 </summary>
 
 </br>
-Dobbiamo anche specificare all'interno di `left_join()`, con l'argomento `by =` la colonna che vogliamo utilizzare per fare il linkage. Nel nostro caso questa colonna ha un nome diverso in ogni database (*hospital* in casi_ebola_pul e *hosp_name* in osp_info_pul). Una opzione sarebbe rinominare una di queste colonne, l'altra sarebbe specificare dentro `by =` che `c(hospital = hosp_name)`. Se hai dubbi su come fare il linkage, leggi la sezione dell'EpiRhandbook su [Joining data](https://epirhandbook.com/en/new_pages/joining_matching.html)
+Dobbiamo specificare all'interno di `left_join()`, con l'argomento `by =` la colonna che vogliamo utilizzare per fare il linkage. Nel nostro caso questa colonna ha un nome diverso in ogni database (`hospital` in casi_ebola_pul e `hosp_name` in osp_info_pul). Una opzione sarebbe rinominare una di queste colonne, l'altra sarebbe specificare dentro `by =` che `c(hospital = hosp_name)`. Se hai dubbi su come fare il linkage, leggi la sezione dell'EpiRhandbook su [Joining data](https://epirhandbook.com/en/new_pages/joining_matching.html)
 
 </br>
 
@@ -744,18 +745,18 @@ inc_osp <- left_join(casi_ospedale, osp_info_pul, by = c("hospital" = "hosp_name
 pacman::p_load(webexercises)
 
 opts <- c(
-  "Sì",
-  answer =  "No, non abbiamo informazioni sugli ospedali 'ignace' e 'sisters'",
- "No, non abbiamo la colonna 'catchment_pop'"
+  "No",
+  answer =  "Sì, nel database originale non abbiamo informazioni sugli ospedali 'ignace' e 'sisters'",
+ "Si, nel database originale non abbiamo 'Military Hospital'"
 )
 
-cat("Domanda: Nel nuovo database, abbiamo tutte le informazioni del database secondario 'osp_info_pul'?", longmcq(opts))
+cat("Domanda: Nel nuovo database 'osp_info_pul', ci sono categorie di ospedali che non sono presenti nel database 'casi_ebola_pul'?", longmcq(opts))
 
 ```
 :::
 :::
 
-No, non abbiamo informazioni sugli ospedali 'ignace' e 'sisters' perché questi due ospedali non si trovano nel database di riferimento e, quindi, le loro informazioni vanno perse. E' giusto che sia così perché non siamo interessati a ospedali dove non ci sono casi di Ebola. Tuttavia, se volessimo utilizzare una funzione che non perda informazioni né del database di riferimento né del database secondario, potremmo usare `full_join()`.
+Sì, nel nuovo database abbiamo informazioni sugli ospedali 'ignace' e 'sisters' che non si trovano nel database di riferimento e, quindi, le loro informazioni vanno perse. E' giusto che sia così perché non siamo interessati a ospedali dove non ci sono casi di Ebola. Tuttavia, se volessimo utilizzare una funzione che non perda informazioni né del database di riferimento né del database secondario, potremmo usare `full_join()`.
 
 
 
@@ -893,7 +894,7 @@ cat("Domanda: Se 'stampi' l'oggetto flex_inc_osp, dove vedi la tabella ?", longm
 :::
 :::
 
-Una volta che abbiamo trasformato la nostra tabella in "flextable", questa non è più un database ma un oggetto di un'altra natura (vedi nell'Environment come *flex_inc_osp* è definito come un "Large flextable"). Una conseguenza è che non si visualizza più nella Console, ma nel Viewer.
+Una volta che abbiamo trasformato la nostra tabella in "flextable", questa non è più un data.frame ma un oggetto di un'altra natura (vedi nell'Environment come *flex_inc_osp* è definito come un "Large flextable"). Una conseguenza è che non si visualizza più nella Console, ma nel Viewer.
 
 #### 4.2. Cambia il formatto della flextable
 
@@ -1003,6 +1004,7 @@ flex_inc_osp
 Uno dei punti di forza di R è la sua capacità per creare report automatici in html, word, powerpoint, pdf o qualsiasi altro output. Purtroppo non abbiamo tempo per imparare questo aspetto nel corso, ma possiamo imparare a esportare una tabella in uno di questi output. In questo caso salveremo la nostra flextable come documento word.
 
 **Compito:**
+
 -   Salva la flextable appena fatta in un documento Word nella sottocartella "outputs".
 
 

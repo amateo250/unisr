@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input4f19e522fa917686</title>
+<title>quarto-inputbc7fbce4206846f0</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -299,8 +299,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Segnala almeno una delle seguenti colonne che contiene caratteri speciali e deve essere rinominata?
-<div id="radio_KBUAIEQKEA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_KBUAIEQKEA" value=""> <span>gender</span></label><label><input type="radio" autocomplete="off" name="radio_KBUAIEQKEA" value="answer"> <span>date onset</span></label><label><input type="radio" autocomplete="off" name="radio_KBUAIEQKEA" value=""> <span>row_num</span></label><label><input type="radio" autocomplete="off" name="radio_KBUAIEQKEA" value="answer"> <span>infection date</span></label><label><input type="radio" autocomplete="off" name="radio_KBUAIEQKEA" value=""> <span>lat</span></label><label><input type="radio" autocomplete="off" name="radio_KBUAIEQKEA" value="answer"> <span>hosp date</span></label>
+<div id="radio_CZYFVTTTBO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CZYFVTTTBO" value=""> <span>gender</span></label><label><input type="radio" autocomplete="off" name="radio_CZYFVTTTBO" value="answer"> <span>date onset</span></label><label><input type="radio" autocomplete="off" name="radio_CZYFVTTTBO" value=""> <span>row_num</span></label><label><input type="radio" autocomplete="off" name="radio_CZYFVTTTBO" value="answer"> <span>infection date</span></label><label><input type="radio" autocomplete="off" name="radio_CZYFVTTTBO" value=""> <span>lat</span></label><label><input type="radio" autocomplete="off" name="radio_CZYFVTTTBO" value="answer"> <span>hosp date</span></label>
 </div>
 </div>
 </div>
@@ -457,14 +457,14 @@ Domanda: Segnala almeno una delle seguenti colonne che contiene caratteri specia
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Qual è la classe della colonna ‘age’ nel nostro database?
-<div id="radio_HRYZGGUIAO" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HRYZGGUIAO" value=""> <span>numeric</span></label><label><input type="radio" autocomplete="off" name="radio_HRYZGGUIAO" value=""> <span>factor</span></label><label><input type="radio" autocomplete="off" name="radio_HRYZGGUIAO" value="answer"> <span>character</span></label><label><input type="radio" autocomplete="off" name="radio_HRYZGGUIAO" value=""> <span>date</span></label>
+<div id="radio_OGDAVOVHIL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OGDAVOVHIL" value=""> <span>numeric</span></label><label><input type="radio" autocomplete="off" name="radio_OGDAVOVHIL" value=""> <span>factor</span></label><label><input type="radio" autocomplete="off" name="radio_OGDAVOVHIL" value="answer"> <span>character</span></label><label><input type="radio" autocomplete="off" name="radio_OGDAVOVHIL" value=""> <span>date</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Quale dovrebbe essere la classe della colonna ‘age’?
-<div id="radio_JHQSIRNMJH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JHQSIRNMJH" value="answer"> <span>numeric</span></label><label><input type="radio" autocomplete="off" name="radio_JHQSIRNMJH" value=""> <span>factor</span></label><label><input type="radio" autocomplete="off" name="radio_JHQSIRNMJH" value=""> <span>character</span></label><label><input type="radio" autocomplete="off" name="radio_JHQSIRNMJH" value=""> <span>date</span></label>
+<div id="radio_TSPQZUYZHH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TSPQZUYZHH" value="answer"> <span>numeric</span></label><label><input type="radio" autocomplete="off" name="radio_TSPQZUYZHH" value=""> <span>factor</span></label><label><input type="radio" autocomplete="off" name="radio_TSPQZUYZHH" value=""> <span>character</span></label><label><input type="radio" autocomplete="off" name="radio_TSPQZUYZHH" value=""> <span>date</span></label>
 </div>
 </div>
 </div>
@@ -702,7 +702,7 @@ Domanda: Quale dovrebbe essere la classe della colonna ‘age’?
 <p><strong>Compiti</strong>:</p>
 <p>Usa la funzione <code>case_when()</code> per creare due nuove variabili:</p>
 <ul>
-<li><p>La prima si chiamerà <strong>stato_caso</strong> e ci dirà se un caso è “confermato”, “sospetto” o “sotto indagine”. <strong>Il caso sarà “confermato” se la variabile ct_blood è &lt; 20</strong>. Nel contesto dell’Ebola, “ct” si riferisce al valore di cycle threshold in un test PCR. Il valore del cycle threshold indica il numero di cicli necessari per amplificare l’RNA virale a un livello rilevabile. Un valore CT più basso significa una carica virale più alta nel sangue, che può essere associata a una malattia più grave e a un rischio maggiore di trasmissione. Al contrario, un valore CT più alto suggerisce una carica virale più bassa. Per questa ragione consideriamo confermati i casi con un valore CT inferiore a 20 (carica virale alta). Invece, <strong>il caso sarà “sospetto” se il ct è &gt; 20 ma il paziente ha la febbre (fever == yes) e ha un link epidemiologico (<em>source</em> non è NA)</strong>. Tutti gli altri casi saranno “sotto_indagine”.</p></li>
+<li><p>La prima si chiamerà <strong>stato_caso</strong> e ci dirà se un caso è “confermato”, “sospetto” o “sotto indagine”. <strong>Il caso sarà “confermato” se la variabile ct_blood è &lt; 20</strong>. Nel contesto dell’Ebola, “ct” si riferisce al valore di cycle threshold in un test PCR. Il valore del cycle threshold indica il numero di cicli necessari per amplificare l’RNA virale a un livello rilevabile. Un valore CT più basso significa una carica virale più alta nel sangue, che può essere associata a una malattia più grave e a un rischio maggiore di trasmissione. Al contrario, un valore CT più alto suggerisce una carica virale più bassa. Per questa ragione consideriamo confermati i casi con un valore CT inferiore a 20 (carica virale alta). Invece, <strong>il caso sarà “sospetto” se il ct è &gt;= 20 ma il paziente ha la febbre (fever == yes) e ha un link epidemiologico (<em>source</em> non è NA)</strong>. Tutti gli altri casi saranno “sotto_indagine”.</p></li>
 <li><p>La seconda variabile si chiamerà <strong>eta_anni</strong> e sarà l’età in anni (perché in questo momento la variabile <em>age</em> contiene l’età in anni per alcuni casi e in mesi per altri). Quindi la nuova variabile dipenderà da due variabili: <em>age</em> (età numerica) e <em>age_unit</em> (unità dell’età). <strong>eta_anni</strong> sarà uguale a <em>age</em> quando <em>age_unit</em> è “years” o è mancante (assumiamo che se non è indicata l’unità dell’età si riferisce agli anni di vita). Invece, quando <em>age_unit</em> è “months”, <strong>eta_anni</strong> sarà <em>age/12</em>.</p></li>
 </ul>
 <details>
@@ -825,14 +825,14 @@ Domanda: Quale dovrebbe essere la classe della colonna ‘age’?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quanti casi sono confermati?
-<div id="radio_BGCNHBPZNG" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BGCNHBPZNG" value=""> <span>2669</span></label><label><input type="radio" autocomplete="off" name="radio_BGCNHBPZNG" value="answer"> <span>1147</span></label><label><input type="radio" autocomplete="off" name="radio_BGCNHBPZNG" value=""> <span>2795</span></label><label><input type="radio" autocomplete="off" name="radio_BGCNHBPZNG" value=""> <span>3254</span></label>
+<div id="radio_YAISJDWUCB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YAISJDWUCB" value=""> <span>2669</span></label><label><input type="radio" autocomplete="off" name="radio_YAISJDWUCB" value="answer"> <span>1147</span></label><label><input type="radio" autocomplete="off" name="radio_YAISJDWUCB" value=""> <span>2795</span></label><label><input type="radio" autocomplete="off" name="radio_YAISJDWUCB" value=""> <span>3254</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Modificare l’ordine dei criteri logici in case_when() cambierebbe il risultato finale?
-<div id="radio_THATKPSJXT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_THATKPSJXT" value="answer"> <span>Sì</span></label><label><input type="radio" autocomplete="off" name="radio_THATKPSJXT" value=""> <span>No</span></label>
+<div id="radio_OKZMUBKCWW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OKZMUBKCWW" value="answer"> <span>Sì</span></label><label><input type="radio" autocomplete="off" name="radio_OKZMUBKCWW" value=""> <span>No</span></label>
 </div>
 </div>
 </div>
@@ -943,8 +943,8 @@ Domanda: Modificare l’ordine dei criteri logici in case_when() cambierebbe il 
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quale sono le dimensioni del nuovo database ‘casi_ebola_pul’?
-<div id="radio_XVCUVESPIA" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_XVCUVESPIA" value=""> <span>6611 righe e 28 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_XVCUVESPIA" value=""> <span>1250 righe e 29 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_XVCUVESPIA" value="answer"> <span>709 righe e 29 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_XVCUVESPIA" value=""> <span>505 righe e 30 colonne</span></label>
+<div id="radio_NGMQRQRZJU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NGMQRQRZJU" value=""> <span>6611 righe e 28 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_NGMQRQRZJU" value=""> <span>1250 righe e 29 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_NGMQRQRZJU" value="answer"> <span>709 righe e 29 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_NGMQRQRZJU" value=""> <span>505 righe e 30 colonne</span></label>
 </div>
 </div>
 </div>
