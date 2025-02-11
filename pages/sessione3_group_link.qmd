@@ -11,6 +11,8 @@ format:
     include-after-body: webex.js
     df-print: kable
     toc: true
+    toc-depth: 4
+    toc-expand: 1
 editor: 
   markdown: 
     wrap: 72
@@ -40,7 +42,7 @@ pacman::p_load(
   tidyverse # gestione e visualizzazione dati
 )
 
-casi_ebola_pul <- import("../sessioni/prog_stat_mepi/data/casi_ebola_pul.csv")
+casi_ebola_pul <- import("../sessioni/prog_stat_mepi/data/casi_ebola_pul.rds")
 
 osp_info <- import("../sessioni/prog_stat_mepi/data/hosp_info.RDS")
 
@@ -1046,6 +1048,78 @@ Facile, vero? Adesso apri questo documento Word e dai un'occhiata alla tabella. 
 </br>
 
 </details>
+
+
+### **Step 5: Tabella di outcome per età e sesso**
+
+Per ultimo, vogliamo confrontare gli outcome di Ebola (se i casi guariscono o muoiono) e la età dei casi per sesso. 
+
+**Compito:**
+
+-   Crea una tabella utilizzando la funzione `tbl_summary()` che confronta `outcome` e `age` per `gender`.
+
+-   Aggiunge una funzione che sia in grado di fornire il valore p di un test d'ipotesi appropriato per sapere se le differenze di `outcome` e `age` tra i due `gender` sono statisticamente significative
+
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un
+suggerimento
+
+</summary>
+
+</br>
+
+La prima cosa che devi fare è selezionare le colonne che servono per la tabella: `outcome`,  `age` e `gender`. Dopo, aggiunge la funzione `tbl_summary()` specificando che vuoi fare un confronto "by = gender". Finalmente aggiungi la funzione `add_p()` per calcolare i test d'ipotesi.
+
+</br>
+
+</details>
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione
+(provaci da solo prima!)
+
+</summary>
+
+</br>
+
+
+```{r , echo=TRUE}
+casi_ebola_pul %>% 
+  select(outcome, age, gender) %>% #seleziona le colonne necessarie
+  tbl_summary(by = gender) %>%  #crea la tabella per gender
+  add_p()  #calcola test d'ipotesi
+```
+
+
+</br>
+
+</details>
+
+
+:::: {.callout-note appearance="minimal" icon="false"}
+**Rispondi**
+
+::: webex-check
+```{r, results="asis", echo=FALSE}
+pacman::p_load(webexercises)
+
+opts <- c(
+  "Sì",
+  answer =  "No"
+)
+
+cat("Domanda: Ci sono differenze significative nella percentuale di casi di Ebola deceduti per sesso?", longmcq(opts))
+
+```
+:::
+:::
 
 ### **EXTRA**
 

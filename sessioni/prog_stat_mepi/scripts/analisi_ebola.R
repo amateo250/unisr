@@ -184,3 +184,12 @@ flex_inc_osp
 
 #Esportare il database
 save_as_docx(flex_inc_osp, path =  "outputs/table_inc_osp.docx")
+
+
+### 5. Tabella di outcome ed età per sesso -----------------------------------------
+casi_ebola_pul %>% 
+  select(outcome, age, gender) %>% #seleziona le colonne necessarie
+  tbl_summary(by = gender) %>%  #crea la tabella per gender
+  add_p()  #calcola test d'ipotesi
+  
+

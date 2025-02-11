@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input3497f714f741a8c5</title>
+<title>quarto-input800c37aed87ef9d2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -80,20 +80,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
 <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-  <nav id="TOC" role="doc-toc" class="toc-active">
+  <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="1">
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
   <li><a href="#master-ii-livello-epidemiologia---programmi-statistici" id="toc-master-ii-livello-epidemiologia---programmi-statistici" class="nav-link active" data-scroll-target="#master-ii-livello-epidemiologia---programmi-statistici"><strong>Master II livello Epidemiologia - Programmi Statistici</strong></a></li>
   <li><a href="#sessione-3---raggruppare-linkare-dati-e-creare-tabelle" id="toc-sessione-3---raggruppare-linkare-dati-e-creare-tabelle" class="nav-link" data-scroll-target="#sessione-3---raggruppare-linkare-dati-e-creare-tabelle">Sessione 3 - Raggruppare, linkare dati e creare tabelle:</a>
-  <ul class="collapse">
+  <ul>
   <li><a href="#obiettivi-di-questa-sesione" id="toc-obiettivi-di-questa-sesione" class="nav-link" data-scroll-target="#obiettivi-di-questa-sesione">Obiettivi di questa sesione</a>
   <ul class="collapse">
   <li><a href="#preparazione" id="toc-preparazione" class="nav-link" data-scroll-target="#preparazione"><strong>Preparazione</strong></a></li>
   <li><a href="#step-1-prepara-lo-script-per-lanalisi" id="toc-step-1-prepara-lo-script-per-lanalisi" class="nav-link" data-scroll-target="#step-1-prepara-lo-script-per-lanalisi"><strong>Step 1: Prepara lo script per l’analisi</strong></a></li>
-  <li><a href="#step-2-aggregare-casi-per-ospedale" id="toc-step-2-aggregare-casi-per-ospedale" class="nav-link" data-scroll-target="#step-2-aggregare-casi-per-ospedale"><strong>Step 2: Aggregare casi per ospedale </strong></a></li>
-  <li><a href="#step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale" id="toc-step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale" class="nav-link" data-scroll-target="#step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale"><strong>Step 3: Creare una tabella con dati del focolaio di Ebola per ospedale</strong></a></li>
-  <li><a href="#step-4-formattare-la-tabella" id="toc-step-4-formattare-la-tabella" class="nav-link" data-scroll-target="#step-4-formattare-la-tabella"><strong>Step 4: Formattare la tabella</strong></a></li>
+  <li><a href="#step-2-aggregare-casi-per-ospedale" id="toc-step-2-aggregare-casi-per-ospedale" class="nav-link" data-scroll-target="#step-2-aggregare-casi-per-ospedale"><strong>Step 2: Aggregare casi per ospedale </strong></a>
+  <ul class="collapse">
+  <li><a href="#numero-di-casi-per-ospedale" id="toc-numero-di-casi-per-ospedale" class="nav-link" data-scroll-target="#numero-di-casi-per-ospedale">2.1. Numero di casi per ospedale</a></li>
+  <li><a href="#aggiungere-altre-variabili-allaggregazione" id="toc-aggiungere-altre-variabili-allaggregazione" class="nav-link" data-scroll-target="#aggiungere-altre-variabili-allaggregazione">2.2. Aggiungere altre variabili all’aggregazione</a></li>
+  </ul></li>
+  <li><a href="#step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale" id="toc-step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale" class="nav-link" data-scroll-target="#step-3-creare-una-tabella-con-dati-del-focolaio-di-ebola-per-ospedale"><strong>Step 3: Creare una tabella con dati del focolaio di Ebola per ospedale</strong></a>
+  <ul class="collapse">
+  <li><a href="#importare-informazioni-degli-ospedali" id="toc-importare-informazioni-degli-ospedali" class="nav-link" data-scroll-target="#importare-informazioni-degli-ospedali">3.1. Importare informazioni degli ospedali</a></li>
+  <li><a href="#pulire-il-file-degli-ospedali" id="toc-pulire-il-file-degli-ospedali" class="nav-link" data-scroll-target="#pulire-il-file-degli-ospedali">3.2. Pulire il file degli ospedali</a></li>
+  <li><a href="#linkare-i-database" id="toc-linkare-i-database" class="nav-link" data-scroll-target="#linkare-i-database">3.3. Linkare i database</a></li>
+  <li><a href="#pulire-il-database-linkato" id="toc-pulire-il-database-linkato" class="nav-link" data-scroll-target="#pulire-il-database-linkato">3.4. Pulire il database linkato</a></li>
+  </ul></li>
+  <li><a href="#step-4-formattare-la-tabella" id="toc-step-4-formattare-la-tabella" class="nav-link" data-scroll-target="#step-4-formattare-la-tabella"><strong>Step 4: Formattare la tabella</strong></a>
+  <ul class="collapse">
+  <li><a href="#convertire-la-tabella-in-una-tabella-flextable" id="toc-convertire-la-tabella-in-una-tabella-flextable" class="nav-link" data-scroll-target="#convertire-la-tabella-in-una-tabella-flextable">4.1. Convertire la tabella in una tabella “flextable”</a></li>
+  <li><a href="#cambia-il-formatto-della-flextable" id="toc-cambia-il-formatto-della-flextable" class="nav-link" data-scroll-target="#cambia-il-formatto-della-flextable">4.2. Cambia il formatto della flextable</a></li>
+  <li><a href="#esportare-la-flextable" id="toc-esportare-la-flextable" class="nav-link" data-scroll-target="#esportare-la-flextable">4.3. Esportare la flextable</a></li>
+  </ul></li>
+  <li><a href="#step-5-tabella-di-outcome-per-età-e-sesso" id="toc-step-5-tabella-di-outcome-per-età-e-sesso" class="nav-link" data-scroll-target="#step-5-tabella-di-outcome-per-età-e-sesso"><strong>Step 5: Tabella di outcome per età e sesso</strong></a></li>
   <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><strong>EXTRA</strong></a></li>
   </ul></li>
   <li><a href="#informazioni-sullesercizio" id="toc-informazioni-sullesercizio" class="nav-link" data-scroll-target="#informazioni-sullesercizio">Informazioni sull’esercizio</a></li>
@@ -319,8 +335,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quanti casi sono stati ricoverati nel ‘Central Hospital’?
-<div id="radio_BFJAVSRCCK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BFJAVSRCCK" value=""> <span>121</span></label><label><input type="radio" autocomplete="off" name="radio_BFJAVSRCCK" value="answer"> <span>45</span></label><label><input type="radio" autocomplete="off" name="radio_BFJAVSRCCK" value=""> <span>99</span></label><label><input type="radio" autocomplete="off" name="radio_BFJAVSRCCK" value=""> <span>205</span></label>
+<div id="radio_TAOWWDWXXM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TAOWWDWXXM" value=""> <span>121</span></label><label><input type="radio" autocomplete="off" name="radio_TAOWWDWXXM" value="answer"> <span>45</span></label><label><input type="radio" autocomplete="off" name="radio_TAOWWDWXXM" value=""> <span>99</span></label><label><input type="radio" autocomplete="off" name="radio_TAOWWDWXXM" value=""> <span>205</span></label>
 </div>
 </div>
 </div>
@@ -331,8 +347,8 @@ Domanda: Quanti casi sono stati ricoverati nel ‘Central Hospital’?
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
 </summary>
 <p><br></p>
-<p>La prima cosa da fare è scrivere il nome del nostro nuovo oggetto (<em>casi_ospedale</em>) e assegnarlo al database pulito: <em>casi_ebola_pul</em> utilizzando l’operatore di assegnazione <code>-&gt;</code>. Successivamente, dobbiamo aggiungere la funzione <code>group_by()</code> in una nuova riga, assicurandoci che questa funzione sia collegata alla riga precedente tramite l’operatore pipe (%&gt;%). La funzione <code>group_by()</code> serve per indicare la variabile in base alla quale vogliamo aggregare i dati. In questo caso, vogliamo aggregare i dati per ospedale, quindi, dobbiamo scrivere questa variabile all’interno della funzione. Se desideriamo aggregare per più di una variabile, possiamo elencarle separandole con una virgola.<br>
-Infine, la funzione <code>summarise()</code> serve per specificare cosa vogliamo calcolare nell’aggregazione dei dati. Questa funzione a una sintassi simile a quella di <code>mutate()</code>, quindi all’interno dobbiamo scrivere il nome della nuova variabile (ad es., n_casi) e la funzione che determina la nuova variabile separati dal simbolo <code>=</code>. Poiché adesso vogliamo soltanto il numero di casi, la funzione che ci serve sarebbe <code>n()</code>.</p>
+<p>La prima cosa da fare è scrivere il nome del nostro nuovo oggetto (<em>casi_ospedale</em>) e assegnarlo al database pulito: <em>casi_ebola_pul</em> utilizzando l’operatore di assegnazione <code>&lt;-</code>. Successivamente, dobbiamo aggiungere la funzione <code>group_by()</code> in una nuova riga, assicurandoci che questa funzione sia collegata alla riga precedente tramite l’operatore pipe <code>%&gt;%</code>. La funzione <code>group_by()</code> serve per indicare la variabile in base alla quale vogliamo aggregare i dati. In questo caso, vogliamo aggregare i dati per ospedale, quindi, dobbiamo scrivere questa variabile all’interno della funzione. Se desideriamo aggregare per più di una variabile, possiamo elencarle separandole con una virgola.<br>
+Infine, la funzione <code>summarise()</code> serve per specificare cosa vogliamo calcolare nell’aggregazione dei dati. Questa funzione a una sintassi simile a quella di <code>mutate()</code>, quindi all’interno dobbiamo scrivere il nome della nuova variabile (ad es., <code>n_casi</code>) e la funzione che determina la nuova variabile separati dal simbolo <code>=</code>. Poiché adesso vogliamo soltanto il numero di casi, la funzione che ci serve sarebbe <code>n()</code>.</p>
 <p><br></p>
 </details>
 <details>
@@ -359,28 +375,28 @@ Infine, la funzione <code>summarise()</code> serve per specificare cosa vogliamo
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: right;">194</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Central Hospital</td>
 <td style="text-align: right;">45</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Military Hospital</td>
 <td style="text-align: right;">121</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Other</td>
 <td style="text-align: right;">97</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Port Hospital</td>
 <td style="text-align: right;">203</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">SMMH</td>
 <td style="text-align: right;">49</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">194</td>
 </tr>
 </tbody>
 </table>
@@ -410,20 +426,20 @@ Infine, la funzione <code>summarise()</code> serve per specificare cosa vogliamo
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quale ospedale ha la media d’età più bassa?
-<div id="radio_MGGLNRXLZP" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MGGLNRXLZP" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_MGGLNRXLZP" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_MGGLNRXLZP" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_MGGLNRXLZP" value="answer"> <span>SMMH</span></label>
+<div id="radio_FRKKKIPELM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FRKKKIPELM" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_FRKKKIPELM" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_FRKKKIPELM" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_FRKKKIPELM" value="answer"> <span>SMMH</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Quale ospedale ha avuto la infezione più recente?
-<div id="radio_PQYGCOCDED" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PQYGCOCDED" value="answer"> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_PQYGCOCDED" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_PQYGCOCDED" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_PQYGCOCDED" value=""> <span>SMMH</span></label>
+<div id="radio_IHLNBTRCKH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IHLNBTRCKH" value="answer"> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_IHLNBTRCKH" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_IHLNBTRCKH" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_IHLNBTRCKH" value=""> <span>SMMH</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
-<div id="radio_RZCIPJBUFT" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RZCIPJBUFT" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_RZCIPJBUFT" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_RZCIPJBUFT" value="answer"> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_RZCIPJBUFT" value=""> <span>SMMH</span></label>
+<div id="radio_MFSSIMYLPG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MFSSIMYLPG" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_MFSSIMYLPG" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_MFSSIMYLPG" value="answer"> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_MFSSIMYLPG" value=""> <span>SMMH</span></label>
 </div>
 </div>
 </div>
@@ -510,14 +526,6 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;"></td>
-<td style="text-align: right;">194</td>
-<td style="text-align: right;">15.3</td>
-<td style="text-align: left;">2015-04-22</td>
-<td style="text-align: right;">97</td>
-<td style="text-align: right;">50.0</td>
-</tr>
-<tr class="even">
 <td style="text-align: left;">Central Hospital</td>
 <td style="text-align: right;">45</td>
 <td style="text-align: right;">19.5</td>
@@ -525,7 +533,7 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <td style="text-align: right;">15</td>
 <td style="text-align: right;">33.3</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Military Hospital</td>
 <td style="text-align: right;">121</td>
 <td style="text-align: right;">17.3</td>
@@ -533,7 +541,7 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <td style="text-align: right;">55</td>
 <td style="text-align: right;">45.5</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">Other</td>
 <td style="text-align: right;">97</td>
 <td style="text-align: right;">15.6</td>
@@ -541,7 +549,7 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <td style="text-align: right;">48</td>
 <td style="text-align: right;">49.5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td style="text-align: left;">Port Hospital</td>
 <td style="text-align: right;">203</td>
 <td style="text-align: right;">16.0</td>
@@ -549,13 +557,21 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <td style="text-align: right;">113</td>
 <td style="text-align: right;">55.7</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td style="text-align: left;">SMMH</td>
 <td style="text-align: right;">49</td>
 <td style="text-align: right;">13.2</td>
 <td style="text-align: left;">2015-04-01</td>
 <td style="text-align: right;">26</td>
 <td style="text-align: right;">53.1</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">NA</td>
+<td style="text-align: right;">194</td>
+<td style="text-align: right;">15.3</td>
+<td style="text-align: left;">2015-04-22</td>
+<td style="text-align: right;">97</td>
+<td style="text-align: right;">50.0</td>
 </tr>
 </tbody>
 </table>
@@ -585,8 +601,8 @@ Domanda: Quale ospedale ha la percentuale più alta di casi femmine?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quale degli indicatori non siamo in grado di calcolare con i dati che abbiamo?
-<div id="radio_JLWGTMUYWM" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JLWGTMUYWM" value=""> <span>Il numero di casi per ospedale</span></label><label><input type="radio" autocomplete="off" name="radio_JLWGTMUYWM" value=""> <span>L'età media dei casi</span></label><label><input type="radio" autocomplete="off" name="radio_JLWGTMUYWM" value=""> <span>La data dell'ultima infezione</span></label><label><input type="radio" autocomplete="off" name="radio_JLWGTMUYWM" value=""> <span>La percentuale di femmine</span></label><label><input type="radio" autocomplete="off" name="radio_JLWGTMUYWM" value="answer"> <span>L'incidenza per 10.000 abitanti</span></label>
+<div id="radio_PSBRMBTKNL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PSBRMBTKNL" value=""> <span>Il numero di casi per ospedale</span></label><label><input type="radio" autocomplete="off" name="radio_PSBRMBTKNL" value=""> <span>L'età media dei casi</span></label><label><input type="radio" autocomplete="off" name="radio_PSBRMBTKNL" value=""> <span>La data dell'ultima infezione</span></label><label><input type="radio" autocomplete="off" name="radio_PSBRMBTKNL" value=""> <span>La percentuale di femmine</span></label><label><input type="radio" autocomplete="off" name="radio_PSBRMBTKNL" value="answer"> <span>L'incidenza per 10.000 abitanti</span></label>
 </div>
 </div>
 </div>
@@ -602,7 +618,7 @@ Domanda: Quale degli indicatori non siamo in grado di calcolare con i dati che a
 <h4 class="anchored" data-anchor-id="importare-informazioni-degli-ospedali">3.1. Importare informazioni degli ospedali</h4>
 <p><strong>Compito:</strong></p>
 <ul>
-<li>Importa il file: <em>hosp_info.RDS</em> che si trova all’interno della sottocartella <em>data</em>. Assegna a questo database il nome: <strong>osp_info</strong></li>
+<li>Importa il file: <em>hosp_info.RDS</em> che si trova all’interno della sottocartella <em>data</em>. Questo database contiene il denominatore di ogni ospedale. Assegna a questo database il nome: <strong>osp_info</strong></li>
 </ul>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
@@ -630,16 +646,16 @@ Domanda: Quale degli indicatori non siamo in grado di calcolare con i dati che a
 <div class="callout-body-container">
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
-Domanda: Come viene descritto l’ospedale SMMH?
-<div id="radio_AZISKELEHU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_AZISKELEHU" value=""> <span>Questo ospedale non c'è nel database</span></label><label><input type="radio" autocomplete="off" name="radio_AZISKELEHU" value=""> <span>Come 'SMMH'</span></label><label><input type="radio" autocomplete="off" name="radio_AZISKELEHU" value="answer"> <span>Come 'St.&nbsp;Mark's Maternity Hospital (SMMH)'</span></label>
+Domanda: Come viene codificato l’ospedale SMMH nel nuovo database degli ospedali?
+<div id="radio_IFCYJOKNYK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IFCYJOKNYK" value=""> <span>Questo ospedale non c'è nel database</span></label><label><input type="radio" autocomplete="off" name="radio_IFCYJOKNYK" value=""> <span>Come 'SMMH'</span></label><label><input type="radio" autocomplete="off" name="radio_IFCYJOKNYK" value="answer"> <span>Come 'St.&nbsp;Mark's Maternity Hospital (SMMH)'</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Quindi, l’ospedale SMMH non è codificato dello stesso modo in questo database e per tanto, dovremmo sistemarlo prima di unire i due database, altrimenti R penserà che sono due ospedali diversi.</p>
-<p>Inoltre, in questo database <strong>ci sono due “Military Hospital”</strong>, uno primario e uno secondario. Noi siamo soltanto interessati a quello secondario.</p>
+<p>Quindi, l’ospedale SMMH non è codificato allo stesso modo in questo database e, pertanto, dovremmo sistemarlo prima di unire i due database, altrimenti R penserà che si tratta di due ospedali diversi.</p>
+<p>Inoltre, in questo database <strong>ci sono due “Military Hospital”</strong>, uno primario e uno secondario. Noi siamo interessati soltanto a quello secondario.</p>
 </section>
 <section id="pulire-il-file-degli-ospedali" class="level4">
 <h4 class="anchored" data-anchor-id="pulire-il-file-degli-ospedali">3.2. Pulire il file degli ospedali</h4>
@@ -711,9 +727,9 @@ Domanda: Come viene descritto l’ospedale SMMH?
 </section>
 <section id="linkare-i-database" class="level4">
 <h4 class="anchored" data-anchor-id="linkare-i-database">3.3. Linkare i database</h4>
-<p>Adesso siamo pronti a linkare i database. In R, all’interno del pacchetto {dplyr} ci sono diverse funzioni di linkage: <code>left_join()</code>, <code>right_join()</code>, <code>semi_join()</code>, <code>inner_join()</code> e <code>full_join()</code>. Ognuna è utile in un contesto specifico. La funzione più utilizzata, almeno in epidemiologia, è <code>left_join()</code>, quindi sarà quella che utilizzeremo.</p>
-<p>All’interno di <code>left_join()</code> dobbiamo specificare il database di riferimento e, separato da una virgola, il database secondario. Nel nostro caso il <strong>database di riferimento</strong> è il database con i casi di ebola per ospedale. Essere di riferimento significa che noi <strong>aggiungiamo le informazioni del database secondario a questo database</strong>.</p>
-<p>E’ sempre una buona prassi sstimare le dimensioni (numero di righe e colonne) del nuovo database linkato in base alle dimensioni dei due database che utilizziamo nel linkage.</p>
+<p>Adesso siamo pronti a collegare i database. In R, all’interno del pacchetto {dplyr}, ci sono diverse funzioni di collegamento: <code>left_join()</code>, <code>right_join()</code>, <code>semi_join()</code>, <code>inner_join()</code> e <code>full_join()</code>. Ognuna è utile in un contesto specifico. La funzione più utilizzata, almeno in epidemiologia, è <code>left_join()</code>, quindi sarà quella che utilizzeremo.</p>
+<p>All’interno di <code>left_join()</code> dobbiamo specificare il database di riferimento e, separato da una virgola, il database secondario. Nel nostro caso, il database di riferimento è il database con i casi di ebola per ospedale. Essere di riferimento <strong>significa che noi aggiungiamo le informazioni del database secondario a questo database</strong>.</p>
+<p>È sempre una buona prassi stimare le dimensioni (numero di righe e colonne) del nuovo database collegato in base alle dimensioni dei due database che utilizziamo nel collegamento.</p>
 <p>Le dimensioni del database di riferimento sono:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(casi_ospedale)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -738,14 +754,14 @@ Domanda: Come viene descritto l’ospedale SMMH?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quale dovrebbe essere le dimensioni del database dopo il linkage?
-<div id="radio_HCPFDEKAOK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HCPFDEKAOK" value=""> <span>12 righe e 9 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_HCPFDEKAOK" value=""> <span>6 righe e 9 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_HCPFDEKAOK" value="answer"> <span>6 righe e 8 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_HCPFDEKAOK" value=""> <span>12 righe e 6 colonne</span></label>
+<div id="radio_PHKIKZPVZD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PHKIKZPVZD" value=""> <span>12 righe e 9 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_PHKIKZPVZD" value=""> <span>6 righe e 9 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_PHKIKZPVZD" value="answer"> <span>6 righe e 8 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_PHKIKZPVZD" value=""> <span>12 righe e 6 colonne</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Noi ci aspettiamo che il database dopo il linkage abbia <strong>lo stesso numero di righe che il database di riferimento</strong>, quindi 6. Ci aspettiamo anche che le colonne con informazioni aggiuntive del database secondario vengano inserite nel database dopo il linkage. Siccome il database secondario ha 3 colonne e noi usiamo una (hosp_name) per il linkage (quindi sparisce), il database risultante dovrebbe avere 8 (6+2) colonne.</p>
+<p>Noi ci aspettiamo che il database dopo il linkage abbia <strong>lo stesso numero di righe che il database di riferimento</strong>, quindi 6. Ci aspettiamo anche che le colonne con informazioni aggiuntive del database secondario vengano inserite nel database dopo il collegamento. Poiché il database secondario ha 3 colonne e noi ne usiamo una (hosp_name) per il collegamento (quindi sparisce), il database risultante dovrebbe avere 8 (6+2) colonne.</p>
 <p><strong>Compito:</strong></p>
 <ul>
 <li>Fai il linkage tra <em>casi_ospedale</em> (database di riferimento) e <em>osp_info_pul</em></li>
@@ -756,7 +772,7 @@ Domanda: Quale dovrebbe essere le dimensioni del database dopo il linkage?
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
 </summary>
-<p><br> Dobbiamo anche specificare all’interno di <code>left_join()</code>, con l’argomento <code>by =</code> la colonna che vogliamo utilizzare per fare il linkage. Nel nostro caso questa colonna ha un nome diverso in ogni database (<em>hospital</em> in casi_ebola_pul e <em>hosp_name</em> in osp_info_pul). Una opzione sarebbe rinominare una di queste colonne, l’altra sarebbe specificare dentro <code>by =</code> che <code>c(hospital = hosp_name)</code>. Se hai dubbi su come fare il linkage, leggi la sezione dell’EpiRhandbook su <a href="https://epirhandbook.com/en/new_pages/joining_matching.html">Joining data</a></p>
+<p><br> Dobbiamo specificare all’interno di <code>left_join()</code>, con l’argomento <code>by =</code> la colonna che vogliamo utilizzare per fare il linkage. Nel nostro caso questa colonna ha un nome diverso in ogni database (<code>hospital</code> in casi_ebola_pul e <code>hosp_name</code> in osp_info_pul). Una opzione sarebbe rinominare una di queste colonne, l’altra sarebbe specificare dentro <code>by =</code> che <code>c(hospital = hosp_name)</code>. Se hai dubbi su come fare il linkage, leggi la sezione dell’EpiRhandbook su <a href="https://epirhandbook.com/en/new_pages/joining_matching.html">Joining data</a></p>
 <p><br></p>
 </details>
 <details>
@@ -777,15 +793,15 @@ Domanda: Quale dovrebbe essere le dimensioni del database dopo il linkage?
 <div class="callout-body-container">
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
-Domanda: Nel nuovo database, abbiamo tutte le informazioni del database secondario ‘osp_info_pul’?
-<div id="radio_RGEQAIWDSI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RGEQAIWDSI" value=""> <span>Sì</span></label><label><input type="radio" autocomplete="off" name="radio_RGEQAIWDSI" value="answer"> <span>No, non abbiamo informazioni sugli ospedali 'ignace' e 'sisters'</span></label><label><input type="radio" autocomplete="off" name="radio_RGEQAIWDSI" value=""> <span>No, non abbiamo la colonna 'catchment_pop'</span></label>
+Domanda: Nel nuovo database ‘osp_info_pul’, ci sono categorie di ospedali che non sono presenti nel database ‘casi_ebola_pul’?
+<div id="radio_HCOPBDWCDZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HCOPBDWCDZ" value=""> <span>No</span></label><label><input type="radio" autocomplete="off" name="radio_HCOPBDWCDZ" value="answer"> <span>Sì, nel database originale non abbiamo informazioni sugli ospedali 'ignace' e 'sisters'</span></label><label><input type="radio" autocomplete="off" name="radio_HCOPBDWCDZ" value=""> <span>Si, nel database originale non abbiamo 'Military Hospital'</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>No, non abbiamo informazioni sugli ospedali ‘ignace’ e ‘sisters’ perché questi due ospedali non si trovano nel database di riferimento e, quindi, le loro informazioni vanno perse. E’ giusto che sia così perché non siamo interessati a ospedali dove non ci sono casi di Ebola. Tuttavia, se volessimo utilizzare una funzione che non perda informazioni né del database di riferimento né del database secondario, potremmo usare <code>full_join()</code>.</p>
+<p>Sì, nel nuovo database abbiamo informazioni sugli ospedali ‘ignace’ e ‘sisters’ che non si trovano nel database di riferimento e, quindi, le loro informazioni vanno perse. E’ giusto che sia così perché non siamo interessati a ospedali dove non ci sono casi di Ebola. Tuttavia, se volessimo utilizzare una funzione che non perda informazioni né del database di riferimento né del database secondario, potremmo usare <code>full_join()</code>.</p>
 </section>
 <section id="pulire-il-database-linkato" class="level4">
 <h4 class="anchored" data-anchor-id="pulire-il-database-linkato">3.4. Pulire il database linkato</h4>
@@ -880,8 +896,8 @@ Domanda: Nel nuovo database, abbiamo tutte le informazioni del database secondar
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quale ospedale ha l’incidenza più alta di Ebola?
-<div id="radio_CEITRODXZE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CEITRODXZE" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_CEITRODXZE" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_CEITRODXZE" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_CEITRODXZE" value="answer"> <span>SMMH</span></label>
+<div id="radio_XPKRLHMQTA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XPKRLHMQTA" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_XPKRLHMQTA" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_XPKRLHMQTA" value=""> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_XPKRLHMQTA" value="answer"> <span>SMMH</span></label>
 </div>
 </div>
 </div>
@@ -910,7 +926,7 @@ Domanda: Quale ospedale ha l’incidenza più alta di Ebola?
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>flex_inc_osp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-6278c2c0{}.cl-62717e84{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-627384cc{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-627384e0{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-627399bc{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-627399c6{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-627399c7{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-627399d0{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-627399d1{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-627399d2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-6278c2c0"><thead><tr style="overflow-wrap:break-word;"><th class="cl-627399bc"><p class="cl-627384cc"><span class="cl-62717e84">hospital</span></p></th><th class="cl-627399c6"><p class="cl-627384e0"><span class="cl-62717e84">n_casi</span></p></th><th class="cl-627399c6"><p class="cl-627384e0"><span class="cl-62717e84">media_eta</span></p></th><th class="cl-627399c6"><p class="cl-627384e0"><span class="cl-62717e84">ult_infez</span></p></th><th class="cl-627399c6"><p class="cl-627384e0"><span class="cl-62717e84">perc_fem</span></p></th><th class="cl-627399c6"><p class="cl-627384e0"><span class="cl-62717e84">inc</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-627399c7"><p class="cl-627384cc"><span class="cl-62717e84">SMMH</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">49</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">13.2</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">2015-04-01 00:00:00</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">53.1</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">40.8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-627399c7"><p class="cl-627384cc"><span class="cl-62717e84">Port Hospital</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">203</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">16.0</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">2015-04-20 00:00:00</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">55.7</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">40.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-627399c7"><p class="cl-627384cc"><span class="cl-62717e84">Military Hospital</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">121</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">17.3</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">2015-04-16 00:00:00</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">45.5</span></p></td><td class="cl-627399d0"><p class="cl-627384e0"><span class="cl-62717e84">29.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-627399d1"><p class="cl-627384cc"><span class="cl-62717e84">Central Hospital</span></p></td><td class="cl-627399d2"><p class="cl-627384e0"><span class="cl-62717e84">45</span></p></td><td class="cl-627399d2"><p class="cl-627384e0"><span class="cl-62717e84">19.5</span></p></td><td class="cl-627399d2"><p class="cl-627384e0"><span class="cl-62717e84">2015-03-17 00:00:00</span></p></td><td class="cl-627399d2"><p class="cl-627384e0"><span class="cl-62717e84">33.3</span></p></td><td class="cl-627399d2"><p class="cl-627384e0"><span class="cl-62717e84">0.2</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-acc53eac{}.cl-acbb6b52{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-acbf87c8{margin:0;text-align:left;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-acbf87d2{margin:0;text-align:right;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-acbfa9ce{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-acbfa9d8{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-acbfa9e2{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-acbfa9ec{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-acbfa9ed{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-acbfaa00{width:0.75in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-acc53eac"><thead><tr style="overflow-wrap:break-word;"><th class="cl-acbfa9ce"><p class="cl-acbf87c8"><span class="cl-acbb6b52">hospital</span></p></th><th class="cl-acbfa9d8"><p class="cl-acbf87d2"><span class="cl-acbb6b52">n_casi</span></p></th><th class="cl-acbfa9d8"><p class="cl-acbf87d2"><span class="cl-acbb6b52">media_eta</span></p></th><th class="cl-acbfa9d8"><p class="cl-acbf87d2"><span class="cl-acbb6b52">ult_infez</span></p></th><th class="cl-acbfa9d8"><p class="cl-acbf87d2"><span class="cl-acbb6b52">perc_fem</span></p></th><th class="cl-acbfa9d8"><p class="cl-acbf87d2"><span class="cl-acbb6b52">inc</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-acbfa9e2"><p class="cl-acbf87c8"><span class="cl-acbb6b52">SMMH</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">49</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">13.2</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">2015-04-01 00:00:00</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">53.1</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">40.8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-acbfa9e2"><p class="cl-acbf87c8"><span class="cl-acbb6b52">Port Hospital</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">203</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">16.0</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">2015-04-20 00:00:00</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">55.7</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">40.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-acbfa9e2"><p class="cl-acbf87c8"><span class="cl-acbb6b52">Military Hospital</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">121</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">17.3</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">2015-04-16 00:00:00</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">45.5</span></p></td><td class="cl-acbfa9ec"><p class="cl-acbf87d2"><span class="cl-acbb6b52">29.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-acbfa9ed"><p class="cl-acbf87c8"><span class="cl-acbb6b52">Central Hospital</span></p></td><td class="cl-acbfaa00"><p class="cl-acbf87d2"><span class="cl-acbb6b52">45</span></p></td><td class="cl-acbfaa00"><p class="cl-acbf87d2"><span class="cl-acbb6b52">19.5</span></p></td><td class="cl-acbfaa00"><p class="cl-acbf87d2"><span class="cl-acbb6b52">2015-03-17 00:00:00</span></p></td><td class="cl-acbfaa00"><p class="cl-acbf87d2"><span class="cl-acbb6b52">33.3</span></p></td><td class="cl-acbfaa00"><p class="cl-acbf87d2"><span class="cl-acbb6b52">0.2</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <p><br></p>
@@ -924,14 +940,14 @@ Domanda: Quale ospedale ha l’incidenza più alta di Ebola?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Se ‘stampi’ l’oggetto flex_inc_osp, dove vedi la tabella ?
-<div id="radio_FVXWNAFRRP" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_FVXWNAFRRP" value=""> <span>Nella console</span></label><label><input type="radio" autocomplete="off" name="radio_FVXWNAFRRP" value=""> <span>Nella scheda 'Plots'</span></label><label><input type="radio" autocomplete="off" name="radio_FVXWNAFRRP" value="answer"> <span>Nella scheda 'Viewer'</span></label>
+<div id="radio_JCOURRCLSX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JCOURRCLSX" value=""> <span>Nella console</span></label><label><input type="radio" autocomplete="off" name="radio_JCOURRCLSX" value=""> <span>Nella scheda 'Plots'</span></label><label><input type="radio" autocomplete="off" name="radio_JCOURRCLSX" value="answer"> <span>Nella scheda 'Viewer'</span></label>
 </div>
 </div>
 </div>
 </div>
 </div>
-<p>Una volta che abbiamo trasformato la nostra tabella in “flextable”, questa non è più un database ma un oggetto di un’altra natura (vedi nell’Environment come <em>flex_inc_osp</em> è definito come un “Large flextable”). Una conseguenza è che non si visualizza più nella Console, ma nel Viewer.</p>
+<p>Una volta che abbiamo trasformato la nostra tabella in “flextable”, questa non è più un data.frame ma un oggetto di un’altra natura (vedi nell’Environment come <em>flex_inc_osp</em> è definito come un “Large flextable”). Una conseguenza è che non si visualizza più nella Console, ma nel Viewer.</p>
 </section>
 <section id="cambia-il-formatto-della-flextable" class="level4">
 <h4 class="anchored" data-anchor-id="cambia-il-formatto-della-flextable">4.2. Cambia il formatto della flextable</h4>
@@ -998,7 +1014,7 @@ Domanda: Se ‘stampi’ l’oggetto flex_inc_osp, dove vedi la tabella ?
 <span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>flex_inc_osp</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div class="tabwid"><style>.cl-62a63a7a{}.cl-629ed7bc{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-629ed7c6{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-62a1ea88{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-62a1fdb6{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdc0{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdc1{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdca{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdd4{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdd5{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdd6{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdde{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fde8{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fde9{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdea{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdf2{width:0.583in;background-color:rgba(255, 0, 0, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdf3{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdf4{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdfc{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdfd{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdfe{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fdff{width:0.583in;background-color:rgba(255, 0, 0, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe06{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe07{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe10{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe11{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe12{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe1a{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe1b{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe1c{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe24{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe25{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe26{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-62a1fe2e{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-62a63a7a"><thead><tr style="overflow-wrap:break-word;"><th class="cl-62a1fdb6"><p class="cl-62a1ea88"><span class="cl-629ed7bc">Ospedale</span></p></th><th class="cl-62a1fdc0"><p class="cl-62a1ea88"><span class="cl-629ed7bc">N. casi</span></p></th><th class="cl-62a1fdc1"><p class="cl-62a1ea88"><span class="cl-629ed7bc">Età media dei casi</span></p></th><th class="cl-62a1fdca"><p class="cl-62a1ea88"><span class="cl-629ed7bc">Data ultima infezione</span></p></th><th class="cl-62a1fdd4"><p class="cl-62a1ea88"><span class="cl-629ed7bc">% femmine tra i casi</span></p></th><th class="cl-62a1fdd5"><p class="cl-62a1ea88"><span class="cl-629ed7bc">Incidenza per 10.000</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-62a1fdd6"><p class="cl-62a1ea88"><span class="cl-629ed7c6">SMMH</span></p></td><td class="cl-62a1fdde"><p class="cl-62a1ea88"><span class="cl-629ed7c6">49</span></p></td><td class="cl-62a1fde8"><p class="cl-62a1ea88"><span class="cl-629ed7c6">13.2</span></p></td><td class="cl-62a1fde9"><p class="cl-62a1ea88"><span class="cl-629ed7c6">2015-04-01 00:00:00</span></p></td><td class="cl-62a1fdea"><p class="cl-62a1ea88"><span class="cl-629ed7c6">53.1</span></p></td><td class="cl-62a1fdf2"><p class="cl-62a1ea88"><span class="cl-629ed7c6">40.8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-62a1fdf3"><p class="cl-62a1ea88"><span class="cl-629ed7c6">Port Hospital</span></p></td><td class="cl-62a1fdf4"><p class="cl-62a1ea88"><span class="cl-629ed7c6">203</span></p></td><td class="cl-62a1fdfc"><p class="cl-62a1ea88"><span class="cl-629ed7c6">16.0</span></p></td><td class="cl-62a1fdfd"><p class="cl-62a1ea88"><span class="cl-629ed7c6">2015-04-20 00:00:00</span></p></td><td class="cl-62a1fdfe"><p class="cl-62a1ea88"><span class="cl-629ed7c6">55.7</span></p></td><td class="cl-62a1fdff"><p class="cl-62a1ea88"><span class="cl-629ed7c6">40.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-62a1fe06"><p class="cl-62a1ea88"><span class="cl-629ed7c6">Military Hospital</span></p></td><td class="cl-62a1fe07"><p class="cl-62a1ea88"><span class="cl-629ed7c6">121</span></p></td><td class="cl-62a1fe10"><p class="cl-62a1ea88"><span class="cl-629ed7c6">17.3</span></p></td><td class="cl-62a1fe11"><p class="cl-62a1ea88"><span class="cl-629ed7c6">2015-04-16 00:00:00</span></p></td><td class="cl-62a1fe12"><p class="cl-62a1ea88"><span class="cl-629ed7c6">45.5</span></p></td><td class="cl-62a1fe1a"><p class="cl-62a1ea88"><span class="cl-629ed7c6">29.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-62a1fe1b"><p class="cl-62a1ea88"><span class="cl-629ed7c6">Central Hospital</span></p></td><td class="cl-62a1fe1c"><p class="cl-62a1ea88"><span class="cl-629ed7c6">45</span></p></td><td class="cl-62a1fe24"><p class="cl-62a1ea88"><span class="cl-629ed7c6">19.5</span></p></td><td class="cl-62a1fe25"><p class="cl-62a1ea88"><span class="cl-629ed7c6">2015-03-17 00:00:00</span></p></td><td class="cl-62a1fe26"><p class="cl-62a1ea88"><span class="cl-629ed7c6">33.3</span></p></td><td class="cl-62a1fe2e"><p class="cl-62a1ea88"><span class="cl-629ed7c6">0.2</span></p></td></tr></tbody></table></div>
+<div class="tabwid"><style>.cl-ad1729a6{}.cl-ad03845a{font-family:'Arial';font-size:11pt;font-weight:bold;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ad03846e{font-family:'Arial';font-size:11pt;font-weight:normal;font-style:normal;text-decoration:none;color:rgba(0, 0, 0, 1.00);background-color:transparent;}.cl-ad0d11be{margin:0;text-align:center;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 0 solid rgba(0, 0, 0, 1.00);padding-bottom:5pt;padding-top:5pt;padding-left:5pt;padding-right:5pt;line-height: 1;background-color:transparent;}.cl-ad0d69a2{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d69de{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d69f2{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d69f3{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d69fc{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a06{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 1.5pt solid rgba(102, 102, 102, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a10{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a1a{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a24{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a2e{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a2f{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a38{width:0.583in;background-color:rgba(255, 0, 0, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a4c{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a4d{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a74{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a7e{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a88{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a92{width:0.583in;background-color:rgba(255, 0, 0, 1.00);vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6a93{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6aa6{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6ab0{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6aba{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6ac4{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6ac5{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 0 solid rgba(0, 0, 0, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6ace{width:1.372in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 0 solid rgba(0, 0, 0, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6acf{width:0.727in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6ad8{width:0.999in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6ae2{width:1.704in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6aec{width:0.922in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}.cl-ad0d6af6{width:0.583in;background-color:transparent;vertical-align: middle;border-bottom: 1.5pt solid rgba(102, 102, 102, 1.00);border-top: 0 solid rgba(0, 0, 0, 1.00);border-left: 1pt solid rgba(102, 102, 102, 1.00);border-right: 1pt solid rgba(102, 102, 102, 1.00);margin-bottom:0;margin-top:0;margin-left:0;margin-right:0;}</style><table data-quarto-disable-processing="true" class="cl-ad1729a6"><thead><tr style="overflow-wrap:break-word;"><th class="cl-ad0d69a2"><p class="cl-ad0d11be"><span class="cl-ad03845a">Ospedale</span></p></th><th class="cl-ad0d69de"><p class="cl-ad0d11be"><span class="cl-ad03845a">N. casi</span></p></th><th class="cl-ad0d69f2"><p class="cl-ad0d11be"><span class="cl-ad03845a">Età media dei casi</span></p></th><th class="cl-ad0d69f3"><p class="cl-ad0d11be"><span class="cl-ad03845a">Data ultima infezione</span></p></th><th class="cl-ad0d69fc"><p class="cl-ad0d11be"><span class="cl-ad03845a">% femmine tra i casi</span></p></th><th class="cl-ad0d6a06"><p class="cl-ad0d11be"><span class="cl-ad03845a">Incidenza per 10.000</span></p></th></tr></thead><tbody><tr style="overflow-wrap:break-word;"><td class="cl-ad0d6a10"><p class="cl-ad0d11be"><span class="cl-ad03846e">SMMH</span></p></td><td class="cl-ad0d6a1a"><p class="cl-ad0d11be"><span class="cl-ad03846e">49</span></p></td><td class="cl-ad0d6a24"><p class="cl-ad0d11be"><span class="cl-ad03846e">13.2</span></p></td><td class="cl-ad0d6a2e"><p class="cl-ad0d11be"><span class="cl-ad03846e">2015-04-01 00:00:00</span></p></td><td class="cl-ad0d6a2f"><p class="cl-ad0d11be"><span class="cl-ad03846e">53.1</span></p></td><td class="cl-ad0d6a38"><p class="cl-ad0d11be"><span class="cl-ad03846e">40.8</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ad0d6a4c"><p class="cl-ad0d11be"><span class="cl-ad03846e">Port Hospital</span></p></td><td class="cl-ad0d6a4d"><p class="cl-ad0d11be"><span class="cl-ad03846e">203</span></p></td><td class="cl-ad0d6a74"><p class="cl-ad0d11be"><span class="cl-ad03846e">16.0</span></p></td><td class="cl-ad0d6a7e"><p class="cl-ad0d11be"><span class="cl-ad03846e">2015-04-20 00:00:00</span></p></td><td class="cl-ad0d6a88"><p class="cl-ad0d11be"><span class="cl-ad03846e">55.7</span></p></td><td class="cl-ad0d6a92"><p class="cl-ad0d11be"><span class="cl-ad03846e">40.4</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ad0d6a93"><p class="cl-ad0d11be"><span class="cl-ad03846e">Military Hospital</span></p></td><td class="cl-ad0d6aa6"><p class="cl-ad0d11be"><span class="cl-ad03846e">121</span></p></td><td class="cl-ad0d6ab0"><p class="cl-ad0d11be"><span class="cl-ad03846e">17.3</span></p></td><td class="cl-ad0d6aba"><p class="cl-ad0d11be"><span class="cl-ad03846e">2015-04-16 00:00:00</span></p></td><td class="cl-ad0d6ac4"><p class="cl-ad0d11be"><span class="cl-ad03846e">45.5</span></p></td><td class="cl-ad0d6ac5"><p class="cl-ad0d11be"><span class="cl-ad03846e">29.9</span></p></td></tr><tr style="overflow-wrap:break-word;"><td class="cl-ad0d6ace"><p class="cl-ad0d11be"><span class="cl-ad03846e">Central Hospital</span></p></td><td class="cl-ad0d6acf"><p class="cl-ad0d11be"><span class="cl-ad03846e">45</span></p></td><td class="cl-ad0d6ad8"><p class="cl-ad0d11be"><span class="cl-ad03846e">19.5</span></p></td><td class="cl-ad0d6ae2"><p class="cl-ad0d11be"><span class="cl-ad03846e">2015-03-17 00:00:00</span></p></td><td class="cl-ad0d6aec"><p class="cl-ad0d11be"><span class="cl-ad03846e">33.3</span></p></td><td class="cl-ad0d6af6"><p class="cl-ad0d11be"><span class="cl-ad03846e">0.2</span></p></td></tr></tbody></table></div>
 </div>
 </div>
 <p><br></p>
@@ -1007,7 +1023,10 @@ Domanda: Se ‘stampi’ l’oggetto flex_inc_osp, dove vedi la tabella ?
 <section id="esportare-la-flextable" class="level4">
 <h4 class="anchored" data-anchor-id="esportare-la-flextable">4.3. Esportare la flextable</h4>
 <p>Uno dei punti di forza di R è la sua capacità per creare report automatici in html, word, powerpoint, pdf o qualsiasi altro output. Purtroppo non abbiamo tempo per imparare questo aspetto nel corso, ma possiamo imparare a esportare una tabella in uno di questi output. In questo caso salveremo la nostra flextable come documento word.</p>
-<p><strong>Compito:</strong> - Salva la flextable appena fatta in un documento Word nella sottocartella “outputs”.</p>
+<p><strong>Compito:</strong></p>
+<ul>
+<li>Salva la flextable appena fatta in un documento Word nella sottocartella “outputs”.</li>
+</ul>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
@@ -1027,6 +1046,567 @@ Domanda: Se ‘stampi’ l’oggetto flex_inc_osp, dove vedi la tabella ?
 <p>Facile, vero? Adesso apri questo documento Word e dai un’occhiata alla tabella. Potresti pensare che creare e formattare la tabella in R sia stato molto più difficile di quanto sarebbe stato in Word o Excel. Se fossi sicuro di dover fare la tabella solo una volta, direi che hai ragione. Ma se parliamo di una tabella che devi ripetere più volte, è molto più efficiente fare il lavoro in R perché, ogni volta che ricevi nuovi dati, basta lanciare lo script per riprodurre automaticamente la tabella. Invece, in Word o Excel dovresti inserire manualmente l’output, perdendo tempo e aumentando il rischio di errori! <br></p>
 </details>
 </section>
+</section>
+<section id="step-5-tabella-di-outcome-per-età-e-sesso" class="level3">
+<h3 class="anchored" data-anchor-id="step-5-tabella-di-outcome-per-età-e-sesso"><strong>Step 5: Tabella di outcome per età e sesso</strong></h3>
+<p>Per ultimo, vogliamo confrontare gli outcome di Ebola (se i casi guariscono o muoiono) e la età dei casi per sesso.</p>
+<p><strong>Compito:</strong></p>
+<ul>
+<li><p>Crea una tabella utilizzando la funzione <code>tbl_summary()</code> che confronta <code>outcome</code> e <code>age</code> per <code>gender</code>.</p></li>
+<li><p>Aggiunge una funzione che sia in grado di fornire il valore p di un test d’ipotesi appropriato per sapere se le differenze di <code>outcome</code> e <code>age</code> tra i due <code>gender</code> sono statisticamente significative</p></li>
+</ul>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>La prima cosa che devi fare è selezionare le colonne che servono per la tabella: <code>outcome</code>, <code>age</code> e <code>gender</code>. Dopo, aggiunge la funzione <code>tbl_summary()</code> specificando che vuoi fare un confronto “by = gender”. Finalmente aggiungi la funzione <code>add_p()</code> per calcolare i test d’ipotesi.</p>
+<p><br></p>
+</details>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>casi_ebola_pul <span class="sc">%&gt;%</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(outcome, age, gender) <span class="sc">%&gt;%</span> <span class="co">#seleziona le colonne necessarie</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by =</span> gender) <span class="sc">%&gt;%</span>  <span class="co">#crea la tabella per gender</span></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_p</span>()  <span class="co">#calcola test d'ipotesi</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="zulvggivmc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zulvggivmc table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#zulvggivmc thead, #zulvggivmc tbody, #zulvggivmc tfoot, #zulvggivmc tr, #zulvggivmc td, #zulvggivmc th {
+  border-style: none;
+}
+
+#zulvggivmc p {
+  margin: 0;
+  padding: 0;
+}
+
+#zulvggivmc .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#zulvggivmc .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#zulvggivmc .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#zulvggivmc .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#zulvggivmc .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#zulvggivmc .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#zulvggivmc .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#zulvggivmc .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#zulvggivmc .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#zulvggivmc .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#zulvggivmc .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#zulvggivmc .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#zulvggivmc .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#zulvggivmc .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#zulvggivmc .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zulvggivmc .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#zulvggivmc .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#zulvggivmc .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#zulvggivmc .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zulvggivmc .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#zulvggivmc .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zulvggivmc .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#zulvggivmc .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zulvggivmc .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#zulvggivmc .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#zulvggivmc .gt_left {
+  text-align: left;
+}
+
+#zulvggivmc .gt_center {
+  text-align: center;
+}
+
+#zulvggivmc .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#zulvggivmc .gt_font_normal {
+  font-weight: normal;
+}
+
+#zulvggivmc .gt_font_bold {
+  font-weight: bold;
+}
+
+#zulvggivmc .gt_font_italic {
+  font-style: italic;
+}
+
+#zulvggivmc .gt_super {
+  font-size: 65%;
+}
+
+#zulvggivmc .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#zulvggivmc .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#zulvggivmc .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#zulvggivmc .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#zulvggivmc .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#zulvggivmc .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#zulvggivmc .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#zulvggivmc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#zulvggivmc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header gt_col_headings">
+<th id="label" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Characteristic</strong></th>
+<th id="stat_1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>femmine</strong><br> N = 354<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="stat_2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>maschi</strong><br> N = 342<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+<th id="p.value" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col"><strong>p-value</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">outcome</td>
+<td class="gt_row gt_center" headers="stat_1"><br>
+</td>
+<td class="gt_row gt_center" headers="stat_2"><br>
+</td>
+<td class="gt_row gt_center" headers="p.value">0.5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Death</td>
+<td class="gt_row gt_center" headers="stat_1">141 (51%)</td>
+<td class="gt_row gt_center" headers="stat_2">126 (48%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Recover</td>
+<td class="gt_row gt_center" headers="stat_1">136 (49%)</td>
+<td class="gt_row gt_center" headers="stat_2">136 (52%)</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="label">&nbsp;&nbsp;&nbsp;&nbsp;Unknown</td>
+<td class="gt_row gt_center" headers="stat_1">77</td>
+<td class="gt_row gt_center" headers="stat_2">80</td>
+<td class="gt_row gt_center" headers="p.value"><br>
+</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="label">age</td>
+<td class="gt_row gt_center" headers="stat_1">10 (5, 18)</td>
+<td class="gt_row gt_center" headers="stat_2">18 (8, 29)</td>
+<td class="gt_row gt_center" headers="p.value">&lt;0.001</td>
+</tr>
+</tbody><tfoot class="gt_footnotes">
+<tr class="even">
+<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> n (%); Median (Q1, Q3)</td>
+</tr>
+<tr class="odd">
+<td colspan="4" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> Pearson’s Chi-squared test; Wilcoxon rank sum test</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Rispondi</strong></p>
+<div class="webex-check">
+Domanda: Ci sono differenze significative nella percentuale di casi di Ebola deceduti per sesso?
+<div id="radio_SOBGBZYQEN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SOBGBZYQEN" value=""> <span>Sì</span></label><label><input type="radio" autocomplete="off" name="radio_SOBGBZYQEN" value="answer"> <span>No</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="extra" class="level3">
 <h3 class="anchored" data-anchor-id="extra"><strong>EXTRA</strong></h3>
