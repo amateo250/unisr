@@ -103,6 +103,10 @@ casi_ebola_pul <- casi_ebola_grezzo %>%
     age_unit == "months" ~  age/12
   )) %>% 
   
+  # modificare la variabile date_onset per farla diventare Data
+  mutate(date_onset = as.Date(date_onset)) %>% 
+
+  
   filter(!is.na(case_id) & stato_caso == "confermato" & date_infection >= "2014-01-01")
       
 #Verifichiamo che age è cambiata (QUESTO NON E' PARTE DEL COMANDO DI PULIZIA)
@@ -192,4 +196,100 @@ casi_ebola_pul %>%
   tbl_summary(by = gender) %>%  #crea la tabella per gender
   add_p()  #calcola test d'ipotesi
   
+# SESSIONE 4 --------------------------------------------------------------
+
+
+# Grafici -----------------------------------------------------------------
+
+### STEP 1. Grafico a barre con geom_bar()
+
+casi_ebola_pul %>%
+  drop_na(hospital, gender) %>% #togliamo i valori mancanti
+  
+  ggplot(mapping = aes(
+    x = hospital, 
+    fill = gender
+  )) + 
+  
+  geom_bar() +
+  
+  labs(
+    title = "Numero di casi di Ebola per ospedale e genere",
+    y = "Numero di casi",
+    x = "Ospedale",
+    fill = "Genere"
+  ) + 
+  
+  #in this scale we change the colours and the text inside the "fill"
+  scale_fill_manual(values = c(
+    "femmine" = "darkgreen",
+    "maschi"  = "darkorange"
+  ),  
+  labels = c(
+    "femmine" = "Femmine",
+    "maschi"  = "Maschi"
+  )) + 
+  
+  #here we increase the number of breaks in the y axis
+  scale_y_continuous(n.breaks = 10) + 
+  
+  #we add a predefined theme
+  theme_bw() +
+  
+  #we change a specific aspect of the text of the x axis with them, so that the name is readable
+  theme(
+    axis.text.x = element_text(angle = 90)
+  )
+
+### Stesso grafico a barre con dati aggregati usando geom_col()
+
+casi_ebola_pul %>%
+  drop_na(hospital, gender) %>% #togliamo i valori mancanti
+  group_by(hospital, gender) %>% #raggruppiamo 
+  summarise(n_casi = n(), .groups = "drop") %>% 
+  
+  ggplot(mapping = aes(
+    x = hospital, #dobbiamo aggiungere l'asse verticale
+    y = n_casi,
+    fill = gender
+  )) + 
+  
+  geom_col() 
+
+### STEP 2. Diagramma di dispersione
+
+casi_ebola_pul %>% 
+  drop_na(eta_anni, temp) %>% 
+  ggplot(
+    mapping = aes(
+      x = eta_anni,
+      y = temp
+    )
+  ) + 
+  
+  geom_point(colour = "darkgreen") + 
+  
+  geom_smooth(method = "lm") # aggiungi la linea dei minimi quadrati
+
+### STEP 3. Curva epidemica
+
+##verificare la classe di date_onset
+class(casi_ebola_pul$date_onset)
+
+
+# curva epidemica
+casi_ebola_pul %>% 
+  drop_na(hospital) %>% 
+  
+  ggplot(
+    mapping = aes(
+      x = date_onset, 
+      fill = hospital)
+  ) + 
+  
+  geom_histogram() 
+
+
+
+
 
