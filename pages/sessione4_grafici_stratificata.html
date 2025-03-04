@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input63c57878bb78ef8</title>
+<title>quarto-inputdc3f6ac783e6b0ce</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,8 +104,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#preparare-i-dati" id="toc-preparare-i-dati" class="nav-link" data-scroll-target="#preparare-i-dati">3.1. Preparare i dati</a></li>
   <li><a href="#curva-epidemica-generale" id="toc-curva-epidemica-generale" class="nav-link" data-scroll-target="#curva-epidemica-generale">3.2. Curva epidemica generale</a></li>
+  <li><a href="#una-curva-epidemica-per-ogni-ospedale" id="toc-una-curva-epidemica-per-ogni-ospedale" class="nav-link" data-scroll-target="#una-curva-epidemica-per-ogni-ospedale">3.3. Una curva epidemica per ogni ospedale</a></li>
   </ul></li>
-  <li><a href="#extra" id="toc-extra" class="nav-link" data-scroll-target="#extra"><strong>EXTRA</strong></a></li>
+  <li><a href="#considerazioni-finali" id="toc-considerazioni-finali" class="nav-link" data-scroll-target="#considerazioni-finali"><strong>Considerazioni finali</strong></a></li>
   </ul></li>
   <li><a href="#informazioni-sullesercizio" id="toc-informazioni-sullesercizio" class="nav-link" data-scroll-target="#informazioni-sullesercizio">Informazioni sull’esercizio</a></li>
   </ul></li>
@@ -141,8 +142,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="obiettivi-di-questa-sesione" class="level2">
 <h2 class="anchored" data-anchor-id="obiettivi-di-questa-sesione">Obiettivi di questa sesione</h2>
 <ul>
-<li><p>imparare a creare grafici con {ggplot2},</p></li>
-<li><p>essere in grado di condurre un’analisi stratificata rispetto ai potenziali fattori di rischio e ai confondenti/modificatori di effetto</p></li>
+<li><p>capire la grammatica di {ggplot2},</p></li>
+<li><p>imparare a fare grafici semplici</p></li>
 </ul>
 <section id="preparazione" class="level3">
 <h3 class="anchored" data-anchor-id="preparazione"><strong>Preparazione</strong></h3>
@@ -365,7 +366,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Creare un grafico a barre impilate (stacked) con il numero di casi per genere e ospedale. Segui i passi succesivi</p>
 <section id="comincia-per-aprire-il-grafico" class="level4">
 <h4 class="anchored" data-anchor-id="comincia-per-aprire-il-grafico">1.1. Comincia per “aprire il grafico”</h4>
-<p>Come abbiamo visto durante la lezione, <strong>il primo passo</strong> è aprire il grafico con la funzione <code>ggplot()</code>, dentro specifica il database che vogliamo usare per creare il grafico (<em>casi_ebola_pul</em>). Puoi specificare il database sia attraverso l’argomento <code>data =</code> dentro <code>ggplot()</code> oppure usare l’operatore pipe <code>%&gt;%</code>. Lancia il codice, dovresti vedere un grafico “vuoto” nella scheda “Plots”.</p>
+<p>Come abbiamo visto durante la lezione, <strong>il primo passo</strong> è aprire il grafico con la funzione <code>ggplot()</code>. Dentro specifica il database che vogliamo usare per creare il grafico: <em>casi_ebola_pul</em>. Puoi specificare il database sia attraverso l’argomento <code>data =</code> dentro <code>ggplot()</code> oppure usare l’operatore pipe <code>%&gt;%</code>. Lancia il codice. Dovresti vedere un grafico “vuoto” nella scheda “Plots”.</p>
 <details>
 <summary style="text-decoration: underline; color: red;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
@@ -374,20 +375,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Specificando il database dentro ggplot</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> casi_ebola_pul)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
 </div>
-</div>
+<div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="do">##usando l'operatore pipe</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>casi_ebola_pul <span class="sc">%&gt;%</span> </span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-3-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -408,8 +404,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Se lanci questo codice, cosa succedere?
-<div id="radio_DTXPQVOVBK" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_DTXPQVOVBK" value=""> <span>Niente</span></label><label><input type="radio" autocomplete="off" name="radio_DTXPQVOVBK" value="answer"> <span>Vedo un grafico vuoto, ma sull'asse orizzontale vedo i nomi degli ospedali</span></label><label><input type="radio" autocomplete="off" name="radio_DTXPQVOVBK" value=""> <span>Vedo un grafico a barre</span></label><label><input type="radio" autocomplete="off" name="radio_DTXPQVOVBK" value=""> <span>Vedo i nomi dei distritti</span></label>
+<div id="radio_SHXNWXJCUI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SHXNWXJCUI" value=""> <span>Niente</span></label><label><input type="radio" autocomplete="off" name="radio_SHXNWXJCUI" value="answer"> <span>Vedo un grafico vuoto, ma sull'asse orizzontale vedo i nomi degli ospedali</span></label><label><input type="radio" autocomplete="off" name="radio_SHXNWXJCUI" value=""> <span>Vedo un grafico a barre</span></label><label><input type="radio" autocomplete="off" name="radio_SHXNWXJCUI" value=""> <span>Vedo i nomi dei distritti</span></label>
 </div>
 </div>
 </div>
@@ -429,7 +425,7 @@ Domanda: Se lanci questo codice, cosa succedere?
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -449,8 +445,8 @@ Domanda: Se lanci questo codice, cosa succedere?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Qual è l’ospedale con maggio numero di casi?
-<div id="radio_JEMFEYTLKQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_JEMFEYTLKQ" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_JEMFEYTLKQ" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_JEMFEYTLKQ" value="answer"> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_JEMFEYTLKQ" value=""> <span>Military Hospital</span></label>
+<div id="radio_HCGDFQGUYC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HCGDFQGUYC" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_HCGDFQGUYC" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_HCGDFQGUYC" value="answer"> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_HCGDFQGUYC" value=""> <span>Military Hospital</span></label>
 </div>
 </div>
 </div>
@@ -471,7 +467,7 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -506,7 +502,7 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -553,7 +549,7 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -609,7 +605,7 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -708,7 +704,7 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -730,7 +726,7 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -774,7 +770,7 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -806,7 +802,7 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -822,8 +818,8 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Si vede una chiara associazione tra l’età in anni e la temperatura?
-<div id="radio_ZVLOQZSHRN" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZVLOQZSHRN" value=""> <span>Sì, c'è una chiara associazione positiva</span></label><label><input type="radio" autocomplete="off" name="radio_ZVLOQZSHRN" value=""> <span>Sì, c'è una chiara associazione negativa</span></label><label><input type="radio" autocomplete="off" name="radio_ZVLOQZSHRN" value="answer"> <span>No, sembra esserci una leggera associazione positiva ma non è chiaro</span></label><label><input type="radio" autocomplete="off" name="radio_ZVLOQZSHRN" value=""> <span>No, è impossibile saperlo</span></label>
+<div id="radio_LIQQVNLXZE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LIQQVNLXZE" value=""> <span>Sì, c'è una chiara associazione positiva</span></label><label><input type="radio" autocomplete="off" name="radio_LIQQVNLXZE" value=""> <span>Sì, c'è una chiara associazione negativa</span></label><label><input type="radio" autocomplete="off" name="radio_LIQQVNLXZE" value="answer"> <span>No, sembra esserci una leggera associazione positiva ma non è chiaro</span></label><label><input type="radio" autocomplete="off" name="radio_LIQQVNLXZE" value=""> <span>No, è impossibile saperlo</span></label>
 </div>
 </div>
 </div>
@@ -833,12 +829,12 @@ Domanda: Si vede una chiara associazione tra l’età in anni e la temperatura?
 </section>
 <section id="step-3-curva-epidemica-per-data-insorgenza-sintomi-e-ospedale" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-curva-epidemica-per-data-insorgenza-sintomi-e-ospedale"><strong>Step 3: Curva epidemica per data insorgenza sintomi e ospedale</strong></h3>
+<p>L’ultimo grafico che faremo oggi è una curva epidemica per data di insorgenza dei sintomi e ospedale. Ma, prima, dobbiamo verificare che le variabili che dobbiamo usare abbiano il formato giusto.</p>
 <section id="preparare-i-dati" class="level4">
 <h4 class="anchored" data-anchor-id="preparare-i-dati">3.1. Preparare i dati</h4>
-<p>L’ultimo grafico che faremmo oggi è una curva epidemica per data insorgenza sintomi e ospedale. Ma, prima, dobbiamo verificare che le variabili che dobbiamo usare abbiano il formatto giusto:</p>
 <ul>
-<li><p>Verifica che la data di insorgenza dei sintomi (variabile <em>date_onset</em>) sia di classe “Date”. Se non fosse di classe “Date”, transformala in questa classe usando <code>mutate()</code>. Questa modifica va fatta nel comando di pulizia che abbiamo creato nella sessione 2.</p></li>
-<li><p>Elimina le righe in cui l’ospedale è un valore mancante</p></li>
+<li><p>Verifica che la data di insorgenza dei sintomi (variabile <em>date_onset</em>) sia di classe “Date”. Se non fosse di classe “Date”, trasformala in questa classe usando <code>mutate()</code>. Questa modifica va fatta nel comando di pulizia che abbiamo creato nella sessione 2.</p></li>
+<li><p>Elimina le righe in cui l’ospedale è un valore mancante.</p></li>
 </ul>
 <details>
 <summary style="text-decoration: underline; color: red;">
@@ -853,7 +849,7 @@ Domanda: Si vede una chiara associazione tra l’età in anni e la temperatura?
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">##QUESTA RIGA DI CODICE VA AGGIUNTA AL COMMANDO DI PULIZIA</span></span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">##QUESTA RIGA DI CODICE VA AGGIUNTA AL COMMANDO DI PULIZIA ATTRAVERSO L'OPERATORE PIPE</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>(<span class="at">date_onset =</span> <span class="fu">as.Date</span>(date_onset))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
@@ -869,13 +865,13 @@ Domanda: Si vede una chiara associazione tra l’età in anni e la temperatura?
 <section id="curva-epidemica-generale" class="level4">
 <h4 class="anchored" data-anchor-id="curva-epidemica-generale">3.2. Curva epidemica generale</h4>
 <p><strong>Compito</strong></p>
-<p>Prima di fare la curva epidemica per ospedale, usa <code>geom_hisogram()</code> per creare curva epidemica per data di insorgenza dei sintomi in cui il colore dei quadrati dipenda dal ospedale. Ricordati di prima togliere i casi con dati mancanti su ospedale.</p>
+<p>Usa <code>geom_hisogram()</code> per creare una curva epidemica per data di insorgenza dei sintomi in cui il colore dei quadrati dipenda dal ospedale. Ricordati di prima togliere i casi con dati mancanti su ospedale.</p>
 <details>
 <summary style="text-decoration: underline; color: darkgreen;">
 <p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
 </summary>
 <p><br></p>
-<p>Come nel caso di <code>geom_bar()</code> nei grafici a barre, <code>geom_histogram()</code> è progettato per utilizzare dati individuali, quindi non è necessario aggregare i dati né assegnare l’estetica dell’asse verticale a <code>ggplot()</code>. <code>geom_histogram()</code> considererà ogni riga come un caso. Basta assegnare l’estetica dell’asse orizzontale (in questo caso <em>date_onset</em>). Il problema è che per fare la curva epidemica <strong>date_onset deve essere una variabile di classe “Date”</strong> mentre nel nostro</p>
+<p>Come nel caso di <code>geom_bar()</code> nei grafici a barre, <code>geom_histogram()</code> è progettato per utilizzare dati individuali, quindi non è necessario aggregare i dati né assegnare l’estetica dell’asse verticale a <code>ggplot()</code>. <code>geom_histogram()</code> considererà ogni riga come un caso. Basta assegnare l’estetica dell’asse orizzontale (in questo caso <em>date_onset</em>). Il problema è che per fare la curva epidemica <strong>date_onset deve essere una variabile di classe “Date”</strong> mentre nel nostro dataframe è di classe “character”. Cioè, testo. Dobbiamo allora trasformare questa colonna in classe “Date”.</p>
 <p><br></p>
 </details>
 <div class="callout callout-style-simple callout-note no-icon">
@@ -887,8 +883,8 @@ Domanda: Si vede una chiara associazione tra l’età in anni e la temperatura?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quando è stato raggiunto il pico della epidemia?
-<div id="radio_TJLSXZSLYH" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_TJLSXZSLYH" value=""> <span>Aprile 2015</span></label><label><input type="radio" autocomplete="off" name="radio_TJLSXZSLYH" value=""> <span>Aprile 2014</span></label><label><input type="radio" autocomplete="off" name="radio_TJLSXZSLYH" value=""> <span>Dicembre 2014</span></label><label><input type="radio" autocomplete="off" name="radio_TJLSXZSLYH" value="answer"> <span>Settembre 2014</span></label>
+<div id="radio_RBGIUWDIUQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RBGIUWDIUQ" value=""> <span>Aprile 2015</span></label><label><input type="radio" autocomplete="off" name="radio_RBGIUWDIUQ" value=""> <span>Aprile 2014</span></label><label><input type="radio" autocomplete="off" name="radio_RBGIUWDIUQ" value=""> <span>Dicembre 2014</span></label><label><input type="radio" autocomplete="off" name="radio_RBGIUWDIUQ" value="answer"> <span>Settembre 2014</span></label>
 </div>
 </div>
 </div>
@@ -913,7 +909,63 @@ Domanda: Quando è stato raggiunto il pico della epidemia?
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
+</section>
+<section id="una-curva-epidemica-per-ogni-ospedale" class="level4">
+<h4 class="anchored" data-anchor-id="una-curva-epidemica-per-ogni-ospedale">3.3. Una curva epidemica per ogni ospedale</h4>
+<p>Usa la funzione <code>facet_wrap()</code> per creare una curva epidemica per ogni ospedale nel database.</p>
+<details>
+<summary style="text-decoration: underline; color: darkgreen;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 384 512" style="height:1em;width:0.75em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:gold;overflow:visible;position:relative;"><path d="M297.2 248.9C311.6 228.3 320 203.2 320 176c0-70.7-57.3-128-128-128S64 105.3 64 176c0 27.2 8.4 52.3 22.8 72.9c3.7 5.3 8.1 11.3 12.8 17.7l0 0c12.9 17.7 28.3 38.9 39.8 59.8c10.4 19 15.7 38.8 18.3 57.5H109c-2.2-12-5.9-23.7-11.8-34.5c-9.9-18-22.2-34.9-34.5-51.8l0 0 0 0c-5.2-7.1-10.4-14.2-15.4-21.4C27.6 247.9 16 213.3 16 176C16 78.8 94.8 0 192 0s176 78.8 176 176c0 37.3-11.6 71.9-31.4 100.3c-5 7.2-10.2 14.3-15.4 21.4l0 0 0 0c-12.3 16.8-24.6 33.7-34.5 51.8c-5.9 10.8-9.6 22.5-11.8 34.5H226.4c2.6-18.7 7.9-38.6 18.3-57.5c11.5-20.9 26.9-42.1 39.8-59.8l0 0 0 0 0 0c4.7-6.4 9-12.4 12.7-17.7zM192 128c-26.5 0-48 21.5-48 48c0 8.8-7.2 16-16 16s-16-7.2-16-16c0-44.2 35.8-80 80-80c8.8 0 16 7.2 16 16s-7.2 16-16 16zm0 384c-44.2 0-80-35.8-80-80V416H272v16c0 44.2-35.8 80-80 80z"></path></svg> Clicca per leggere un suggerimento</p>
+</summary>
+<p><br></p>
+<p>Puoi aggiungere la funzione <code>facet_wrap()</code> al grafico attraverso il simbolo <code>+</code>. Dentro di questa funzione devi usare la tilde <code>~</code> e poi indicare la variabile che vuoi usare per creare i diversi grafici, in questo caso <code>hospital</code>. Puoi anche usare gli argomenti <code>scales =</code> per segnalare se vuoi che gli assi si addattino a ogni grafico, o <code>nrow =</code> e <code>ncol =</code> per cambiare la disposizione dei grafici.</p>
+<p><br></p>
+</details>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><strong>Rispondi</strong></p>
+<div class="webex-check">
+Domanda: Quale ospedale ha avuto i primi casi?
+<div id="radio_GPHXHJKLUY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GPHXHJKLUY" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_GPHXHJKLUY" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_GPHXHJKLUY" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_GPHXHJKLUY" value="answer"> <span>Port Hospital</span></label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<details>
+<summary style="text-decoration: underline; color: red;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 448 512" style="height:1em;width:0.88em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:red;overflow:visible;position:relative;"><path d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"></path></svg>Clicca per vedere la soluzione (provaci da solo prima!)</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>casi_ebola_pul <span class="sc">%&gt;%</span> </span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(hospital) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> date_onset, </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> hospital)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>hospital)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-25-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -922,10 +974,75 @@ Domanda: Quando è stato raggiunto il pico della epidemia?
 </details>
 </section>
 </section>
-<section id="extra" class="level3">
-<h3 class="anchored" data-anchor-id="extra"><strong>EXTRA</strong></h3>
-<p>Se hai finito l’esercizio e vuoi sapere di più, leggi le seguenti sezioni dell’EpiRhandbook e prova a implementare in questo database (o in un altro) le funzioni che impari:</p>
-<p><strong>Pivoting</strong>: Se sei arrivato fin qui, sei veramente forte. Potresti quindi dedicare un po’ di tempo a imparare un tema molto importante che non fa parte del corso: il pivoting, ovvero come modificare un database da lungo a largo e viceversa. Il pivoting è cruciale perché a volte il formato dei dati che vogliamo usare per presentare al pubblico ad esempio, in una tabella, entra in conflitto con il formato dei dati che R richiede per un’analisi efficiente. Puoi imparare tutto sul pivoting in questa <a href="https://epirhandbook.com/en/new_pages/pivoting.html">sezione</a> dell’EpiRhandbook</p>
+<section id="considerazioni-finali" class="level3">
+<h3 class="anchored" data-anchor-id="considerazioni-finali"><strong>Considerazioni finali</strong></h3>
+<p>Anche in questo caso, potresti pensare che il grafico che abbiamo appena fatto abbia bisogno di ulteriore formattazione prima di essere pronto per la pubblicazione. Hai ragione, sotto ti lasciamo un codice che rende più bello il grafico che abbiamo fatto. L’obiettivo di oggi era quello di stabilire le basi su come fare grafici con {ggplot2} con i primi tre passi della sequenza:</p>
+<ol type="1">
+<li>Aprire il grafico con la funzione <code>ggplot()</code> specificando il database</li>
+<li>Assegnare le variabili che vogliamo graficare dentro <code>aes()</code></li>
+<li>Scegliere il tipo di grafico che vogliamo con i diversi <code>geom()</code></li>
+<li>Modificare gli assi con <code>scale_()</code></li>
+<li>Formattare il grafico</li>
+</ol>
+<p>C’è tantissimo da imparare. Ma adesso, con la pratica, ti sentirai sempre più fiducioso. Ricorda che puoi sempre fare riferimento ai capitoli 30-39 dell’EpiRhandbook che descrivono in dettaglio come preparare grafici in R con la stessa sintassi che abbiamo visto oggi.</p>
+<details>
+<summary style="text-decoration: underline; color: darkorange;">
+<p><svg aria-hidden="true" role="img" viewbox="0 0 640 512" style="height:1em;width:1.25em;vertical-align:-0.125em;margin-left:auto;margin-right:auto;font-size:inherit;fill:darkorange;overflow:visible;position:relative;"><path d="M392.8 1.2c-17-4.9-34.7 5-39.6 22l-128 448c-4.9 17 5 34.7 22 39.6s34.7-5 39.6-22l128-448c4.9-17-5-34.7-22-39.6zm80.6 120.1c-12.5 12.5-12.5 32.8 0 45.3L562.7 256l-89.4 89.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l112-112c12.5-12.5 12.5-32.8 0-45.3l-112-112c-12.5-12.5-32.8-12.5-45.3 0zm-306.7 0c-12.5-12.5-32.8-12.5-45.3 0l-112 112c-12.5 12.5-12.5 32.8 0 45.3l112 112c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L77.3 256l89.4-89.4c12.5-12.5 12.5-32.8 0-45.3z"></path></svg>Clicca per vedere lo script</p>
+</summary>
+<p><br></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>casi_ebola_pul <span class="sc">%&gt;%</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">drop_na</span>(hospital) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> date_onset, </span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> hospital)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>() <span class="sc">+</span> </span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>hospital) <span class="sc">+</span> <span class="co">#fa un grafico per ogni ospedale</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),             <span class="co">#rimuovi lo spazio tra la linea orizzontale e il grafico</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_breaks =</span> <span class="st">"4 weeks"</span>) <span class="sc">+</span>   <span class="co">#vogliamo che mostri le date ogni 4 settimane</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>    <span class="at">expand =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>),             <span class="co">#rimuovi lo spazio tra la linea verticale e il grafico   </span></span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">40</span>, <span class="dv">50</span>, <span class="dv">60</span>)) <span class="sc">+</span>  <span class="co">#manualmente decidiamo i breaks</span></span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>  <span class="co">#qua scegliamo i colori con una palette da questo sito: https://colorbrewer2.org/#type=diverging&amp;scheme=RdYlGn&amp;n=5</span></span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_brewer</span>(<span class="at">type =</span> <span class="st">"div"</span>, <span class="at">palette =</span> <span class="st">"RdYlGn"</span>) <span class="sc">+</span> </span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Numero di casi di Ebola per ospedale"</span>,</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Numero di casi"</span>,</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Settimana di notifica"</span>,</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Ospedale"</span></span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span> </span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)  <span class="co">#mettiamo le date verticalmente</span></span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>  <span class="co">#questa funzione (dallo stesso pachetto) mette nel background la curva epidemica generale</span></span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>  gghighlight<span class="sc">::</span><span class="fu">gghighlight</span>()   </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="sessione4_grafici_stratificata_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><br></p>
+</details>
 </section>
 </section>
 <section id="informazioni-sullesercizio" class="level2">

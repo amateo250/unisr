@@ -62,7 +62,9 @@ casi_ebola_pul <- casi_ebola_grezzo %>%
       date_infection = infection_date
   ) %>% 
   
-  select(-merged_header, -x28) %>% #rimuove queste colonne
+  select(-merged_header, -x28)  %>% 
+  
+  #rimuove queste colonne
   
   #funzioni come starts_with() o everything() o contains() (non utilizzata qua) 
   #sono funzioni che ci rendono la vita molto più facile
@@ -196,6 +198,56 @@ casi_ebola_pul %>%
   tbl_summary(by = gender) %>%  #crea la tabella per gender
   add_p()  #calcola test d'ipotesi
   
+
+
+
+# Grafici -----------------------------------------------------------------
+
+#Obiettivo: grafico a barre di numero di casi per genere e i colori per outcome
+
+
+casi_ebola_pul %>% 
+  drop_na(gender, outcome) %>% 
+ggplot(mapping = aes(x = gender,
+                     fill = outcome)) +
+  
+  geom_bar() +
+  
+  scale_y_continuous(breaks = c(0, 50, 100, 150, 200, 210)) + 
+  
+  scale_fill_manual(values = c("blue", "orange")) + 
+  
+  labs(
+    title = "Numero di casi di Ebola per genere e outcome",
+    y = "Numero di casi",
+    x = "Genere",
+    fill = "Esito"
+  ) + 
+  theme(axis.title.x = element_text(face = "bold")) +
+  theme(panel.background = element_rect(fill = "lightblue"))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # SESSIONE 4 --------------------------------------------------------------
 
 
@@ -230,15 +282,15 @@ casi_ebola_pul %>%
     "maschi"  = "Maschi"
   )) + 
   
-  #here we increase the number of breaks in the y axis
+  #aumentiamo il numero di intervalli nell'asse verticale
   scale_y_continuous(n.breaks = 10) + 
   
-  #we add a predefined theme
+  #aggiungiamo un theme pre-fabbricato 
   theme_bw() +
   
-  #we change a specific aspect of the text of the x axis with them, so that the name is readable
+  #mettiamo in grasseto il nome degli ospedali
   theme(
-    axis.text.x = element_text(angle = 90)
+    axis.text.x = element_text(face = "bold")
   )
 
 ### Stesso grafico a barre con dati aggregati usando geom_col()
@@ -278,7 +330,8 @@ class(casi_ebola_pul$date_onset)
 
 
 # curva epidemica
-casi_ebola_pul %>% 
+casi_ebola_pul %>%
+  
   drop_na(hospital) %>% 
   
   ggplot(
@@ -287,7 +340,40 @@ casi_ebola_pul %>%
       fill = hospital)
   ) + 
   
-  geom_histogram() 
+  geom_histogram() + 
+  
+  facet_wrap(~hospital) + #fa un grafico per ogni ospedale
+  
+  
+  scale_x_date(
+    expand = c(0,0),             #rimuovi lo spazio tra la linea orizzontale e il grafico
+    date_breaks = "4 weeks") +   #vogliamo che mostri le date ogni 4 settimane
+  
+  scale_y_continuous(
+    expand = c(0,0),             #rimuovi lo spazio tra la linea verticale e il grafico   
+    breaks = c(0, 10, 20, 30, 40, 50, 60)) +  #manualmente decidiamo i breaks
+  
+  
+  #qua scegliamo i colori con una palette da questo sito: https://colorbrewer2.org/#type=diverging&scheme=RdYlGn&n=5
+  scale_fill_brewer(type = "div", palette = "RdYlGn") + 
+  
+  labs(
+    title = "Numero di casi di Ebola per ospedale",
+    y = "Numero di casi",
+    x = "Settimana di notifica",
+    fill = "Ospedale"
+  ) + 
+  
+  theme_bw() + 
+  
+  theme(
+    axis.text.x = element_text(angle = 90)  #mettiamo le date verticalmente
+  ) +
+  
+  #questa funzione (dallo stesso pachetto) mette nel background la curva epidemica generale
+  gghighlight::gghighlight()   
+  
+  
 
 
 
