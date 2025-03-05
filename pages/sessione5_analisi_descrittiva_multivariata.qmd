@@ -22,175 +22,107 @@ title: |
 
 # **Master II livello Epidemiologia - Programmi Statistici**
 
-# Sessione 5 - Analisi stratificata e multivariabile:  {.unnumbered}
+# Sessione 5 - Analisi descrittiva stratificata e test d'ipotesi:  {.unnumbered}
 
 ## Obiettivi di questa sesione
 
 
-- conoscere ed essere in grado di eseguire i passaggi fondamentali di un'analisi statistica descrittiva di un focolaio di origine alimentare (inclusa la valutazione quantitativa (distribuzioni di frequenza, valori mancanti, medie/mediane/mode, quartili/DS) e visualizzazione dei dati (istogramma, boxplot))
+- conoscere ed essere in grado di eseguire i passaggi fondamentali di un'analisi statistica descrittiva 
 
-- essere in grado di eseguire analisi statistiche univariate per identificare potenziali veicoli di un focolaio di origine alimentare (inclusi rapporti di rischio e/o rapporti di probabilità, a seconda del design)
-
-- sapere perché e come la stratificazione può essere condotta in set di dati correlati a un'indagine sul focolaio
+- essere in grado di eseguire analisi statistiche univariate 
 
 - essere in grado di condurre un'analisi stratificata rispetto a potenziali fattori di rischio e fattori confondenti/modificatori di effetto
-
--ANALASI MULTIVARIATA
-
 
 ### **Preparazione**
 
 Assicurati di avere RStudio aperto con il **progetto *prog_stat_mepi***
 
-### **Scenario, study design and analysis plan**
-#### Introduction 
+### **Scenario, disegno dello studio e piano di analisi**
+#### Introduzione
 
-On 26 June 1998, the St Sebastian High School in Stegen (school A), Germany, celebrated a graduation party, where 250 to 350 participants were expected. Attendees included graduates from that school, their families and friends, teachers, 12th grade students and some graduates from a nearby school (school B).
+Il 26 giugno 2025, la Università Vita-Salute San Raffaele ha celebrato la festa di laurea della prima edizione del suo Master di II livello in epidemiologia, a cui erano attesi dai 250 ai 350 partecipanti. Tra i partecipanti c'erano i laureati di quella scuola, le loro famiglie e amici, insegnanti, studenti di medicina e alcuni laureati di una università vicina.
 
-A self-service party buffet was supplied by a commercial caterer in Freiburg. Food was prepared on the day of the party and transported in a refrigerated van to the school.  
+Un buffet self-service per la festa è stato fornito da un catering commerciale di Milano. Il cibo è stato preparato il giorno della festa e trasportato in un furgone refrigerato alla scuola.
 
-Festivities started with a dinner buffet which opened from 8:30 pm onwards and were followed by a dessert buffet offered from 10 pm. The party and the buffet extended late during the night and alcoholic beverages were quite popular. All agreed it was a party to be remembered.
+I festeggiamenti sono iniziati con una cena a buffet aperta dalle 20:30 in poi e sono stati seguiti da un buffet di dessert offerto dalle 22:00. La festa e il buffet si sono protratti fino a tarda notte e le bevande alcoliche sono state molto apprezzate. Tutti hanno convenuto che si trattava di una festa da ricordare.
 
+#### L'allarme
 
-#### The alert
+Il 2 luglio 2025, l'ATS di Milano ha segnalato al Servizio di Epidemiologia della Regione Lombardia e all'ISS di Roma la notifica di numerosi casi di gastroenterite in seguito alla festa di laurea sopra descritta. Sono stati sospettati più di 100 casi tra i partecipanti e alcuni di loro sono stati ricoverati in ospedali vicini. I malati hanno sofferto di febbre, nausea, diarrea e vomito che sono durati diversi giorni. La maggior parte ha ritenuto che il tiramisù consumato a cena fosse responsabile della loro malattia. La Salmonella Enteritidis è stata isolata da 19 campioni di feci.
 
-On 2nd July 1998, the Freiburg local health office reported to the Robert Koch Institute (RKI) in Berlin the occurrence of many cases of gastroenteritis following the graduation party described above. More than 100 cases were suspected among attendees and some of them were admitted to nearby hospitals. Sick people suffered from fever, nausea, diarrhoea and vomiting that lasted for several days. Most believed that the tiramisu consumed at dinner was responsible for their illness. Salmonella Enteritidis was isolated from 19 stool samples. 
+L'ATS di Milano ha inviato un team per esaminare le strutture della cucina del catering. Sono state esaminate le procedure di preparazione del cibo. I campioni di cibo, ad eccezione del tiramisù (non è rimasto nulla), sono stati inviati al laboratorio regionale di riferimento. 
 
-The Freiburg health office sent a team to investigate the kitchen facilities of the caterer. Food preparation procedures were reviewed. Food samples, except tiramisu (none was left over), were sent to the laboratory of Freiburg University. Microbiological analyses were performed on samples of the following: brown chocolate mousse, caramel cream, remoulade sauce, yoghurt dill sauce and 10 raw eggs.  
- 
-The Freiburg health office requested help from the RKI in the investigation to assess the magnitude of the outbreak and identify potential vehicle(s) and risk factors for transmission in order to better control the outbreak.
+L'ATS di Milano, con il supporto regionale e dell'ISS ha cominciato l'indagine per valutare l'entità dell'epidemia e identificare potenziali veicoli e fattori di rischio per la trasmissione, al fine di controllare meglio il focolaio.
 
+#### Lo studio
 
-#### The study
+I casi sono stati definiti come qualsiasi persona che avesse partecipato alla festa e che avesse sofferto di diarrea (≥ 3 feci liquide o semi-formate in 24 ore) tra il 27 giugno e il 29 giugno 2025; o che avesse sofferto di almeno tre dei seguenti sintomi: vomito, febbre ≥38,5°C, nausea, dolore addominale e mal di testa.
 
-Cases were defined as any person who had attended the party at St Sebastian High School who suffered from diarrhoea (≥ 3 loose stool for 24 hours) between 27 June and 29 June 1998; or who suffered from at least three of the following symptoms: vomiting, fever ≥38.5°C, nausea, abdominal pain, and headache.
+Agli studenti di entrambe università che hanno partecipato alla festa è stato chiesto tramite interviste telefoniche di fornire i nomi delle persone che hanno partecipato alla festa.
 
-Students from both schools attending the party were asked through phone interviews to provide names of persons who attended the party. 
+In totale, 291 hanno risposto al questionario e sono stati identificati 103 casi (tasso di attacco: 35%). Tra questi casi, 84 (82%) hanno ricevuto cure mediche e quattro sono stati ricoverati in ospedale. I tassi di attacco per fascia d'età erano del 36,6% per le persone <20 anni, del 32,1% per le persone dai 20 ai 29 anni e del 36,8% per le persone di età superiore ai 29 anni.
 
-Overall, 291 responded to enquiries and 103 cases were identified (attack rate: 35%). Among these cases, 84 (82%) received medical treatment and four were admitted to hospitals. Attack rates by age group were 36.6% for persons <20 years, 32.1% for persons 20 to 29 years, and 36.8% for persons older than 29 years. 
+![Figura 1: Casi di gastroenterite per data inizio sintomi tra i partecipanti alla festa di laurea (n=103), Milano, Giugno 2025](images/curva_epi_sessione5.png)
 
-![Figure 1: Cases of gastroenteritis by time of onset among attendees of a high-school graduation ceremony (n=103), Germany, June 1998](images/stegen/figure1.png)
 
 
-**QUESTION 1**. What would be your hypothesis concerning the source of the outbreak?
+Utilizzando l'elenco aggiornato dei partecipanti, si vuole fare uno **studio di coorte retrospettivo** includendo tutti i partecipanti alla festa. I partecipanti che hanno risposto alla chiamata hanno ricevuto un questionario standard che chiedeva informazioni demografiche, segni, sintomi e durata, ricovero in ospedale e consumo di cibo e bevande alla festa, inclusa la quantità consumata. Sono stati calcolati tassi di attacco specifici per cibo per oltre 50 alimenti e bevande.
 
-<details>
+Lo studio dovrò seguire questi passaggi:
 
-<summary style="text-decoration: underline; color: red;">
+**Eseguire la pulizia dei dati**
 
-`r fontawesome::fa("check", fill = "red")`Click to see the solution
+- Per ciascuna variabile, esaminare l'intervallo, i valori inattesi e mancanti.
 
-</summary>
+**Descrivere ogni variabile**
 
-</br>
+- Per ogni variabile, descrivere le distribuzioni di frequenza, inclusi i valori mancanti e, se necessario, medie, mediana, mode, quartili, deviazione standard, valori anomali
 
-The shape of the epidemic curve and the attendance to a single event (a buffet) pointed towards a foodborne outbreak related to a **point source of infection.**
+- Creare istogrammi e box plot se appropriato
 
-</br>
+- Scegliere le caratteristiche rilevanti per descrivere la popolazione
 
-</details>
+**Identificare la fonte del focolaio, se presente**
 
+- Calcolare i tassi di attacco specifici per alimento
 
-**QUESTION 2**. What study design would you choose to test this hypothesis?
+- Esaminare le proporzioni di casi esposti
 
-<details>
+- Scegliere la misura di associazione appropriata
 
-<summary style="text-decoration: underline; color: red;">
+- Scegliere i test statistici appropriati e il livello di significatività
 
-`r fontawesome::fa("check", fill = "red")`Click to see the solution
+- Calcolare le percentuali di casi esposti a ciascuna esposizione
 
-</summary>
+- Cercare qualsiasi relazione dose-risposta, se appropriato
 
-</br>
+- Interpretare i risultati
 
-Using the updated list of attendants, a **retrospective cohort study** including all attendants to the party (that could be reached) was conducted. All had received a standard questionnaire asking for demographic information, signs, symptoms and duration, admission to hospital, and food and beverages consumption at the party including amount consumed. Food-specific attack rates were computed for more than 50 food items and beverages.
+**Eseguire un'analisi stratificata**
 
+- Identificare le variabili che sono potenziali modificatori dell'effetto (EM) e fattori confondenti
 
-</br>
+- Progettare tabelle di stratificazione appropriate
 
-</details>
+- Stratificare su ciascun livello assunto dall'EM e dai fattori confondenti
 
-**QUESTION 3**. What would your overall plan of analysis be?
+- Calcolare le misurazioni appropriate per identificare i fattori confondenti e la modifica dell'effetto
 
-<details>
+- Condurre test statistici appropriati
 
-<summary style="text-decoration: underline; color: red;">
+- Interpretare i risultati
 
-`r fontawesome::fa("check", fill = "red")`Click to see the solution
-
-</summary>
-
-</br>
-
-**Perform data cleaning**
-
--   For each variable, look at the range, unexpected and missing values.
-
--   Correct data using the original forms used if needed 
-
-**Describe each variable**
-
--   For each variable, describe frequency distributions including missing values and, if needed, means, median, modes, quartiles, standard deviation, outliers 
-
--   Make appropriate histograms and box plots
-
--   Choose relevant characteristics to describe the population
-
-**Identify the outbreak vehicle if any**
-
--   Calculate food-specific attack rates
-
--   Look at the proportions of cases exposed
-
--   Chose the appropriate measure of association
-
--   Chose the appropriate statistical tests and significance level
-
--   Calculate the percentages of cases exposed to each exposure
-
--   Search for any dose-response relationship if appropriate
-
--   Interpret the results
-
-**Perform a stratified analysis**
-
--   Identify the variables that are potential effect modifiers (EM) and confounders
-
--   Design appropriate stratification tables
-
--   Stratify on each level taken by the EM and confounders
-
--   Compute appropriate measurements to identify confounding and effect modification
-
--   Conduct appropriate statistical tests
-
--   Interpret the results
-
-**Perform a multivariable analysis**
-
--   This will be discussed during the module.
-
-</br>
-
-</details>
-
-
-
-
-### **Descriptive, univariable and stratified analysis with R**
 
 ### **Step 1: Set up**
 
-**Tasks:**
+**Compiti:**
 
--   Ensure your working language in RStudio is English
--   Set up a R Studio project
--   Create an R script, or an Rmarkdown file if you prefer. Make sure
-    the script purpose, date, and author are written as comments at the
-    top.
--   Make sure your folders/subfolders are well-organised
--   Install and load the following packages: rio, skimr, janitor, gtsummary,
-rstatix, epitools, epiR, epikit and tidyverse
+-   Scaricare la cartella *tiramisu_unisr* ed estrarre i contenuti
+-   Crea un progetto di RStudio dentro la cartella *tiramisu_unisr*
+-   Care uno script di R, assicurati di includere all'inizio dello script nome e
+    cognome; obiettivo dello script; tua email e la data. 
+-   Comincia per istallare e caricare questi pachetti: rio, skimr, janitor, gtsummary,
+rstatix, epitools, epiR, epikit, EpiStats and tidyverse
 
 <details>
 
@@ -204,16 +136,11 @@ it yourself first!)
 </br>
 
 ```{r , echo=TRUE, results = 'hide'}
-# To see your language locale 
-Sys.getlocale() 
-
-# To change it into English 
-Sys.setlocale("LC_ALL", "English")  
-
-
-# Ensures the package "pacman" is installed
-if (!require("pacman")) {
-     install.packages("pacman") }
+## Programmi Statistici - MEPI
+## Autore: Alberto Mateo Urdiales
+## Obiettivo: Indagine epidemiologica su focolaio di gastroenterita UNISR
+## Contatto: alberto.mateourdiales@iss.it
+## Data ultimo aggiornamento: 21 marzo 2025
 
 pacman::p_load(
   
@@ -225,8 +152,8 @@ pacman::p_load(
   epitools,        # for univariable analysis
   epikit,          # for creating age categories
   epiR,            # for the adjusted risk ratios across strata
-  tidyverse,   # data management and visualization
-  EpiStats #load EpiStats package for univariable and stratified analysis
+  EpiStats,        #load EpiStats package for univariable and stratified analysis
+  tidyverse        # data management and visualization
 )
 
 ```
@@ -235,19 +162,16 @@ pacman::p_load(
 
 </details>
 
-### **Step 2: Import and explore data**
+### **Step 2: Leggere ed esplorare i dati**
 
 ```{r, include=FALSE}
-tira_raw <- import("../cs/ENG/stegen_mva/data/tira.csv")
+tira_grezzo <- import("../sessioni/prog_stat_mepi/data/tiramisu_unisr.txt")
 ```
 
-#### 2.1: Import the data 
-**Tasks** 
+#### 2.1: Leggere i dati 
+**Compiti** 
 
--   Import the data frame called "tira.csv" inside the "data" subfolder. 
--   Explore the data trying to answer the following questions:
-
-
+-   Importa il database chiamato *tiramisu_unisr.txt* dentro della sottocarella "data". 
 
 
 
@@ -264,7 +188,7 @@ it yourself first!)
 
 ```{r , echo=TRUE, eval=FALSE}
 # Import the dataset 'tira.csv'  
-tira_raw <- import("data/tira.csv") 
+tira_grezzo <- import("data/tiramisu_unisr.txt") 
 ```
 
 
@@ -274,27 +198,28 @@ tira_raw <- import("data/tira.csv")
 
 
 
-#### 2.2: Explore the data 
+#### 2.2: Esplorare i dati 
 
-**Task**: Explore the data trying to answer the following questions:
+**Compito**: Esplora i dati cercando di rispondere a queste domande:
+
 
 ::: {.callout-note appearance="minimal" icon="false"}
 
-**Test yourself!**
+**Rispondi!**
 
 ::: webex-check
 ```{r, results="asis", echo=FALSE}
 pacman::p_load(webexercises)
 
 opts <- c(
-  "522 and 8",
-  "2 and 345",
-  answer = "291 and 20",
-  "600 and 23"
+  "522 e 8",
+  "2 e 345",
+  answer = "291 e 21",
+  "600 e 23"
 )
 
 
-cat("QUESTION: How many rows and columns does the dataframe have?", longmcq(opts))
+cat("DOMANDA: Quante righe e colonne ha il database??", longmcq(opts))
 
 ```
 :::
@@ -312,7 +237,7 @@ opts <- c(
 )
 
 
-cat("QUESTION: How many cases have 'age' missing?", longmcq(opts))
+cat("DOMANDA: Quanti dati mancanti ci sono nella colonna 'age'?", longmcq(opts))
 
 ```
 :::
@@ -330,7 +255,7 @@ opts <- c(
 )
 
 
-cat("QUESTION: What is the class of the column 'salmon'?", longmcq(opts))
+cat("DOMANDA: Qual è la classe della variabile 'salmon'?", longmcq(opts))
 
 ```
 :::
@@ -341,14 +266,14 @@ cat("QUESTION: What is the class of the column 'salmon'?", longmcq(opts))
 pacman::p_load(webexercises)
 
 opts <- c(
-  "83%",
-  "70%",
-  answer = "29%",
+  "83,7%",
+  "70,3",
+  answer = "28,5%",
   "6%"
 )
 
 
-cat("QUESTION: What percentage of attendees ate tomato?", longmcq(opts))
+cat("DOMANDA: Che percentuale di partecipanti ha mangiato 'tomato'?", longmcq(opts))
 
 ```
 :::
@@ -366,7 +291,7 @@ opts <- c(
 )
 
 
-cat("QUESTION: What is the class of the column 'dateonset'?", longmcq(opts))
+cat("DOMANDA: Qual è la classe della colonna 'dateonset'?", longmcq(opts))
 
 ```
 :::
@@ -377,14 +302,14 @@ cat("QUESTION: What is the class of the column 'dateonset'?", longmcq(opts))
 pacman::p_load(webexercises)
 
 opts <- c(
-  "As 'NA'",
-  "As empy spaces",
-  "With an 'Unknown' cateogry",
-  answer = "With the number 9"
+  "Come 'NA'",
+  "Come celle vuote",
+  "Con la categoria 'Unknown'",
+  answer = "Con il numero 9"
 )
 
 
-cat("QUESTION: How are missing categorised in the variables 'salmon', 'horseradish' and 'pork'?", longmcq(opts))
+cat("DOMANDA: Come sono categorizzati i valori mancanti nelle variabili 'salmon', 'horseradish' e 'pork'?", longmcq(opts))
 
 ```
 :::
@@ -400,8 +325,8 @@ cat("QUESTION: How are missing categorised in the variables 'salmon', 'horseradi
 
 </br>
 
-An efficient way to explore data is to use the function `skim()` from the {skimr} package, as it gives you all the information needed with only one command. Of course, there are several alternatives. You can also have a look at `glimpse()` from {dplyr}, for example.
-An easy way to explore single variables that have categories is to use `tabyl()` from {janitor}
+Un modo efficiente per esplorare i dati è usare la funzione `skim()` dal pacchetto {skimr}, poiché fornisce tutte le informazioni necessarie con un solo comando. Naturalmente, ci sono diverse alternative. Puoi anche dare un'occhiata a `glimpse()` da {dplyr}, ad esempio.
+Un modo semplice per esplorare singole variabili che hanno categorie è usare `tabyl()` da {janitor}
 </br>
 
 </details>
@@ -420,11 +345,11 @@ it yourself first!)
 
 ```{r , echo=TRUE}
 # Inspect your dataset and generate basic statistics using the skim function  
-skim(tira_raw)
+skim(tira_grezzo)
 # Glimpse is an alternative to skim which gives more accurate information about the nature of the  variables
-glimpse(tira_raw)
+glimpse(tira_grezzo)
 # To see the different categories of the variables
-tabyl(tira_raw, tomato)
+tabyl(tira_grezzo, tomato)
 
 ```
 
@@ -434,13 +359,13 @@ tabyl(tira_raw, tomato)
 </details>
 
 
-#### 2.3: Explore age in more detail 
+#### 2.3: Esplorare 'age' in modo più dettagliato 
 
-**Task** Explore the age of attendees by: 
+**Compito** Esplora l'età dei partecipanti (colonna 'age') per:
 
-- Getting summary statistics
+- Ottenere statistiche riassuntive
 
-- Generating a boxplot of age by illness status.
+- Generare un boxplot dell'età in base allo stato di malattia.
 
 
 <details>
@@ -453,14 +378,11 @@ tabyl(tira_raw, tomato)
 
 </br>
 
-You can create a boxplot with {ggplot2} by using the geom `geom_boxplot()`.  In order to create two boxes, one for each illness status, you can assign in the aesthetics the column *ill* to both the x-axis and the fill. Don't worry if it doesn't look good right now....it should look like the solution below. If you need a refresher on how ggplot works, have a look at the EpiRhandbook [Chapter](https://epirhandbook.com/new_pages/ggplot_basics.html)
+Puoi creare un boxplot con {ggplot2} usando la geom `geom_boxplot()`. Per creare due box, uno per ogni stato di malattia, puoi assegnare nell'estetica la colonna *ill* sia all'asse x che al riempimento. Non preoccuparti se non ti sembra bello... dovrebbe essere come la soluzione riportata sotto. Se hai bisogno di un ripasso su come funziona ggplot, dai un'occhiata al  [Capitolo](https://epirhandbook.com/new_pages/ggplot_basics.html) dell'EpiRhandbook
 
 </br>
 
 </details>
-
-
-
 
 
 <details>
@@ -476,10 +398,10 @@ it yourself first!)
 
 ```{r , echo=TRUE, warning=TRUE}
 ## Generate summary statistics 
-summary(tira_raw$age)
+summary(tira_grezzo$age)
 
 ### Creating a boxplot of age by illness status
-boxplot_age <- tira_raw %>% 
+boxplot_eta <- tira_grezzo %>% 
   
   ggplot(mapping = aes(x = ill,
                        y = age,
@@ -488,15 +410,15 @@ boxplot_age <- tira_raw %>%
   geom_boxplot() + 
   
   labs(
-    title = "Boxplot: Age distribution per illness status",
-    x = "Disease status",
-    y = "Age",
-    fill = "Illness (0=No;1=Yes)"
+    title = "Boxplot: Distribuzione dell'età per stato di salute",
+    x = "Stato di salute",
+    y = "Età",
+    fill = "Malattia (0=No;1=Sì)"
   ) +
   
   theme_bw()
 
-boxplot_age
+boxplot_eta
 ```
 
 </br>
@@ -506,7 +428,7 @@ boxplot_age
 
 ::: {.callout-note appearance="minimal" icon="false"}  
 
-**Test yourself!**  
+**Rispondi!**  
 
 ::: webex-check
 ```{r, results="asis", echo=FALSE}
@@ -515,24 +437,24 @@ pacman::p_load(webexercises)
 opts <- c(
   "No ill",
   "Ill",
-  answer = "Impossible to know from this boxplot"
+  answer = "Impossibile di sapere con questo boxplot"
 )
 
 
-cat("QUESTION: Which group (ill or not ill) has more variation around age's median?", longmcq(opts))
+cat("DOMANDA: Guardando il boxplot, quale gruppo (ill o no-ill) ha una maggior variazione dei dati in torno alla mediana di età?", longmcq(opts))
 
 ```
 :::
 ::: 
 
-We were not able to create the boxplot that we aimed for. In fact, you can see that a warning message appeared in your console saying: "Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?"
+Non siamo riusciti a creare il boxplot che volevamo. Infatti, puoi vedere che è apparso un messaggio di avviso nella tua console che dice: "Did you forget to specify a `group` aesthetic or to convert a numerical variable into a factor?"
 
-Looks like all columns that consist of 1 (present) and 0 (absent) values are of class 'integer', including "ill". Integer means that they are considered numbers. However, we want them to be categories, otherwise we won't be able to carry out many of the analysis we want (including this boxplot). So, now we'll sort this out alongside other cleaning operations.  
+Sembra che tutte le colonne che consistono di valori 1 (presenti) e 0 (assenti) siano di classe 'integer', anche "ill". Integer significa che sono considerati numeri. Tuttavia, noi vogliamo che siano categorie, altrimenti non saremo in grado di eseguire molte delle analisi che vogliamo (incluso questo boxplot). Quindi, ora risolveremo questo problema insieme ad altre operazioni di pulizia.  
 
-### **Step 3: Clean the data**
+### **Step 3: Pulizia dei dati**
 
 #### 3.1: Transform categorical variables
-**Task**: Change all present (1) / absent (0) variables from integer to factors. Do the same for the variables that record the number of portions eaten.
+**Compito**: Change all present (1) / absent (0) variables from integer to factors. Do the same for the variables that record the number of portions eaten.
 
 <details>
 
@@ -561,7 +483,7 @@ it yourself first!)
 </br>
 
 ```{r , echo=TRUE}
-tira_clean <- tira_raw %>% # tira_clean will be out clean dataframe after we have performed cleaning tasks on tira_raw
+tira_clean <- tira_grezzo %>% # tira_clean will be out clean dataframe after we have performed cleaning Compiti on tira_grezzo
   
   # this would be changing one-by-one the columns into numeric variables
   mutate(ill = as.numeric(ill)) %>% 
@@ -583,7 +505,7 @@ glimpse(tira_clean)
 #### 3.2: Categorise "missing" as NA
 We saw with the `skim()` overview -and in the data dictionary- that the variables *salmon*, *pork* and *horseradish* have 'missing' codified with number '9'. In most analysis and visualisations, it is very important that R considers missing data truly as "missing". To do that, missing data needs to be coded as NA (**without quotes**). Other codifications of missing data, such as empty spaces or the number 9 (as in this case) will mean that R will treat this data as a category or a number. For R, 9 is not different from number 1.
 
-**Task** Recode the columns salmon, pork and horseradish so that values of 9 are coded as NA. Add the new code to the cleaning pipeline initiated in the previous step
+**Compito** Recode the columns salmon, pork and horseradish so that values of 9 are coded as NA. Add the new code to the cleaning pipeline initiated in the previous step
 
 <details>
 
@@ -595,7 +517,7 @@ We saw with the `skim()` overview -and in the data dictionary- that the variable
 
 </br>
 
-For this task you can use the `mutate()` function in combination with `case_match()` or `if_else()`. The former is used specifically for recoding, whereas the latter is used to create/modify columns based on logical conditions. In any case, functions like `if_else()` and `case_match()` may require you to specify the type of NA (e.g., NA_character_, NA_real_, NA_integer_) to ensure that the resulting vector maintains a consistent data type. This is important because R is strongly typed, meaning that each vector must contain elements of the same type.
+For this Compito you can use the `mutate()` function in combination with `case_match()` or `if_else()`. The former is used specifically for recoding, whereas the latter is used to create/modify columns based on logical conditions. In any case, functions like `if_else()` and `case_match()` may require you to specify the type of NA (e.g., NA_character_, NA_real_, NA_integer_) to ensure that the resulting vector maintains a consistent data type. This is important because R is strongly typed, meaning that each vector must contain elements of the same type.
 If you want to know more about recoding, read the EpiRhandbook section on [Recoding](https://epirhandbook.com/new_pages/cleaning.html#re-code-values). Regardless of the approach that you choose, add it to the cleaning pipe command you started before, so that your code is tidy.
 </br>
 
@@ -614,8 +536,8 @@ it yourself first!)
 </br>
 
 ```{r , echo=TRUE}
-tira_clean <- tira_raw %>% 
-  # tira_clean will be our clean dataframe after we have performed cleaning tasks on tira_raw
+tira_clean <- tira_grezzo %>% 
+  # tira_clean will be our clean dataframe after we have performed cleaning Compiti on tira_grezzo
   
   # this would be changing one-by-one the columns into numeric variable
   mutate(ill = as.numeric(ill))
@@ -647,7 +569,7 @@ tabyl(tira_clean, pork)
 #### 3.3: Re-categorise mousse and tiramisu portions
 We saw that there are two columns -*tportion* and *mportion*- that have four categories according to the number of portions eaten. However, exploring these columns we can see that few people ate 3 portions. The low number in this category means that it will be very difficult to have meaningful results due to the wide uncertainty that we'll find in the estimates.
 
-**Task**: Re-categorise these columns so that they have three categories: 0,1 and 2+ portions eaten. Add the new code to the cleaning pipeline initiated previously. 
+**Compito**: Re-categorise these columns so that they have three categories: 0,1 and 2+ portions eaten. Add the new code to the cleaning pipeline initiated previously. 
 
 <details>
 
@@ -684,7 +606,7 @@ tabyl(tira_clean, tportion)
 tabyl(tira_clean, mportion)
 
 #Run cleaning pipe line with new code
-tira_clean <- tira_raw %>% # tira_clean will be out clean dataframe after we have performed cleaning tasks on tira_raw
+tira_clean <- tira_grezzo %>% # tira_clean will be out clean dataframe after we have performed cleaning Compiti on tira_grezzo
   
   # this would be changing one-by-one the columns into numeric variable
   mutate(ill = as.numeric(ill)) %>% 
@@ -718,7 +640,7 @@ tabyl(tira_clean, mportion2)
 #### 3.4: Create age groups
 
 
-**Task**: Create a new variable with two categories (those aged < age's median and those >=age's median). **Add the code to create this new variable to the cleaning command you created above to ensure your code is tidy. Do not write multiple cleaning commands**
+**Compito**: Create a new variable with two categories (those aged < age's median and those >=age's median). **Add the code to create this new variable to the cleaning command you created above to ensure your code is tidy. Do not write multiple cleaning commands**
 
 <details>
 
@@ -748,7 +670,7 @@ it yourself first!)
 </br>
 
 ```{r , echo=TRUE}
-tira_clean <- tira_clean %>% # tira_clean will be out clean dataframe after we have performed cleaning tasks on tira_raw
+tira_clean <- tira_clean %>% # tira_clean will be out clean dataframe after we have performed cleaning Compiti on tira_grezzo
   
   # this would be changing one-by-one the columns into numeric variable
   mutate(ill = as.numeric(ill)) %>% 
@@ -794,7 +716,7 @@ tabyl(tira_clean, age_group)
 
 
 #### 3.5: Re-create the boxplot
-**Task**: Create the boxplot we tried in **2.3** using the clean version of the data. Save the boxplot in the subfolder "outputs".
+**Compito**: Create the boxplot we tried in **2.3** using the clean version of the data. Save the boxplot in the subfolder "outputs".
 
 <details>
 
@@ -845,7 +767,7 @@ ggsave(filename = str_glue("outputs/boxplot_age_",             #First we write t
 
 ::: {.callout-note appearance="minimal" icon="false"}  
 
-**Test yourself!**
+**Rispondi!**
 
 ::: webex-check
 ```{r, results="asis", echo=FALSE}
@@ -858,7 +780,7 @@ opts <- c(
 )
 
 
-cat("QUESTION: Which group (ill or not ill) has more variation around age's median?", longmcq(opts))
+cat("DOMANDA: Which group (ill or not ill) has more variation around age's median?", longmcq(opts))
 
 ```
 :::
@@ -866,7 +788,7 @@ cat("QUESTION: Which group (ill or not ill) has more variation around age's medi
 
 #### 3.6: Export the clean data
 
-**Task**: Export the clean version of the dataset as a csv file and save it in the folder "outputs".
+**Compito**: Export the clean version of the dataset as a csv file and save it in the folder "outputs".
 
 <details>
 
@@ -895,7 +817,7 @@ Now that we have explored and cleaned our data, we can start with the descriptiv
 
 #### 4.2: Analysis by time
 
-**Task**: Generate an epidemic curve with the dates of onset. Display in the x-axis each day of the study period.
+**Compito**: Generate an epidemic curve with the dates of onset. Display in the x-axis each day of the study period.
 
 <details>
 
@@ -954,7 +876,7 @@ tira_clean %>%
 
 ::: {.callout-note appearance="minimal" icon="false"}  
 
-**Test yourself!**
+**Rispondi!**
 
 ::: webex-check
 ```{r, results="asis", echo=FALSE}
@@ -968,7 +890,7 @@ opts <- c(
 )
 
 
-cat("QUESTION: How long after the party was the peak day in cases?", longmcq(opts))
+cat("DOMANDA: How long after the party was the peak day in cases?", longmcq(opts))
 
 ```
 :::
@@ -976,7 +898,7 @@ cat("QUESTION: How long after the party was the peak day in cases?", longmcq(opt
 
 #### 4.3: Analysis by person
 
-**Task**: Generate 2-by-2 tables with sex and age group by illness status
+**Compito**: Generate 2-by-2 tables with sex and age group by illness status
 
 <details>
 
@@ -1017,7 +939,7 @@ tira_clean %>%
 
 ::: {.callout-note appearance="minimal" icon="false"}  
 
-**Test yourself!**
+**Rispondi!**
 
 ::: webex-check
 ```{r, results="asis", echo=FALSE}
@@ -1031,7 +953,7 @@ opts <- c(
 )
 
 
-cat("QUESTION: What was the attack rate in females?", longmcq(opts))
+cat("DOMANDA: What was the attack rate in females?", longmcq(opts))
 
 ```
 :::
@@ -1043,7 +965,7 @@ In the previous step we have described the number of ill attendees by date of on
 
 #### 5.1: Compute food-specific attack rates and % of cases exposed
 
-**Task**: Create 2 by 2 tables with exposure and outcome and calculate the attack rates.
+**Compito**: Create 2 by 2 tables with exposure and outcome and calculate the attack rates.
 
 <details>
 
@@ -1088,7 +1010,7 @@ tira_clean %>%
 
 ::: {.callout-note appearance="minimal" icon="false"}  
 
-**Test yourself!**
+**Rispondi!**
 
 ::: webex-check
 ```{r, results="asis", echo=FALSE}
@@ -1102,7 +1024,7 @@ opts <- c(
 )
 
 
-cat("QUESTION: What is the attack rate in those who ate white mousse?", longmcq(opts))
+cat("DOMANDA: What is the attack rate in those who ate white mousse?", longmcq(opts))
 
 ```
 :::
@@ -1114,7 +1036,7 @@ We have calculated attack rates in exposed and unexposed, which already gives us
 
 To have a better understanding of the exposures, we will now calculate relative risks.
 
-**Task**: First, estimate the relative risk for the exposure of having eaten white mousse at the dinner
+**Compito**: First, estimate the relative risk for the exposure of having eaten white mousse at the dinner
 
 <details>
 
@@ -1158,7 +1080,7 @@ riskratio(tira_clean$tira, tira_clean$ill)
 
 ::: {.callout-note appearance="minimal" icon="false"}  
 
-**Test yourself!**
+**Rispondi!**
 
 ::: webex-check
 ```{r, results="asis", echo=FALSE}
@@ -1172,13 +1094,13 @@ opts <- c(
   )
 
 
-cat("QUESTION: What is the risk of illness among those who ate white mousse compared to those who did not have this food ?", longmcq(opts))
+cat("DOMANDA: What is the risk of illness among those who ate white mousse compared to those who did not have this food ?", longmcq(opts))
 
 ```
 :::
 ::: 
 
-**Task**: Calculate now the risk ratio for all the other exposures to develop hypothesis of the possible source
+**Compito**: Calculate now the risk ratio for all the other exposures to develop hypothesis of the possible source
 
 <details>
 
@@ -1237,7 +1159,7 @@ riskratio(tira_clean$mportion2, tira_clean$ill)
 
 ::: {.callout-note appearance="minimal" icon="false"}  
 
-**Test yourself!**
+**Rispondi!**
 
 ::: webex-check
 ```{r, results="asis", echo=FALSE}
@@ -1251,7 +1173,7 @@ opts <- c(
   )
 
 
-cat("QUESTION: Which exposure has the highest risk ratio?", longmcq(opts))
+cat("DOMANDA: Which exposure has the highest risk ratio?", longmcq(opts))
 
 ```
 :::
@@ -1268,7 +1190,7 @@ opts <- c(
   "dark mousse"
   )
 
-cat("QUESTION: Which of the following seems like a protective factor?", longmcq(opts))
+cat("DOMANDA: Which of the following seems like a protective factor?", longmcq(opts))
 
 ```
 :::
@@ -1284,7 +1206,7 @@ opts <- c(
   "dark mousse"
   )
 
-cat("QUESTION: Which of the following has a non-significant association?", longmcq(opts))
+cat("DOMANDA: Which of the following has a non-significant association?", longmcq(opts))
 
 ```
 :::
@@ -1298,7 +1220,7 @@ opts <- c(
   "No"
   )
 
-cat("QUESTION: Is there a dose-response in the association between illness and tiramisu?", longmcq(opts))
+cat("DOMANDA: Is there a dose-response in the association between illness and tiramisu?", longmcq(opts))
 
 ```
 :::
@@ -1312,7 +1234,7 @@ From the crude analysis, epidemiologists noticed that the occurrence of **gastro
 
 The finding that beer had a protective effect on GI illness is surprising. One of your colleagues suggested that tiramisu might be confounding this association. Given that tiramisu has the highest risk ratio, it might be that the dessert is associated with the outcome (causes it) and to the exposure (those drinking beer might have preferred not to ruin its sour flavour with the sweetness of tiramisu). Another colleague disagrees and thinks that, actually, tiramisu might be an effect modifier in the relation between beer and illness.
 
-QUESTION: How would you check if tiramisu is a confounder or an effect modifier in the association between beer and illness? 
+DOMANDA: How would you check if tiramisu is a confounder or an effect modifier in the association between beer and illness? 
 
 
 <details>
@@ -1336,9 +1258,9 @@ If there is confounding but no effect modification, the adjusted M-H risk ratio 
 
 
 
-**Task**: Check if tiramisu is a confounder or an effect modifier in the association between beer and illness
+**Compito**: Check if tiramisu is a confounder or an effect modifier in the association between beer and illness
 
-Try doing this task with the function `csinter()` from the {EpiStats} package. **Read the documentation of the function**.
+Try doing this Compito with the function `csinter()` from the {EpiStats} package. **Read the documentation of the function**.
 
 <details>
 
@@ -1400,7 +1322,7 @@ tportion_beer
 
 ::: {.callout-note appearance="minimal" icon="false"}  
 
-**Test yourself!**
+**Rispondi!**
 
 ::: webex-check
 ```{r, results="asis", echo=FALSE}
@@ -1413,7 +1335,7 @@ opts <- c(
   "20%"
   )
 
-cat("QUESTION: Look at the results, what's the magnitude of the difference between the adjusted MH risk ratio and the crude one?", longmcq(opts))
+cat("DOMANDA: Look at the results, what's the magnitude of the difference between the adjusted MH risk ratio and the crude one?", longmcq(opts))
 
 ```
 :::
@@ -1427,7 +1349,7 @@ opts <- c(
   answer ="Yes"
   )
 
-cat("QUESTION: Look at the results, is tiramisu an effect modifier in the association between beer and illness?", longmcq(opts))
+cat("DOMANDA: Look at the results, is tiramisu an effect modifier in the association between beer and illness?", longmcq(opts))
 
 ```
 :::
