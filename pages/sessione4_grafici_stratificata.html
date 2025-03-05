@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-inputdc3f6ac783e6b0ce</title>
+<title>quarto-input6d26ccf35b41c958</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -89,7 +89,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-1-grafico-a-barre" id="toc-step-1-grafico-a-barre" class="nav-link" data-scroll-target="#step-1-grafico-a-barre"><strong>Step 1: Grafico a barre</strong></a>
   <ul class="collapse">
   <li><a href="#comincia-per-aprire-il-grafico" id="toc-comincia-per-aprire-il-grafico" class="nav-link" data-scroll-target="#comincia-per-aprire-il-grafico">1.1. Comincia per “aprire il grafico”</a></li>
-  <li><a href="#assegnare-le-estetiche" id="toc-assegnare-le-estetiche" class="nav-link" data-scroll-target="#assegnare-le-estetiche">1.2. Assegnare le estetiche</a></li>
+  <li><a href="#assegnare-lestetica" id="toc-assegnare-lestetica" class="nav-link" data-scroll-target="#assegnare-lestetica">1.2. Assegnare l’estetica</a></li>
   <li><a href="#aggiungere-il-geom" id="toc-aggiungere-il-geom" class="nav-link" data-scroll-target="#aggiungere-il-geom">1.3. Aggiungere il geom</a></li>
   <li><a href="#togliere-i-valori-mancanti" id="toc-togliere-i-valori-mancanti" class="nav-link" data-scroll-target="#togliere-i-valori-mancanti">1.4. Togliere i valori mancanti</a></li>
   <li><a href="#modificare-le-etichette" id="toc-modificare-le-etichette" class="nav-link" data-scroll-target="#modificare-le-etichette">1.5. Modificare le etichette</a></li>
@@ -392,8 +392,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <p>Il vantaggio di usare l’operatore pipe è che ci permetterà di modificare il database prima di fare il plot, come vedremo dopo.</p>
 </section>
-<section id="assegnare-le-estetiche" class="level4">
-<h4 class="anchored" data-anchor-id="assegnare-le-estetiche">1.2. Assegnare le estetiche</h4>
+<section id="assegnare-lestetica" class="level4">
+<h4 class="anchored" data-anchor-id="assegnare-lestetica">1.2. Assegnare l’estetica</h4>
 <p>Il <strong>secondo passo</strong> è assegnare le estetiche, ovvero dire a R quali sono le variabili che vogliamo usare per creare il nostro grafico. In questo caso, vogliamo usare due variabili: <em>gender</em> e <em>hospital</em>. Diciamo che vogliamo <em>hospital</em> sull’asse orizzontale (potremmo anche metterlo sull’asse verticale senza problemi) e, dato che vogliamo un grafico “stacked”, vogliamo che il colore delle barre (il <code>fill =</code>) dipenda da <em>gender</em>.</p>
 <div class="callout callout-style-simple callout-note no-icon">
 <div class="callout-body d-flex">
@@ -404,8 +404,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Se lanci questo codice, cosa succedere?
-<div id="radio_SHXNWXJCUI" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SHXNWXJCUI" value=""> <span>Niente</span></label><label><input type="radio" autocomplete="off" name="radio_SHXNWXJCUI" value="answer"> <span>Vedo un grafico vuoto, ma sull'asse orizzontale vedo i nomi degli ospedali</span></label><label><input type="radio" autocomplete="off" name="radio_SHXNWXJCUI" value=""> <span>Vedo un grafico a barre</span></label><label><input type="radio" autocomplete="off" name="radio_SHXNWXJCUI" value=""> <span>Vedo i nomi dei distritti</span></label>
+<div id="radio_WEGOAIZOAF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WEGOAIZOAF" value=""> <span>Niente</span></label><label><input type="radio" autocomplete="off" name="radio_WEGOAIZOAF" value="answer"> <span>Vedo un grafico vuoto, ma sull'asse orizzontale vedo i nomi degli ospedali</span></label><label><input type="radio" autocomplete="off" name="radio_WEGOAIZOAF" value=""> <span>Vedo un grafico a barre</span></label><label><input type="radio" autocomplete="off" name="radio_WEGOAIZOAF" value=""> <span>Vedo i nomi dei distritti</span></label>
 </div>
 </div>
 </div>
@@ -445,8 +445,8 @@ Domanda: Se lanci questo codice, cosa succedere?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Qual è l’ospedale con maggio numero di casi?
-<div id="radio_HCGDFQGUYC" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HCGDFQGUYC" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_HCGDFQGUYC" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_HCGDFQGUYC" value="answer"> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_HCGDFQGUYC" value=""> <span>Military Hospital</span></label>
+<div id="radio_ZNSCWHYCEA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZNSCWHYCEA" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_ZNSCWHYCEA" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_ZNSCWHYCEA" value="answer"> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_ZNSCWHYCEA" value=""> <span>Military Hospital</span></label>
 </div>
 </div>
 </div>
@@ -592,15 +592,15 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"maschi"</span>  <span class="ot">=</span> <span class="st">"Maschi"</span></span>
 <span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  )) <span class="sc">+</span> </span>
 <span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">#here we increase the number of breaks in the y axis</span></span>
+<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="co">#aumentiamo il numero di intervalli nell'asse verticale</span></span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">n.breaks =</span> <span class="dv">10</span>) <span class="sc">+</span> </span>
 <span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="co">#we add a predefined theme</span></span>
+<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  <span class="co">#aggiungiamo un theme pre-fabbricato </span></span>
 <span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_bw</span>() <span class="sc">+</span></span>
 <span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="co">#we change a specific aspect of the text of the x axis with them, so that the name is readable</span></span>
+<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="co">#mettiamo in grasseto il nome degli ospedali</span></span>
 <span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
-<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">90</span>)</span>
+<span id="cb8-36"><a href="#cb8-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">face =</span> <span class="st">"bold"</span>)</span>
 <span id="cb8-37"><a href="#cb8-37" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
@@ -818,8 +818,8 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Si vede una chiara associazione tra l’età in anni e la temperatura?
-<div id="radio_LIQQVNLXZE" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_LIQQVNLXZE" value=""> <span>Sì, c'è una chiara associazione positiva</span></label><label><input type="radio" autocomplete="off" name="radio_LIQQVNLXZE" value=""> <span>Sì, c'è una chiara associazione negativa</span></label><label><input type="radio" autocomplete="off" name="radio_LIQQVNLXZE" value="answer"> <span>No, sembra esserci una leggera associazione positiva ma non è chiaro</span></label><label><input type="radio" autocomplete="off" name="radio_LIQQVNLXZE" value=""> <span>No, è impossibile saperlo</span></label>
+<div id="radio_KQWNBJWIZH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KQWNBJWIZH" value=""> <span>Sì, c'è una chiara associazione positiva</span></label><label><input type="radio" autocomplete="off" name="radio_KQWNBJWIZH" value=""> <span>Sì, c'è una chiara associazione negativa</span></label><label><input type="radio" autocomplete="off" name="radio_KQWNBJWIZH" value="answer"> <span>No, sembra esserci una leggera associazione positiva ma non è chiaro</span></label><label><input type="radio" autocomplete="off" name="radio_KQWNBJWIZH" value=""> <span>No, è impossibile saperlo</span></label>
 </div>
 </div>
 </div>
@@ -883,8 +883,8 @@ Domanda: Si vede una chiara associazione tra l’età in anni e la temperatura?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quando è stato raggiunto il pico della epidemia?
-<div id="radio_RBGIUWDIUQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_RBGIUWDIUQ" value=""> <span>Aprile 2015</span></label><label><input type="radio" autocomplete="off" name="radio_RBGIUWDIUQ" value=""> <span>Aprile 2014</span></label><label><input type="radio" autocomplete="off" name="radio_RBGIUWDIUQ" value=""> <span>Dicembre 2014</span></label><label><input type="radio" autocomplete="off" name="radio_RBGIUWDIUQ" value="answer"> <span>Settembre 2014</span></label>
+<div id="radio_RCKLARXPPE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RCKLARXPPE" value=""> <span>Aprile 2015</span></label><label><input type="radio" autocomplete="off" name="radio_RCKLARXPPE" value=""> <span>Aprile 2014</span></label><label><input type="radio" autocomplete="off" name="radio_RCKLARXPPE" value=""> <span>Dicembre 2014</span></label><label><input type="radio" autocomplete="off" name="radio_RCKLARXPPE" value="answer"> <span>Settembre 2014</span></label>
 </div>
 </div>
 </div>
@@ -901,7 +901,7 @@ Domanda: Quando è stato raggiunto il pico della epidemia?
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  </span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">mapping =</span> <span class="fu">aes</span>(</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> date_infection, </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">x =</span> date_onset, </span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">fill =</span> hospital)</span>
 <span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span> </span>
 <span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>  </span>
@@ -937,8 +937,8 @@ Domanda: Quando è stato raggiunto il pico della epidemia?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quale ospedale ha avuto i primi casi?
-<div id="radio_GPHXHJKLUY" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_GPHXHJKLUY" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_GPHXHJKLUY" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_GPHXHJKLUY" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_GPHXHJKLUY" value="answer"> <span>Port Hospital</span></label>
+<div id="radio_RFACTXUFVX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RFACTXUFVX" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_RFACTXUFVX" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_RFACTXUFVX" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_RFACTXUFVX" value="answer"> <span>Port Hospital</span></label>
 </div>
 </div>
 </div>

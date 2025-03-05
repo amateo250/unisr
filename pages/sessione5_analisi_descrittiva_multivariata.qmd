@@ -17,51 +17,30 @@ editor:
   markdown: 
     wrap: 72
 title: |
-  ![](images/ecdc/logo_epiet_rki.png){width=12in}
+  ![](images/UniSR.png){width=3in}
 ---
 
-# **MVA - Multivariable analysis**
+# **Master II livello Epidemiologia - Programmi Statistici**
 
-# Case study: An Outbreak of Gastroenteritis in Stegen, Germany {.unnumbered}
+# Sessione 5 - Analisi stratificata e multivariabile:  {.unnumbered}
 
-### Objectives of this case study
-
-At the end of this case study, participants should:
-
--   know and be able to perform the fundamental steps of a descriptive statistical analysis of a foodborne outbreak (including quantitative assessment (frequency distributions, missing values, means/medians/modes, quartiles/SDs) and visualization of the data (histogram, boxplot))
-
--   be able to perform univariable statistical analysis to identify potential vehicles of a foodborne outbreak (including risk ratios and/or odds ratios, depending on the design)
-
--   know why and how stratification can be conducted in datasets related to an outbreak investigation
-
--   be able to conduct a stratified analysis with respect to potential risk factors and confounders/effect modifiers
+## Obiettivi di questa sesione
 
 
-### Previous level of expertise assumed
+- conoscere ed essere in grado di eseguire i passaggi fondamentali di un'analisi statistica descrittiva di un focolaio di origine alimentare (inclusa la valutazione quantitativa (distribuzioni di frequenza, valori mancanti, medie/mediane/mode, quartili/DS) e visualizzazione dei dati (istogramma, boxplot))
 
-Participants are expected to be familiar with data management and basic analysis in R.
+- essere in grado di eseguire analisi statistiche univariate per identificare potenziali veicoli di un focolaio di origine alimentare (inclusi rapporti di rischio e/o rapporti di probabilità, a seconda del design)
 
-### Preparation for the case study
+- sapere perché e come la stratificazione può essere condotta in set di dati correlati a un'indagine sul focolaio
 
-1.  Extract the contents of the folder "*stegen_mva*" in your local
-    laptop
+- essere in grado di condurre un'analisi stratificata rispetto a potenziali fattori di rischio e fattori confondenti/modificatori di effetto
 
-2.  Create an Rstudio project in the folder "*stegen_mva*" If you are unsure on
-    how to do that, read the EpiRhandbook Chapter on [R
-    projects](https://epirhandbook.com/en/new_pages/r_projects.html)
+-ANALASI MULTIVARIATA
 
-3.  Inside the folder "*stegen_mva*": Subfolder "*data*" contains a raw data
-    file named *tira.csv*. This is the only data file you will use in
-    this case study. In the same folder you can find the **data dictionary** with
-    a description of the dataframe variables.
-    
-4.  Subfolder "*scripts*" should be used to save any scripts related to the
-    analysis. Inside "*backup*" you will find a solution script with the
-    code of the case study named *stegen_analysis_backup.R*. 
 
-5.  Subfolder "*outputs*" could be used to store all outputs (tables,
-    graphs, documents) that are the result of the analysis
+### **Preparazione**
 
+Assicurati di avere RStudio aperto con il **progetto *prog_stat_mepi***
 
 ### **Scenario, study design and analysis plan**
 #### Introduction 

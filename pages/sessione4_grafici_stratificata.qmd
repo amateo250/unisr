@@ -328,7 +328,7 @@ Il vantaggio di usare l'operatore pipe è che ci permetterà di modificare il da
 
 #### 1.2. Assegnare l'estetica
 
-Il **secondo passo** è assegnare l'estetica, ovvero dire a R quali sono le variabili che vogliamo usare per creare il nostro grafico. In questo caso, vogliamo usare due variabili: *gender* e *hospital*. Diciamo che vogliamo *hospital* sull'asse orizzontale (potremmo anche metterlo sull'asse verticale senza problemi) e, dato che vogliamo un grafico "stacked", vogliamo che il colore delle barre (il `fill =`) dipenda da *gender*.
+Il **secondo passo** è assegnare le estetiche, ovvero dire a R quali sono le variabili che vogliamo usare per creare il nostro grafico. In questo caso, vogliamo usare due variabili: *gender* e *hospital*. Diciamo che vogliamo *hospital* sull'asse orizzontale (potremmo anche metterlo sull'asse verticale senza problemi) e, dato che vogliamo un grafico "stacked", vogliamo che il colore delle barre (il `fill =`) dipenda da *gender*.
 
 
 :::: {.callout-note appearance="minimal" icon="false"}
@@ -879,7 +879,7 @@ casi_ebola_pul %>%
   
   ggplot(
     mapping = aes(
-      x = date_infection, 
+      x = date_onset, 
       fill = hospital)
   ) + 
   
