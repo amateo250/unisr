@@ -62,7 +62,7 @@ Agli studenti di entrambe università che hanno partecipato alla festa è stato 
 
 In totale, 291 hanno risposto al questionario e sono stati identificati 103 casi (tasso di attacco: 35%). Tra questi casi, 84 (82%) hanno ricevuto cure mediche e quattro sono stati ricoverati in ospedale. I tassi di attacco per fascia d'età erano del 36,6% per le persone <20 anni, del 32,1% per le persone dai 20 ai 29 anni e del 36,8% per le persone di età superiore ai 29 anni.
 
-![Figura 1: Casi di gastroenterite per data inizio sintomi tra i partecipanti alla festa di laurea (n=103), Milano, Giugno 2025](images/curva_epi_sessione5.png)
+![Figura 1: Casi di gastroenterite per data inizio sintomi tra i partecipanti alla festa di laurea (n=103). La linea tratteggiata segnala il momento della festa. Milano, Giugno 2025.](images/curva_epi_sessione5.png)
 
 
 
@@ -121,15 +121,15 @@ Lo studio dovrò seguire questi passaggi:
 -   Crea un progetto di RStudio dentro la cartella *tiramisu_unisr*
 -   Care uno script di R, assicurati di includere all'inizio dello script nome e
     cognome; obiettivo dello script; tua email e la data. 
--   Comincia per istallare e caricare questi pachetti: rio, skimr, janitor, gtsummary,
+-   Comincia per istallare e caricare questi pachetti: rio, skimr, janitor, gtsummary,ggsurveillance,
 rstatix, epitools, epiR, epikit, EpiStats and tidyverse
 
 <details>
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
@@ -144,18 +144,18 @@ it yourself first!)
 
 pacman::p_load(
   
-  rio,             # to import datasets
-  skimr,           # for displaying your data
-  janitor,         # a package for data cleaning
-  gtsummary,       # to create frequency tables
-  rstatix,         # to generate summary statistics
-  epitools,        # for univariable analysis
-  epikit,          # for creating age categories
-  epiR,            # for the adjusted risk ratios across strata
-  EpiStats,        #load EpiStats package for univariable and stratified analysis
-  tidyverse        # data management and visualization
+  rio,             # per importare i dataset
+  skimr,           # per esplorare i dati
+  janitor,         # un pacchetto per la pulizia dei dati
+  gtsummary,       # per creare tabelle di frequenza
+  ggsurveillance,  # per la curva epidemica
+  rstatix,         # per generare statistiche riassuntive
+  epitools,        # per l'analisi univariata
+  epikit,          # per creare categorie di età
+  epiR,            # per i rapporti di rischio aggiustati tra le strati
+  EpiStats,        # per l'analisi univariata e stratificata
+  tidyverse        # gestione dei dati e visualizzazione
 )
-
 ```
 
 </br>
@@ -179,15 +179,15 @@ tira_grezzo <- import("../sessioni/prog_stat_mepi/data/tiramisu_unisr.txt")
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 
 ```{r , echo=TRUE, eval=FALSE}
-# Import the dataset 'tira.csv'  
+# Importare il dataset   
 tira_grezzo <- import("data/tiramisu_unisr.txt") 
 ```
 
@@ -319,7 +319,7 @@ cat("DOMANDA: Come sono categorizzati i valori mancanti nelle variabili 'salmon'
 
 <summary style="text-decoration: underline; color: darkgreen;">
 
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
 
 </summary>
 
@@ -336,19 +336,19 @@ Un modo semplice per esplorare singole variabili che hanno categorie è usare `t
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 
 ```{r , echo=TRUE}
-# Inspect your dataset and generate basic statistics using the skim function  
+# Ispezionare il dataset e generare statistiche di base usando la funzione skim  
 skim(tira_grezzo)
-# Glimpse is an alternative to skim which gives more accurate information about the nature of the  variables
+# Glimpse è un'alternativa a skim che fornisce informazioni più accurate sulla natura delle variabili
 glimpse(tira_grezzo)
-# To see the different categories of the variables
+# Per vedere le diverse categorie delle variabili
 tabyl(tira_grezzo, tomato)
 
 ```
@@ -372,7 +372,7 @@ tabyl(tira_grezzo, tomato)
 
 <summary style="text-decoration: underline; color: darkgreen;">
 
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
 
 </summary>
 
@@ -389,18 +389,18 @@ Puoi creare un boxplot con {ggplot2} usando la geom `geom_boxplot()`. Per creare
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 
 ```{r , echo=TRUE, warning=TRUE}
-## Generate summary statistics 
+## Generare statistiche riassuntive 
 summary(tira_grezzo$age)
 
-### Creating a boxplot of age by illness status
+### Creare un boxplot dell'età per stato di salute
 boxplot_eta <- tira_grezzo %>% 
   
   ggplot(mapping = aes(x = ill,
@@ -453,72 +453,23 @@ Sembra che tutte le colonne che consistono di valori 1 (presenti) e 0 (assenti) 
 
 ### **Step 3: Pulizia dei dati**
 
-#### 3.1: Transform categorical variables
-**Compito**: Change all present (1) / absent (0) variables from integer to factors. Do the same for the variables that record the number of portions eaten.
+#### 3.1: Categorizza i valori "mancante" come NA
+Abbiamo visto con `skim()` -e nel dizionario dei dati- che le variabili *salmon*, *pork* e *horseradish* hanno i valori 'mancanti' codificati con il numero '9'. Nella maggior parte delle analisi e visualizzazioni, è molto importante che R consideri i dati mancanti veramente come "mancanti". Per fare ciò, i dati mancanti devono essere codificati come `NA` (**senza virgolette**). Altre codifiche dei dati mancanti, come spazi vuoti o il numero 9 (come in questo caso) significheranno che R tratterà questi dati come una categoria o un numero. Per R, 9 non è diverso dal numero 1.
+
+**Compito** Ricodifica le colonne salmon, pork e horseradish in modo che i valori di 9 siano codificati come `NA`. Aggiungi il nuovo codice al comando di pulizia avviata nel passaggio precedente
 
 <details>
 
 <summary style="text-decoration: underline; color: darkgreen;">
 
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
 
 </summary>
 
 </br>
 
-You can do this one by one, or you could do all at the same time using the `across()` function from {dplyr}. If you are not sure how to use the `across()` function, read the section on [Transform multiple columns](https://epirhandbook.com/en/new_pages/cleaning.html#clean_across) from the EpiRhandbook.
-</br>
-
-</details>
-
-<details>
-
-<summary style="text-decoration: underline; color: red;">
-
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
-
-</summary>
-
-</br>
-
-```{r , echo=TRUE}
-tira_clean <- tira_grezzo %>% # tira_clean will be out clean dataframe after we have performed cleaning Compiti on tira_grezzo
-  
-  # this would be changing one-by-one the columns into numeric variables
-  mutate(ill = as.numeric(ill)) %>% 
-  
-  # this would change all columns we are interested into 'numeric variables' in only one command
-  mutate(across(.cols = !c(uniquekey, dateonset, age), # with the exclamation mark before c() we are telling R that we want all columns, except those in the c() list, to be transformed into factors
-                .fns = ~ as.numeric(.x)))
-
-
-# Check that the changes have been succesful
-glimpse(tira_clean)
-```
-
-
-</br>
-
-</details>
-
-#### 3.2: Categorise "missing" as NA
-We saw with the `skim()` overview -and in the data dictionary- that the variables *salmon*, *pork* and *horseradish* have 'missing' codified with number '9'. In most analysis and visualisations, it is very important that R considers missing data truly as "missing". To do that, missing data needs to be coded as NA (**without quotes**). Other codifications of missing data, such as empty spaces or the number 9 (as in this case) will mean that R will treat this data as a category or a number. For R, 9 is not different from number 1.
-
-**Compito** Recode the columns salmon, pork and horseradish so that values of 9 are coded as NA. Add the new code to the cleaning pipeline initiated in the previous step
-
-<details>
-
-<summary style="text-decoration: underline; color: darkgreen;">
-
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
-
-</summary>
-
-</br>
-
-For this Compito you can use the `mutate()` function in combination with `case_match()` or `if_else()`. The former is used specifically for recoding, whereas the latter is used to create/modify columns based on logical conditions. In any case, functions like `if_else()` and `case_match()` may require you to specify the type of NA (e.g., NA_character_, NA_real_, NA_integer_) to ensure that the resulting vector maintains a consistent data type. This is important because R is strongly typed, meaning that each vector must contain elements of the same type.
-If you want to know more about recoding, read the EpiRhandbook section on [Recoding](https://epirhandbook.com/new_pages/cleaning.html#re-code-values). Regardless of the approach that you choose, add it to the cleaning pipe command you started before, so that your code is tidy.
+Per questo compito puoi usare la funzione `mutate()` in combinazione con `case_match()` o `if_else()`. La prima è usata specificamente per la ricodifica, mentre la seconda è usata per creare/modificare colonne in base a condizioni logiche. In ogni caso, funzioni come `if_else()` e `case_match()` potrebbero richiedere di specificare il tipo di `NA` (ad esempio, `NA_character_`, `NA_real_`, `NA_integer_`) per garantire che il vettore risultante mantenga un tipo di dati coerente. Questo è importante perché R è fortemente tipizzato, il che significa che ogni vettore deve contenere elementi dello stesso tipo.
+Se vuoi saperne di più sulla ricodifica, leggi la sezione EpiRhandbook su [Recoding](https://epirhandbook.com/new_pages/cleaning.html#re-code-values). Indipendentemente dall'approccio che scegli, aggiungilo al comando di pulizia che hai iniziato prima, in modo che il tuo codice sia ordinato.
 </br>
 
 </details>
@@ -528,182 +479,241 @@ If you want to know more about recoding, read the EpiRhandbook section on [Recod
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 
 ```{r , echo=TRUE}
-tira_clean <- tira_grezzo %>% 
-  # tira_clean will be our clean dataframe after we have performed cleaning Compiti on tira_grezzo
+tira_pul <- tira_grezzo %>% # tira_pul sarà il nostro dataframe pulito dopo aver eseguito la pulizia su tira_grezzo
   
-  # this would be changing one-by-one the columns into numeric variable
-  mutate(ill = as.numeric(ill))
   
-  tira_clean <- tira_clean %>% 
-  # this would change all columns we are interested in into 'numeric variables' in only one command
-  mutate(across(.cols = !c(uniquekey, dateonset, age), 
-                # with the exclamation mark before c() we are telling R that we want all columns, except those in the c() list, to be transformed into factors
-                .fns = ~ as.numeric(.x))) 
- 
-  tira_clean <- tira_clean %>% 
-  # we can do all columns at the same time with across(). Here we use case_match for this example
+  ####3.1 Categorizzare i valori "mancanti" come NA 
+  
+  # questo cambierebbe una per una le colonne in variabili numeriche
+  mutate(salmon = case_match(salmon, 
+                             9 ~ NA_integer_,
+                             .default = salmon)) %>% 
+  
+  # possiamo fare tutte le colonne contemporaneamente con across(). 
   mutate(across(.cols = c(salmon, horseradish, pork), 
                 .fns = ~ case_match(.x, 
                                     9 ~ NA_integer_,
-                                    .default = .x)))
-
-# Check that the changes have been successful
-tabyl(tira_clean, salmon)
-tabyl(tira_clean, horseradish)
-tabyl(tira_clean, pork)
-```
-
-
-</br>
-
-</details>
-
-#### 3.3: Re-categorise mousse and tiramisu portions
-We saw that there are two columns -*tportion* and *mportion*- that have four categories according to the number of portions eaten. However, exploring these columns we can see that few people ate 3 portions. The low number in this category means that it will be very difficult to have meaningful results due to the wide uncertainty that we'll find in the estimates.
-
-**Compito**: Re-categorise these columns so that they have three categories: 0,1 and 2+ portions eaten. Add the new code to the cleaning pipeline initiated previously. 
-
-<details>
-
-<summary style="text-decoration: underline; color: darkgreen;">
-
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
-
-</summary>
-
-</br>
-
-We will now use the `mutate()` function in combination with `if_else()`. As specified above, this function is used for simple logical recoding, which is what we want to do now. There are three "partner" functions called `if_else()` from {dplyr}, `ifelse()` from {base} and `fifelse()` from {data.table}. They all have the same syntax. `ifelse()` has the advantage of being embedded in R, which guarantees its stability and sustainability. `if_else()` has some advantages compared to `ifelse()` that are important in epi analysis. For example, it does not convert Date objects to numeric (which can be a headache) and verifies that both alternatives in the if and else statements are of the same class. Finally, `fifelse()` is the fastest, so it has its advantages when we're analysis a large database.
-
-If you want to know more about simple logical recoding, have a look at the dedicated [section](https://epirhandbook.com/new_pages/cleaning.html#ifelse-and-if_else) of the EpiRhandbook.
-
-</br>
-
-</details>
-
-<details>
-
-<summary style="text-decoration: underline; color: red;">
-
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
-
-</summary>
-
-</br>
-
-```{r , echo=TRUE}
-#Check portion before
-tabyl(tira_clean, tportion)
-tabyl(tira_clean, mportion)
-
-#Run cleaning pipe line with new code
-tira_clean <- tira_grezzo %>% # tira_clean will be out clean dataframe after we have performed cleaning Compiti on tira_grezzo
-  
-  # this would be changing one-by-one the columns into numeric variable
-  mutate(ill = as.numeric(ill)) %>% 
-  
-  # this would change all columns we are interested into 'numeric variables' in only one command
-  mutate(across(.cols = !c(uniquekey, dateonset, age), # with the exclamation mark before c() we are telling R that we want all columns, except those in the c() list, to be transformed into factors
-                .fns = ~ as.numeric(.x)))
-  
-tira_clean <- tira_clean %>%
-  # we can do all columns at the same time with across(). Here we use case_match for this example 
-  mutate(across(.cols = c(salmon, horseradish, pork), 
-                .fns = ~ case_match(.x, 
-                                    9 ~ NA_integer_,
-                                    .default = .x)))
-  tira_clean <- tira_clean %>% 
-  # simple logical recoding with if_else()
-    mutate(tportion2 = if_else(tportion >= 2, 2, tportion))%>% 
-    mutate(mportion2 = if_else(mportion >= 2, 2, mportion))
-
-
-#Check portion after to verify changes
-tabyl(tira_clean, tportion2)
-tabyl(tira_clean, mportion2)
-```
-
-
-</br>
-
-</details>
-
-#### 3.4: Create age groups
-
-
-**Compito**: Create a new variable with two categories (those aged < age's median and those >=age's median). **Add the code to create this new variable to the cleaning command you created above to ensure your code is tidy. Do not write multiple cleaning commands**
-
-<details>
-
-<summary style="text-decoration: underline; color: darkgreen;">
-
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
-
-</summary>
-
-</br>
-
-You can  create the age group column with the function `age_categories()` from {epikit}. If you're not familiar with this function, try looking in the *Help* on how it works, or read the specific EpiRhandbook [Section](https://epirhandbook.com/new_pages/cleaning.html#age_categories)
-</br>
-
-</details>
-
-
-<details>
-
-<summary style="text-decoration: underline; color: red;">
-
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
-
-</summary>
-
-</br>
-
-```{r , echo=TRUE}
-tira_clean <- tira_clean %>% # tira_clean will be out clean dataframe after we have performed cleaning Compiti on tira_grezzo
-  
-  # this would be changing one-by-one the columns into numeric variable
-  mutate(ill = as.numeric(ill)) %>% 
-  
-  # this would change all columns we are interested into 'numeric variables' in only one command
-  mutate(across(.cols = !c(uniquekey, dateonset, age), # with the exclamation mark before c() we are telling R that we want all columns, except those in the c() list, to be transformed into factors
-                .fns = ~ as.numeric(.x))) 
-  
-tira_clean <- tira_clean %>% 
-  # we can do all columns at the same time with across(). Here we use case_match for this example 
-  mutate(across(.cols = c(salmon, horseradish, pork), 
-                .fns = ~ case_match(.x, 
-                                     9 ~ NA_integer_,
                                     .default = .x))) 
+
+
+# Verificare che le modifiche siano state effettuate con successo
+tabyl(tira_pul, salmon)
+tabyl(tira_pul, horseradish)
+tabyl(tira_pul, pork)
+```
+
+
+</br>
+
+</details>
+
+#### 3.2: Trasforma le variabili categoriche
+**Compito**: Cambia tutte le variabili che sono codificate come presenza (1) / assenza (0) da "integer" a "character". Fai lo stesso per le variabili che registrano il numero di porzioni mangiate.
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
+
+</summary>
+
+</br>
+
+Puoi farlo uno alla volta, oppure puoi farlo tutto contemporaneamente usando la funzione `across()` da {dplyr}. Se non sei sicuro di come usare la funzione `across()`, leggi la sezione su [Transform multiple columns](https://epirhandbook.com/en/new_pages/cleaning.html#clean_across) dell'EpiRhandbook.
+</br>
+
+</details>
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
+
+</summary>
+
+</br>
+
+```{r , echo=TRUE}
+tira_pul <- tira_grezzo %>% # tira_pul sarà il nostro dataframe pulito dopo aver eseguito la pulizia su tira_grezzo
   
- tira_clean <- tira_clean %>% 
-  # simple logical recoding with if_else()
-    mutate(tportion2 = if_else(tportion >= 2, 2, tportion))%>% 
-    mutate(mportion2 = if_else(mportion >= 2, 2, mportion))
+  
+  ####3.1 Categorizzare i valori "mancanti" come NA 
+  
+  # questo cambierebbe una per una le colonne in variabili numeriche
+  mutate(salmon = case_match(salmon, 
+                             9 ~ NA_integer_,
+                             .default = salmon)) %>% 
+  
+  # possiamo fare tutte le colonne contemporaneamente con across(). 
+  mutate(across(.cols = c(salmon, horseradish, pork), 
+                .fns = ~ case_match(.x, 
+                                    9 ~ NA_integer_,
+                                    .default = .x))) %>% 
+  
+  ####3.2 questo cambierebbe tutte le colonne di interesse in 'variabili character' con un solo comando
+  mutate(across(.cols = !c(uniquekey, dateonset, age), # con il punto esclamativo prima di c() stiamo dicendo a R che vogliamo tutte le colonne, eccetto quelle nella lista c(), trasformate in as.character
+                .fns = ~ as.character(.x)))  
 
-  tira_clean <- tira_clean %>%   
-  # create age categories
-  mutate(age_group = age_categories(age,           # the column to use to create the cateogories 
-                                    lower = 0,     # the lower value
-                                    upper = 20,    # the upper value (we want a group of 20+)
-                                    by = 20))      # as we only want two groups, this is also 20
+
+# Verificare che le modifiche siano state effettuate con successo
+glimpse(tira_pul)
+```
+
+
+</br>
+
+</details>
 
 
 
-# Check that the changes have been succesful
-tabyl(tira_clean, salmon)
-tabyl(tira_clean, tportion2)
-tabyl(tira_clean, age_group)
+#### 3.3: Ricategorizzare le porzioni di mousse e tiramisù
+Abbiamo visto che ci sono due colonne -*tportion* e *mportion*- che hanno quattro categorie in base al numero di porzioni mangiate. Tuttavia, esplorando queste colonne possiamo vedere che poche persone hanno mangiato 3 porzioni. Il numero basso in questa categoria significa che sarà molto difficile avere risultati significativi a causa dell'ampia incertezza che troveremo nelle stime.
+
+**Compito**: Ricategorizzare queste colonne in modo che abbiano tre categorie: 0, 1 e 2+ porzioni mangiate. Aggiungere il nuovo codice alla pipeline di pulizia avviata in precedenza.
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
+
+</summary>
+
+</br>
+
+Ora useremo la funzione `mutate()` in combinazione con `if_else()`. Come specificato sopra, questa funzione viene utilizzata per una semplice ricodifica logica, che è ciò che vogliamo fare ora. Ci sono tre funzioni "partner" chiamate `if_else()` da {dplyr}, `ifelse()` da {base} e `fifelse()` da {data.table}. Hanno tutte la stessa sintassi. `ifelse()` ha il vantaggio di essere incorporato in R, il che ne garantisce stabilità e sostenibilità. `if_else()` ha alcuni vantaggi rispetto a `ifelse()` che sono importanti nell'analisi epi. Ad esempio, non converte gli oggetti Date in numerici  e verifica che entrambe le alternative nelle istruzioni if ed else siano della stessa classe. Infine, `fifelse()` è la più veloce, quindi ha i suoi vantaggi quando analizziamo un database di grandi dimensioni.
+
+Se vuoi saperne di più sulla semplice ricodifica logica, dai un'occhiata a questa [sezione](https://epirhandbook.com/new_pages/cleaning.html#ifelse-and-if_else) dell'EpiRhandbook.
+
+</br>
+
+</details>
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
+
+</summary>
+
+</br>
+
+```{r , echo=TRUE}
+tira_pul <- tira_grezzo %>% # tira_pul sarà il nostro dataframe pulito dopo aver eseguito la pulizia su tira_grezzo
+  
+  
+  ####3.1 Categorizzare i valori "mancanti" come NA 
+  
+  # questo cambierebbe una per una le colonne in variabili numeriche
+  mutate(salmon = case_match(salmon, 
+                             9 ~ NA_integer_,
+                             .default = salmon)) %>% 
+  
+  # possiamo fare tutte le colonne contemporaneamente con across(). 
+  mutate(across(.cols = c(salmon, horseradish, pork), 
+                .fns = ~ case_match(.x, 
+                                    9 ~ NA_integer_,
+                                    .default = .x))) %>% 
+  
+  ####3.2 questo cambierebbe tutte le colonne di interesse in 'variabili character' con un solo comando
+  mutate(across(.cols = !c(uniquekey, dateonset, age), # con il punto esclamativo prima di c() stiamo dicendo a R che vogliamo tutte le colonne, eccetto quelle nella lista c(), trasformate in character
+                .fns = ~ as.character(.x)))  %>% 
+  
+  ####3.3 semplice ricodifica logica con if_else()
+  mutate(tportion2 = if_else(tportion == "2" | tportion == "3", "2+", tportion))%>% 
+  mutate(mportion2 = if_else(mportion == "2" | mportion == "3", "2+", mportion))
+
+
+# Verificare che le modifiche siano state effettuate con successo
+tabyl(tira_pul, tportion2)
+tabyl(tira_pul, mportion2)
+```
+
+
+</br>
+
+</details>
+
+#### 3.4: Crea fasce d'età
+
+**Compito**: Crea una nuova variabile con due categorie (quelli di età < mediana dell'età e quelli >=mediana dell'età). **Aggiungi il codice per creare questa nuova variabile al comando di pulizia creato sopra per assicurarti che il tuo codice sia ordinato. Non scrivere più comandi di pulizia**
+
+<details>
+
+<summary style="text-decoration: underline; color: darkgreen;">
+
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
+
+</summary>
+
+</br>
+
+Puoi creare la colonna delle fasce d'etè con la funzione `age_categories()` da {epikit}. Se non hai familiarità con questa funzione, prova a cercare nella *Help* come funziona, oppure leggi la questa [Sezione](https://epirhandbook.com/new_pages/cleaning.html#age_categories) dell'EpiRhandbook.
+</br>
+
+</details>
+
+
+<details>
+
+<summary style="text-decoration: underline; color: red;">
+
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
+
+</summary>
+
+</br>
+
+```{r , echo=TRUE}
+tira_pul <- tira_grezzo %>% # tira_pul sarà il nostro dataframe pulito dopo aver eseguito la pulizia su tira_grezzo
+  
+  
+  ####3.1 Categorizzare i valori "mancanti" come NA 
+  
+  # questo cambierebbe una per una le colonne in variabili numeriche
+  mutate(salmon = case_match(salmon, 
+                             9 ~ NA_integer_,
+                             .default = salmon)) %>% 
+  
+  # possiamo fare tutte le colonne contemporaneamente con across(). 
+  mutate(across(.cols = c(salmon, horseradish, pork), 
+                .fns = ~ case_match(.x, 
+                                    9 ~ NA_integer_,
+                                    .default = .x))) %>% 
+  
+  ####3.2 questo cambierebbe tutte le colonne di interesse in 'variabili character' con un solo comando
+  mutate(across(.cols = !c(uniquekey, dateonset, age), # con il punto esclamativo prima di c() stiamo dicendo a R che vogliamo tutte le colonne, eccetto quelle nella lista c(), trasformate in character
+                .fns = ~ as.character(.x)))  %>% 
+  
+  ####3.3 semplice ricodifica logica con if_else()
+  mutate(tportion2 = if_else(tportion == "2" | tportion == "3", "2+", tportion))%>% 
+  mutate(mportion2 = if_else(mportion == "2" | mportion == "3", "2+", mportion)) %>% 
+  
+  ####3.4. creare fasce d'età
+  mutate(fascia_eta = age_categories(age,           # la colonna da usare per creare le categorie 
+                                     lower = 0,     # il valore inferiore
+                                     upper = 20,    # il valore superiore (vogliamo un gruppo di 20+)
+                                     by = 20))      # poiché vogliamo solo due gruppi, anche questo è 20
+
+
+
+# Verificare che le modifiche siano state effettuate con successo
+tabyl(tira_pul, fascia_eta)
+
 ```
 
 
@@ -715,22 +725,22 @@ tabyl(tira_clean, age_group)
 
 
 
-#### 3.5: Re-create the boxplot
-**Compito**: Create the boxplot we tried in **2.3** using the clean version of the data. Save the boxplot in the subfolder "outputs".
+#### 3.5: Ricrea il boxplot
+**Compito**: Ricrea il boxplot che abbiamo provato in **2.3** usando la versione pulita dei dati. Salva il boxplot nella sottocartella "outputs".
 
 <details>
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 ```{r, echo=TRUE}
-## Boxplot of age by illness status
-boxplot_age <- tira_clean %>% 
+#### 3.5 Boxplot dell'età in base allo stato di malattia
+boxplot_eta <- tira_pul %>% 
   
   ggplot(mapping = aes(x = ill,
                        y = age,
@@ -739,27 +749,26 @@ boxplot_age <- tira_clean %>%
   geom_boxplot() + 
   
   labs(
-    title = "Boxplot: Age distribution per disease status",
-    x = "Disease status",
-    y = "Age",
-    fill = "Illness (0=No;1=Yes)"
+    title = "Boxplot: Distribuzione dell'età per stato di salute",
+    x = "Stato di salute",
+    y = "Età",
+    fill = "Malattia (0=No;1=Sì)"
   ) +
   
   theme_bw()
 
-boxplot_age
+boxplot_eta
 ```
 
 ```{r, echo=TRUE, eval=FALSE}
-
-### Save the boxplot
-#### A static way of saving it
-ggsave(filename = "outputs/boxplot_age.png", plot = boxplot_age)
-#### A dynamic way of doing it so that it contains the date of the analysis
-ggsave(filename = str_glue("outputs/boxplot_age_",             #First we write the beginning of the file name until the date 
-                           str_replace_all(Sys.Date(), "-", ""),  #Sys.Date() gives us the date of analysis. Str_replace_all() removes all hyphens 
-                           ".png"),                               # Finally we add the ending which is the file type
-       plot = boxplot_age)
+### Salvare il boxplot
+#### Un modo statico per salvarlo
+ggsave(filename = "outputs/boxplot_eta.png", plot = boxplot_eta, width = 8, height = 6)
+#### Un modo dinamico per farlo in modo che contenga la data dell'analisi
+ggsave(filename = str_glue("outputs/boxplot_eta_",             # Prima scriviamo l'inizio del nome del file fino alla data 
+                           str_replace_all(Sys.Date(), "-", ""),  # Sys.Date() ci dà la data dell'analisi. Str_replace_all() rimuove tutti i trattini 
+                           ".png"),                               # Infine aggiungiamo l'estensione che è il tipo di file
+       plot = boxplot_eta, width = 8, height = 6)
 ```
 </br>
 
@@ -780,30 +789,29 @@ opts <- c(
 )
 
 
-cat("DOMANDA: Which group (ill or not ill) has more variation around age's median?", longmcq(opts))
-
+cat("DOMANDA: Quale gruppo (ill o no-ill) ha più variazione intorno alla mediana dell'età?", longmcq(opts))
 ```
 :::
 ::: 
 
-#### 3.6: Export the clean data
+#### 3.6: Esporta i dati puliti
 
-**Compito**: Export the clean version of the dataset as a csv file and save it in the folder "outputs".
+**Compito**: Esporta la versione pulita del set di dati come file csv e salvala nella cartella "outputs".
 
 <details>
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 ```{r, echo=TRUE, eval=FALSE}
-# export the dataset
+# esportare il dataset
 
-export(tira_clean, "outputs/tira_clean.csv", row.names = F)
+export(tira_pul, "outputs/tira_pul.csv", row.names = F)
 ```
 
 </br>
@@ -811,27 +819,26 @@ export(tira_clean, "outputs/tira_clean.csv", row.names = F)
 </details>
 
 
-### **Step 4: Descriptive analysis**
+### **Step 4:  Analisi descrittiva**
 
-Now that we have explored and cleaned our data, we can start with the descriptive analysis. As you know, we normally describe the data by time, person and place. We won't do the "place" analysis because in this outbreak, that element is not relevant.
+Ora che abbiamo esplorato e pulito i nostri dati, possiamo iniziare con l'analisi descrittiva. Come sapete, normalmente descriviamo i dati in base a tempo, persona e luogo. Non faremo l'analisi per "luogo" perché in questa epidemia, quell'elemento non è rilevante.
 
-#### 4.2: Analysis by time
+#### 4.2: Analisi in base al tempo
 
-**Compito**: Generate an epidemic curve with the dates of onset. Display in the x-axis each day of the study period.
+**Compito**: Crea una curva epidemica con le date di insorgenza. Mostra sull'asse x ogni giorno del periodo di studio.
 
 <details>
 
 <summary style="text-decoration: underline; color: darkgreen;">
 
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
 
 </summary>
 
 </br>
 
-You should be able, by now, to create the histogram required for this epicurve. For the x-axis breaks, remember there are two distinct elements in a `ggplot()`. Inside `geom_histogram()` we can specify the `binwidth =` of the bins to the unit we want (e.g, 1 for daily, 7 for weekly etc.). This will change the whole epicurve. 
-The second element is the scale. Scales change the way the axis or the colours are displayed, but the epicurve remains the same. In this case, as we want to modify the X-axis which is a date, we should use the function `scale_x_date()` and specify inside that we want `date_breaks =` by "day".
-If you are struggling, have a look at the [Epicurves](https://epirhandbook.com/new_pages/epicurves.html#epicurves-with-ggplot2) chapter of the EpiRhandbook.
+Dovresti essere in grado, a questo punto, di creare l'istogramma richiesto per questa epicurva. Puoi usare `geom_histrogram()` come abbiamo usato la lezione precedente, ma puoi anche provarci con `geom_epicurve()`,dal pachetto {ggsurveillance} che è stato creato apposta per creare curve epidemiche. Se usi `geom_epicurve()` puoi specificare all'interno con l'argomento `day_resolution =` che vuoi la curva epidemica per giorno (day).
+Se hai difficoltà, dai un'occhiata al capitolo [Epicurves](https://epirhandbook.com/new_pages/epicurves.html#epicurves-with-ggplot2) dell'EpiRhandbook.
 </br>
 
 </details>
@@ -840,32 +847,30 @@ If you are struggling, have a look at the [Epicurves](https://epirhandbook.com/n
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 ```{r, echo=TRUE}
-tira_clean %>% 
+tira_pul %>% 
   
   ggplot(mapping = aes(x = dateonset)) + 
   
-  geom_histogram(binwidth = 1,             # we assign the width of the bins to one day
-                 color = "darkgreen",      # color of lines around bars
-                 fill = "lightgreen" )  +  # color of fill within bars 
+  geom_epicurve(date_resolution = "day", color = "darkgreen", fill = "lightgreen" ) +
   
-  scale_x_date(date_breaks = "day") +      # we want each day to be shown in the x-axis
+  scale_x_date(date_breaks = "day") +      # vogliamo che ogni giorno sia mostrato sull'asse x
   
   labs(
-    title = "Epicurve of cases by date of onset",
-    y = "Number of cases",
-    x = ""                                 # we leave x-axis title blank because we already say in title it is date of onset
+    title = "Epicurve dei casi per data di insorgenza",
+    y = "Numero di casi",
+    x = ""                                 # lasciamo il titolo dell'asse x vuoto perché abbiamo già detto nel titolo che è la data di insorgenza
   ) +
   
-  theme_bw() +                             # predefined theme
+  theme_bw() +                             # tema predefinito
   
-  theme(axis.text.x = element_text(angle = 90)) # we change the angle of the days in the x-axis so it is readble. Important this happens at the end
+  theme(axis.text.x = element_text(angle = 90)) # cambiamo l'angolo dei giorni sull'asse x in modo che sia leggibile. Importante che questo avvenga alla fine
 
   
 ```
@@ -884,33 +889,32 @@ pacman::p_load(webexercises)
 
 opts <- c(
   "48h",
-  "A week later",
+  "Una settimana dopo",
   answer = "24h",
-  "The day of the party"
+  "Il giorno della festa"
 )
 
-
-cat("DOMANDA: How long after the party was the peak day in cases?", longmcq(opts))
+cat("DOMANDA: Quanto tempo dopo la festa è stato il giorno di picco dei casi?", longmcq(opts))
 
 ```
 :::
 ::: 
 
-#### 4.3: Analysis by person
+#### 4.3: Analisi per persona
 
-**Compito**: Generate 2-by-2 tables with sex and age group by illness status
+**Compito**: Genera una tabella descrittiva dell'età e il sesso dei partecipanti per stato di malattia
 
 <details>
 
 <summary style="text-decoration: underline; color: darkgreen;">
 
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
 
 </summary>
 
 </br>
 
-There are several approaches to generate descriptive tables and cross-tabulations. You could use `tabyl()` from {janitor}, which is a very fast approach; or you could use `group_by()` in combination with `summarise()`, from {dplyr} which is the most flexible. In this case, however, we show you the solution with a very efficient approach: `tbl_summary()` from {gtsummary}
+Esistono diversi approcci per generare tabelle descrittive e tabulazioni incrociate. Potresti usare `tabyl()` da {janitor}, che è un approccio molto veloce; oppure potresti usare `group_by()` in combinazione con `summarise()`, da {dplyr} che è il più flessibile. In questo caso, tuttavia, ti mostriamo la soluzione con un approccio molto efficiente: `tbl_summary()` da {gtsummary}
 </br>
 
 </details>
@@ -919,18 +923,20 @@ There are several approaches to generate descriptive tables and cross-tabulation
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 ```{r, echo=TRUE}
-tira_clean %>% 
+tira_pul %>% 
   
-  select(sex, age_group, ill) %>%  # we select the columns we're interested in
+  select(sex, fascia_eta, ill) %>%  # selezioniamo le colonne di nostro interesse
   
-  tbl_summary(by = ill, percent = "row") # we assign the grouping column and define that we want the percentages by row to estimate attack rates by sex and age group.
+  tbl_summary(by = ill, percent = "row") # assegniamo la colonna di raggruppamento e 
+                                         #definiamo che vogliamo le percentuali per riga per stimare
+                                         #i tassi di attacco per sesso e fascia di età.
 ```
 
 </br>
@@ -953,31 +959,32 @@ opts <- c(
 )
 
 
-cat("DOMANDA: What was the attack rate in females?", longmcq(opts))
+cat("DOMANDA: Qual è il tasso di attacco nei maschi?", longmcq(opts))
 
 ```
 :::
 ::: 
 
-### **Step 5: Develop and test hypothesis**
+### **Step 5: Sviluppare e testare dell'ipotesi**
 
-In the previous step we have described the number of ill attendees by date of onset, and we have described how sex and age were distributed according to illness status. The next step in an outbreak investigation would be to develop and test hypothesis about the possible source of the outbreak.
+Nel passaggio precedente abbiamo descritto il numero di partecipanti malati in base alla data di insorgenza dei sintomi e abbiamo descritto come sesso ed età erano distribuiti in base allo stato di salute. Il passaggio successivo in un'indagine su un focolaio sarebbe quello di sviluppare e testare l'ipotesi sulla possibile fonte del focolaio.
 
-#### 5.1: Compute food-specific attack rates and % of cases exposed
+#### 5.1: Calcolare i tassi di attacco specifici per alimento e la % di casi esposti
 
-**Compito**: Create 2 by 2 tables with exposure and outcome and calculate the attack rates.
+**Compito**: Creare tabelle 2 per 2 con esposizione e risultato e calcolare i tassi di attacco.
 
 <details>
 
 <summary style="text-decoration: underline; color: darkgreen;">
 
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
 
 </summary>
 
 </br>
 
-You could use the same approach we used before with `tbl_summary()` from {gtsummary}, but to calculate attack rates, you'll need to change from column to row percentages.
+Si potrebbe usare lo stesso approccio usato prima con `tbl_summary()` da {gtsummary}.
+
 </br>
 
 </details>
@@ -986,22 +993,22 @@ You could use the same approach we used before with `tbl_summary()` from {gtsumm
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 ```{r, echo=TRUE}
-tira_clean %>% 
+tira_pul %>% 
   
   select(tira, wmousse, dmousse, wmousse, beer, 
          redjelly, fruitsalad, tomato, mince, salmon,
-         horseradish, chickenwin, roastbeef, pork, ill) %>% # we select the columns we're interested in
+         horseradish, chickenwin, roastbeef, pork, ill) %>% # selezioniamo le colonne di nostro interesse
   
-  tbl_summary(by = ill, percent = "row") %>% #we assign the grouping column and define that we want the percentages by row
+  tbl_summary(by = ill, percent = "row") %>% # assegniamo la colonna di raggruppamento e definiamo che vogliamo le percentuali per riga
   
-  add_overall()    # we add the overall counts
+  add_overall()    # aggiungiamo i conteggi complessivi
 ```
 
 </br>
@@ -1024,31 +1031,34 @@ opts <- c(
 )
 
 
-cat("DOMANDA: What is the attack rate in those who ate white mousse?", longmcq(opts))
+cat("DOMANDA: Qual è il tasso di attacco tra quelli che hanno mangiato mousse bianco (wmousse)?", longmcq(opts))
 
 ```
 :::
 ::: 
 
-#### 5.2: Estimate the relative risk of the different exposures
+#### 5.2: Stimare il rischio relativo delle diverse esposizioni
 
-We have calculated attack rates in exposed and unexposed, which already gives us a lot of information. For example, we see little difference in the attack rates of those who ate and did not ate salmon; but we observe a much higher attack rate among those who ate tiramisu, than among those who did not eat it. We also see a higher attack rate in those who did not drink beer than in those who drank it.
+Abbiamo calcolato i tassi di attacco negli esposti e nei non esposti, il che ci fornisce già molte informazioni. Ad esempio, vediamo poche differenze nei tassi di attacco tra coloro che hanno mangiato e non hanno mangiato salmone; ma osserviamo un tasso di attacco molto più alto tra coloro che hanno mangiato tiramisù, rispetto a coloro che non l'hanno mangiato. Vediamo anche un tasso di attacco più alto in coloro che **non** hanno bevuto birra rispetto a coloro che l'hanno bevuta.
 
-To have a better understanding of the exposures, we will now calculate relative risks.
+Per comprendere meglio le esposizioni, ora calcoleremo i rischi relativi.
 
-**Compito**: First, estimate the relative risk for the exposure of having eaten white mousse at the dinner
+**Compito**: Comincia per stimare il rischio relativo per l'esposizione a mousse bianca (*wmousse*) a cena
+
 
 <details>
 
 <summary style="text-decoration: underline; color: darkgreen;">
 
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
 
 </summary>
 
 </br>
 
-You could do this manually, but you could use one of the following functions: 1) the function `CS()`  (for Cohort Study) or `CC()` (for Case-control Study) from the {EpiStats} package. For this function to work, the outcome and exposure variables have to be numeric and dichotomous coded as 1 (yes) and 0 (no); first write the database_name, then the outcome variable and then the exposure variable, 2) the function `riskratio()` from the package {epitools}, which will give you the RRs and  95%CIs even if you have >2 exposure categories. In this function, you need first to write the exposure and then the outcome. Try reading the documentation of those functions if you have any doubts.
+Potresti farlo manualmente, o potresti usare una di tante funzioni, come per esempio `riskratio()` dal pacchetto {epitools}, che ti darà RR e 95%CI anche se hai >2 categorie di esposizione. In questa funzione, devi prima scrivere l'esposizione e poi l'esito.
+
+La soluzione che noi proponiamo usa la funzione `CS()` dal pacchetto {EpiStats}. Proponiamo questa soluzione perché ci sembra la più semplice. Qua devi specificare prima il database, poi la variabile di esito e per ultimo la variabile di esposizione.
 
 </br>
 
@@ -1058,20 +1068,20 @@ You could do this manually, but you could use one of the following functions: 1)
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 ```{r, echo=TRUE}
-# Relative risk wmousse
-EpiStats::CS(tira_clean, "ill", "wmousse") 
-riskratio(tira_clean$wmousse, tira_clean$ill)
+# Creare un database nuovo con le variabili come classe numerica
+tira_num <- tira_pul %>% 
+  mutate(across(.cols = !c(uniquekey, dateonset, age, mportion2, tportion2), # con il punto esclamativo prima di c() stiamo dicendo a R che vogliamo tutte le colonne, eccetto quelle nella lista c(), trasformate in character
+                .fns = ~ as.numeric(.x))) 
 
-# Relative risk tiramisu
-EpiStats::CS(tira_clean, "ill", "tira") 
-riskratio(tira_clean$tira, tira_clean$ill)
+# Usare CS() da EpiStats per estimare il rischio relativo di wmousse
+CS(tira_num, "ill", "wmousse")
 ```
 
 </br>
@@ -1094,27 +1104,50 @@ opts <- c(
   )
 
 
-cat("DOMANDA: What is the risk of illness among those who ate white mousse compared to those who did not have this food ?", longmcq(opts))
+cat("DOMANDA: Qual è il rischio di malattia tra coloro che hanno mangiato wmousse rispetto a coloro che non hanno mangiato questo alimento?", longmcq(opts))
 
 ```
 :::
 ::: 
 
-**Compito**: Calculate now the risk ratio for all the other exposures to develop hypothesis of the possible source
+Vediamo come possiamo interpretare l'output di `CS()`.
+
+La prima parte `$df1` è una tabella 2x2 di esposizione ed esito. L'ultima colonna `Risk` mostra il rischio tra quelli che hanno mangiato wmousse (Exposed), quelli che non hanno mangiato wmousse (Unexposed) e il Total. Questo `Risk` è lo stesso che **l'incidenza cumualtiva** e che il **tasso di attacco** nel contesto di un focolaio.
+
+La seconda parte `$df1` mostra:
+
+-   **Risk difference (Differenza di rischio)**: La differenza di rischio tra esposti e non esposti, calcolata come $I_{exp} - I_{nexp}$ dove $I_{exp}$ è l'incidenza in esposti e $I_{nexp}$ è l'incidenza in non esposti. In questo caso sarebbe 0.68-0.24 = 0.44 (IC 95%: 0.32 - 0.56)  indicando che gli esposti hanno un rischio maggiore del rispetto ai non esposti.
+
+
+-   **Risk ratio (Rischio relativo):** Calcolato come $I_{exp}/I_{nexp}$. In questo caso sarebbe 0.68/0.24 = 2.85 (IC 95%: 2.13 - 3.81) indicando che gli esposti hanno un rischio 2.85 volte maggiore di sviluppare l'outcome rispetto ai non esposti.
+
+
+-   **Attr. frac. ex. (Frazione attribuibile negli esposti):** La percentuale di malattia tra i casi che è attribuibile alla esposizione. Calcolata come $(I_{exp} - I_{nexp})/I_{exp}$ . In questo caso: (0.68-0.24)/0.68 = 0.65 (IC 95%: 0.53 - 0.74). Indica che il 65% dei casi tra quelli che hanno mangiato wmousse è attribuibile al wmousse.
+
+-   **Attr. frac. pop (Frazione attribuibile nella popolazione):** La percentuale di casi nella popolazione che è attribuibile alla esposizione. Calcolata come $(I_{pop} - I_{nexp})/I_{pop}$, dove $I{pop}$ è l'indidenza nella popolazione totale. In questo caso: (0.35-0.24)/0.35 = 0.32. Indica che il 32% dei casi nella popolazione totale è attribuibile al wmousse.
+
+
+-   **chi2(1):** Il valore del test chi-quadro. In questo caso 45.44, indicando una forte associazione tra wmousse e malattia. 
+
+-   **Pr>chi2:** Il valore p associato al test chi-quadro è 0.000, indicando che l'associazione è statisticamente significativa.
+
+
+
+
+**Compito**: Calcola ora il rapporto di rischio per tutte le altre esposizioni per sviluppare l'ipotesi della possibile fonte
 
 <details>
 
 <summary style="text-decoration: underline; color: darkgreen;">
 
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
 
 </summary>
 
 </br>
 
-You could write the `CS()` or `riskratio()` functions changing the exposure variable one by one. However, to save time and avoid making errors, you could try the `CSTable` function from from the {EpiStats} package.
+Prova a usare la funzione `CSTable()` sempre da {EpiStats}. 
 
-You could also use approaches that allow you to apply the same function to many different objects (e.g., multiple columns) simultaneously. There are different options for this such as *loops*, *lapply* or *purrr*. Here we give the solution with *purrr*, so if you want to explore further purrr have a look at the dedicated [section](https://epirhandbook.com/new_pages/iteration.html#iter_purrr) in the EpiRhandbook.
 </br>
 
 </details>
@@ -1124,32 +1157,23 @@ You could also use approaches that allow you to apply the same function to many 
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 ```{r, echo=TRUE}
-# Relative risk of the rest of variables with EpiStats::CSTable
-# Create an object of all the food variable
-food_variables <- c("tira","wmousse",   
+# Rischio relativo delle altre variabili con EpiStats::CSTable
+# Creare un oggetto con tutte le variabili alimentari
+variabili_cibo <- c("tira","wmousse",   
                     "dmousse","beer","redjelly","fruitsalad",
                     "tomato","mince","salmon",
                     "horseradish", "chickenwin",
                     "roastbeef","pork")
 
-#Create a table for all the food variables together
-CSTable (tira_clean, "ill", food_variables)
-
-#Another option
-tira_clean %>% 
-  select(-uniquekey, -age, -age_group, -sex, -dateonset, -ill) %>% # we first remove the columns we're not interested + the outcome column
-  map(.f = ~riskratio(.x, tira_clean$ill))     # here we call the function for each column. ".x" represents all the columns in the database that have not been removed previously
-
-# Calculate Risk ratios for each portion of tiramisu and mousse consumption.
-riskratio(tira_clean$tportion2, tira_clean$ill)
-riskratio(tira_clean$mportion2, tira_clean$ill)
+# Creare una tabella per tutte le variabili alimentari insieme
+CSTable(tira_pul, "ill", variabili_cibo)
 
 ```
 
@@ -1173,7 +1197,7 @@ opts <- c(
   )
 
 
-cat("DOMANDA: Which exposure has the highest risk ratio?", longmcq(opts))
+cat("DOMANDA: Quale esposizione ha il rischio relativo più elevato??", longmcq(opts))
 
 ```
 :::
@@ -1190,7 +1214,7 @@ opts <- c(
   "dark mousse"
   )
 
-cat("DOMANDA: Which of the following seems like a protective factor?", longmcq(opts))
+cat("DOMANDA: Quale dei seguenti sembra un fattore protettivo??", longmcq(opts))
 
 ```
 :::
@@ -1206,7 +1230,7 @@ opts <- c(
   "dark mousse"
   )
 
-cat("DOMANDA: Which of the following has a non-significant association?", longmcq(opts))
+cat("DOMANDA: Quale delle seguenti ha un'associazione non significativa?", longmcq(opts))
 
 ```
 :::
@@ -1216,41 +1240,44 @@ cat("DOMANDA: Which of the following has a non-significant association?", longmc
 pacman::p_load(webexercises)
 
 opts <- c(
-  answer = "Yes",
-  "No"
+  "56.96",
+  answer = "2.08",
+  "27.36",
+  "1.56"
   )
 
-cat("DOMANDA: Is there a dose-response in the association between illness and tiramisu?", longmcq(opts))
+cat("DOMANDA: Qual è il rischio di malattia tra coloro che hanno mangiato redjelly rispetto a coloro che non hanno mangiato questo alimento ?", longmcq(opts))
 
 ```
 :::
 ::: 
 
-Several food items seemed to be associated with the occurrence of illness; **tiramisu, dark and white chocolate mousse, fruit salad, and red jelly**. They can potentially explain up to 94, 76, 49, 46, and 45 of the 103 cases, respectively. Investigators decided to identify their respective roles in the occurrence of illness. There also seems to be a **dose-response** in the amount of tiramisu eaten, with those eating 2 or more portions having a higher risk than those eating only 1 (who had a higher risk than those who did not eat tiramisu)
+Diversi alimenti sembravano essere associati all'insorgenza di malattie; **tiramisu, mousse al cioccolato fondente e bianco (dmousse e wmousse), macedonia (fruitsalada) e gelatina rossa (redjelly)**. Gli investigatori hanno deciso di identificare i rispettivi ruoli nell'insorgenza di malattie.
 
-From the crude analysis, epidemiologists noticed that the occurrence of **gastroenteritis was lower among those attendants who had drunk beer.** They also decided to assess if beer had a protective effect on the occurrence of gastroenteritis.
+Dall'analisi grezza, gli epidemiologi hanno notato che l'insorgenza di **gastroenterite era inferiore tra i partecipanti che avevano bevuto birra.** Hanno anche deciso di valutare se la birra avesse un effetto protettivo sull'insorgenza di gastroenterite.
 
-#### 5.3: Stratified analysis- Confounding and effect modification
+#### 5.3: Analisi stratificata - Confondimento e modificazione dell'effetto
 
-The finding that beer had a protective effect on GI illness is surprising. One of your colleagues suggested that tiramisu might be confounding this association. Given that tiramisu has the highest risk ratio, it might be that the dessert is associated with the outcome (causes it) and to the exposure (those drinking beer might have preferred not to ruin its sour flavour with the sweetness of tiramisu). Another colleague disagrees and thinks that, actually, tiramisu might be an effect modifier in the relation between beer and illness.
+La scoperta che la birra ha avuto un effetto protettivo sulle malattie gastrointestinali è sorprendente. Uno dei tuoi colleghi ha suggerito che il tiramisù potrebbe confondere questa associazione. Dato che il tiramisù ha il più alto rischio relativo, potrebbe essere che il dessert sia associato all'esito (lo causi) e all'esposizione (chi beve birra potrebbe aver preferito non rovinarne il sapore aspro con la dolcezza del tiramisù). Un altro collega non è d'accordo e pensa che, in realtà, il tiramisù potrebbe essere un modificatore dell'effetto nella relazione tra birra e malattia.
 
-DOMANDA: How would you check if tiramisu is a confounder or an effect modifier in the association between beer and illness? 
+DOMANDA: Come verificheresti se il tiramisù è un fattore di confondimento o un modificatore dell'effetto nell'associazione tra birra e malattia?
 
 
 <details>
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 
-To check both things: confounding and effect modification, we should stratify our data by tiramisu consumption. Once stratified, we can calculate risk ratios in both strata and an adjusted risk ratio: **the adjusted Mantel–Haenszel risk ratio**. If this risk ratio is very different from the crude risk ratio (the overall risk ratio between beer and illness), we could say that tiramisu confounds the association between beer and illness. We normally define as "very different" when: $(RRcrude/RRadjusted - 1)*100$ is larger than 10-20% difference (no strict threshold, your interpretation and expertise counts!).
+Per verificare entrambe le cose: confondimento e modificazione dell'effetto, dovremmo stratificare i nostri dati in base al consumo di tiramisù. Una volta stratificati, possiamo calcolare i rischi relativi in entrambi gli strati e un rischio relativo aggiustato: **il rischio relativo di Mantel-Haenszel aggiustato**. Se questo rischio è molto diverso dal rischio grezzo (rischio relativo complessivo tra birra e malattia), potremmo dire che il tiramisù confonde l'associazione tra birra e malattia. Normalmente definiamo "molto diverso" quando: $(RRgrezzo/RRaggiustato - 1)*100$ è maggiore del 10-20% di differenza (nessuna soglia rigorosa, la tua interpretazione e competenza contano!).
 
-If there is confounding but no effect modification, the adjusted M-H risk ratio should be different from the crude RR, but **the risk ratios in each strata -tiramisu yes and tiramisu no- should not be different**. If they are  different then there is **effect modification**. How do we know if they aredifferent? We can run a test to tell us that called **the Mantel–Haenszel test of homogeneity**.
+Se c'è confondimento ma nessuna modificazione dell'effetto, il RR M-H aggiustato dovrebbe essere diverso dal RR grezzo, ma **i rischi in ogni strato -tiramisù sì e tiramisù no- non dovrebbero essere diversi**. Se sono diversi allora c'è **modificazione dell'effetto**. Come facciamo a sapere se sono diversi? Possiamo eseguire un test per verificarlo, chiamato **test di omogeneità di Mantel-Haenszel**.
+
 </br>
 
 </details>
@@ -1258,21 +1285,20 @@ If there is confounding but no effect modification, the adjusted M-H risk ratio 
 
 
 
-**Compito**: Check if tiramisu is a confounder or an effect modifier in the association between beer and illness
+**Compito**: controlla se il tiramisù è un fattore confondente o un modificatore di effetto nell'associazione tra birra e malattia
 
-Try doing this Compito with the function `csinter()` from the {EpiStats} package. **Read the documentation of the function**.
 
 <details>
 
 <summary style="text-decoration: underline; color: darkgreen;">
 
-`r fontawesome::fa("lightbulb", fill = "gold")` Click to read a hint
+`r fontawesome::fa("lightbulb", fill = "gold")` Clicca per leggere un suggerimento
 
 </summary>
 
 </br>
 
-
+Prova a fare questo Compito con la funzione `CSinter()` dal pacchetto {EpiStats}. **Leggi la documentazione della funzione**.
 
 </br>
 
@@ -1284,36 +1310,20 @@ Try doing this Compito with the function `csinter()` from the {EpiStats} package
 
 <summary style="text-decoration: underline; color: red;">
 
-`r fontawesome::fa("check", fill = "red")`Click to see a solution (try
-it yourself first!)
+`r fontawesome::fa("check", fill = "red")`Clicca per vedere la soluzione (provaci da solo prima!)
+
 
 </summary>
 
 </br>
 ```{r, echo=TRUE}
-#Stratify by tiramisu; let's try exposure=white mousse first
-tira_wmousse <- csinter(x = tira_clean, 
-                        cases = "ill", 
-                        exposure = "wmousse", 
-                        by = "tira")
-
-tira_wmousse
-
-#Stratify by tiramisu; exposure=beer
-tira_beer <- csinter(x = tira_clean, 
+# Stratificare per tiramisù; esposizione = birra
+tira_beer <- csinter(x = tira_pul, 
                      cases = "ill", 
                      exposure = "beer", 
                      by = "tira")
 
 tira_beer
-
-#Stratify by tiramisu portion; exposure=beer
-tportion_beer <- csinter(x = tira_clean, 
-                         cases = "ill", 
-                         exposure = "beer", 
-                         by = "tportion2")
-
-tportion_beer
 ```
 
 </br>
@@ -1329,13 +1339,13 @@ tportion_beer
 pacman::p_load(webexercises)
 
 opts <- c(
-  answer = "13%",
+  answer = "15%",
   "87%",
   "30%",
   "20%"
   )
 
-cat("DOMANDA: Look at the results, what's the magnitude of the difference between the adjusted MH risk ratio and the crude one?", longmcq(opts))
+cat("DOMANDA: Guarda i risultati, qual è l'entità della differenza tra il rapporto di rischio MH aggiustato e quello grezzo??", longmcq(opts))
 
 ```
 :::
@@ -1346,23 +1356,20 @@ pacman::p_load(webexercises)
 
 opts <- c(
    "No",
-  answer ="Yes"
+  answer ="Sì"
   )
 
-cat("DOMANDA: Look at the results, is tiramisu an effect modifier in the association between beer and illness?", longmcq(opts))
+cat("DOMANDA: Guarda i risultati, il tiramisù è un modificatore di effetto nell'associazione tra birra e malattia??", longmcq(opts))
 
 ```
 :::
 :::
 
-You got several results. Let's now review them to make sense of them:
+Hai ottenuto diversi risultati. Ora rivediamoli per capirli:
 
+Per verificare se c'è confusione, dobbiamo valutare se i rapporti di rischio grezzo e aggiustato sono molto diversi. Abbiamo detto che possiamo farlo con la formula $(RRgrezzo/RRaggiustato - 1)*100$. Qui, questo risultato è nella sezione `$df2` e corrisponde all'**Adjusted/crude relative change** che è 15%. Questo risultato è al limite, ma possiamo dire che il tiramisù non sta confondendo in modo massiccio l'associazione tra birra e malattia.
 
-To check if there is confounding, we need to evaluate if the crude and the adjusted risk ratios are very different. We said that we can do that with the formula $(RRcrude/RRadjusted - 1)*100$. Here, the **Inc risk ratio (crude:M-H):** corresponds to the first part: $RRcrude/RRadjusted$. So we need to substract 1 and multiple by 100: (0.87-1)*100. If you do that you'll get 13%, which is borderline, but we can say that tiramisu is not massively confounding the association between beer and illness.
-
-To know whether there is effect modification, you can check the **the two stratum-specific risk ratios**. As they are very different (0.8 vs 1.0), we can conclude there is effect modification of tiramisu on the association between beer and illness.This suggests that the consumption of beer has reduced the effect of tiramisu on gastroenteritis.
-
-We can perform a similar stratification  assessing dose response for tiramisu consumption among beer drinkers and not. After stratifying by the amount of tiramisu consumed, it appears that beer reduces the effect of tiramisu on gastroenteritis only among those who have eaten an average amount of tiramisu. This indicates that, if the amount of tiramisu is large, beer is no longer a protective factor of gastroenteritis.
+Per sapere se c'è una modifica dell'effetto, puoi controllare **i due rapporti di rischio specifici dello strato**. Poiché sono molto diversi (0,78 vs 1,04), possiamo concludere che c'è una modificazione dell'effetto del tiramisù sull'associazione tra birra e malattia. Ciò suggerisce che il consumo di birra ha ridotto l'effetto del tiramisù sulla gastroenterite.
 
 How would you proceed with your analysis? (to be continued during the MVA module)
 
