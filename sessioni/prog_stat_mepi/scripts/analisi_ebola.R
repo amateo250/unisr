@@ -19,6 +19,7 @@ pacman::p_load(
   flextable, # per formattare tabelle
   scales,   # per mostrare percentuale nelle tabelle
   gtsummary, # statistiche riassuntive, test e regressioni
+  EpiStats,
   tidyverse # gestione e visualizzazione dati
 )
 
@@ -375,7 +376,21 @@ casi_ebola_pul %>%
   
   
 
+# Sessione 5 --------------------------------------------------------------
+
+casi_ebola_pul <- casi_ebola_pul %>% 
+  mutate(outcome = ifelse(outcome == "Recover" | is.na(outcome), 0, 1),
+         fever = ifelse(fever == "no" | is.na(fever), 0, 1),
+         vomit = ifelse(vomit == "no" | is.na(vomit), 0, 1),
+         aches = ifelse(aches == "no" | is.na(aches), 0, 1),
+         gender = ifelse(gender == "femmine", 0, 1))
 
 
+CS(casi_ebola_pul, outcome, gender)
 
+CSTable(casi_ebola_pul, "outcome", c("fever", "vomit", "aches"))
 
+csinter(x = casi_ebola_pul, 
+        cases = "outcome", 
+        exposure = "fever", 
+        by = "gender")

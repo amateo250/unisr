@@ -22,7 +22,7 @@ title: |
 
 # **Master II livello Epidemiologia - Programmi Statistici**
 
-# Sessione 5 - Analisi descrittiva stratificata e test d'ipotesi:  {.unnumbered}
+# Sessione 5 - Analisi descrittiva stratificata e sviluppo d'ipotesi:  {.unnumbered}
 
 ## Obiettivi di questa sesione
 
@@ -33,14 +33,11 @@ title: |
 
 - essere in grado di condurre un'analisi stratificata rispetto a potenziali fattori di rischio e fattori confondenti/modificatori di effetto
 
-### **Preparazione**
-
-Assicurati di avere RStudio aperto con il **progetto *prog_stat_mepi***
 
 ### **Scenario, disegno dello studio e piano di analisi**
 #### Introduzione
 
-Il 26 giugno 2025, la Università Vita-Salute San Raffaele ha celebrato la festa di laurea della prima edizione del suo Master di II livello in epidemiologia, a cui erano attesi dai 250 ai 350 partecipanti. Tra i partecipanti c'erano i laureati di quella scuola, le loro famiglie e amici, insegnanti, studenti di medicina e alcuni laureati di una università vicina.
+Il 26 giugno 2025, la Università Vita-Salute San Raffaele ha celebrato la festa del finale della prima edizione del suo Master di II livello in epidemiologia, a cui erano attesi dai 250 ai 350 partecipanti. Tra i partecipanti c'erano gli studenti di quella università, le loro famiglie e amici, insegnanti, studenti di medicina e alcuni laureati di una università vicina.
 
 Un buffet self-service per la festa è stato fornito da un catering commerciale di Milano. Il cibo è stato preparato il giorno della festa e trasportato in un furgone refrigerato alla scuola.
 
@@ -62,13 +59,13 @@ Agli studenti di entrambe università che hanno partecipato alla festa è stato 
 
 In totale, 291 hanno risposto al questionario e sono stati identificati 103 casi (tasso di attacco: 35%). Tra questi casi, 84 (82%) hanno ricevuto cure mediche e quattro sono stati ricoverati in ospedale. I tassi di attacco per fascia d'età erano del 36,6% per le persone <20 anni, del 32,1% per le persone dai 20 ai 29 anni e del 36,8% per le persone di età superiore ai 29 anni.
 
-![Figura 1: Casi di gastroenterite per data inizio sintomi tra i partecipanti alla festa di laurea (n=103). La linea tratteggiata segnala il momento della festa. Milano, Giugno 2025.](images/curva_epi_sessione5.png)
+![Figura 1: Casi di gastroenterite per data inizio sintomi tra i partecipanti alla festa di fine master (n=103). La linea tratteggiata segnala il momento della festa. Milano, Giugno 2025.](images/curva_epi_sessione5.png)
 
 
 
 Utilizzando l'elenco aggiornato dei partecipanti, si vuole fare uno **studio di coorte retrospettivo** includendo tutti i partecipanti alla festa. I partecipanti che hanno risposto alla chiamata hanno ricevuto un questionario standard che chiedeva informazioni demografiche, segni, sintomi e durata, ricovero in ospedale e consumo di cibo e bevande alla festa, inclusa la quantità consumata. Sono stati calcolati tassi di attacco specifici per cibo per oltre 50 alimenti e bevande.
 
-Lo studio dovrò seguire questi passaggi:
+Lo studio dovrà seguire questi passaggi:
 
 **Eseguire la pulizia dei dati**
 
@@ -119,7 +116,7 @@ Lo studio dovrò seguire questi passaggi:
 
 -   Scaricare la cartella *tiramisu_unisr* ed estrarre i contenuti
 -   Crea un progetto di RStudio dentro la cartella *tiramisu_unisr*
--   Care uno script di R, assicurati di includere all'inizio dello script nome e
+-   Crea uno script di R, assicurati di includere all'inizio dello script nome e
     cognome; obiettivo dello script; tua email e la data. 
 -   Comincia per istallare e caricare questi pachetti: rio, skimr, janitor, gtsummary,ggsurveillance,
 rstatix, epitools, epiR, epikit, EpiStats and tidyverse
@@ -456,7 +453,11 @@ Sembra che tutte le colonne che consistono di valori 1 (presenti) e 0 (assenti) 
 #### 3.1: Categorizza i valori "mancante" come NA
 Abbiamo visto con `skim()` -e nel dizionario dei dati- che le variabili *salmon*, *pork* e *horseradish* hanno i valori 'mancanti' codificati con il numero '9'. Nella maggior parte delle analisi e visualizzazioni, è molto importante che R consideri i dati mancanti veramente come "mancanti". Per fare ciò, i dati mancanti devono essere codificati come `NA` (**senza virgolette**). Altre codifiche dei dati mancanti, come spazi vuoti o il numero 9 (come in questo caso) significheranno che R tratterà questi dati come una categoria o un numero. Per R, 9 non è diverso dal numero 1.
 
-**Compito** Ricodifica le colonne salmon, pork e horseradish in modo che i valori di 9 siano codificati come `NA`. Aggiungi il nuovo codice al comando di pulizia avviata nel passaggio precedente
+**Compiti** 
+
+-   Comincia un commando di pulizia che crei *tira_pul* a partire da *tira_grezzo*
+
+-   In questo comando, ricodifica le colonne salmon, pork e horseradish in modo che i valori di 9 siano codificati come `NA`. 
 
 <details>
 
@@ -934,9 +935,7 @@ tira_pul %>%
   
   select(sex, fascia_eta, ill) %>%  # selezioniamo le colonne di nostro interesse
   
-  tbl_summary(by = ill, percent = "row") # assegniamo la colonna di raggruppamento e 
-                                         #definiamo che vogliamo le percentuali per riga per stimare
-                                         #i tassi di attacco per sesso e fascia di età.
+  tbl_summary(by = ill, percent = "row") 
 ```
 
 </br>
@@ -1075,13 +1074,8 @@ La soluzione che noi proponiamo usa la funzione `CS()` dal pacchetto {EpiStats}.
 
 </br>
 ```{r, echo=TRUE}
-# Creare un database nuovo con le variabili come classe numerica
-tira_num <- tira_pul %>% 
-  mutate(across(.cols = !c(uniquekey, dateonset, age, mportion2, tportion2), # con il punto esclamativo prima di c() stiamo dicendo a R che vogliamo tutte le colonne, eccetto quelle nella lista c(), trasformate in character
-                .fns = ~ as.numeric(.x))) 
-
 # Usare CS() da EpiStats per estimare il rischio relativo di wmousse
-CS(tira_num, "ill", "wmousse")
+CS(tira_pul, ill, wmousse)
 ```
 
 </br>
@@ -1274,7 +1268,7 @@ DOMANDA: Come verificheresti se il tiramisù è un fattore di confondimento o un
 
 </br>
 
-Per verificare entrambe le cose: confondimento e modificazione dell'effetto, dovremmo stratificare i nostri dati in base al consumo di tiramisù. Una volta stratificati, possiamo calcolare i rischi relativi in entrambi gli strati e un rischio relativo aggiustato: **il rischio relativo di Mantel-Haenszel aggiustato**. Se questo rischio è molto diverso dal rischio grezzo (rischio relativo complessivo tra birra e malattia), potremmo dire che il tiramisù confonde l'associazione tra birra e malattia. Normalmente definiamo "molto diverso" quando: $(RRgrezzo/RRaggiustato - 1)*100$ è maggiore del 10-20% di differenza (nessuna soglia rigorosa, la tua interpretazione e competenza contano!).
+Per verificare entrambe le cose: confondimento e modificazione dell'effetto, dovremmo stratificare i nostri dati in base al consumo di tiramisù. Una volta stratificati, possiamo calcolare i rischi relativi in entrambi gli strati e un rischio relativo aggiustato: **il rapporto di rischio di Mantel-Haenszel aggiustato**. Se questo rischio è molto diverso dal rischio grezzo (rischio relativo complessivo tra birra e malattia), potremmo dire che il tiramisù confonde l'associazione tra birra e malattia. Normalmente definiamo "molto diverso" quando: $(RRgrezzo/RRaggiustato - 1)*100$ è maggiore del 10-20% di differenza (nessuna soglia rigorosa, la tua interpretazione e competenza contano!).
 
 Se c'è confondimento ma nessuna modificazione dell'effetto, il RR M-H aggiustato dovrebbe essere diverso dal RR grezzo, ma **i rischi in ogni strato -tiramisù sì e tiramisù no- non dovrebbero essere diversi**. Se sono diversi allora c'è **modificazione dell'effetto**. Come facciamo a sapere se sono diversi? Possiamo eseguire un test per verificarlo, chiamato **test di omogeneità di Mantel-Haenszel**.
 
@@ -1371,110 +1365,17 @@ Per verificare se c'è confusione, dobbiamo valutare se i rapporti di rischio gr
 
 Per sapere se c'è una modifica dell'effetto, puoi controllare **i due rapporti di rischio specifici dello strato**. Poiché sono molto diversi (0,78 vs 1,04), possiamo concludere che c'è una modificazione dell'effetto del tiramisù sull'associazione tra birra e malattia. Ciò suggerisce che il consumo di birra ha ridotto l'effetto del tiramisù sulla gastroenterite.
 
-How would you proceed with your analysis? (to be continued during the MVA module)
+Con quest'analisi siamo in grado d'ipotizzare che il tiramisù sia la fonte del focolaio, ma questa ipotesi va verificata con un'analisi multivariata che vederemo nelle prossime sessioni!
 
-### **Case study information** 
+### **Informazioni del esercizio** 
 
-***Authorship***\
-Original authors: This case study was first designed by Alain Moren and
-Gilles Desve for EPIET. It is based on an investigation conducted by
-Anja Hauri, RKI, Berlin, 1998.\
-Data source: Data is fictional and was inspired by [Nygren et al.
-Tick-borne encephalitis: acute clinical manifestations and severity in
-581 cases from Germany, 2018-2020. Journal of Infection. 2023 Apr
+***Autori***\
+Questo esercizio è satato adattato per Alberto Mateo Urdiales, ISS (alberto.mateourdiales@iss.it) da un Case-study EPIET/EUPHEM (ECDC). Questo Case study
+è stato inizialmente progettato da Alain Moren e
+Gilles Desve per EPIET. Si basa su un'indagine condotta da
+Anja Hauri, RKI, Berlino, 1998.\
+Fonte dei dati: I dati sono fittizi e sono stati ispirati da [Nygren et al.
+Encefalite trasmessa da zecche: manifestazioni cliniche acute e gravità in
+581 casi dalla Germania, 2018-2020. Journal of Infection. 2023 Apr
 1;86(4):369-75](https://linkinghub.elsevier.com/retrieve/pii/S0163-4453(23)00088-9)\
-Adapted and modified by: Alicia Barrasa (EPIET), Ioannis Karagiannis
-(Public Health England - PHE), Giri Shankar (Public Health Wales),
-Niklas Willrich (Robert Koch Institute-RKI), Patrick Keating (Austrian
-Agency for Health and Food Safety-AGES), Alexander Spina (AGES), Daniel
-Gardiner (PHE), Lukas Richter (AGES), Liese Van Gompel (MedEPIET),  Kostas Danis (MedEPIET) and Alberto Mateo Urdiales
-(Istituto Superiore di Sanità - ISS)\
-
-
-#### Terms of Use
-
-**Disclaimer**: The information presented in this exercise and the
-associated data files have been deliberately changed so as to facilitate
-the acquisition of the learning objectives for fellows of EPIET, EUPHEM
-and EPIET-associated programmes. This case study was first introduced in
-2022 (see Copyright and Licence agreement for more information).
-
-You are free:
-
--   to Share: to copy and distribute the work
--   to Remix: to adapt and build upon the material
-
-Under the following conditions:
-
--   Attribution: You must attribute the work in the manner specified by
-    the author or licensor (but not in any way that suggests that they
-    endorse you or your use of the work). The best way to do this is to
-    keep as it is the list of contributors: sources, authors and
-    reviewers.
-
--   Share Alike: If you alter, transform, or build upon this work, you
-    may distribute the resulting work only under the same or similar
-    license to this one. Your changes must be documented. Under that
-    condition, you are allowed to add your name to the list of
-    contributors.
-
--   Notification: If you use the work in the manner specified by the
-    author or licensor, [Walter\@rki.de](mailto:Walterj@rki.de)
-
--   You cannot sell this work alone but you can use it as part of a
-    teaching.
-
-With the understanding that:
-
--   Waiver: Any of the above conditions can be waived if you get
-    permission from the copyright holder.
-
--   Public Domain: Where the work or any of its elements is in the
-    public domain under applicable law, that status is in no way
-    affected by the license.
-
--   Other Rights: In no way are any of the following rights affected by
-    the license:
-
-    -   Your fair dealing or fair use rights, or other applicable
-        copyright exceptions and limitations;
-
-    -   The author's moral rights;
-
-    -   Rights other persons may have either in the work itself or in
-        how the work is used, such as publicity or privacy rights.
-
--   Notice: For any reuse or distribution, you must make clear to others
-    the license terms of this work by keeping together this work and the
-    current license.
-
-This licence is based on
-<http://creativecommons.org/licenses/by-sa/3.0/>
-
-#### Feedback & suggestions
-
--   You can write feedback and suggestions on this case study at the
-    ECDC GITHUB
--   Alternatively email us at: \[ECDC CONTACT MAIL\]
-
-\pagebreak
-
-#### Version and revisions
-
-Write date of first version
-
-Write any revisions made to the case study
-
-| Date | Changes made                                                                                                                                                                                                                                       |                                                                                                                                    Author |
-|---------------------|:-------------------------------|------------------:|
-| 2015 | The case study has been divided in two parts: the first includes descriptive, univariable and stratified analysis as pre-module homework; the second includes logistic and binary regression (not shown here). Unnecessary toponymes were removed. |                                                               Alicia Barrasa (EPIET) and Ioannis Karagiannis (Publich Health England-PHE) |
-| 2017 | Questions were rephrased to reflect real life scenarios (rather than academic exercise)                                                                                                                                                            |                                                                         Alicia Barrasa (EPIET) and Giri Shankar (Public Health Wales-PHW) |
-| 2017 | The case study was adapted to include the help on R                                                                                                                                                                                                | Niklas Willrich (Robert Koch Institute-RKI), Patrick Keating (Austrian Agency for Health and Food Safety-AGES) and Alexander Spina (AGES) |
-|2017| Contribution to the R code|Daniel Gardiner (Public Health England-PHE) and Lukas Richter (AGES)|
-|2022|Minor revisions to the R code and explanations| |
-|2023| Major revision of the R code. R code was simplified and R tidyverse code was implemented| Liese Van Gompel (MedEPIET)|
-|2024| Revision of the R code, i.e. use of EpiStat package for univariable and multivariable analysis, simplification and harmonisation of the R code| Kostas Danis (MediPIET)|
-| 2024 | Revision of content, structure, R code and adaptation of format to Applied Epi's template of case studies | Alberto Mateo Urdiales (ISS) |
-| 2025 | Revision of contents |  Felix Moek (RKI, ECDC)
-
 
