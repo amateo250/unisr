@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-inputdac78166054c24b – Corso introduttivo a R</title>
+<title>quarto-input6b19dbe38be53f8d – Corso introduttivo a R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -186,7 +186,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#master-ii-livello-epidemiologia---programmi-statistici" id="toc-master-ii-livello-epidemiologia---programmi-statistici" class="nav-link active" data-scroll-target="#master-ii-livello-epidemiologia---programmi-statistici"><strong>Master II livello Epidemiologia - Programmi Statistici</strong></a></li>
   <li><a href="#sessione-4---grafici-e-analisi-stratificata" id="toc-sessione-4---grafici-e-analisi-stratificata" class="nav-link" data-scroll-target="#sessione-4---grafici-e-analisi-stratificata">Sessione 4 - Grafici e analisi stratificata:</a>
   <ul>
-  <li><a href="#obiettivi-di-questa-sesione" id="toc-obiettivi-di-questa-sesione" class="nav-link" data-scroll-target="#obiettivi-di-questa-sesione">Obiettivi di questa sesione</a>
+  <li><a href="#obiettivi-di-questa-sessione" id="toc-obiettivi-di-questa-sessione" class="nav-link" data-scroll-target="#obiettivi-di-questa-sessione">Obiettivi di questa sessione</a>
   <ul class="collapse">
   <li><a href="#preparazione" id="toc-preparazione" class="nav-link" data-scroll-target="#preparazione"><strong>Preparazione</strong></a></li>
   <li><a href="#step-1-grafico-a-barre" id="toc-step-1-grafico-a-barre" class="nav-link" data-scroll-target="#step-1-grafico-a-barre"><strong>Step 1: Grafico a barre</strong></a>
@@ -243,8 +243,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="sessione-4---grafici-e-analisi-stratificata" class="level1 unnumbered">
 <h1 class="unnumbered">Sessione 4 - Grafici e analisi stratificata:</h1>
-<section id="obiettivi-di-questa-sesione" class="level2">
-<h2 class="anchored" data-anchor-id="obiettivi-di-questa-sesione">Obiettivi di questa sesione</h2>
+<section id="obiettivi-di-questa-sessione" class="level2">
+<h2 class="anchored" data-anchor-id="obiettivi-di-questa-sessione">Obiettivi di questa sessione</h2>
 <ul>
 <li><p>capire la grammatica di {ggplot2},</p></li>
 <li><p>imparare a fare grafici semplici</p></li>
@@ -276,7 +276,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># SESSIONE 1 --------------------------------------------------------------</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4.2. Istallare e caricare i pacchetti necessari -------------------------</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="do">## 4.2. Installare e caricare i pacchetti necessari -------------------------</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># installa (se necessario) da CRAN e carica i pacchetti da utilizzare</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
@@ -508,8 +508,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Se lanci questo codice, cosa succedere?
-<div id="radio_YGGGRPFGCS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YGGGRPFGCS" value=""> <span>Niente</span></label><label><input type="radio" autocomplete="off" name="radio_YGGGRPFGCS" value="answer"> <span>Vedo un grafico vuoto, ma sull'asse orizzontale vedo i nomi degli ospedali</span></label><label><input type="radio" autocomplete="off" name="radio_YGGGRPFGCS" value=""> <span>Vedo un grafico a barre</span></label><label><input type="radio" autocomplete="off" name="radio_YGGGRPFGCS" value=""> <span>Vedo i nomi dei distritti</span></label>
+<div id="radio_IOSLTNMSPA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IOSLTNMSPA" value=""> <span>Niente</span></label><label><input type="radio" autocomplete="off" name="radio_IOSLTNMSPA" value="answer"> <span>Vedo un grafico vuoto, ma sull'asse orizzontale vedo i nomi degli ospedali</span></label><label><input type="radio" autocomplete="off" name="radio_IOSLTNMSPA" value=""> <span>Vedo un grafico a barre</span></label><label><input type="radio" autocomplete="off" name="radio_IOSLTNMSPA" value=""> <span>Vedo i nomi dei distritti</span></label>
 </div>
 </div>
 </div>
@@ -549,8 +549,8 @@ Domanda: Se lanci questo codice, cosa succedere?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Qual è l’ospedale con maggio numero di casi?
-<div id="radio_NVIKGYLLRO" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_NVIKGYLLRO" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_NVIKGYLLRO" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_NVIKGYLLRO" value="answer"> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_NVIKGYLLRO" value=""> <span>Military Hospital</span></label>
+<div id="radio_CKDOXLPRVU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CKDOXLPRVU" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_CKDOXLPRVU" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_CKDOXLPRVU" value="answer"> <span>Port Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_CKDOXLPRVU" value=""> <span>Military Hospital</span></label>
 </div>
 </div>
 </div>
@@ -922,8 +922,8 @@ Domanda: Qual è l’ospedale con maggio numero di casi?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Si vede una chiara associazione tra l’età in anni e la temperatura?
-<div id="radio_PJZEHPWCJV" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_PJZEHPWCJV" value=""> <span>Sì, c'è una chiara associazione positiva</span></label><label><input type="radio" autocomplete="off" name="radio_PJZEHPWCJV" value=""> <span>Sì, c'è una chiara associazione negativa</span></label><label><input type="radio" autocomplete="off" name="radio_PJZEHPWCJV" value="answer"> <span>No, sembra esserci una leggera associazione positiva ma non è chiaro</span></label><label><input type="radio" autocomplete="off" name="radio_PJZEHPWCJV" value=""> <span>No, è impossibile saperlo</span></label>
+<div id="radio_ZRMANLTGDB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZRMANLTGDB" value=""> <span>Sì, c'è una chiara associazione positiva</span></label><label><input type="radio" autocomplete="off" name="radio_ZRMANLTGDB" value=""> <span>Sì, c'è una chiara associazione negativa</span></label><label><input type="radio" autocomplete="off" name="radio_ZRMANLTGDB" value="answer"> <span>No, sembra esserci una leggera associazione positiva ma non è chiaro</span></label><label><input type="radio" autocomplete="off" name="radio_ZRMANLTGDB" value=""> <span>No, è impossibile saperlo</span></label>
 </div>
 </div>
 </div>
@@ -987,8 +987,8 @@ Domanda: Si vede una chiara associazione tra l’età in anni e la temperatura?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quando è stato raggiunto il pico della epidemia?
-<div id="radio_CNJUFYRFSZ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_CNJUFYRFSZ" value=""> <span>Aprile 2015</span></label><label><input type="radio" autocomplete="off" name="radio_CNJUFYRFSZ" value=""> <span>Aprile 2014</span></label><label><input type="radio" autocomplete="off" name="radio_CNJUFYRFSZ" value=""> <span>Dicembre 2014</span></label><label><input type="radio" autocomplete="off" name="radio_CNJUFYRFSZ" value="answer"> <span>Settembre 2014</span></label>
+<div id="radio_FOFYQWRANC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FOFYQWRANC" value=""> <span>Aprile 2015</span></label><label><input type="radio" autocomplete="off" name="radio_FOFYQWRANC" value=""> <span>Aprile 2014</span></label><label><input type="radio" autocomplete="off" name="radio_FOFYQWRANC" value=""> <span>Dicembre 2014</span></label><label><input type="radio" autocomplete="off" name="radio_FOFYQWRANC" value="answer"> <span>Settembre 2014</span></label>
 </div>
 </div>
 </div>
@@ -1041,8 +1041,8 @@ Domanda: Quando è stato raggiunto il pico della epidemia?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quale ospedale ha avuto i primi casi?
-<div id="radio_YGINLILHRS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_YGINLILHRS" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_YGINLILHRS" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_YGINLILHRS" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_YGINLILHRS" value="answer"> <span>Port Hospital</span></label>
+<div id="radio_XDUBDMATTQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XDUBDMATTQ" value=""> <span>Military Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_XDUBDMATTQ" value=""> <span>Central Hospital</span></label><label><input type="radio" autocomplete="off" name="radio_XDUBDMATTQ" value=""> <span>SMMH</span></label><label><input type="radio" autocomplete="off" name="radio_XDUBDMATTQ" value="answer"> <span>Port Hospital</span></label>
 </div>
 </div>
 </div>
@@ -1153,9 +1153,14 @@ Domanda: Quale ospedale ha avuto i primi casi?
 <h2 class="anchored" data-anchor-id="informazioni-sullesercizio">Informazioni sull’esercizio</h2>
 <p><strong>Autore</strong></p>
 <p>Autore originale: Alberto Mateo Urdiales (Dipartimento Malattie Infettive, Istituto Superiore di Sanità<br>
-Fonte dati: I dati sul focolaio di Ebola provengono da AppliedEpi e si possono scaricare nel sito <a href="https://epirhandbook.com/en/">EpiRhandbook</a>; i dati sul focolaio gastrointestinale fa parte dal pacchetto {EpiStats}; quello sul peso alla nascita dal pacchetto {MASS}<br>
-</p>
+Fonte dati: I dati sul focolaio di Ebola provengono da AppliedEpi e si possono scaricare nel sito <a href="https://epirhandbook.com/en/">EpiRhandbook</a>; i dati sul focolaio gastrointestinale fa parte del pacchetto {EpiStats};</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 22%">
+<col style="width: 14%">
+<col style="width: 39%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Date</th>
@@ -1169,6 +1174,12 @@ Fonte dati: I dati sul focolaio di Ebola provengono da AppliedEpi e si possono s
 <td>Gennaio 2025</td>
 <td style="text-align: left;">First draft</td>
 <td style="text-align: right;">1</td>
+<td>Alberto Mateo Urdiales</td>
+</tr>
+<tr class="even">
+<td>Novembre 2026</td>
+<td style="text-align: left;">Versione per il sito web del corso, preparata con il supporto di Mistral Vibe (assistente IA)</td>
+<td style="text-align: right;">2</td>
 <td>Alberto Mateo Urdiales</td>
 </tr>
 </tbody>
