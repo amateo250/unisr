@@ -1,10 +1,11 @@
 project:
   type: website
 
+lang: it
+
 website:
   title: "Corso introduttivo a R"
   description: "Corso introduttivo al software statistico R — Master II livello in Epidemiologia e Sanità Pubblica, Università Vita-Salute San Raffaele"
-  lang: it
   navbar:
     left:
       - text: Home
