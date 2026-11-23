@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input7d172a8dc9500c00 – Corso introduttivo a R</title>
+<title>quarto-inputd971c38ea7fb80cc – Corso introduttivo a R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -166,10 +166,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./materiali.html"> 
-<span class="menu-text">Materiali</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -245,7 +241,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>In questo esercizio continueremo a lavorare sul database <em>linelist_raw.xlsx</em> e sullo script <em>analisi_ebola.R</em> che abbiamo cominciato l’ultimo giorno. Ricorda che questo database contiene dati fittizi che imitano dati individuali raccolti durante un’epidemia di ebola.</p>
 <p>Quindi, prima di cominciare, assicurati di:</p>
 <ol type="1">
-<li><p>Avere RStudio aperto con il <strong>progetto <em>materiale_R</em></strong>.</p></li>
+<li><p>Avere RStudio aperto con il <strong>progetto <em>prog_stat_mepi</em></strong>.</p></li>
 <li><p>Aprire lo script <strong>analisi_ebola</strong></p></li>
 <li><p>Pulire l’Environment (se non ti ricordi come fare, leggi il primo paragrafo dello step <strong>4.1. Creare un nuovo script</strong> della sessione 1)</p></li>
 <li><p>Fai correre lo script e assicurati che tutto funzioni bene</p></li>
@@ -407,8 +403,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Segnala almeno una delle seguenti colonne che contiene caratteri speciali e deve essere rinominata?
-<div id="radio_SEXUSTKMUU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_SEXUSTKMUU" value=""> <span>gender</span></label><label><input type="radio" autocomplete="off" name="radio_SEXUSTKMUU" value="answer"> <span>date onset</span></label><label><input type="radio" autocomplete="off" name="radio_SEXUSTKMUU" value=""> <span>row_num</span></label><label><input type="radio" autocomplete="off" name="radio_SEXUSTKMUU" value="answer"> <span>infection date</span></label><label><input type="radio" autocomplete="off" name="radio_SEXUSTKMUU" value=""> <span>lat</span></label><label><input type="radio" autocomplete="off" name="radio_SEXUSTKMUU" value="answer"> <span>hosp date</span></label>
+<div id="radio_EYIWSMMMCQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EYIWSMMMCQ" value=""> <span>gender</span></label><label><input type="radio" autocomplete="off" name="radio_EYIWSMMMCQ" value="answer"> <span>date onset</span></label><label><input type="radio" autocomplete="off" name="radio_EYIWSMMMCQ" value=""> <span>row_num</span></label><label><input type="radio" autocomplete="off" name="radio_EYIWSMMMCQ" value="answer"> <span>infection date</span></label><label><input type="radio" autocomplete="off" name="radio_EYIWSMMMCQ" value=""> <span>lat</span></label><label><input type="radio" autocomplete="off" name="radio_EYIWSMMMCQ" value="answer"> <span>hosp date</span></label>
 </div>
 </div>
 </div>
@@ -565,14 +561,14 @@ Domanda: Segnala almeno una delle seguenti colonne che contiene caratteri specia
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Qual è la classe della colonna ‘age’ nel nostro database?
-<div id="radio_ZAQOFBHJPU" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_ZAQOFBHJPU" value=""> <span>numeric</span></label><label><input type="radio" autocomplete="off" name="radio_ZAQOFBHJPU" value=""> <span>factor</span></label><label><input type="radio" autocomplete="off" name="radio_ZAQOFBHJPU" value="answer"> <span>character</span></label><label><input type="radio" autocomplete="off" name="radio_ZAQOFBHJPU" value=""> <span>date</span></label>
+<div id="radio_XZDBFDGHSL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XZDBFDGHSL" value=""> <span>numeric</span></label><label><input type="radio" autocomplete="off" name="radio_XZDBFDGHSL" value=""> <span>factor</span></label><label><input type="radio" autocomplete="off" name="radio_XZDBFDGHSL" value="answer"> <span>character</span></label><label><input type="radio" autocomplete="off" name="radio_XZDBFDGHSL" value=""> <span>date</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Quale dovrebbe essere la classe della colonna ‘age’?
-<div id="radio_LOUHAPHHUJ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_LOUHAPHHUJ" value="answer"> <span>numeric</span></label><label><input type="radio" autocomplete="off" name="radio_LOUHAPHHUJ" value=""> <span>factor</span></label><label><input type="radio" autocomplete="off" name="radio_LOUHAPHHUJ" value=""> <span>character</span></label><label><input type="radio" autocomplete="off" name="radio_LOUHAPHHUJ" value=""> <span>date</span></label>
+<div id="radio_HWYOXFVAOP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HWYOXFVAOP" value="answer"> <span>numeric</span></label><label><input type="radio" autocomplete="off" name="radio_HWYOXFVAOP" value=""> <span>factor</span></label><label><input type="radio" autocomplete="off" name="radio_HWYOXFVAOP" value=""> <span>character</span></label><label><input type="radio" autocomplete="off" name="radio_HWYOXFVAOP" value=""> <span>date</span></label>
 </div>
 </div>
 </div>
@@ -933,14 +929,14 @@ Domanda: Quale dovrebbe essere la classe della colonna ‘age’?
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quanti casi sono confermati?
-<div id="radio_HOYTGDDYDQ" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_HOYTGDDYDQ" value=""> <span>2669</span></label><label><input type="radio" autocomplete="off" name="radio_HOYTGDDYDQ" value="answer"> <span>1147</span></label><label><input type="radio" autocomplete="off" name="radio_HOYTGDDYDQ" value=""> <span>2795</span></label><label><input type="radio" autocomplete="off" name="radio_HOYTGDDYDQ" value=""> <span>3254</span></label>
+<div id="radio_IITVOTSPGG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IITVOTSPGG" value=""> <span>2669</span></label><label><input type="radio" autocomplete="off" name="radio_IITVOTSPGG" value="answer"> <span>1147</span></label><label><input type="radio" autocomplete="off" name="radio_IITVOTSPGG" value=""> <span>2795</span></label><label><input type="radio" autocomplete="off" name="radio_IITVOTSPGG" value=""> <span>3254</span></label>
 </div>
 </div>
 <div class="webex-check">
 Domanda: Modificare l’ordine dei criteri logici in case_when() cambierebbe il risultato finale?
-<div id="radio_MLWYJLGODF" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_MLWYJLGODF" value="answer"> <span>Sì</span></label><label><input type="radio" autocomplete="off" name="radio_MLWYJLGODF" value=""> <span>No</span></label>
+<div id="radio_YPEZOPRGEQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YPEZOPRGEQ" value="answer"> <span>Sì</span></label><label><input type="radio" autocomplete="off" name="radio_YPEZOPRGEQ" value=""> <span>No</span></label>
 </div>
 </div>
 </div>
@@ -1051,8 +1047,8 @@ Domanda: Modificare l’ordine dei criteri logici in case_when() cambierebbe il 
 <p><strong>Rispondi</strong></p>
 <div class="webex-check">
 Domanda: Quale sono le dimensioni del nuovo database ‘casi_ebola_pul’?
-<div id="radio_BQKJPQIXDS" class="webex-radiogroup">
-<label><input type="radio" autocomplete="off" name="radio_BQKJPQIXDS" value=""> <span>6611 righe e 28 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_BQKJPQIXDS" value=""> <span>1250 righe e 29 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_BQKJPQIXDS" value="answer"> <span>709 righe e 29 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_BQKJPQIXDS" value=""> <span>505 righe e 30 colonne</span></label>
+<div id="radio_PGZSGRJQYY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PGZSGRJQYY" value=""> <span>6611 righe e 28 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_PGZSGRJQYY" value=""> <span>1250 righe e 29 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_PGZSGRJQYY" value="answer"> <span>709 righe e 29 colonne</span></label><label><input type="radio" autocomplete="off" name="radio_PGZSGRJQYY" value=""> <span>505 righe e 30 colonne</span></label>
 </div>
 </div>
 </div>
@@ -1788,14 +1784,7 @@ window.onload = function() {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/amateo250/unisr">
-      <i class="bi bi-github" role="img" aria-label="Repository GitHub del corso">
-</i> 
-    </a>
-  </li>  
-</ul>
+      &nbsp;
     </div>
   </div>
 </footer>

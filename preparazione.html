@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>quarto-input5176f76b08d5fae6 – Corso introduttivo a R</title>
+<title>quarto-input5e4e342d622136b8 – Corso introduttivo a R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -166,10 +166,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </li>  
     </ul>
   </li>
-  <li class="nav-item">
-    <a class="nav-link" href="./materiali.html"> 
-<span class="menu-text">Materiali</span></a>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -228,19 +224,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="installare-r-rtools-e-rstudio" class="level2">
 <h2 class="anchored" data-anchor-id="installare-r-rtools-e-rstudio">Installare R, RTools e RStudio</h2>
 <p>Sul tuo computer devono essere installati R, RTools (solo Windows) e RStudio, preferibilmente in quest’ordine: <strong>R → RTools → RStudio</strong>.</p>
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Avviso</span>Attenzione ai permessi di amministratore
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>L’installazione di RStudio e di RTools di solito richiede i diritti di amministratore. Assicurati di fare il GRISSI per le credenziali temporanee</p>
-</div>
-</div>
 <section id="r" class="level3">
 <h3 class="anchored" data-anchor-id="r">R</h3>
 <p>Scarica R da <a href="https://cran.r-project.org/">CRAN</a>, nella sezione “Download and Install R”, scegliendo la versione per il tuo sistema operativo (Windows, macOS o Linux).</p>
@@ -251,7 +234,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="rtools-solo-windows" class="level3">
 <h3 class="anchored" data-anchor-id="rtools-solo-windows">RTools (solo Windows)</h3>
-<p>RTools serve per installare alcuni pacchetti a partire dal codice sorgente. Scaricalo da <a href="https://cloud.r-project.org/bin/windows/Rtools/">questa pagina</a> scegliendo la versione che corrisponde alla tua versione di R (per esempio RTools 4.6 per R 4.6.x).</p>
+<p>RTools serve per installare alcuni pacchetti a partire dal codice sorgente. Scaricalo da <a href="https://cloud.r-project.org/bin/windows/Rtools/">questa pagina</a> scegliendo la versione che corrisponde alla tua versione di R (per esempio RTools 4.5 per versioni a partire da 4.5).</p>
 <p>Su macOS non è necessario installare Rtools</p>
 </section>
 <section id="rstudio" class="level3">
@@ -261,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="installare-i-pacchetti" class="level2">
 <h2 class="anchored" data-anchor-id="installare-i-pacchetti">Installare i pacchetti</h2>
-<p>Apri RStudio, copia il codice qui sotto nella <strong>Console</strong> e premi Invio. <u>L’installazione può richiedere diversi minuti.</u> Lo stesso codice è nello script <code>pacchetti_da_istallare.R</code> (nella cartella dei materiali, oppure <a href="https://github.com/amateo250/unisr/blob/main/materiale_R/pacchetti_da_istallare.R">aprilo direttamente su GitHub</a>): dopo averlo aperto, selezionalo tutto e premi <strong>Run</strong>.</p>
+<p>Apri RStudio, copia il codice qui sotto nella <strong>Console</strong> e premi Invio. <u>L’installazione può richiedere diversi minuti.</u> Lo stesso codice è nello script <code>pacchetti_da_istallare.R</code> (nella cartella dei materiali): dopo averlo aperto, selezionalo tutto e premi <strong>Run</strong>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Installa {pacman} se non è già presente</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pacman"</span>)) <span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
@@ -270,7 +253,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  rio,          <span class="co"># importare ed esportare i dati</span></span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  openxlsx,     <span class="co"># gestione speciale dei fogli Excel</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  remotes,      <span class="co"># installazione di pacchetti da GitHub</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  remotes,      <span class="co"># installazione di pacchetti da sorgenti esterne</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  here,         <span class="co"># percorsi relativi dei file</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  tidyverse,    <span class="co"># gestione e visualizzazione dei dati</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  skimr,        <span class="co"># panoramica dei dati</span></span>
@@ -302,11 +285,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="scaricare-i-materiali-del-corso" class="level2">
 <h2 class="anchored" data-anchor-id="scaricare-i-materiali-del-corso">Scaricare i materiali del corso</h2>
-<p>Per scaricare i dati e gli script del corso, <a href="materiale_R.zip">clicca qui</a> e salva il file compresso. Estrai la cartella <code>materiale_R</code> in un punto qualsiasi del tuo computer (per esempio in Documenti): durante il corso lavorerai al suo interno. Apri il file <code>materiale_R.Rproj</code> con RStudio per lavorare nel progetto del corso.</p>
+<p>Per scaricare i dati e gli script del corso, <a href="prog_stat_mepi.zip">clicca qui</a> e salva il file compresso. Estrai la cartella <code>prog_stat_mepi</code> in un punto qualsiasi del tuo computer (per esempio in Documenti): durante il corso lavorerai al suo interno. Crea un progetto RStudio dentro la cartella <code>prog_stat_mepi</code> (lo vedremo passo passo nella sessione 1).</p>
 <p>La cartella contiene:</p>
 <ul>
 <li><code>data</code>: i dati usati nelle esercitazioni e, dentro <code>data dictionaries</code>, i dizionari dei database;</li>
-<li><code>scripts</code>: gli script che scriveremo durante il corso (per esempio <code>analisi_ebola.R</code>);</li>
+<li><code>scripts/backup/</code>: le versioni complete (soluzioni) degli script del corso, con nomi <code>backup_*.R</code>;</li>
 <li><code>outputs</code>: qui salverai i grafici e le tabelle che produrrai;</li>
 <li><code>pacchetti_da_istallare.R</code>: lo script per installare tutti i pacchetti (vedi sezione sopra).</li>
 </ul>
@@ -1008,14 +991,7 @@ window.onload = function() {
       &nbsp;
     </div>
     <div class="nav-footer-right">
-      <ul class="footer-items list-unstyled">
-    <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/amateo250/unisr">
-      <i class="bi bi-github" role="img" aria-label="Repository GitHub del corso">
-</i> 
-    </a>
-  </li>  
-</ul>
+      &nbsp;
     </div>
   </div>
 </footer>
