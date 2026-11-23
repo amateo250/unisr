@@ -1,0 +1,43 @@
+project:
+  type: website
+
+website:
+  title: "Corso introduttivo a R"
+  description: "Corso introduttivo al software statistico R — Master II livello in Epidemiologia e Sanità Pubblica, Università Vita-Salute San Raffaele"
+  lang: it
+  navbar:
+    left:
+      - text: Home
+        href: index.qmd
+      - text: Preparazione
+        href: preparazione.qmd
+      - text: Sessioni
+        menu:
+          - text: "Sessione 1 — Introduzione a R e RStudio"
+            href: sessione1_intro.qmd
+          - text: "Sessione 2 — Pulizia e modifica di database"
+            href: sessione2_pulizia.qmd
+          - text: "Sessione 3 — Raggruppare, linkare dati e creare tabelle"
+            href: sessione3_group_link.qmd
+          - text: "Sessione 4 — Grafici e analisi stratificata"
+            href: sessione4_grafici_stratificata.qmd
+          - text: "Sessione 5 — Analisi descrittiva stratificata"
+            href: sessione5_analisi_descrittiva_multivariata.qmd
+      - text: Materiali
+        href: materiali.qmd
+  page-footer:
+    left: "Corso introduttivo a R — Master II livello in Epidemiologia, UniSR"
+    right:
+      - icon: github
+        href: https://github.com/amateo250/unisr
+        aria-label: "Repository GitHub del corso"
+
+format:
+  html:
+    theme: flatly
+    css:
+      - webex.css
+      - styles.css
+    include-after-body: webex.js
+    toc: true
+    df-print: kable

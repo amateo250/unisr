@@ -1,0 +1,43 @@
+name: Publish sito (Quarto)
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout del repository
+        uses: actions/checkout@v4
+
+      - name: Setup R
+        uses: r-lib/actions/setup-r@v2
+
+      - name: Setup Quarto
+        uses: quarto-dev/quarto-cli@v2
+
+      - name: Installa i pacchetti R del corso
+        run: Rscript -e 'install.packages("pacman"); source("materiale_R/pacchetti_da_istallare.R")'
+
+      - name: Render del sito con Quarto
+        run: quarto render
+
+      - name: Copia il sito renderizzato nella root del repo
+        run: rsync -a --exclude '.git' --exclude '_site' --exclude '.quarto' _site/ ./
+
+      - name: Commit e push del sito (salta il re-trigger della CI)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Publish site [skip ci]" || echo "Nessuna modifica da committare"
+          git push

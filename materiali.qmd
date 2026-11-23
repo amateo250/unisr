@@ -1,0 +1,28 @@
+---
+title: "Materiali del corso"
+lang: it
+---
+
+## Scarica i materiali
+
+-   **[materiale_R.zip](materiale_R.zip)** — cartella completa con dati,
+    script e progetto RStudio (clicca sul link e salva il file
+    compresso);
+-   oppure sfoglia la cartella
+    [`materiale_R` su GitHub](https://github.com/amateo250/unisr/tree/main/materiale_R).
+
+Dopo aver scaricato lo zip, estrai la cartella `materiale_R` in un punto
+qualsiasi del tuo computer e apri `materiale_R.Rproj` con RStudio: è il
+progetto in cui lavoreremo durante il corso.
+
+## Contenuto della cartella
+
+-   `data/` — i dati delle esercitazioni (linelist del focolaio di Ebola,
+    dati dell'indagine "tiramisù") e, dentro `data dictionaries/`, i
+    dizionari dei database;
+-   `scripts/` — gli script che scriveremo durante il corso (per esempio
+    `analisi_ebola.R`);
+-   `outputs/` — qui salverai i grafici e le tabelle che produrrai;
+-   `materiale_R.Rproj` — il progetto RStudio del corso;
+-   `pacchetti_da_istallare.R` — lo script che installa tutti i pacchetti
+    necessari (vedi [Preparazione](preparazione.qmd)).

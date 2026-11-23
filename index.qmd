@@ -1,0 +1,41 @@
+---
+title: "Corso introduttivo a R"
+lang: it
+---
+
+![](images/UniSR.png){width=2.5in fig-align="center"}
+
+## Corso introduttivo al software statistico R
+
+Benvenuti nel sito del **corso introduttivo a R** del **Master II livello
+in Epidemiologia e Sanità Pubblica** dell'**Università Vita-Salute San
+Raffaele**.
+
+Il corso, articolato in 5 sessioni, porta da zero all'analisi di dati
+epidemiologici reali: importazione e pulizia di database, tabelle,
+grafici e analisi descrittiva e stratificata di un focolaio.
+
+### Prima di iniziare
+
+Consulta la pagina [Preparazione](preparazione.qmd): installa R, RStudio
+e i pacchetti e scarica i [materiali del corso](materiali.qmd) qualche
+giorno prima dell'inizio, così da avere il tempo di risolvere
+eventuali problemi.
+
+### Sessioni del corso
+
+1.  [Sessione 1 — Introduzione a R e RStudio: importazione ed esplorazione
+    di database](sessione1_intro.qmd)
+2.  [Sessione 2 — Pulizia e modifica di
+    database](sessione2_pulizia.qmd)
+3.  [Sessione 3 — Raggruppare, linkare dati e creare
+    tabelle](sessione3_group_link.qmd)
+4.  [Sessione 4 — Grafici e analisi
+    stratificata](sessione4_grafici_stratificata.qmd)
+5.  [Sessione 5 — Analisi descrittiva stratificata e sviluppo di
+    ipotesi](sessione5_analisi_descrittiva_multivariata.qmd)
+
+### Materiali
+
+Dati e script del corso: scarica [`materiale_R.zip`](materiale_R.zip)
+dalla pagina [Materiali](materiali.qmd).

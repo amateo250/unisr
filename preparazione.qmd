@@ -1,0 +1,133 @@
+---
+title: |
+  ![](images/UniSR.png){width=3in}
+lang: it
+format:
+  html:
+    toc: true
+    toc-depth: 2
+---
+
+# **Corso introduttivo al software statistico R**
+
+# Prepararsi al corso
+
+Prima dell'inizio del corso è necessario installare i programmi e i
+pacchetti che useremo e scaricare la cartella con i dati. Ti chiediamo
+di farlo **qualche giorno prima del corso**, così da avere il tempo di
+risolvere eventuali problemi.
+
+## Installare R, RTools e RStudio
+
+Sul tuo computer devono essere installati R, RTools (solo Windows) e
+RStudio, preferibilmente in quest'ordine: **R → RTools → RStudio**.
+
+::: callout-warning
+## Attenzione ai permessi di amministratore
+
+L'installazione di RStudio e di RTools di solito richiede i diritti di
+amministratore. Assicurati di fare il GRISSI per le credenziali temporanee
+:::
+
+### R
+
+Scarica R da [CRAN](https://cran.r-project.org/), nella sezione
+"Download and Install R", scegliendo la versione per il tuo sistema
+operativo (Windows, macOS o Linux).
+
+-   L'ultima versione disponibile è la 4.6.1 (24 giugno 2026). **Non è
+    obbligatorio avere l'ultima versione**, ma è consigliabile non
+    restare troppo indietro.
+-   Sullo stesso computer possono essere installate più versioni di R.
+    In questo caso, controlla che RStudio usi la più recente: menu
+    **Tools \> Global Options \> General \> R version**.
+
+### RTools (solo Windows)
+
+RTools serve per installare alcuni pacchetti a partire dal codice
+sorgente. Scaricalo da [questa
+pagina](https://cloud.r-project.org/bin/windows/Rtools/) scegliendo la
+versione che corrisponde alla tua versione di R (per esempio RTools 4.6
+per R 4.6.x).
+
+Su macOS non è necessario installare Rtools
+
+### RStudio
+
+Scarica [RStudio Desktop](https://posit.co/download/rstudio-desktop/).
+
+## Installare i pacchetti
+
+Apri RStudio, copia il codice qui sotto nella **Console** e premi
+Invio. [L'installazione può richiedere diversi minuti.]{.underline}
+Lo stesso codice è nello script `pacchetti_da_istallare.R` (nella
+cartella dei materiali, oppure [aprilo direttamente su
+GitHub](https://github.com/amateo250/unisr/blob/main/materiale_R/pacchetti_da_istallare.R)):
+dopo averlo aperto, selezionalo tutto e premi **Run**.
+
+```{r}
+#| eval: false
+# Installa {pacman} se non è già presente
+if (!require("pacman")) install.packages("pacman")
+
+# Installa (o aggiorna) e carica tutti i pacchetti del corso
+pacman::p_load(
+  rio,          # importare ed esportare i dati
+  openxlsx,     # gestione speciale dei fogli Excel
+  remotes,      # installazione di pacchetti da GitHub
+  here,         # percorsi relativi dei file
+  tidyverse,    # gestione e visualizzazione dei dati
+  skimr,        # panoramica dei dati
+  epikit,       # funzioni utili per l'epidemiologia
+  janitor,      # pulizia dei dati e tabelle
+  gtsummary,    # tabelle descrittive e statistiche
+  cowplot,      # combinare grafici
+  RColorBrewer, # scale di colori
+  gghighlight,  # evidenziare un sottoinsieme
+  ggrepel,      # etichette intelligenti nei grafici
+  ggExtra,      # grafici avanzati
+  tsibble,      # settimane epidemiologiche
+  viridis,      # colori adatti ai daltonici
+  scales,       # funzioni di supporto per i grafici
+  broom,        # tabelle ordinate dei risultati dei modelli
+  rstatix,      # test statistici
+  ggfortify,    # grafici dei risultati dei modelli
+  MASS,         # regressione binomiale negativa
+  epitools,     # analisi univariata
+  performance,  # valutazione dei modelli di regressione
+  epiR,         # rischi relativi aggiustati per strati
+  rmarkdown,    # report in HTML, Word, PDF
+  knitr,        # génération de rapports
+  flextable     # tabelle HTML per i report
+)
+```
+
+Se al termine non compaiono messaggi di errore (in rosso, con la parola
+`Error`), i pacchetti sono installati correttamente. Gli avvisi
+(`Warning`) di solito si possono ignorare.
+
+Se un pacchetto non si installa e R chiede *"Do you want to install from sources the packages which
+    need compilation?"*, rispondi `no`: verrà installata la versione già
+    pronta del pacchetto. Se invece l'errore riguarda un solo pacchetto, prova a installarlo da solo,
+    per esempio con `install.packages("sf")`, e poi esegui di nuovo il
+    codice qui sopra.Se il problema persiste, copia il messaggio di errore e mandalo ai
+    responsabili del corso prima dell'inizio.
+
+
+## Scaricare i materiali del corso
+
+Per scaricare i dati e gli script del corso, [clicca qui](materiale_R.zip) e salva il
+file compresso. Estrai la cartella `materiale_R` in un punto
+qualsiasi del tuo computer (per esempio in Documenti): durante il corso
+lavorerai al suo interno. Apri il file `materiale_R.Rproj` con RStudio
+per lavorare nel progetto del corso.
+
+La cartella contiene:
+
+-   `data`: i dati usati nelle esercitazioni e, dentro `data dictionaries`,
+    i dizionari dei database;
+-   `scripts`: gli script che scriveremo durante il corso (per esempio
+    `analisi_ebola.R`);
+-   `outputs`: qui salverai i grafici e le tabelle che produrrai;
+-   `pacchetti_da_istallare.R`: lo script per installare tutti i pacchetti
+    (vedi sezione sopra).

@@ -31,6 +31,7 @@ pacman::p_load(
   #############################
   rio,      # importazione/esportazione di molti tipi di dati
   openxlsx, # funzioni speciali per la gestione dei fogli di lavoro Excel
+  here,     # percorsi relativi dei file rispetto al progetto
   
   # installazione e gestione dei pacchetti
   ################################

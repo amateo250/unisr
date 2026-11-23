@@ -1,0 +1,17 @@
+/* Stili del sito del corso */
+
+/* Logo nel titolo di pagina centrato */
+.quarto-title-block .quarto-title-banner,
+h1.title {
+  text-align: center;
+}
+
+/* Blocchi titolo delle pagine: logo centrato */
+#title-block-header {
+  text-align: center;
+}
+
+/* Navbar: nome del sito in grassetto */
+.navbar-brand {
+  font-weight: 600;
+}
