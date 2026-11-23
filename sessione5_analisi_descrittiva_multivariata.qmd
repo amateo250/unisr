@@ -102,6 +102,10 @@ Lo studio dovrà seguire questi passaggi:
 - Interpretare i risultati
 
 
+```{r setup, include=FALSE}
+pacman::p_load(epikit, tidyverse, janitor, rio, skimr, gtsummary, rstatix, epitools, EpiStats, ggsurveillance)
+```
+
 ### **Step 1: Set up**
 
 **Compiti:**
@@ -696,7 +700,7 @@ tira_pul <- tira_grezzo %>% # tira_pul sarà il nostro dataframe pulito dopo ave
   mutate(mportion2 = if_else(mportion == "2" | mportion == "3", "2+", mportion)) %>% 
   
   ####3.4. creare fasce d'età
-  mutate(fascia_eta = age_categories(age,           # la colonna da usare per creare le categorie 
+  mutate(fascia_eta = epikit::age_categories(age,           # la colonna da usare per creare le categorie 
                                      lower = 0,     # il valore inferiore
                                      upper = 20,    # il valore superiore (vogliamo un gruppo di 20+)
                                      by = 20))      # poiché vogliamo solo due gruppi, anche questo è 20
