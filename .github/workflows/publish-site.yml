@@ -25,6 +25,11 @@ jobs:
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: Dipendenze di sistema (libudunits2 per il pacchetto units/epikit)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libudunits2-0 libudunits2-dev
+
       - name: Versioni (debug)
         run: |
           R --version | head -1
