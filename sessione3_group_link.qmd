@@ -51,7 +51,7 @@ In questo esercizio continueremo a lavorare sullo script *analisi_ebola.R* che a
 
 Prima di cominciare, assicurati di:
 
-1.    Avere RStudio aperto con il **progetto *prog_stat_mepi***.
+1.    Avere RStudio aperto con il **progetto *materiale_R***.
 
 2.    Aprire lo script **analisi_ebola**
 
