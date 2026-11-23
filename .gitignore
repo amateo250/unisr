@@ -6,3 +6,6 @@
 # Output di Quarto (il sito viene copiato nella root dalla CI)
 _site/
 .quarto/
+
+/.quarto/
+**/*.quarto_ipynb
