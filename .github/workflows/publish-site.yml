@@ -25,8 +25,17 @@ jobs:
       - name: Setup Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Installa i pacchetti R del corso
-        run: Rscript -e 'install.packages("pacman"); source("materiale_R/pacchetti_da_istallare.R")'
+      - name: Versioni (debug)
+        run: |
+          R --version | head -1
+          quarto --version
+
+      - name: Installa i pacchetti R del corso (binari P3M)
+        run: |
+          DISTRO=$(lsb_release -cs)
+          export R_REPOS="https://packagemanager.posit.co/cran/__linux__/${DISTRO}/latest"
+          echo "CRAN mirror: ${R_REPOS}"
+          Rscript -e "options(repos = c(CRAN = Sys.getenv('R_REPOS'))); install.packages('pacman'); source('materiale_R/pacchetti_da_istallare.R')"
 
       - name: Render del sito con Quarto
         run: quarto render
