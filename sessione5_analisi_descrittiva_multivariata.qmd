@@ -141,7 +141,6 @@ pacman::p_load(
   rstatix,         # per generare statistiche riassuntive
   epitools,        # per l'analisi univariata
   epikit,          # per creare categorie di età
-  epiR,            # per i rapporti di rischio aggiustati tra le strati
   EpiStats,        # per l'analisi univariata e stratificata
   tidyverse        # gestione dei dati e visualizzazione
 )
