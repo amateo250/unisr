@@ -1365,7 +1365,7 @@ Con quest'analisi siamo in grado d'ipotizzare che il tiramisù sia la fonte del 
 ### **Informazioni del esercizio** 
 
 ***Autori***\
-Questo esercizio è stato adattato da Alberto Mateo Urdiales (ISS, alberto.mateourdiales@iss.it) da un case study EPIET/EUPHEM (ECDC). Questo Case study
+Questo esercizio è stato adattato da Alberto Mateo Urdiales (ISS, alberto.mateourdiales@iss.it) da un case study EPIET/EUPHEM (ECDC). Questo case study
 è stato inizialmente progettato da Alain Moren e
 Gilles Desve per EPIET. Si basa su un'indagine condotta da
 Anja Hauri, RKI, Berlino, 1998.\
