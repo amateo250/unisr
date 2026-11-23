@@ -44,7 +44,7 @@ jobs:
           DISTRO=$(lsb_release -cs)
           export R_REPOS="https://packagemanager.posit.co/cran/__linux__/${DISTRO}/latest"
           echo "CRAN mirror: ${R_REPOS}"
-          Rscript -e "options(repos = c(CRAN = Sys.getenv('R_REPOS'))); install.packages('pacman'); source('materiale_R/pacchetti_da_istallare.R')"
+          Rscript -e "options(repos = c(CRAN = Sys.getenv('R_REPOS'))); install.packages('pacman'); source('prog_stat_mepi/pacchetti_da_istallare.R')"
 
       - name: Render del sito con Quarto
         run: quarto render
