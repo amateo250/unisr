@@ -68,6 +68,8 @@ pacman::p_load(
   ggfortify,  # visualizzazione dei dati per i risultati dell'analisi statistica
   MASS,            # per la regressione binomiale negativa
   epitools,        # per l'analisi univariata
+  EpiStats,        # tabelle 2x2, rischi relativi (CS, CSTable)
+  fontawesome,     # icone nei documenti HTML
   performance,     # valutazione delle prestazioni dei modelli di regressione
   epiR,            # per i rapporti di rischio aggiustati tra le strati
   
