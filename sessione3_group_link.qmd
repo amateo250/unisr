@@ -16,7 +16,7 @@ format:
 
 # Sessione 3 - Raggruppare, linkare dati e creare tabelle:  {.unnumbered}
 
-## Obiettivi di questa sesione
+## Obiettivi di questa sessione
 
 - imparare a raggruppare dati e creare tabelle in R,
 - essere in grado di collegare diversi database
@@ -82,7 +82,7 @@ Se pensi che il tuo script a questo punto sia incompleto o hai dubbi, puoi confr
 
 # SESSIONE 1 --------------------------------------------------------------
 
-## 4.2. Installarere e caricare i pacchetti necessari -------------------------
+## 4.2. Installare e caricare i pacchetti necessari -------------------------
 
 # installa (se necessario) da CRAN e carica i pacchetti da utilizzare
 pacman::p_load(
@@ -1127,9 +1127,9 @@ Autore originale: Alberto Mateo Urdiales (Dipartimento Malattie
 Infettive, Istituto Superiore di Sanità\
 Fonte dati: I dati sul focolaio di Ebola provengono da AppliedEpi e si
 possono scaricare nel sito [EpiRhandbook](https://epirhandbook.com/en/);
-i dati sul focolaio gastrointestinale fa parte dal pacchetto {EpiStats};
-quello sul peso alla nascita dal pacchetto {MASS}\
+i dati sul focolaio gastrointestinale fa parte del pacchetto {EpiStats};
 
 | Date         | Changes made | Version | Author                 |
 |--------------|:-------------|--------:|------------------------|
 | Gennaio 2025 | First draft  |       1 | Alberto Mateo Urdiales |
+| Novembre 2026 | Versione per il sito web del corso, preparata con il supporto di Mistral Vibe (assistente IA) | 2 | Alberto Mateo Urdiales |

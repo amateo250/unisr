@@ -14,7 +14,7 @@ format:
 
 # Sessione 2 - Pulizia e modifica di database:  {.unnumbered}
 
-## Obiettivi di questa sesione
+## Obiettivi di questa sessione
 
 -   acquisire familiarità con le funzioni di pulizia di {dplyr} e {janitor},
 -   essere in grado di codificare usando l'operatore pipe %>%,
@@ -1010,9 +1010,9 @@ Autore originale: Alberto Mateo Urdiales (Dipartimento Malattie
 Infettive, Istituto Superiore di Sanità\
 Fonte dati: I dati sul focolaio di Ebola provengono da AppliedEpi e si
 possono scaricare nel sito [EpiRhandbook](https://epirhandbook.com/en/);
-i dati sul focolaio gastrointestinale fa parte dal pacchetto {EpiStats};
-quello sul peso alla nascita dal pacchetto {MASS}\
+i dati sul focolaio gastrointestinale fa parte del pacchetto {EpiStats};
 
 | Date         | Changes made | Version | Author                 |
 |--------------|:-------------|--------:|------------------------|
 | Gennaio 2025 | First draft  |       1 | Alberto Mateo Urdiales |
+| Novembre 2026 | Versione per il sito web del corso, preparata con il supporto di Mistral Vibe (assistente IA) | 2 | Alberto Mateo Urdiales |

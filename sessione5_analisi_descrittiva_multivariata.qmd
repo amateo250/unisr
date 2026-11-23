@@ -16,7 +16,7 @@ format:
 
 # Sessione 5 - Analisi descrittiva stratificata e sviluppo d'ipotesi:  {.unnumbered}
 
-## Obiettivi di questa sesione
+## Obiettivi di questa sessione
 
 
 - conoscere ed essere in grado di eseguire i passaggi fondamentali di un'analisi statistica descrittiva 
@@ -114,7 +114,7 @@ pacman::p_load(epikit, tidyverse, janitor, rio, skimr, gtsummary, rstatix, epito
 -   Crea un progetto di RStudio dentro la cartella *tiramisu_unisr*
 -   Crea uno script di R, assicurati di includere all'inizio dello script nome e
     cognome; obiettivo dello script; tua email e la data. 
--   Comincia per istallare e caricare questi pachetti: rio, skimr, janitor, gtsummary,ggsurveillance,
+-   Comincia per installare e caricare questi pacchetti: rio, skimr, janitor, gtsummary, ggsurveillance,
 rstatix, epitools, epiR, epikit, EpiStats and tidyverse
 
 <details>
@@ -1365,7 +1365,7 @@ Con quest'analisi siamo in grado d'ipotizzare che il tiramisù sia la fonte del 
 ### **Informazioni del esercizio** 
 
 ***Autori***\
-Questo esercizio è satato adattato per Alberto Mateo Urdiales, ISS (alberto.mateourdiales@iss.it) da un Case-study EPIET/EUPHEM (ECDC). Questo Case study
+Questo esercizio è stato adattato da Alberto Mateo Urdiales (ISS, alberto.mateourdiales@iss.it) da un case study EPIET/EUPHEM (ECDC). Questo Case study
 è stato inizialmente progettato da Alain Moren e
 Gilles Desve per EPIET. Si basa su un'indagine condotta da
 Anja Hauri, RKI, Berlino, 1998.\
@@ -1373,4 +1373,5 @@ Fonte dei dati: I dati sono fittizi e sono stati ispirati da [Nygren et al.
 Encefalite trasmessa da zecche: manifestazioni cliniche acute e gravità in
 581 casi dalla Germania, 2018-2020. Journal of Infection. 2023 Apr
 1;86(4):369-75](https://linkinghub.elsevier.com/retrieve/pii/S0163-4453(23)00088-9)\
+Versione: novembre 2026 — preparata da Alberto Mateo Urdiales con il supporto di Mistral Vibe (assistente IA).
 
