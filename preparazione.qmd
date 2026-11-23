@@ -22,13 +22,6 @@ risolvere eventuali problemi.
 Sul tuo computer devono essere installati R, RTools (solo Windows) e
 RStudio, preferibilmente in quest'ordine: **R → RTools → RStudio**.
 
-::: callout-warning
-## Attenzione ai permessi di amministratore
-
-L'installazione di RStudio e di RTools di solito richiede i diritti di
-amministratore. Assicurati di fare il GRISSI per le credenziali temporanee
-:::
-
 ### R
 
 Scarica R da [CRAN](https://cran.r-project.org/), nella sezione
@@ -47,8 +40,8 @@ operativo (Windows, macOS o Linux).
 RTools serve per installare alcuni pacchetti a partire dal codice
 sorgente. Scaricalo da [questa
 pagina](https://cloud.r-project.org/bin/windows/Rtools/) scegliendo la
-versione che corrisponde alla tua versione di R (per esempio RTools 4.6
-per R 4.6.x).
+versione che corrisponde alla tua versione di R (per esempio RTools 4.5
+per versioni a partire da 4.5).
 
 Su macOS non è necessario installare Rtools
 
@@ -61,9 +54,8 @@ Scarica [RStudio Desktop](https://posit.co/download/rstudio-desktop/).
 Apri RStudio, copia il codice qui sotto nella **Console** e premi
 Invio. [L'installazione può richiedere diversi minuti.]{.underline}
 Lo stesso codice è nello script `pacchetti_da_istallare.R` (nella
-cartella dei materiali, oppure [aprilo direttamente su
-GitHub](https://github.com/amateo250/unisr/blob/main/materiale_R/pacchetti_da_istallare.R)):
-dopo averlo aperto, selezionalo tutto e premi **Run**.
+cartella dei materiali): dopo averlo aperto, selezionalo tutto e premi
+**Run**.
 
 ```{r}
 #| eval: false
@@ -74,7 +66,7 @@ if (!require("pacman")) install.packages("pacman")
 pacman::p_load(
   rio,          # importare ed esportare i dati
   openxlsx,     # gestione speciale dei fogli Excel
-  remotes,      # installazione di pacchetti da GitHub
+  remotes,      # installazione di pacchetti da sorgenti esterne
   here,         # percorsi relativi dei file
   tidyverse,    # gestione e visualizzazione dei dati
   skimr,        # panoramica dei dati
@@ -116,18 +108,18 @@ Se un pacchetto non si installa e R chiede *"Do you want to install from sources
 
 ## Scaricare i materiali del corso
 
-Per scaricare i dati e gli script del corso, [clicca qui](materiale_R.zip) e salva il
-file compresso. Estrai la cartella `materiale_R` in un punto
+Per scaricare i dati e gli script del corso, [clicca qui](prog_stat_mepi.zip) e salva il
+file compresso. Estrai la cartella `prog_stat_mepi` in un punto
 qualsiasi del tuo computer (per esempio in Documenti): durante il corso
-lavorerai al suo interno. Apri il file `materiale_R.Rproj` con RStudio
-per lavorare nel progetto del corso.
+lavorerai al suo interno. Crea un progetto RStudio dentro la cartella
+`prog_stat_mepi` (lo vedremo passo passo nella sessione 1).
 
 La cartella contiene:
 
 -   `data`: i dati usati nelle esercitazioni e, dentro `data dictionaries`,
     i dizionari dei database;
--   `scripts`: gli script che scriveremo durante il corso (per esempio
-    `analisi_ebola.R`);
+-   `scripts/backup/`: le versioni complete (soluzioni) degli script del
+    corso, con nomi `backup_*.R`;
 -   `outputs`: qui salverai i grafici e le tabelle che produrrai;
 -   `pacchetti_da_istallare.R`: lo script per installare tutti i pacchetti
     (vedi sezione sopra).

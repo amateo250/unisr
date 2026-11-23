@@ -34,9 +34,9 @@ pacman::p_load(
   tidyverse # gestione e visualizzazione dati
 )
 
-casi_ebola_pul <- import("materiale_R/data/casi_ebola_pul.rds")
+casi_ebola_pul <- import("prog_stat_mepi/data/casi_ebola_pul.rds")
 
-osp_info <- import("materiale_R/data/hosp_info.RDS")
+osp_info <- import("prog_stat_mepi/data/hosp_info.RDS")
 
 osp_info_pul <- osp_info %>% 
   mutate(hosp_name = recode(hosp_name,
@@ -51,7 +51,7 @@ In questo esercizio continueremo a lavorare sullo script *analisi_ebola.R* che a
 
 Prima di cominciare, assicurati di:
 
-1.    Avere RStudio aperto con il **progetto *materiale_R***.
+1.    Avere RStudio aperto con il **progetto *prog_stat_mepi***.
 
 2.    Aprire lo script **analisi_ebola**
 

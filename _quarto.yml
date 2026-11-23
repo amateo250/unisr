@@ -24,14 +24,8 @@ website:
             href: sessione4_grafici_stratificata.qmd
           - text: "Sessione 5 — Analisi descrittiva stratificata"
             href: sessione5_analisi_descrittiva_multivariata.qmd
-      - text: Materiali
-        href: materiali.qmd
   page-footer:
     left: "Corso introduttivo a R — Master II livello in Epidemiologia, UniSR"
-    right:
-      - icon: github
-        href: https://github.com/amateo250/unisr
-        aria-label: "Repository GitHub del corso"
 
 format:
   html:

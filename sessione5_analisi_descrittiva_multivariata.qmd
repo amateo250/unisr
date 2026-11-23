@@ -157,7 +157,7 @@ pacman::p_load(
 ### **Step 2: Leggere ed esplorare i dati**
 
 ```{r, include=FALSE}
-tira_grezzo <- import("materiale_R/data/tiramisu_unisr.txt")
+tira_grezzo <- import("prog_stat_mepi/data/tiramisu_unisr.txt")
 ```
 
 #### 2.1: Leggere i dati 

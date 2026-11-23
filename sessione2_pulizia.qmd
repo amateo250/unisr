@@ -33,7 +33,7 @@ pacman::p_load(
   tidyverse # gestione e visualizzazione dati
 )
 
-casi_ebola_grezzo <- import("materiale_R/data/linelist_raw.xlsx")
+casi_ebola_grezzo <- import("prog_stat_mepi/data/linelist_raw.xlsx")
 ```
 
 ### **Preparazione**
@@ -43,7 +43,7 @@ un'epidemia di ebola.
 
 Quindi, prima di cominciare, assicurati di:
 
-1.    Avere RStudio aperto con il **progetto *materiale_R***.
+1.    Avere RStudio aperto con il **progetto *prog_stat_mepi***.
 
 2.    Aprire lo script **analisi_ebola**
 

@@ -67,15 +67,13 @@ Lavorare dentro un progetto di RStudio è importante perché:
     persone: basta comprimere un progetto e inviarlo via email. Quelli
     che lo ricevono possono aprirlo e replicare esattamente il tuo
     lavoro!
--   può essere collegato a un software di version control come
-    Git/Github
 
 **Compito:**
 
--   Assicurati che la cartella *materiale_R* sia scaricata è
+-   Assicurati che la cartella *prog_stat_mepi* sia scaricata è
     **decompressa** nel tuo laptop
 -   Apri RStudio
--   Crea un progetto di RStudio dentro la cartella *materiale_R*
+-   Crea un progetto di RStudio dentro la cartella *prog_stat_mepi*
 
 
 <details>
@@ -109,7 +107,7 @@ cartella pronta.
 
 *Existing Directory* serve per inserire il progetto in una cartella
 esistente dentro il tuo laptop. **Scegli questa opzione** e seleziona
-*browse*. Poi cerca la cartella *materiale_R* e clicca su *Open*
+*browse*. Poi cerca la cartella *prog_stat_mepi* e clicca su *Open*
 come indicato nell'immagine sotto
 
 ![](images/project03.png)
@@ -316,14 +314,14 @@ Adesso comincieremo ad analizzare dati più complessi che somigliano ai
 dati che un epidemiologo trova nella vita reale.
 
 Il database che useremo lo potete trovare nella sottocartella
-"materiale_R/data" e si chiama *linelist_raw.xlsx*. Questo database
+"prog_stat_mepi/data" e si chiama *linelist_raw.xlsx*. Questo database
 contiene dati fittizi che imitano dati individuali raccolti durante
 un'epidemia di ebola. Il database è stato creato da AppliedEpi e si può
 scaricare nel sito di [EpiRhandbook](https://epirhandbook.com/en/)
 
 Puoi aprire il database in excel e dare uno sguardo se vuoi. Il file
 *data_dictionary_linelist.xlsx* dentro la sottocartella
-"materiale_R/data/data dictionaries" descrive il significato di ogni
+"prog_stat_mepi/data/data dictionaries" descrive il significato di ogni
 variabile.
 
 Nei prossimi passi eseguiremo le azioni necessarie per leggere ed
@@ -334,7 +332,7 @@ esplorare questo database.
 Utilizzeremo un nuovo script per questa analisi, quindi salva e chiudi
 lo script *esercizio_1.R* e crea un nuovo script chiamato
 *analisi_ebola*. Salvalo sempre nella sottocartella "scripts".
-Assicurati di rimanere sempre dentro del progetto *materiale_R*.
+Assicurati di rimanere sempre dentro del progetto *prog_stat_mepi*.
 Assicurati anche che l'environment sia pulito. Per pulirlo puoi cliccare
 sul simbolo che somiglia ad una scopa in alto a destra (vedi immagine
 sotto).
@@ -422,7 +420,7 @@ pacman::p_load(
 </details>
 
 ```{r , echo=FALSE, include=FALSE}
-casi_ebola_grezzo <- import(here("materiale_R", "data", "linelist_raw.xlsx"))
+casi_ebola_grezzo <- import(here("prog_stat_mepi", "data", "linelist_raw.xlsx"))
 ```
 
 #### 4.3. Leggere i dati

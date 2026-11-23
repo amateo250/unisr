@@ -18,9 +18,9 @@ grafici e analisi descrittiva e stratificata di un focolaio.
 ### Prima di iniziare
 
 Consulta la pagina [Preparazione](preparazione.qmd): installa R, RStudio
-e i pacchetti e scarica i [materiali del corso](materiali.qmd) qualche
-giorno prima dell'inizio, così da avere il tempo di risolvere
-eventuali problemi.
+e i pacchetti e scarica i materiali del corso (sezione *Scaricare i
+materiali del corso*) qualche giorno prima dell'inizio, così da avere il
+tempo di risolvere eventuali problemi.
 
 ### Sessioni del corso
 
@@ -34,8 +34,3 @@ eventuali problemi.
     stratificata](sessione4_grafici_stratificata.qmd)
 5.  [Sessione 5 — Analisi descrittiva stratificata e sviluppo di
     ipotesi](sessione5_analisi_descrittiva_multivariata.qmd)
-
-### Materiali
-
-Dati e script del corso: scarica [`materiale_R.zip`](materiale_R.zip)
-dalla pagina [Materiali](materiali.qmd).
